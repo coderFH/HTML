@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>块元素</title>
+    <style type="text/css">
+        body {
+            margin: 0px;
+        }
+        div {
+            background-color: gold;
+            margin-top: 10px;
+        }
+        .box2 {
+            width: 200px;
+        }
+        .box3 {
+            width: 300px;
+        }
+
+        /*测试内联元素*/
+        .con,.con2{
+            width: 500px;
+            height: 300px;
+            border: 1px solid #333;
+            margin: 50px auto 0;
+            font-size: 0px;
+        }
+        .con a {
+            background-color: green;
+            /*内联元素 设置宽高没有效果*/
+            /*width: 500px;*/
+            /*height: 300px;*/
+
+            /*内联元素 margin-top没有效果*/
+            /*margin-top: 50px;*/
+
+            /*内联元素 左右有效果 */
+            /*margin-left: 30px;*/
+
+            /*内联元素 左右有效果  上下没效果*/
+            /*padding:0 20px;*/
+
+            /*解决内联元素间隙的方法
+            方式1、去掉内联元素之间的换行
+            方式2、将内联元素的父级设置font-size为0，内联元素自身再设置font-size*/
+            font-size: 15px;
+        }
+        /*子元素是内联块元素，父元素可以用text-align属性设置子元素水平对齐方式，
+            用line-height属性值设置子元素垂直对齐方式*/
+        .con2 {
+            text-align: center;
+            line-height: 300px;
+        }
+        .con2 a {
+            font-size: 20px;
+            background-color: burlywood;
+        }
+    </style>
+
+</head>
+<body>
+    <!--测试块元素-->
+    <div>这是一个块元素</div>
+    <div class="box2">这是第二个块元素</div>
+    <div class="box3">这是第二个块元素</div>
+
+    <!--测试内联元素-->
+    <div class="con">
+        <a href="#">这是第一个a标签</a>
+        <a href="#">这是第二个a标签</a>
+        <a href="#">这是第一个a标签</a>
+        <a href="#">这是第二个a标签</a>
+        <a href="#">这是第一个a标签</a>
+        <a href="#">这是第二个a标签</a>
+        <a href="#">这是第一个a标签</a>
+        <a href="#">这是第二个a标签</a>
+
+    </div>
+
+
+    <div class="con2">
+        <a href="#">这是第一个a标签</a>
+        <a href="#">这是第一个a标签</a>
+    </div>
+
+</body>
+</html>

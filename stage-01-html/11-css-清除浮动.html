@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>清除浮动</title>
+    <style type="text/css">
+        .con,.con2 {
+            width: 300px;
+            /*不给定高度,让根据内容自动撑开*/
+            /*注意 如果不给高度,浮动是没有办法撑开的*/
+            /*height: 300px;*/
+            border: 1px solid #000;
+            margin: 100px auto 0;
+            font-size: 0;
+
+        }
+        /*方式1.利用行内块元素的效果*/
+        .con a {
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+            background-color: gold;
+            font-size: 16px;
+            /*到这一步 可以看到相邻标签相邻的margin距离明显是20,margin并没有合并*/
+            margin: 10px;
+            text-align: center;
+            line-height: 50px;
+            text-decoration: none;
+        }
+
+        /*方式2.利用浮动*/
+        /*父元素内整体浮动的元素无法撑开父元素(父元素不给高度的时候)，需要清除浮动 */
+        /*注意 如果不给高度,浮动是没有办法撑开的*/
+        /*解决的方式1:*/
+        /*.con2 {*/
+            /*overflow: hidden;*/
+        /*}*/
+        /*解决的方式2:clearfix*/
+        /*.clearfix:after {*/
+            /*content: "";*/
+            /*display: table;*/
+            /*clear: both;*/
+        /*}*/
+
+        /*这是清除塌陷和清除浮动合二为一的写法*/
+        .clearfix:before,.clearfix:after {
+            content: '';
+            display: table;
+        }
+        .clearfix:after {
+            clear: both;
+        }
+        /*兼容*/
+        .clearfix {
+            zoom: 1;
+        }
+
+        .con2 a {
+            width: 50px;
+            height: 50px;
+            background-color: gold;
+            font-size: 16px;
+            margin: 10px;
+            text-align: center;
+            line-height: 50px;
+            text-decoration: none;
+            float: left;
+        }
+
+    </style>
+</head>
+<body>
+    <!--利用行内块元素实现-->
+    <div class="con">
+        <a href="">1</a>
+        <a href="">2</a>
+        <a href="">3</a>
+        <a href="">4</a>
+        <a href="">5</a>
+        <a href="">6</a>
+        <a href="">7</a>
+        <a href="">8</a>
+    </div>
+
+    <!--利用浮动实现-->
+    <div class="con2 clearfix">
+        <a href="">1</a>
+        <a href="">2</a>
+        <a href="">3</a>
+        <a href="">4</a>
+        <a href="">5</a>
+        <a href="">6</a>
+        <a href="">7</a>
+        <a href="">8</a>
+    </div>
+</body>
+</html>

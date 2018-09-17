@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新选择器</title>
+    <style type="text/css">
+        li {
+            background-color: gold;
+            margin-bottom: 10px;
+        }
+        /*第一行变为绿色*/
+        /*li:nth-child(1) {*/
+            /*background-color: green;*/
+        /*}*/
+        /*li第三行设为粉色*/
+        /*li:nth-child(3) {*/
+            /*background-color: pink;*/
+        /*}*/
+
+        /*偶数行变为绿色*/
+        /*li:nth-child(2n) {*/
+            /*background-color: green;*/
+        /*}*/
+
+        /*nth-of-type*/
+        /*li:nth-of-type(1) {*/
+            /*background-color: green;*/
+        /*}*/
+        /*li:nth-of-type(3) {*/
+            /*background-color: pink;*/
+        /*}*/
+
+        /*最后一行设为红色*/
+        /*li:nth-last-child(1) {*/
+            /*background-color: red;*/
+        /*}*/
+
+        /*========================nth-of-type和nth-child的区别*/
+        .box div {
+            background-color: gold;
+            margin-bottom: 10px;
+        }
+
+        /*他会先找父级元素下第三个子元素,然后去匹配是不是div标签,但目前很明显是p标签,匹配不上 所以失效*/
+        .box div:nth-child(3) {
+            background-color: green;
+        }
+
+        /*这个的意思是父级下找第三个div 而不是去找第三个元素*/
+        .box div:nth-of-type(3) {
+            background-color: pink;
+        }
+
+        /*验证空标签*/
+        div:empty {
+            background-color: red;
+            height: 10px;
+        }
+        input:disabled {
+            background-color: red;
+        }
+        input:enabled {
+            background-color: green;
+        }
+
+        input:checked+label {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <u>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </u>l
+
+    <div class="box">
+        <div>1</div>
+        <div>2</div>
+        <p>p标签</p>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+    </div>
+
+    <!--验证空标签-->
+    <div></div>
+
+    <!--设置失效-->
+    <input type="text" disabled>
+    <input type="text">
+
+    <input type="checkbox"><label>选择的状态</label>
+
+
+</body>
+</html>

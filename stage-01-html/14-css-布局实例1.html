@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .con {
+            /*============================案例1:翻页*/
+            width: 958px;
+            height: 40px;
+            border: 1px solid #f0f0f0;
+
+            /*整个外框居中*/
+            margin : 50px auto;
+
+            /*自己改变a标签之间的间距 需要将父元素的字体设为0*/
+            font-size: 0;
+            /*将文字内容居中*/
+            text-align: center;
+        }
+
+        .con a{
+            /*text-align: center;*/
+            text-decoration: none;
+            font-size: 12px;
+            padding: 5px 10px;
+            display: inline-block;
+            background-color: gold;
+            margin: 8px 5px;
+        }
+
+        .con a:hover {
+            background-color: red;
+        }
+        .con span {
+            display: inline-block;
+            font-size: 12px;
+        }
+
+        /*============================案例2:菜单栏*/
+        .menu {
+            width: 958px;
+            height: 40px;
+            border: 1px solid #f0f0f0;
+            margin: 50px auto;
+            text-align: center;
+            font-size: 0px;
+            line-height: 40px;
+        }
+        .menu li {
+            list-style: none;
+            margin: 0px;
+            display: inline-block;
+            font-size: 15px;
+        }
+        .menu .line {
+            color: black;
+            margin:0px 20px;
+        }
+        .menu a {
+            color: #333333;
+            text-decoration: none;
+        }
+        .menu a:hover {
+            color: red;
+        }
+
+
+         /*============================案例3:菜单栏(浮动实现)*/
+        .menu1 {
+            width: 958px;
+            height: 40px;
+            border: 1px solid #f0f0f0;
+            margin: 80px auto;
+            text-align: center;
+
+            background-color: #55a8ea;
+            list-style: none;
+            padding: 0px;
+
+            position: relative;
+        }
+        .menu1 li {
+            float: left;
+            width: 100px;
+            font-size: 14px;
+            line-height: 40px;
+        }
+        .menu1 a {
+            color: white;
+            text-decoration: none;
+        }
+        .menu1 li:hover {
+            background-color: #00619f;
+        }
+        .menu1 .new {
+            width: 33px;
+            height: 20px;
+            background: url("resource/new.png") no-repeat;
+            position: absolute;
+            left: 434px;
+            top: -12px;
+        }
+
+        /*============================案例4:新闻列表*/
+        .newslist {
+            width: 600px;
+            height: 290px;
+            border: 1px solid #000000;
+            margin: 10px auto;
+            overflow: hidden;
+        }
+        .newslist h3 {
+            width: 560px;
+            height: 50px;
+            border-bottom: 1px solid saddlebrown;
+            line-height: 50px;
+            margin: 0px auto;
+        }
+        .newslist h3 span {
+            display: inline-block;
+            height: 50px;
+            border-bottom: 2px solid red;
+            font: 18px/50px 'Microsoft Sans Serif';
+            padding: 0px 15px;
+            /*兼容考虑*/
+            position: relative;
+        }
+        .newslist ul {
+            list-style: none;
+            padding: 0;
+            width: 560px;
+            height: 238px;
+            margin: 7px auto 0px;
+        }
+        .newslist ul li {
+            height: 38px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .newslist ul a {
+            float: left;
+            font-size: 14px;
+            text-decoration: none;
+            line-height: 38px;
+            color: #000;
+        }
+        .newslist ul span {
+            float: right;
+            line-height: 38px;
+            font-size: 14px;
+            text-decoration: none;
+            color: #000;
+        }
+        .newslist ul a:before {
+            content: ". ";
+        }
+        .newslist ul a:hover {
+            color: red;
+        }
+        /*============================案例5:图片列表布局*/
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        .piclist {
+            width: 958px;
+            border: 1px solid #ddd;
+            margin:30px auto 0px;
+            overflow: hidden;
+        }
+        .piclist h3 {
+            width: 918px;
+            height: 50px;
+            border-bottom: 1px solid #ddd;
+            margin: 0px auto;
+            line-height: 50px;
+        }
+        .piclist h3 span {
+            display: inline-block;
+            height: 50px;
+            border-bottom: 2px solid red;
+            padding:0px 10px;
+        }
+        .piclist ul {
+            width: 950px;
+            margin: 20px 0px 13px 20px;
+        }
+        .piclist ul li {
+            width: 160px;
+            height: 68px;
+            list-style: none;
+            float: left;
+            margin: 0px 29px 25px 0;
+        }
+        .clearfix:before,.clearfix:after {
+            content: "";
+            display: table;
+        }
+        .clearfix:after {
+            clear: both;
+        }
+        .clearfix {
+            zoom: 1;
+        }
+    </style>
+</head>
+<body>
+    <!--案例1:翻页-->
+    <div class="con">
+        <a href="" class="clearfix">上一页</a>
+        <a href="" >1</a>
+        <a href="" >2</a>
+        <a href="">3</a>
+        <a href="">4</a>
+        <span>...</span>
+        <a href="">17</a>
+        <a href="">18</a>
+        <a href="">19</a>
+        <a href="">20</a>
+        <a href="">下一页</a>
+    </div>
+
+    <!--案例2:菜单栏-->
+    <ul class="menu">
+        <li><a href="">首 页</a></li>
+        <li class="line">|</li>
+        <li><a href="">网站建设</a></li>
+        <li class="line">|</li>
+        <li><a href="">程序开发</a></li>
+        <li class="line">|</li>
+        <li><a href="">网络营销</a></li>
+        <li class="line">|</li>
+        <li><a href="">企业VI</a></li>
+        <li class="line">|</li>
+        <li><a href="">案例展示</a></li>
+        <li class="line">|</li>
+        <li><a href="">联系我们</a></li>
+    </ul>
+
+    <!--案例3:导航条(浮动实现)-->
+    <ul class="menu1">
+        <li><a href="">首页</a></li>
+        <li><a href="">网站建设</a></li>
+        <li><a href="">程序开发</a></li>
+        <li><a href="">网络营销</a></li>
+        <li><a href="">企业VI</a></li>
+        <li><a href="">案例展示</a></li>
+        <li><a href="">联系我们</a></li>
+        <li class="new"></li>
+    </ul>
+
+    <!--案例4:新闻列表-->
+    <div class="newslist">
+        <h3><span>新闻列表</span></h3>
+        <ul>
+            <li><a href="">11111111</a><span>2016-06-23</span></li>
+            <li><a href="">22222222</a><span>2016-06-23</span></li>
+            <li><a href="">333333333</a><span>2016-06-23</span></li>
+            <li><a href="">44444444</a><span>2016-06-23</span></li>
+            <li><a href="">555555555</a><span>2016-06-23</span></li>
+            <li><a href="">666666666</a><span>2016-06-23</span></li>
+        </ul>
+    </div>
+
+    <!--案例5:图片列表布局-->
+    <div class="piclist">
+        <h3><span>图片展示</span></h3>
+        <ul class="clearfix">
+            <li><a href=""><img src="resource/goods.png" alt=""></a></li>
+            <li><a href=""><img src="resource/goods.png" alt=""></a></li>
+            <li><a href=""><img src="resource/goods.png" alt=""></a></li>
+            <li><a href=""><img src="resource/goods.png" alt=""></a></li>
+            <li><a href=""><img src="resource/goods.png" alt=""></a></li>
+            <li><a href=""><img src="resource/goods.png" alt=""></a></li>
+            <li><a href=""><img src="resource/goods.png" alt=""></a></li>
+            <li><a href=""><img src="resource/goods.png" alt=""></a></li>
+            <li><a href=""><img src="resource/goods.png" alt=""></a></li>
+            <li><a href=""><img src="resource/goods.png" alt=""></a></li>
+        </ul>
+    </div>
+</body>
+</html>

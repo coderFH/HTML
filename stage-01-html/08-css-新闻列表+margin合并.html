@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .box {
+            /*<方式1*/
+            border-top: 1px solid #f00;
+            border-bottom: 3px solid #666;
+            color: #333;
+            font-size: 20px;
+            width: 385px;
+            height: 35px;
+
+            padding-top: 15px;
+            padding-left: 15px;
+        }
+
+        /*方式2: 开发中最常用*/
+        .box2 {
+            width: 400px;
+            height: 50px;
+            border-top: 1px solid #f00;
+            border-bottom: 3px solid #666;
+            color: #333;
+            font-size: 20px;
+            text-indent: 15px;
+            line-height: 50px;
+        }
+
+        /*垂直margin合并*/
+        .box3 {
+            width: 600px;
+            /*不设置高度的时候,高度会被内容撑开*/
+            /*height: 300px;*/
+            border: 1px solid #333;
+            margin: 50px auto;
+        }
+
+        .box3 div {
+            margin-left: 20px;
+            margin-right: 20px;
+            text-indent: 20px;
+            /*可以看淡div之间的距离是30 而不会是60 这就是margin合并的功能*/
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">新闻标题</div>
+    <br>
+    <div class="box2">新闻标题</div>
+    <br>
+    <div class="box3">
+         <div>
+            我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话
+             我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话
+             我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话
+        </div>
+        <div>
+            我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话
+             我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话
+             我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话
+        </div>
+        <div>
+            我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话
+             我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话
+             我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话我是一句话
+        </div>
+    </div>
+</body>
+</html>

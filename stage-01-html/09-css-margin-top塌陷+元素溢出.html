@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .con {
+            width: 300px;
+            height: 200px;
+            background-color: gold;
+            /*=================margin塌陷==================*/
+            /*第一种解决塌陷的方法*/
+            /*border: 1px solid gold;*/
+
+            /*第二种解决塌陷的方式*/
+            /*overflow: hidden;*/
+        }
+
+        /*第三种解决塌陷的方式:利用伪元素*/
+        .clearfix:before {
+            content: "";
+            display: table;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+
+            /*这句会使黄色的div上边的距离变化 也就是margin-top塌陷,解决的办法*/
+            margin-top: 50px;
+        }
+
+
+        /*=================元素溢出==================*/
+        .yuansu {
+            width: 500px;
+            height: 300px;
+            border: 1px solid #333;
+            margin: 50px auto 0;
+            /*解决元素溢出 visible默认*/
+            /*隐藏溢出的部分*/
+            /*overflow: hidden;*/
+
+            /*会有滚动条*/
+            /*overflow: scroll;*/
+
+            /*溢出的情况下 才出现滚动条*/
+            overflow: auto;
+
+        }
+        .box1 {
+            width: 400px;
+            height: 600px;
+            background-color: gold;
+        }
+
+    </style>
+</head>
+<body>
+    <!--margin塌陷-->
+    <div class="con clearfix">
+        <div class="box">
+            box
+        </div>
+    </div>
+    <br>
+
+
+    <!--元素溢出-->
+    <div class="yuansu">
+        <div class="box1">
+        </div>
+    </div>
+
+</body>
+</html>

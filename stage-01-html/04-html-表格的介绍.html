@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--cellpadding 定义单元格内内容与边框的距离-->
+    <!--cellspacing 定义单元格与单元格之间的距离-->
+    <table border="1" width="400" height="300" cellspacing="0" cellpadding="20" align="center">
+        <!--设置表格表头-->
+        <caption><h3>人员信息表</h3></caption>
+        <tr>
+            <!--<td>姓名</td>-->
+            <!--<td>年龄</td>-->
+            <!--<td>职业</td>-->
+            <!--<td>籍贯</td>-->
+
+            <!--th 设置表格标题-->
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>职业</th>
+            <th>籍贯</th>
+
+        </tr>
+        <tr>
+            <td>小红</td>
+            <td>28</td>
+            <td>CEO</td>
+            <td>郑州</td>
+
+        </tr>
+        <tr>
+            <td>小黑</td>
+            <td>18</td>
+            <td>前端</td>
+            <td>山西</td>
+
+        </tr>
+        <tr>
+            <td>哈斯卡</td>
+            <td>23</td>
+            <td>挖掘机</td>
+            <td>青海</td>
+        </tr>
+
+    </table>
+
+
+    <!--colspan 设置单元格水平合并-->
+    <!--rowspan 设置单元格垂直合并-->
+    <table border="1" width="600" height="300">
+        <caption><h3>个人简历</h3></caption>
+        <tr>
+            <th colspan="5" align="left">基本情况</th>
+        </tr>
+        <tr>
+            <td width="18%">姓名</td>
+            <td width="18%"></td>
+            <td width="18%">性别</td>
+            <td width="18%"></td>
+            <td rowspan="5" width="28%"><img src="" alt="人物图片"></td>
+        </tr>
+        <tr>
+            <td>民族</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>政治面貌</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>籍贯</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>邮箱</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+
+</body>
+</html>

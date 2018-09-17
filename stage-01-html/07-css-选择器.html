@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+       * {
+           /*1.标签选择器*/
+           margin: 0;
+           padding: 0;
+       }
+       div {
+           color: red;
+       }
+
+        /*2.id选择器*/
+        #box {
+            color: green;
+        }
+
+        /*3.类选择器,可用于多个地方*/
+        .aqua{
+           color: aqua;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        /*4.层级选择器*/
+        .duanluo {
+            text-indent: 28px;
+            font-size: 14px;
+        }
+        .duanluo em {
+            font-style: normal;
+            color: red;
+        }
+
+        .list {
+            /*去掉列表前的黑点*/
+            list-style: none;
+        }
+        .list li {
+            height: 30px;
+        }
+        .list a {
+            text-decoration: none;
+            font-size: 18px;
+        }
+        /*5.组选择器*/
+        .box1,.box2,.box3 {
+            font-size: 14px;
+            text-indent: 28px;
+        }
+        .box1 {
+           color: red;
+        }
+        .box2 {
+           color: yellow;
+        }
+        .box3 {
+           color: darkgoldenrod;
+        }
+        /*6.伪类及伪元素选择器*/
+        /*伪类*/
+        .list a:hover {
+            color: yellow;
+        }
+        p:hover {
+            color: red;
+        }
+        /*伪元素*/
+        .box1:before {
+            content: "在前的文字  ";
+            color: blue;
+        }
+        .box2:after {
+            content: "  在后的文字";
+            color: blue;
+        }
+
+    </style>
+</head>
+<body>
+    =======================1.标签选择器测试========================
+    <div>这是一个标签选择器</div>
+
+    =======================2.id选择器测试========================
+    <!--不允许有相同的id  所以实用性很差,开发中很少用-->
+    <!--同时使用id和类,会显示id选择器的属性,因为id选择器的权重大于类选择器-->
+    <div id="box" class="aqua">这是一个id选择器</div>
+    <!--这个id和上个同名,是不允许这样的 id只能有一个-->
+    <!--<div id="box">这是一个id选择器</div>-->
+
+    =======================3.类选择器测试========================
+    <!--一个元素可以对应多个类-->
+    <div class="aqua bold" >我是类选择器</div>
+    <div class="aqua">我也是类选择器</div>
+
+
+    =======================4.层级选择器测试========================
+    <p class="duanluo">
+        散文散文精选<em>短篇散文精选</em>短文学经典散文精选短篇散文现代散文精选文学网更多散文精选请到
+    </p>
+    <p>
+        散文散文精选<em>短篇散文精选</em>,短文学经典散文精选
+    </p>
+
+    <ul class="list">
+        <li><a href="">新闻标题</a></li>
+        <li><a href="">新闻标题</a></li>
+        <li><a href="">新闻标题</a></li>
+        <li><a href="">新闻标题</a></li>
+        <li><a href="">新闻标题</a></li>
+        <li><a href="">新闻标题</a></li>
+    </ul>
+
+    =======================5.组选择器测试========================
+    <div class="box1">组选择器1</div>
+    <div class="box2">组选择器2</div>
+    <div class="box3">组选择器3</div>
+
+    =======================6.伪类及伪元素选择器========================
+
+
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .box01,.box02,.box03 {
+            width: 200px;
+            height: 200px;
+            /*字体大小/行高  文字样式*/
+            font: 30px/200px 'Microsoft Sans Serif';
+            background-color: gold;
+            text-align: center;
+            margin: 20px;
+        }
+        /*浮动元素有左浮动(float:left)和右浮动(float:right)两种 */
+        .box01 {
+            float: left;
+        }
+        .box02 {
+            float: right;
+        }
+        .box03 {
+            float: left;
+        }
+
+        /*文字饶图*/
+        .con {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+            margin: 300px auto 0;
+        }
+        .pic {
+            width: 100px;
+            height: 100px;
+            background-color: gold;
+            float: left;
+            margin: 0px 10px 5px 0px;
+        }
+        .duanluo {
+            background-color: green;
+            height: 200px;
+            width: 400px;
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box01">1</div>
+    <!--浮动让行内元素或块元素自动转化为行内块元素 -->
+    <a href="#" class="box01">这是一个a标签</a>
+    <div class="box02">2</div>
+    <div class="box03">3</div>
+
+    <!---->
+    <br>
+    <div class="con">
+        <div class="pic"></div>
+        <div class="duanluo">
+            1.浮动元素有左浮动(float:left)和右浮动(float:right)两种
+            2、浮动的元素会向左或向右浮动，碰到父元素边界、浮动元素、未浮动的元素才停下来
+            3、相邻浮动的块元素可以并在一行，超出父级宽度就换行
+            4、浮动让行内元素或块元素自动转化为行内块元素
+            5、浮动元素后面没有浮动的元素会占据浮动元素的位置，没有浮动的元素内的文字会避开浮动的元素，形成文字饶图的效果
+            6、父元素内整体浮动的元素无法撑开父元素，需要清除浮动
+            7、浮动元素之间没有垂直margin的合并
+        </div>
+    </div>
+</body>
+</html>
