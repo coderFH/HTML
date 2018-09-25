@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--产生原因：父元素在文档流中高度默认是被子元素撑开的，当子元素脱离文档流以后，将无法撑起父元素的高度，也就会导致父元素的高度塌陷-->
+    <!--造成后果：父元素的高度一旦塌陷, 所有标准流中元素的位置将会上移，导致整个页面的布局混乱-->
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box1{
+            border: 5px solid red;
+            /*方法1：*/
+            /*开启BFC*/
+            /*不要这句话 就会是box1的高度塌陷*/
+            /*overflow: hidden;*/
+        }
+
+        #box2{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            float: left;
+        }
+
+        #box3{
+            height: 100px;
+            background-color: blue;
+             clear: both;
+        }
+
+         /*方法3：使用after伪类，向父元素后添加一个块元素，并对其清除浮动*/
+        /*该种方式的原理和方法二原理一样，但是不用向页面中添加对于的结构*/
+        .clearfix:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+    </style>
+</head>
+<body>
+   <div id="box1"  class="clearfix">
+       <div id="box2"></div>
+       <!--解决高度塌陷的方式2：-->
+       <!--<div style="clear:both"></div>-->
+   </div>
+   <div id="box3"></div>
+</body>
+</html>

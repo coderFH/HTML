@@ -8,7 +8,7 @@
             width: 300px;
             height: 200px;
             background-color: gold;
-            /*=================margin塌陷==================*/
+            /*=================margin塌陷（情况1）==================*/
             /*第一种解决塌陷的方法*/
             /*border: 1px solid gold;*/
 
@@ -28,6 +28,7 @@
             background-color: green;
 
             /*这句会使黄色的div上边的距离变化 也就是margin-top塌陷,解决的办法*/
+            /*为什么我改变绿色盒子的上边距 会使黄色的盒子上边距发生变化，这也是一种塌陷么？？？  解决办法在上边*/
             margin-top: 50px;
         }
 
