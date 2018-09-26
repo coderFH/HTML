@@ -1,0 +1,166 @@
+/*默认的样式*/
+html, body, a, img, li, ul, p, span, div, h4, input{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.clearfix:before,
+.clearfix:after{
+    content: '';
+    display: table;
+    clear: both;
+}
+
+input:focus, .btn:focus, button:focus{
+    outline: none;
+}
+
+/*默认的样式*/
+
+/**********************************主要内容******************************/
+#content{
+    width: 500px;
+    /*height: 600px;*/
+    /*background-color: red;*/
+    border: 1px solid #e0e0e0;
+
+    margin: 50px auto;
+}
+
+/**********************************主要内容-头部******************************/
+#content .content-header a{
+    width: 50%;
+    height: 60px;
+    /*垂直居中*/
+    line-height: 60px;
+    background-color: #f5f5f5;
+    /*水平居中*/
+    text-align: center;
+    color: #616161;
+}
+
+/*选中的样式*/
+#content .content-header a.current{
+    background-color: #fff;
+    font-weight: bolder;
+    color: purple;
+}
+
+#content .content-header a:first-child{
+  float: left;
+}
+
+#content .content-header a:last-child{
+  float: right;
+}
+
+/**********************************主要内容-身体******************************/
+#content .content-body{
+    padding: 50px;
+}
+
+#content .content-body .dom{
+    width: 100%;
+    /*height: 540px;*/
+    /*background-color: red;*/
+    /*隐藏标签*/
+    display: none;
+}
+
+#content .content-body .dom .s1{
+    /*background-color: red;*/
+    margin-bottom: 20px;
+}
+
+#content .content-body .dom .s1 h4{
+    color: #666666;
+}
+
+#content .content-body .dom .s1 input{
+    width: 100%;
+    height: 40px;
+    margin-top: 5px;
+    border-radius: 5px;
+    padding-left: 10px;
+    border: 1px solid #cccccc;
+}
+
+#content .content-body .dom .s2{
+    /*background-color: red;*/
+    margin-bottom: 20px;
+}
+
+#content .content-body  .btn{
+    width: 100%;
+    height: 40px;
+    border: none;
+    background-color: purple;
+    font-size: 18px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+#content .dom-footer .login-another{
+    /*background-color: red;*/
+    color: #666666;
+    margin-bottom: 20px;
+}
+
+#content .dom-footer .login-another span{
+    margin: 0 5px;
+}
+
+#content .dom-footer .login-three{
+    /*background-color: red;*/
+    text-align: center;
+    color: #666666;
+}
+
+#content .dom-footer .login-three>span{
+   position: relative;
+}
+
+#content .dom-footer .login-three>span:before,
+#content .dom-footer .login-three>span:after
+{
+    content: '';
+    display: inline-block;
+    width: 100px;
+    height: 1px;
+    border-bottom: 1px solid #666666;
+
+    position: absolute;
+    top: 50%;
+}
+
+#content .dom-footer .login-three>span:before{
+    left: -111px;
+}
+
+#content .dom-footer .login-three>span:after{
+    right: -111px;
+}
+
+#content .dom-footer .login-three .login-icon{
+    margin-top: 20px;
+}
+
+#content .dom-footer .login-three .login-icon img{
+    width: 50px;
+}
+
+#content .content-body .dom  .msg-code input{
+   width: 50%;
+   margin-right: 10px;
+}
+
+#content .content-body .dom  .msg-code button{
+    height: 40px;
+    width: 40%;
+    border: 1px solid #cccccc;
+    background: #eeeeee;
+    font-size: 16px;
+}

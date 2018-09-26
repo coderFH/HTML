@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+   <!--
+      2. 使用
+	在HTML中，使用table标签来创建一个表格
+	在table标签中使用tr来表示表格中的一行，有几行就有几个tr
+	在tr中需要使用td来创建一个单元格，有几个单元格就有几个td
+	rowspan用来设置纵向的合并单元格
+	colspan用来设置横向的合并单元格
+    -->
+    <table border="1" width="60%" align="center">
+        <tr>
+            <td>A1</td>
+            <td>A2</td>
+            <td>A3</td>
+            <td rowspan="4">A4</td>
+        </tr>
+        <tr>
+            <td>B1</td>
+            <td>B2</td>
+            <td>B3</td>
+        </tr>
+        <tr>
+            <td>C1</td>
+            <td>C2</td>
+            <td>C3</td>
+        </tr>
+        <tr>
+            <td colspan="3">D1</td>
+        </tr>
+    </table>
+</body>
+</html>

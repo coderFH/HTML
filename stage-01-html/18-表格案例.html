@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #app{
+            margin: 100px auto;
+            width: 600px;
+        }
+
+        fieldset{
+            border: 1px solid orangered;
+            margin-bottom: 20px;
+        }
+
+        fieldset input{
+            width: 200px;
+            height: 30px;
+            margin: 10px 0;
+        }
+
+        table{
+            width: 600px;
+            border: 2px solid orangered;
+            text-align: center;
+        }
+
+        table thead{
+            background-color: orangered;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+   <div id="app">
+       <!--第一部分-->
+       <form action="">
+           <fieldset>
+               <legend>撩课(itlike.com)学生录入系统</legend>
+               <div>
+                   <span>姓名:</span>
+                   <input name="user" type="text" placeholder="请输入用户名">
+               </div>
+               <div>
+                   <span>年龄:</span>
+                   <input name="age" type="text" placeholder="请输入年龄">
+               </div>
+               <div>
+                   <span>性别:</span>
+                   <select>
+                       <option value="男">男</option>
+                       <option value="女">女</option>
+                   </select>
+               </div>
+               <div>
+                   <span>手机号码:</span>
+                   <input name="phone" type="number" placeholder="请输入手机号">
+               </div>
+               <!--<input type="submit" value="创建新用户">-->
+               <button>创建新用户</button>
+           </fieldset>
+
+       </form>
+       <!--第二部分-->
+       <table>
+           <thead>
+              <tr>
+                  <th>姓名</th>
+                  <th>性别</th>
+                  <th>年龄</th>
+                  <th>手机</th>
+                  <th>删除</th>
+              </tr>
+           </thead>
+           <tbody>
+              <tr>
+                  <td>谢霆锋</td>
+                  <td>男</td>
+                  <td>38</td>
+                  <td>1893232233</td>
+                  <td>
+                      <button>删除</button>
+                  </td>
+              </tr>
+              <tr>
+                  <td>谢霆锋</td>
+                  <td>男</td>
+                  <td>38</td>
+                  <td>1893232233</td>
+                  <td>
+                      <button>删除</button>
+                  </td>
+              </tr>
+              <tr>
+                  <td>谢霆锋</td>
+                  <td>男</td>
+                  <td>38</td>
+                  <td>1893232233</td>
+                  <td>
+                      <button>删除</button>
+                  </td>
+              </tr>
+              <tr>
+                  <td>谢霆锋</td>
+                  <td>男</td>
+                  <td>38</td>
+                  <td>1893232233</td>
+                  <td>
+                      <button>删除</button>
+                  </td>
+              </tr>
+              <tr>
+                  <td>谢霆锋</td>
+                  <td>男</td>
+                  <td>38</td>
+                  <td>1893232233</td>
+                  <td>
+                      <button>删除</button>
+                  </td>
+              </tr>
+           </tbody>
+       </table>
+   </div>
+</body>
+</html>

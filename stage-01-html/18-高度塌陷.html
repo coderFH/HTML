@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box1{
+            border: 5px solid red;
+        }
+
+        #box2{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+
+            float: left;
+        }
+
+        #box3{
+            height: 100px;
+            background-color: purple;
+        }
+
+      /*  .clearfix:after{
+            content: '';
+            display: block;
+            clear: both;
+        }*/
+
+        #box4{
+            width: 200px;
+            height: 200px;
+            background-color: orangered;
+        }
+
+        #box5{
+            width: 100px;
+            height: 100px;
+            background-color: greenyellow;
+            margin-top: 50px;
+        }
+
+        /*#box4:before{
+            content: '';
+            display: table;
+        }*/
+
+        .clearfix:before,
+        .clearfix:after{
+            content: '';
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+   <div id="box1" class="clearfix">
+       <div id="box2"></div>
+
+   </div>
+   <div id="box3"></div>
+
+   <div id="box4" class="clearfix">
+       <!--<table></table>-->
+       <div id="box5"></div>
+   </div>
+</body>
+</html>
