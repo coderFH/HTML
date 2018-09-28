@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box1{
+            width: 500px;
+            height: 500px;
+            background-color: red;
+
+            /*伸缩布局*/
+            display: flex;
+            /*主轴的方向*/
+            flex-direction: row;
+
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .item{
+            background-color: purple;
+            margin: 5px;
+        }
+
+        .item1{
+            align-self: flex-start;
+        }
+
+        .item4{
+            align-self: flex-end;
+        }
+    </style>
+</head>
+<body>
+   <div id="box1">
+       <div class="item item1" style="height: 60px; width: 100px">item1</div>
+       <div class="item" style="height: 70px;  width: 50px">item2</div>
+       <div class="item" style="height: 80px;  width: 80px">item3</div>
+       <div class="item item4" style="height: 70px;  width: 100px">item4</div>
+   </div>
+</body>
+</html>
