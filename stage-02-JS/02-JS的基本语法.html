@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //=========================================1.输出helloworld=========================================
+    //控制浏览器弹出一个警告框
+    // alert("hello,world");
+
+    // 可以向body中输出一个内容
+    document.write("hello,world");
+
+    //向控制台输出一个内容
+    console.log("hello world");
+    console.warn("警告输出");
+    console.error("错误输出");
+
+    //在网页中弹出输入框，一般用于接收用户输入的信息
+    // prompt("hello,world");
+
+    //在网页中弹出提示框，显示信息，该方法一般与if判断语句结合使用
+    // confirm("Hello，JavaScript！");
+
+    //=========================================2.声明变量=========================================
+    //声明变量
+    var name;
+    var intro;
+    var age;
+
+    //给变量赋值
+    name = "itlike.com";
+    intro = "喜欢it";
+    age = 100;
+    console.log(name,intro,age);
+
+    //可以声明是赋值
+    var name = "wangwu";
+    var intro = "hahah";
+    var age = 200;
+    console.log(name,intro,age);
+
+    //=========================================3.数据类型=========================================
+    //字符串
+    var str = "itlike.com";
+    str = "没有蛀牙";
+    console.log(typeof(str))
+
+    //数值(Number)
+    var num1 = 123;
+    var num2 = 3.14;
+    console.log(typeof(num1),typeof(num2));
+    //最大值
+    console.log(Number.MAX_VALUE);
+    //最小值
+    console.log(Number.MIN_VALUE)
+     // 无穷大：Infinity, 如果超过了最大值就会返回该值
+    console.log(Number.MAX_VALUE + Number.MAX_VALUE); // Infinity
+    // 无穷小：-Infinity, 如果超过了最小值就会返回该值
+    console.log(typeof Infinity); // number
+    console.log(typeof -Infinity); // number
+
+    //是一个特殊的数字，表示Not A Number
+    var num3 = NaN;
+    console.log(typeof(num3));//number
+
+    //Boolean布尔
+    var bool = true
+    console.log(typeof (bool))
+
+    //Null和Undefined
+    //Null:空值类型,  值只有一个: null
+    //Undefined:未定义类型, 值只有一个: undefind
+    var a = null;
+    var b = undefined;
+    console.log(typeof (a),typeof b);//object undefined
+
+    //undefined值实际上是由null值衍生出来的，所以如果比较undefined和null是否相等，会返回true
+    var str1 = null;
+    var str2 = undefined;
+    console.log(str1 == str2);
+    console.log(str1=== str2); //false
+
+
+    //=========================================4.数据类型转换=========================================
+    //1.将其他的数据类型转换为String
+    //方式1:toString() 该方法不会影响到原变量，它会将转换的结果返回
+
+    var num = 12306;
+    var str= num .toString();
+    console.log(str); // 12306
+    console.log(typeof str); // string
+
+    var num1 = true;
+    var str1 = num1.toString();
+    console.log(str1 ); // true
+    console.log(typeof str1 ); // string
+
+    //null和undefined这两个值没有toString()方法，如果调用它们的方法，会报错
+    // var num2 = undefined;
+    // var str2 = num2.toString(); // 报错
+    // console.log(str2 );
+    //
+    // var num3 = null;
+    // var str3= num3.toString(); // 报错
+    // console.log(str3);
+
+    var num4 = NaN;
+    var str4 = num4.toString();
+    console.log(str4); // NaN
+    console.log(typeof str4); // String
+
+    //方式2:调用String()函数，并将被转换的数据作为参数传递给函数
+    //对于Number和Boolean实际上就是调用的toString()方法
+    //但是对于null和undefined，就不会调用toString()方法, 它会将 null 直接转换为 "null",  将 undefined 直接转换为 "undefined"
+    var a = null;
+    a = String(a);
+    console.log("null转string",a);
+    console.log("null转string:type:",typeof (a));
+
+    a = undefined;
+    a = String(a);
+
+    console.log("undefined转string",a);
+    console.log("undefined转string:type:",typeof a);
+
+    //方式3:任何数据和 + 连接到一起都会转换为字符串, 其内部实现原理和String()函数一样
+    var num1 = 100;
+    var res1 = num1 + "";
+    console.log(res1); // 100
+    console.log(typeof res1); // string
+
+    var num2 = true;
+    var res2 = num2 + "";
+    console.log(res2); // true
+    console.log(typeof res2); // string
+
+    var num3 = undefined;
+    var res3 = num3 + "";
+    console.log(res3); // undefined
+    console.log(typeof res3); // string
+
+    var num4 = null;
+    var res4 = num4 + "";
+    console.log(res4); // null
+    console.log(typeof res4); // string
+
+
+    //2.将其他的数据类型转换为Number
+    //方式1:Number()函数
+    //字符串 -> 数字
+    //1.如果是纯数字的字符串，则直接将其转换为数字
+    var str1 = "123";
+    var res1 = Number(str1);
+    console.log(res1); // 123
+    console.log(typeof  res1); // number
+    //2.如果字符串中有非数字的内容，则转换为NaN
+    var str2 = "itlike123";
+    var res2 = Number(str2);
+    console.log(res2); // NaN
+    //3.如果字符串是一个空串或者是一个全是空格的字符串，则转换为0
+    var str3 = "";
+    var res3 = Number(str3);
+    console.log(res3); // 0
+
+    var str4 = "    ";
+    var res4 = Number(str4);
+    console.log(res4); // 0
+
+    //布尔 -> 数字
+    //true 转成 1, false 转成 0
+    var bool1 = true;
+    var n1 = Number(bool1);
+    console.log(n1); // 1
+
+    var bool2 = false;
+    var n2 = Number(bool2);
+    console.log(n2); // 0
+
+    //null -> 数字
+    var str1 = null;
+    var n1 = Number(str1);
+    console.log(n1); // 0
+
+    //undefined -> 数字
+    var str1 = undefined;
+    var n1 = Number(n1);
+    console.log(n1); // NaN
+
+    //方式2:parseInt() 和 parseFloat(),专门用来处理字符串
+    //使用Number()函数中无论混合字符串是否存在有效整数都会返回NaN, 但parseInt()/parseFloat()可以提取字符串中的有效整数
+    var str1 = "300px";
+    var n1 = parseInt(str1);
+    console.log(n1); // 300
+
+    var str2 = "300px250";
+    var n2 = parseInt(str2);
+    console.log(n2); // 300
+    console.log(parseInt("abc123"));  //返回NaN，如果第一个字符不是数字或者符号就返回NaN
+    console.log(parseInt(""));        //空字符串返回NaN，Number("")返回0
+
+    //parseInt()和parseFloat()的区别是前者只能提取整数,后者可以提取小数
+    var str1 = "20.5px";
+    var n1 = parseFloat(str1);
+    console.log(n1); // 20.5
+
+    var str2 = "20.5.5.5px";
+    var n2 = parseFloat(str2);
+    console.log(n2); // 20.5
+
+    // 如果对非String使用parseInt()或parseFloat(), 它会先将其转换为String然后在操作
+    var a = true;
+    a = parseInt(a);
+
+    console.log(typeof (a));
+    console.log(a);
+
+    //3.将其他的数据类型转换为Boolean
+    //使用Boolean()函数
+    //数字 -> 布尔:除了0和NaN，其余的都是true
+    //字符串 -> 布尔:除了空串，其余的都是true
+    //null和undefined都会转换为false
+    //对象转换为true
+
+    //=========================================5. 进制表示=========================================
+    //16进制的数字，则需要以0x开头
+    //8进制的数字，则需要以0开头
+    //2进制的数字，则需要以0b开头
+    //十六进制
+    num = 0x18;
+    num1 = 0xcf;
+    num2 = 0xAacf;
+
+    //八进制
+    num= 016;
+    console.log(num);
+
+    //二进制
+    num = 0b1010;
+
+    //注意:"010"这种字符串，有些浏览器会当成8进制解析，有些会当成10进制解析
+    //可以在parseInt()或parseFloat中传递一个第二个参数，来指定数字的进制
+    str = "0x345";
+    str= parseInt(str,10);
+    str = Number(str);
+
+    console.log(typeof str);
+    console.log(str);
+
+</script>
+
+</body>
+</html>

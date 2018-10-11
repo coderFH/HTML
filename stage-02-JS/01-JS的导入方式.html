@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <!--外联式-->
+    <script type="text/javascript" src="./js/index.js"></script>
+
+</head>
+<body>
+    <!--行内式-->
+    <!--虽然可以写在标签的属性中，但是结构与行为耦合，不方便维护，不推荐使用-->
+    <!--方式1-->
+    <button onclick="alert('行内式的弹窗')">行内式1</button>
+    <!--方式2-->
+    <a href="javascript:alert('行内式方式二')">行内式2</a>
+
+    <!--页内式-->
+    <script>
+        // 标签中的js代码一般写在文档的尾部
+        alert("我是页内式弹窗");
+    </script>
+
+</body>
+</html>
