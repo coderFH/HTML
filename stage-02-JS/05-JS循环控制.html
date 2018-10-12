@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        span{
+            border: 1px solid skyblue;
+            padding: 5px 10px;
+            margin: 5px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/html">
+    var num = 100;
+    while (num <= 100){
+    console.log("ITLIke.com\n");
+    num++;
+    }
+</script>
+<script type="text/html">
+    /*var num = 9;
+    while (num < 10){
+    alert(num); // 什么都不弹
+    num++;
+    }*/
+
+    /* if(1){
+
+    }
+
+    while (true){
+
+    }*/
+
+    /* while (0) {
+    alert("会执行我么?"); // 不会执行
+    alert("itlike.com");
+    }*/
+
+    /*while (1);
+    {
+    alert("123"); // 会被执行, 因为while管制的是分号(;)
+    }*/
+</script>
+<script type="text/html">
+    // 提示用户输入一个正整数n， 计算1 + 2 + 3 + ...n的和
+    /*
+    1 + 2 + 3 + 4 + 5 = 15;
+    (0 + 1) 1 + 2
+    (1 + 2) 3 + 3
+    (1 + 2 + 3) 6 + 4
+    (1 + 2 + 3 + 4) 10 + 5
+    (1 + 2 + 3 + 4 + 5)
+    */
+
+    // 1. 定义变量
+    var sum = 0; // 总和
+    var total;  // 正整数
+
+    // 2. 提示用户输入
+    total = +(prompt("输入一个正整数:"));
+
+    // 3. 逻辑
+    if(total > 0){
+    var number = 1;
+    while (number <= total){
+    sum += number; // 求和
+    number++;
+    }
+    }
+
+    alert(sum);
+
+
+</script>
+<script type="text/html">
+    // 获取1～100之间 3的倍数 的个数并打印，并统计个数
+
+    // 1. 变量
+    var count = 1;
+    var num = 0; // 个数
+
+    // 2. 循环
+    while (count <= 100){
+    // 2.1 判断
+    if(count % 3 === 0){
+    console.log("count=" + count);
+    num++; // 计数器
+    }
+    // 2.2 递增
+    count++;
+    }
+
+    // 3. 输出结果
+    console.log("num=" + num);
+</script>
+<script type="text/html">
+    var num = 1;
+    switch(num){
+    case 1:
+    console.log("壹");// 输出壹
+    break; // 跳出switch语句, 后面代码不会执行
+    case 2:
+    console.log("贰");
+    break;
+    default:
+    console.log("非法数字");
+    break;
+    }
+</script>
+<script type="text/html">
+    /*var num = 0;
+    while (true){
+    console.log(num);
+    if(10 === num){
+    break;
+    }
+    num++;
+    }*/
+
+    if(1){
+    //  break;
+    }
+</script>
+<script type="text/html">
+    while (1){
+    while (2){
+    console.log("我是while(2)");
+    break;
+    }
+    console.log("我是while(1)");
+
+    }
+</script>
+<script type="text/html">
+    /* while (1){
+    edewdew
+    break;
+    alert("会弹出来么?"); // 不会弹出
+    }*/
+</script>
+<script type="text/html">
+    // 求出0-10之间的奇数
+    var num = 0;
+    while (num < 10){
+    num++;
+    if(num % 2 !== 0){ // 偶数
+    continue;
+    }
+    console.log(num);
+    }
+
+    // 后续语句
+</script>
+<script type="text/html">
+    var num = 2;
+    do{
+    console.log(num);
+    num++;
+    }while (num < 10);
+</script>
+<script type="text/html">
+    // 1.
+    /*
+    var num = 0;
+    while (num < 10){
+    console.log(num);
+    num++;
+    }
+    */
+
+    /*
+    for(①初始化表达式；②循环条件表达式；④循环后操作表达式)
+    {
+    ③执行语句；
+    }
+    */
+    // 2. for
+    /*for (var num = 0; num < 10; num++){
+    console.log(num);
+    }
+
+    console.log('-----' + num);*/
+
+
+    /*var num = 0;
+    while (num < 10){
+    console.log(num);
+    num++;
+    }
+
+    console.log('-----' + num);*/
+
+    // 死循环
+    for(;;){}
+
+    while(1);
+</script>
+<script type="text/html">
+    /*
+    好友列表1
+    好友1
+    好友2
+    好友3
+    好友列表2
+    好友1
+    好友2
+    好友3
+    */
+    // 大循环
+    for (var i = 1; i <= 5; i++) {
+    console.log("好友列表" + i);
+    // 小循环
+    for(var j = 1; j<=3; j++){
+    console.log("    好友" + j);
+    }
+    }
+</script>
+<script type="text/html">
+    /*
+    需求: 在界面上绘制如下图形
+    ****
+    ****
+    ****
+    */
+
+    // 1.外循环 控制行数
+    for (var i = 0; i < 15; i++) {
+    // 2. 内循环 控制列数
+    for (var j = 0; j < 100; j++) {
+    console.log("(" + i + "," + j + ")");
+    document.write("*");
+    }
+    // 3. 换行
+    document.write("<br>")
+    }
+</script>
+<script type="text/html">
+    /*
+    需求: 在界面上绘制如下图形
+    *
+    **
+    ***
+    ****
+    *****
+    */
+
+    // 1.外循环 控制行数
+    for (var i = 0; i < 15; i++) {
+    // 2. 内循环 控制列数
+    for (var j = 0; j <= i; j++) {
+    console.log("(" + i + "," + j + ")");
+    document.write("*");
+    }
+    // 3. 换行
+    document.write("<br>")
+    }
+</script>
+<script type="text/html">
+    /*
+    需求: 在界面上绘制如下图形
+    *****
+    ****
+    ***
+    **
+    *
+    */
+    // 1.外循环 控制行数
+    for (var i = 0; i < 10; i++) {
+    // 2. 内循环 控制列数
+    for (var j = i; j < 10; j++) {
+    console.log("(" + i + "," + j + ")");
+    document.write("*");
+    }
+    // 3. 换行
+    document.write("<br>")
+    }
+</script>
+<script type="text/html">
+    /*
+    -----*
+    ----***
+    ---*****
+    --*******
+    -*********
+    ***********
+    */
+    for (var i = 0; i <= 5; i++) {
+    for (var m = 0; m < 5 - i; m++) {
+    document.write("-");
+    }
+    for (var j = 0; j < 2 * i + 1; j++) {
+    document.write("*");
+    }
+    document.write("<br>");
+    }
+</script>
+<script>
+    /* for循环嵌套实现:打印99乘法表 */
+    for (var i = 1; i <= 9; i++) {
+        for (var j = 0; j <= i; j++) {
+            document.write("<span>" + j + "*" + i + "=" + j*i + "</span>")
+        }
+        document.write("<br>")
+    }
+</script>
+</body>
+</html>

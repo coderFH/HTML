@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script type="text/html">
+        // 算术运算符
+        /*var res = 1 + 1;
+        console.log(res); // 2
+
+        var num1 = 10;
+        var num2 = 20;
+        var res2 = num1 + num2;
+        console.log(res2); // 30*/
+
+        // 非Number类型的值进行运算时，会将这些值转换为Number然后在运算
+        /*var res = true + 100;
+        console.log(res); // 101
+
+        var res1 = true + false;
+        console.log(res1); // 1
+
+        var res2 = null + 10;
+        console.log(res2); // 10
+
+        var res3 = undefined + 10;
+        console.log(res3); // NaN
+
+        var res4 = '123' + 456;
+        console.log(res4);*/
+
+        // 任何值和NaN做运算都得NaN
+        var res5 = 10 + NaN;
+        console.log(res5);
+
+        var result = 10 + "123";
+        console.log(result); // 10123
+        result = 1 + "true";
+        console.log(result); // 1true
+    </script>
+    <script type="text/html">
+        /*var num1 = '100';
+        var num2 = '200';
+        var res2 = num1 * num2;
+        console.log(res2); // 200000*/
+
+        var res = 10 % 4;
+        console.log(res); // 2
+
+        var num1 = 10;
+        var num2 = 2.5;
+        var res2 = num1 % num2;
+        console.log(res2); // 0
+    </script>
+    <script type="text/html">
+        /*var num = -123;
+        num = -num;
+        console.log(num); // 123*/
+
+        var bool = true;
+        var res = +bool;
+        console.log(res); // 1
+
+        var str = "123";
+        res = +str;
+        console.log(res); // 123
+
+        var str2 = "123abc"; // Number() NaN
+        res = +str2;
+        console.log(res); // NaN, 所以内部不是调用parseInt, 而是Number()函数
+
+        var temp = undefined;
+        res = +temp;
+        console.log(res); // 0
+    </script>
+    <script type="text/html">
+        /* var num = 100;
+        var value = num;
+        num = 90;
+
+        console.log(value); // 100*/
+
+        /*var num = 100;
+        var str = num;
+
+        var 100 = 200;
+        var str1;
+        100 = str1;*/
+
+        /*   var a = b = c = d = 10;
+        console.log(a);
+        console.log(b);
+        console.log(c);
+        console.log(d);*/
+
+        /*var a = 10;
+        var b = 20;
+        a = a + 30;
+        b = b / 10;
+        a += 30;
+        b /= 10;*/
+
+        var a = 10;
+        a *= 2 + 5;
+        console.log(a); // 70
+    </script>
+    <script type="text/html">
+        /*var num = 1;
+        num++; // 等价于 num = num + 1;
+        console.log(num); // 2
+
+        num = 1;
+        ++num;
+        console.log(num); // 2
+
+        num = 1;
+        num--; // 等价于 num = num - 1;
+        console.log(num); // 0
+
+        num = 1;
+        --num;
+        console.log(num); // 0*/
+
+        /*var a = 20;
+        var b = 30;
+        var res = (a++) + (b++);
+        console.log(res); // 50
+        console.log(a); // 21
+        console.log(b); // 31*/
+
+        /*var a = 20;
+        var b = 30;
+        var res = (a--) + (b--);
+        console.log(res); // 50
+        console.log(a); // 19
+        console.log(b); // 29*/
+
+        /* var a = 20;
+        var b = 30;
+        var res = (++a) + (++b);
+        console.log(res); // 52
+        console.log(a); // 21
+        console.log(b); // 31*/
+
+        var a = 20;
+        var b = 30;
+        var res = (--a) + (b--);
+        console.log(res); // 48
+        console.log(a); // 19
+        console.log(b); // 29
+    </script>
+    <script type="text/html">
+        /* //如果两个值都是true则返回true
+        var result = 10 < 5 && 100 < 200;
+        console.log(result);
+
+        //只要有一个false，就返回false
+        result = true && false;
+        result = false && true;
+        result = false && false;*/
+
+        //第一个值为true，会检查第二个值
+        // 10 < 3 && alert("我来了！！");
+        //  "张三" && alert("我来了！！");
+
+        //第一个值为false，不会检查第二个值
+        // false && alert("我没有来！！");
+
+        var result =  "123" && "abc";
+        console.log(result); // "abc"
+
+        result =  "123" && 0;
+        console.log(result); // 0
+
+        result =  null && 0;
+        console.log(result); // null
+
+    </script>
+    <script type="text/html">
+        /* var a = 0;
+        var b = 0;
+        var c = 30;
+
+        var res = a || b || c;
+        console.log(res);*/
+
+        //第一个值为false，则会检查第二个值
+        // false || alert("123");
+
+        //第一个值为true，则不再检查第二个值
+        // true || alert("123");
+
+        /*var bool1 = true;
+        var res1 = !bool1;
+        console.log(res1); // false
+
+        var bool2 = false;
+        var res2 = !bool2;
+        console.log(res2); // true*/
+
+        var num = 0;
+        var res = !num; // 先将10转换为true, 然后再取反
+        console.log(res); // false
+
+    </script>
+    <script type="text/html">
+        /* var a, b;
+        a = 20;
+        b = 20;
+        console.log(a > b); // false
+        console.log(a < b); // false
+        console.log(a >= b); // true
+        console.log(a <= b); // true
+        console.log(a == b); // true
+        console.log(a != b); // false*/
+
+        // 字符编码 Unicode
+        /*var str = 'a'; // 97
+        var str1 = 'b'; // 98
+        console.log(str < str1);*/
+
+        /*var str = 'abc';
+        var str1 = 'abd';
+        console.log(str < str1);*/
+
+        var str = '撩课学院';
+        var str1 = '百度一下';
+        console.log(str < str1);
+    </script>
+    <script type="text/html">
+        console.log(null == 0); // false
+        console.log(undefined == 0); // false
+        // 永远不要判断两个NaN是否相等
+        console.log(NaN == NaN); // false
+
+        /*
+           * 可以通过isNaN()函数来判断一个值是否是NaN
+           *    如果该值是NaN则返回true，否则返回false
+           */
+        var num = 100;
+        console.log(isNaN(num)); // true
+
+        /* // undefined 衍生自 null, 所以返回true
+         console.log(null == undefined); // true;
+         console.log(null === undefined); // false;
+
+         // == 判断值是否相等
+         // == 会进行数据类型转换
+         console.log("123" == 123); // true
+         // === 判断值和类型时候同时相等
+         // === 不会进行数据类型转换
+         console.log("123" === 123); // false*/
+
+        /*var str = '123';
+        var str1 = 123;
+        console.log(str == str1); // true
+        console.log(str === str1); // false*/
+
+        console.log("1111123" < "124");
+        console.log(parseInt("1111123") < parseInt("124"));
+
+    </script>
+    <script type="text/html">
+       /* var a = 10,
+            b = '占山',
+            c = 10;
+
+        a = 1 + 1,b = 3 * 4, c = 10 / 2;*/
+
+      /* var a, b, c, d;
+       d = (a = 1 + 1,b = 3 * 4, c = 10 * 2);
+       console.log(d); // 5*/
+
+        var a, b , c;
+
+        function f(a, b, c) {
+
+        }
+    </script>
+    <script type="text/html">
+        // 弹第一个
+        10 > 9 ? alert("语句1") : alert("语句2");
+        // 弹第二个
+        //  false ? alert("语句1") : alert("语句2");
+    </script>
+    <script>
+        // 用户从键盘输入3个整数, 找到最大值并输出?
+        // 1. 定义变量
+        var num1, num2, num3, max;
+
+        // 2. 接收用户输入的值
+        num1 = Number(prompt('请输入第一个数:'));
+        num2 = Number(prompt('请输入第二个数:'));
+        num3 =+(prompt('请输入第三个数:')) ;
+        console.log(num1, num2, num3);
+
+        // 3. 比较最大值
+       /* max = num1 >= num2 ? num1 : num2;
+        max = max >= num3 ? max : num3;*/
+
+       // 不推荐
+       max = (num1 >= num2 ? num1 : num2) > num3 ? (num1 >= num2 ? num1 : num2) : num3;
+
+        // 4. 输出结果
+        alert(max);
+
+    </script>
+    <script type="text/html">
+        // i++ ++i i-- --i
+        /*  var a = 10, b =20;
+        var c = (a++) + (b++);
+        console.log(c); // 30
+        // a 11 b 21*/
+
+        var a = 10, b =20;
+        var c = (--a) + (--b); // 9 19
+        console.log(c);  // 28
+    </script>
+    <script type="text/html">
+        // ES5
+        {
+        var a = 10;
+        var b = 10;
+        var c = 10;
+        }
+
+        {
+        a++;
+        b++;
+        c = a++ + b++;
+        }
+
+        {
+        console.log(a);
+        console.log(b);
+        console.log(c);
+        }
+    </script>
+    <script type="text/html">
+        {
+        var name = '撩课学院';
+        console.log("itlike.com");
+        document.write("喜欢IT, 就上撩课!");
+        }
+
+        console.log("name = " + name);
+    </script>
+
+</body>
+</html>

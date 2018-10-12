@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--===========================================1.常见的声明方式===========================================-->
+    <script type="text/html">
+        // 1) 函数声明方式
+        function sum(a,b) {
+            console.log(a + b);
+        }
+        sum(100, 20);
+
+        // 2) 函数表达式声明方式
+        var add = function (a,b) {
+            console.log(a + b);
+        }
+        add(10,20);
+
+        // 3) 使用Function构造函数
+        var add2 = new Function('console.log(100);');
+        add2();
+    </script>
+
+    <!--===========================================2.测试参数===========================================-->
+    <script type="text/html">
+        function sum(num1,num2) {
+            if(typeof num1 !== 'number' || typeof num2 !== 'number'){
+                alert('参数不正确!');
+                return;
+            }
+            // 逻辑
+            console.log(num1, num2);
+            console.log(num1 + num2);
+        }
+
+        // sum(100, '之后的我', 2020, 3223);
+        sum(100, 20, 2020, 3223);
+    </script>
+
+    <!--===========================================3.arguments对象===========================================-->
+    <script type="text/html">
+        //包含了传入函数中的所有参数,  arguments并不是一个数组，只是与数组相似,  除了拥有length属性，数组的所有属性和方法都不具备。
+        // function sum(num1, num2) {
+        //     // arguments 对象
+        //     console.log(arguments);
+        // }
+        // sum(100);
+
+        //===================length属性:函数形参的个数
+        function sum(a, b, c, d, e) {
+            console.log(arguments.length); //实参的个数
+            console.log(sum.length);//形参个数
+            if (arguments.length === sum.length) { // 形参和实参个数都是相等的
+
+            }
+
+            // 1. 变量
+            var value = 0;
+            // 2. 遍历
+            for(var i=0; i < arguments.length; i++){
+                value += arguments[i];
+            }
+            console.log(value);
+        }
+
+        // 1.调用
+        sum(100, 10, 4, 120);
+
+        //2. 形参的个数
+        console.log(sum.length);
+    </script>
+
+    <!--===========================================4.函数返回值（return）===========================================-->
+    <script type="text/html">
+         // 请写出一个判断一个数是不是偶数的函数?
+        function isEven(num) {
+        // 1. 验证
+            if(typeof num !== 'number'){
+                alert('参数不正确');
+                return;
+            }
+
+            // 2. 判断
+            if(num % 2 === 0){
+                return '偶数';
+            }else {
+                return '奇数';
+            }
+        }
+        var result = isEven(7);
+        console.log(result);
+    </script>
+
+    <!--===========================================5.函数直接声明和函数表达式声明的区别）===========================================-->
+    <script type="text/html">
+        //JavaScript解析器首先会把当前作用域的函数声明提前到整个作用域的最前面。
+
+        // 1. 函数直接声明
+        //  代码没问题
+        console.log(f(5,6));
+
+        function f(a, b) {
+            return a + b;
+        }
+
+        // 2. 函数表达式声明
+        // 报错
+        // myFun(6,7);
+        // var myFun = function (a,b){
+        //    return a + b;
+        // }
+    </script>
+
+    <!--===========================================6.匿名函数===========================================-->
+    <script type="text/html">
+        var btn = document.getElementsByTagName('button')[0];
+        btn.click = function () {
+            alert('点了');
+        };
+    </script>
+
+    <!--===========================================7.立即执行函数===========================================-->
+    <script type="text/html">
+        // 立即执行函数
+        (function () {
+            alert('我会执行!');
+        })();
+    </script>
+
+    <!--===========================================8.回调函数===========================================-->
+    <script type="text/html">
+
+        // 加减乘除的函数
+        function add(a, b) {
+            return a + b;
+        }
+
+        function sub(a, b) {
+            return a - b;
+        }
+
+        function mul(a, b) {
+            return a * b;
+        }
+
+        function divide(a, b) {
+            return a / b;
+        }
+
+        // 总控函数
+        function fn(num1, num2, func) {
+            return func(num1, num2);
+        }
+
+        console.log(fn(10, 20, add));
+        console.log(fn(10, 20, sub));
+        console.log(fn(10, 20, mul));
+        console.log(fn(10, 20, divide));
+
+    </script>
+
+    <!--===========================================9.练习===========================================-->
+    <script type="text/html">
+        // 求n个数的累加
+        // 1 + 2  + 3 3
+
+        function getSum(n) {
+            if(1 === n) return 1;
+            return  n + getSum(n - 1);
+        }
+        console.log(getSum(3));
+    </script>
+
+    <script >
+        /*
+          求Fibonacci的第n个数
+          1 1 2 3 5 8 13 21 34 ...
+        */
+
+        function fn(n) {
+            if(n === 1 || n === 2) return 1;
+            return fn(n-1) + fn(n-2);
+        }
+
+        console.log(fn(12));
+    </script>
+</body>
+</html>
