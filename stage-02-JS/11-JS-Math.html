@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS-Math</title>
+</head>
+<body>
+    <script>
+        /*
+        Math.PI
+           表示的圆周率
+        Math.abs()
+            计算一个数的绝对值
+        Math.ceil()
+            对一个数进行向上取整，小数位只要有值就自动进1
+        Math.floor()
+            对一个数进行向下取整，小数部分会被舍掉
+        Math.round()
+            对一个数进行四舍五入取整
+        Math.random()
+            可以用来生成一个0-1之间的随机数
+            生成一个0-x之间的随机数
+                Math.round(Math.random()*x)
+            生成一个x-y之间的随机数
+                Math.round(Math.random()*(y-x)+x)
+                1-10
+        Math.max()
+            获取多个数中的最大值
+        Math.min()
+            获取多个数中的最小值
+        Math.pow(x,y)
+            返回x的y次幂
+        Math.sqrt()
+            对一个数进行开方运算  */
+
+        console.log(Math.PI);
+        var num = 19.5;
+        console.log(Math.ceil(num));//向上取整
+        console.log(Math.floor(num));//向下取整
+        console.log(Math.round(num));//四舍五入
+
+        console.log(Math.random());//可以用来生成一个0-1之间的随机数
+        //生成一个0-x之间的随机数
+        // Math.round(Math.random()*x)
+        // 0 -10
+        console.log(Math.round(Math.random() * 10));
+
+        //生成一个x-y之间的随机数
+        // Math.round(Math.random()*(y-x)+x)
+        // 3 - 8
+        // UnderScore
+        console.log(Math.round(Math.random()*(8 - 3) + 3));
+
+        //Math.pow(x,y) 返回x的y次幂
+        //Math.sqrt() 对一个数进行开方运算
+    </script>
+</body>
+</html>

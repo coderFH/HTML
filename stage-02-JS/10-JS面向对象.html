@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS面向对象</title>
+</head>
+<body>
+    <!--===========================================1.js中对象的回顾===========================================-->
+    <script type="text/html">
+        var dog = {
+            //属性
+            name : '旺财',
+            age : 10,
+            dogFriends:['阿黄','阿菜','地雷'],
+            //方法
+            eat:function () {
+                console.log('吃');
+            },
+            run: function () {
+                console.log('跑');
+            }
+        };
+        console.log(dog);
+        console.log(dog.name);
+
+        dog.name = "洗洗";
+        dog.age = 0;
+        console.log(dog);
+        console.log(dog.name);
+    </script>
+
+    <!--===========================================2.使用工厂模式,制作对象模板===========================================-->
+    <script type="text/html">
+        //工程模式
+        function Person() {
+            var obj = new Object();
+            //属性
+            obj.name = null;
+            obj.age = null;
+            obj.sex = null;
+            
+            //方法
+            obj.study = function () {
+                console.log('学习');
+            }
+
+            obj.sleep = function () {
+                console.log('睡觉');
+            }
+            return obj;
+        }
+
+        //2.生产
+        var p1 = new Person();
+        p1.name = "张三";
+        p1.age = 1;
+        p1.sex = '男';
+
+        var p2 = new Person();
+        p2.name = '李四';
+        p2.age = 2;
+        p2.sex = '女';
+
+        var p3 = new Person();
+        p3.name = '王五';
+        p3.age = 3;
+        p3.sex = '男';
+
+        console.log(p1);
+        console.log(p2);
+        console.log(p3);
+    </script>
+
+    <!--===========================================3.构造函数===========================================-->
+    <script type="text/html">
+        //1.构造函数(类)
+        function Dog(name,age,dogFriends) {
+            //1.1属性
+            this.name = name;
+            this.age = age;
+            this.dogFriends = dogFriends;
+
+            //1.2方法
+            this.eat = function (someThing) {
+                console.log(this.name + '在吃' +  someThing);
+            }
+            this.run = function (someWhere) {
+                console.log(this.name + '在跑' +  someWhere);
+            }
+        }
+        //2.创建狗对象
+        var smallDog = new Dog('小花',1);
+        console.log(smallDog);
+        smallDog.eat('狗奶');
+        smallDog.run('公园');
+
+        var bigDog = new Dog('大话', 10, ['大的', '小的']);
+        console.log(bigDog);
+        bigDog.eat('五花肉');
+        bigDog.run('操场');
+
+        console.log(smallDog === bigDog);
+    </script>
+
+    <!--===========================================4.this===========================================-->
+    <script type="text/html">
+         // 解析器在调用函数每次都会向函数内部传递进一个隐含的参数, 这个隐含的参数就是this，this指向的是一个对象 ， 这个对象我们称为函数执行的上下文对象
+         function doIt() {
+            console.log(this);
+         }
+
+         // 1.以函数的形式调用时，this永远都是window
+         doIt(); // this --> Window
+         window.doIt();
+
+        // 2. 创建对象
+        var obj = {
+            name: '周杰伦',
+            logSelf: doIt
+        };
+
+        var obj2 = {
+            name: '谢霆锋',
+            logSelf: doIt
+        };
+
+        // 以方法的形式调用时，this就是调用方法的那个对象
+        obj.logSelf(); //  this --> obj
+        obj2.logSelf(); // this --> obj2
+    </script>
+
+    <!--===========================================5.instanceof===========================================-->
+    <script type="text/html">
+        //使用instanceof可以检查一个对象是否是一个类的实例
+        // 人类(构造函数)
+        function Person(name, age, sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            this.logName = function () {
+                alert('我是' + this.name);
+            }
+        }
+
+        // 狗类
+        function Dog() {
+
+        }
+
+        // 创建人
+        var p1 = new Person('周杰伦', 38, '男');
+        var p2 = new Person('谢霆锋', 39, '男');
+        var p3 = new Person('撩课学院', 1, '未知');
+
+        var dog = new Dog();
+
+        console.log(p1);
+        console.log(dog);
+
+        // 对象 instanceof 构造函数  true false
+       /* console.log(p1 instanceof Person);
+        console.log(p1 instanceof Dog);
+        console.log(dog instanceof Dog);*/
+
+        console.log(dog instanceof Object);
+        console.log(p1 instanceof Object);
+
+        console.log(typeof dog);
+        console.log(typeof p1);
+    </script>
+
+    <!--===========================================6.prototype ===========================================-->
+    //让我们有能力动态给对象添加属性和方法
+    <script type="text/html">
+        function Person(name, age, sex) {
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+            this.text = '我是嫡系的';
+        }
+
+        Person.prototype.logName = function () {
+             alert('我是' + this.name);
+        }
+        Person.prototype.text = '我是创造人类的'
+
+        var p1 = new Person('周杰伦', 38, '男');
+        var p2 = new Person('谢霆锋', 39, '男');
+        var p3 = new Person('撩课学院', 1, '未知');
+
+        console.log(p1);
+        console.log(p1.constructor); // 查看构造函数
+        console.log(p1.__proto__.constructor);
+
+        p1.logName();
+        p2.logName();
+        p3.logName();
+
+        console.log(p1.logName === p2.logName);
+        console.log(p1.logName === p3.logName);
+        console.log(p1.text);
+        console.log(p1.__proto__.text);
+        console.log(p1.__proto__);
+    </script>
+
+    <script>
+        Array.prototype.test = '测试';
+        Array.prototype.eat = function () {
+            alert('数组会吃东西!');
+        };
+
+        var arr1 = new Array();
+        console.log(arr1.test);
+        arr1.eat();
+
+        var arr2= new Array();
+        console.log(arr2.test);
+        arr2.eat();
+
+        console.log(arr1.test === arr2.test);
+        console.log(arr1.constructor);
+        console.log(arr2.constructor === arr1.constructor);
+        console.log(arr2.constructor.constructor);
+        console.log(arr2.constructor.constructor.constructor);
+    </script>
+</body>
+</html>
