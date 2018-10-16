@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>节点的CURD</title>
+    <title>节点的CRUD</title>
 </head>
 <body>
     <div id="box">
@@ -12,13 +12,13 @@
         <img src="#" alt="测试">
     </div>
 
-    <!--<div class="box">-->
-        <!--<p class="word">天天开心</p>-->
-        <!--<button class="btn">插入按钮</button>-->
-        <!--<button class="del-btn">删除按钮</button>-->
-        <!--<img src="#" alt="测试">-->
-    <!--</div>-->
+    <br>
 
+    <!--验证克隆-->
+    <div class="clone">
+        <p>p标签</p>
+        <button>按钮</button>
+    </div>
 
     <!--============================1. 节点的创建和删除============================-->
     <script type="text/html">
@@ -50,15 +50,17 @@
     </script>
 
     <!--============================2. 克隆节点============================-->
-    <script type=>
+    <script>
         window.onload = function () {
-            var box = document.getElementById('box');
-            var newBox = box.cloneNode();//浅拷贝
-            // var newBox1 = box.cloneNode(true);//深拷贝
-            console.log(newBox);
-            // console.log(newBox1);
-
+            var box = document.getElementsByClassName('clone')[0];
+            var newBox = box.cloneNode(); //浅拷贝,不会拷贝它下边的子元素
+            console.log("浅拷贝",newBox);
             document.body.appendChild(newBox);
+
+            var box1 = document.getElementsByClassName('clone')[0];
+            var newBox1 = box.cloneNode(true); //深拷贝 子元素都会被拷贝
+            console.log("浅拷贝",newBox1);
+            document.body.appendChild(newBox1);
         }
     </script>
 
