@@ -37,12 +37,40 @@
         console.log(reg.test(str));
     </script>
 
-    <script>
+    <script type="text/html">
         // 验证手机号码 11
         // 1 3-9 0-9-->9
         var pStr = '17926787878sss';
         var pReg = /^1[3-9][0-9]{9}$/;
         console.log(pReg.test(pStr));
+    </script>
+
+
+    <script>
+        //itlike
+        var reg = /\bitlike\b/;
+        console.log(reg.test('get itlike com'));
+
+        //去除空格
+        var str = "  it  like  .com    ";
+
+        //去除所有空格
+        // console.log(str.replace(/\s/g, '-'));
+
+        //去除头部空格
+        console.log(str.replace(/^\s*/g, ''));
+
+        //去除尾部空格
+        // console.log(str.replace(/\s*$/, '-'));
+
+        //去除开头和结尾空格
+        // console.log(str.replace(/^\s*|\s*$/g, "-"));
+
+        //邮箱验证
+        // yjh.liaoke@itlike.com.cn
+        var emailReg = /^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/;
+        var email = 'yjh.liaoke@itlike.com.cn';
+        console.log(emailReg.test(email));
     </script>
 </body>
 </html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #fj {
+            width: 550px;
+            margin: 100px auto;
+        }
+        ul {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="fj">
+        <!--描述-->
+        <p id="des">蒲公英</p>
+        <!--大图-->
+        <img id="big_img" src="img/1.jpg" alt="" width="550">
+        <!--小图列表-->
+        <ul>
+            <li><a href="javascript:"><img  class="s_img" src="img/1.jpg" width="100" alt="蒲公英"></a></li>
+            <li><a href="javascript:"><img  class="s_img" src="img/2.jpg" width="100" alt="热气球"></a></li>
+            <li><a href="javascript:"><img  class="s_img" src="img/3.jpg" width="100" alt="别致小屋"></a></li>
+            <li><a href="javascript:"><img  class="s_img" src="img/4.jpg" width="100" alt="高山湖水"></a></li>
+            <li><a href="javascript:"><img  class="s_img" src="img/5.jpg" width="100" alt="高速公路"></a></li>
+        </ul>
+    </div>
+    <script>
+        window.onload = function () {
+            //1.获取需要的标签
+            var des = document.getElementById('des');
+            var big_img = document.getElementById('big_img');
+            var s_img = document.getElementsByClassName('s_img');
+
+            //2.绑定事件
+            for(var i= 0;i<s_img.length;i++) {
+                s_img[i].onclick =function () {
+                    big_img.src = this.src;
+                    des.innerText = this.alt;
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

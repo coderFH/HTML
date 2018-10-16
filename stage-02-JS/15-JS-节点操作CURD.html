@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>节点的CURD</title>
+</head>
+<body>
+    <div id="box">
+        <p id="word">天天开心</p>
+        <button id="btn">插入按钮</button>
+        <button id="del-btn">删除按钮</button>
+        <img src="#" alt="测试">
+    </div>
+
+    <!--<div class="box">-->
+        <!--<p class="word">天天开心</p>-->
+        <!--<button class="btn">插入按钮</button>-->
+        <!--<button class="del-btn">删除按钮</button>-->
+        <!--<img src="#" alt="测试">-->
+    <!--</div>-->
+
+
+    <!--============================1. 节点的创建和删除============================-->
+    <script type="text/html">
+        window.onload = function () {
+            var box = document.getElementById('box');
+            //1.创建节点
+            var img = document.createElement('img');
+            img.src = ''
+            img.alt = '这是一个美女哦!';
+            //在尾部追加这个节点
+            box.appendChild(img);
+
+            var btn = document.getElementById('btn');
+            var word = document.getElementById('word');
+            btn.onclick = function () {
+                var input = document.createElement('input');
+                input.type = 'date';
+                //在盒子最前面插入
+                box.insertBefore(input,word);
+            }
+
+            //2.删除节点
+            var delBtn = document.getElementById("del-btn");
+            delBtn.onclick = function () {
+                // delBtn.parentNode.removeChild(delBtn);
+                delBtn.remove();
+            }
+        }
+    </script>
+
+    <!--============================2. 克隆节点============================-->
+    <script type=>
+        window.onload = function () {
+            var box = document.getElementById('box');
+            var newBox = box.cloneNode();//浅拷贝
+            // var newBox1 = box.cloneNode(true);//深拷贝
+            console.log(newBox);
+            // console.log(newBox1);
+
+            document.body.appendChild(newBox);
+        }
+    </script>
+
+    <!--============================3.  节点属性（节点.属性）============================-->
+    <script type="text/html">
+        window.onload = function () {
+            //1.获取
+            var img = document.getElementsByTagName('img')[0];
+            console.log(img.src);
+            console.log(img.alt);
+            console.log(img.getAttribute('src'));
+            console.log(img.getAttribute('alt'));
+
+            //2.设置
+            img.setAttribute('src','./img/pic2.jpg');
+            img.setAttribute('alt','这是谁?');
+            img.setAttribute('aaa','这是谁');
+            img.setAttribute('bbb','这是谁');
+
+            //3.删除
+            img.removeAttribute('src');
+            img.removeAttribute('aaa');
+            img.removeAttribute('bbb');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            background-color: red;
+            width: 500px;
+            height: 500px;
+            text-align: center;
+            margin: 0 auto;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img id="icon" src="./img/icon_01.png" alt="图片">
+        <p></p>
+        <div>
+            <button id="prev">上一张</button>
+            <button id="next">下一张</button>
+        </div>
+    </div>
+    <script>
+        window.onload = function () {
+            //1.获取所需要的节点
+            var icon = document.getElementById('icon');
+            var prev = document.getElementById('prev');
+            var next = document.getElementById('next');
+
+            //2.监听点击
+            var maxIndex = 9,minIndex = 1,currentIndex = 1;
+            //2.1 上一张
+            prev.onclick = function () {
+                // debugger
+                if (currentIndex === minIndex) {//最小边界
+                    currentIndex = maxIndex;
+                } else {
+                    currentIndex--;
+                }
+                //2.2 修改属性
+                icon.setAttribute('src','img/icon_0' + currentIndex + '.png');
+            }
+
+            //2.3 下一张
+            next.onclick = function () {
+                if (currentIndex === maxIndex) {//最大边界
+                    currentIndex = minIndex;
+                } else {
+                    currentIndex++;
+                }
+                icon.setAttribute('src','img/icon_0' + currentIndex + '.png');
+            }
+        }
+    </script>
+</body>
+</html>

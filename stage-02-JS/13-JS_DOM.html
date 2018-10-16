@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM</title>
+</head>
+<body>
+    <button id="btn" class="class-btn">事件</button>
+    <button id="my-btn">onload</button>
+    <button name="name-btn" id="id-btn" class="class-btn">获取DOM对象</button>
+
+    <script type="text/html">
+        //1.window document
+        //1.1 全局的函数
+        function test() {
+            console.log(this);
+        }
+        //1.2全局的变量
+        var str= "我是全局变量";
+
+        //所有的js全局对象，函数以及变量都能自动成为window对象的成员
+        //全局变量是window对象的属性，全局函数是window对象的方法
+        test()
+        console.log(str);
+        console.log(window.str);
+        console.log(window);
+
+        //document对象是documentHTML的一个实例，也是window对象的一个属性，因此可以将document对象作为一个全局对象来访问
+        console.log(document);
+        console.log(document.head);// 文档头部
+        console.log(document.body);// 文档身体
+        console.log(document.title); // 文档标题
+        console.log(document.childNodes);// 文档一级 节点(标签, 元素, DOM对象)
+
+    </script>
+
+     <!--=====================2.事件========================-->
+    <script type="text/html">
+        //为按钮的对应事件绑定处理函数的形式来响应事件
+        var btn = document.getElementById('btn');
+        btn.onclick = function () {
+            alert('点我干啥');
+        }
+    </script>
+
+    <!--======================3.文档的加载过程=========================-->
+    <script type="text/html">
+        //浏览器在加载一个页面时，是按照自上向下的顺序加载的
+        //读取到一行就运行一行, 如果将script标签写到head内部，在代码执行时，页面还没有加载，页面中的DOM对象也没有加载
+        //会导致在js中无法获取到页面中的DOM对象
+        //解决方案:
+        //1.把script标签放在body尾部
+        //2.onload事件   它会在整个页面加载完成之后才触发  为window绑定一个onload事件, 该事件对应的响应函数将会在页面加载完成之后执行，
+        // 这样可以确保我们的代码执行时所有的DOM对象已经加载完毕了
+        window.onload = function () {
+            var btn = document.getElementById('my-btn');
+            btn.onclick = function () {
+                alert('onload事件')
+            }
+        }
+    </script>
+
+    <!--======================4. 获取DOM对象=========================-->
+    <script>
+        var btn = document.getElementById('id-btn');
+        btn = document.getElementsByTagName('button')[2];
+        btn = document.getElementsByClassName('class-btn')[0];
+        btn = document.getElementsByName('name-btn')[0];
+
+        btn = document.querySelector('.class-btn'); //找类选择器是class-btn的标签,找到就停止
+        btn = document.querySelectorAll('.class-btn');//找所有类选择器是class-btn的标签
+        console.log(btn);
+    </script>
+
+</body>
+</html>

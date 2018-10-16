@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            position: relative;
+            display: inline-block;
+        }
+        #close {
+            position: absolute;
+            right: 15px;
+            top:15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img id="icon" src="./img/img_03.jpg" alt="" width="250">
+        <img id="close" src="./img/close.jpg" alt="" width="20">
+    </div>
+    <script>
+        window.onload = function () {
+            //1.获取标签
+            var close = document.getElementById('close');
+            //2.监听点击
+            close.onclick = function () {
+                this.parentNode.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

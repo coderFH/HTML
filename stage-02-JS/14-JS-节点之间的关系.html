@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="box">
+        <button class="btn">按钮</button>
+        <span class="span">
+            <a href="#">a标签</a>
+        </span>
+        <p class="p">p标签</p>
+        <div>itlike</div>
+    </div>
+
+    <!--============================1. 获取父节点(parentNode)============================-->
+    <script type="text/html">
+        window.onload = function () {
+            var a = document.getElementsByTagName('a')[0];
+            //1.获取父节点
+            var parentNode = a.parentNode.parentNode;
+            console.log(parentNode);
+
+            //2.改变颜色
+            var btn = document.getElementsByClassName("btn")[0];
+            btn.onclick = function () {
+                parentNode.style.backgroundColor = 'red';
+            }
+        }
+    </script>
+
+    <!--============================2. 上一个\下一个兄弟节点============================-->
+    <script type="text/html">
+        window.onload = function () {
+            var span = document.getElementsByClassName('span')[0];
+            //上一个兄弟
+            var previous = span.previousElementSibling || span.previousSibling;
+            console.log(previous);
+
+            //下一个兄弟
+            var next = span.nextElementSibling || span.nextSibling;
+            console.log(next);
+        }
+    </script>
+
+    <!--============================3. 获取标签中第一个子节点\最后一个子节点============================-->
+    <script type="text/html">
+        window.onload = function () {
+            var box = document.getElementById('box');
+            //1.获取第一个子节点
+            console.log(box.firstElementChild || box.firstChild);
+            //2.获取最后一个子节点
+            console.log(box.lastElementChild || box.lastChild);
+        }
+    </script>
+    <!--============================4. 获取所有元素节点============================-->
+    <script type="text/html">
+        var box = document.getElementById('box');
+        var allNodeList = box.childNodes;
+        var newNodeList = [];
+        for (var i = 0; i < allNodeList.length;i++) {
+            var node = allNodeList[i];
+            if (1 === node.nodeType) { //标签
+                newNodeList.push(node);
+            }
+        }
+        console.log(newNodeList);
+    </script>
+    <!--============================5. 获取任意兄弟节点============================-->
+    <script>
+        window.onload = function () {
+            var p = document.getElementsByClassName('p')[0];
+            console.log(p.parentNode.children[p.parentNode.children.length - 2]);
+        }
+    </script>
+
+</body>
+</html>
