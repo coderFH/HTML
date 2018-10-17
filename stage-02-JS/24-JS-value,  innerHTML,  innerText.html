@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--value, innerHTML,  innerText都可以用来获取和修改元素的值（或内容）；-->
+    <!--不同点: value是用来修改（获取）textarea和input的value属性的值或元素的内容；
+    innerHTML 用来修改（获取）HTML元素（如div）html格式的内容。-->
+    <div id = "box">
+        <input id="inp" type="text"  value="测试测试">
+        <p>我是MT</p>
+        <span>哈哈哈哈</span>
+        <div>
+            <p>hehehehe</p>
+        </div>
+    </div>
+
+<script>
+    window.onload = function () {
+        var box = document.getElementById('box');
+        var inp = document.getElementById('inp');
+
+        console.log(box.innerHTML);
+        console.log(box.innerText);
+        console.log(inp.value);
+
+        //也可以更改文字
+        // box.innerText = '<h1>cdscd</h1>';
+        //也可以更改元素
+        box.innerHTML = '<input type="date">';
+    }
+</script>
+</body>
+</html>

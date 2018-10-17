@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图标切换</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+        #box {
+            border: 1px solid #cccccc;
+            width: 360px;
+            height: 70px;
+            margin: 100px auto;
+
+            /*background-color: red;*/
+            padding-top: 360px;
+            background: url("img/01big.jpg") no-repeat;
+        }
+        ul {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li id="li01"><img src="img/01.jpg" alt=""></li>
+            <li id="li02"><img src="img/02.jpg" alt=""></li>
+            <li id="li03"><img src="img/03.jpg" alt=""></li>
+            <li id="li04"><img src="img/04.jpg" alt=""></li>
+            <li id="li05"><img src="img/05.jpg" alt=""></li>
+        </ul>
+    </div>
+    <script>
+        window.onload = function () {
+            var li01 = document.getElementById("li01");
+            var li02 = document.getElementById("li02");
+            var li03 = document.getElementById("li03");
+            var li04 = document.getElementById("li04");
+            var li05 = document.getElementById("li05");
+            var box = document.getElementById('box');
+
+            li01.onmouseover = function () {
+                box.style.background = 'url("img/01big.jpg") no-repeat'
+            }
+            li02.onmouseover = function () {
+                box.style.background = 'url("img/02big.jpg") no-repeat'
+            }
+            li03.onmouseover = function () {
+                box.style.background = 'url("img/03big.jpg") no-repeat'
+            }
+            li04.onmouseover = function () {
+                box.style.background = 'url("img/04big.jpg") no-repeat'
+            }
+            li05.onmouseover = function () {
+                box.style.background = 'url("img/05big.jpg") no-repeat'
+            }
+        }
+    </script>
+
+</body>
+</html>

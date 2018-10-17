@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>输入框操作</title>
+</head>
+<body>
+    <input id="inp" type="text" placeholder="请输入XXX">
+
+    <script>
+        //1.获取标签
+        var inp = document.getElementById('inp');
+
+        //2.获取焦点
+        inp.onfocus = function () {
+            this.style.width = '600px';
+            this.style.height = '40px';
+            this.style.outline = 'none';
+            this.style.fontSize = '20px';
+        }
+
+        //3.失去焦点
+        inp.onblur = function () {
+            this.style.width = '400px';
+            this.style.height = '60px';
+            this.style.border = '2px solid red';
+            this.style.color = 'red';
+        }
+    </script>
+</body>
+</html>

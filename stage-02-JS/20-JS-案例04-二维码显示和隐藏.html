@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #e_coder {
+            width: 50px;
+            height: 50px;
+            /*background-color: red;*/
+            background: url("img/e_coder_normal.png") no-repeat;
+
+            position: fixed;
+            top: 50%;
+            left: 0;
+            cursor: pointer;
+        }
+        #e_app {
+            position: absolute;
+            left: 50px;
+            top:-50px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="e_coder">
+        <div id="e_app">
+            <img src="img/e_coder.jpg" alt="" width="150px">
+        </div>
+    </div>
+
+    <script>
+        window.onload = function () {
+            //1.获取元素
+            var e_coder = document.getElementById('e_coder');
+            var e_app = document.getElementById('e_app');
+
+            e_coder.onmouseover = function () {
+                this.style.background = 'url("img/e_coder_selected.png") no-repeat';
+                e_app.style.display = 'block';
+            }
+
+            e_coder.onmouseout = function () {
+                this.style.background = 'url("img/e_coder_normal.png") no-repeat';
+                e_app.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

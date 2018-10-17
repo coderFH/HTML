@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图标切换</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            list-style: none;
+        }
+        #box {
+            border: 1px solid #cccccc;
+            width: 360px;
+            height: 70px;
+            margin: 100px auto;
+
+            /*background-color: red;*/
+            padding-top: 360px;
+            background: url("img/01big.jpg") no-repeat;
+        }
+        ul {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul>
+            <li id="li01"><img src="img/01.jpg" alt=""></li>
+            <li id="li02"><img src="img/02.jpg" alt=""></li>
+            <li id="li03"><img src="img/03.jpg" alt=""></li>
+            <li id="li04"><img src="img/04.jpg" alt=""></li>
+            <li id="li05"><img src="img/05.jpg" alt=""></li>
+        </ul>
+    </div>
+    <script>
+        window.onload = function () {
+           changeBoxBg('li01', 'url("img/01big.jpg") no-repeat');
+           changeBoxBg('li02', 'url("img/02big.jpg") no-repeat');
+           changeBoxBg('li03', 'url("img/03big.jpg") no-repeat');
+           changeBoxBg('li04', 'url("img/04big.jpg") no-repeat');
+           changeBoxBg('li05', 'url("img/05big.jpg") no-repeat');
+
+            /**
+             * 根据id获取标签
+             * @param {string}id
+             * @returns {*}
+            */
+            function $(id) {
+                return typeof id === 'string' ? document.getElementById(id) : undefined;
+            }
+
+            /**
+             * 改变盒子的背景图片
+             * @param {string}liId
+             * @param {string}imgSrc
+             */
+            function changeBoxBg(liId,imgSrc) {
+                $(liId).onmouseover = function () {
+                    $('box').style.background = imgSrc;
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>

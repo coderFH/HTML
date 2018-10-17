@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #prompt {
+            font-size: 12px;
+            color: darkgray;
+        }
+        #score {
+            outline: none;
+            border: 1px solid darkgray;
+        }
+
+        .right {
+            background: url("img/right.png") no-repeat;
+            -webkit-background-size: 15px;
+            background-size: 15px;
+            padding-left: 18px;
+            color: green !important;
+        }
+
+        .error{
+            background: url("img/error.png") no-repeat 1px center;
+            -webkit-background-size: 15px;
+            background-size: 15px;
+            padding-left: 18px;
+            color: red !important;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box">
+        <label>您的成绩</label>
+        <input id='score' type="text" placeholder="请输入成绩">
+        <span id="prompt" >请输入您的成绩</span>
+    </div>
+
+<script>
+    window.onload = function () {
+        //1.输入框失去焦点
+        $('score').onblur = function () {
+            //1.1 获取用户输入的内容
+            var value = +(this.value);
+
+            //1.2验证
+            if (isNaN(value)) { //不是一个数
+                dealStyle('输入的成绩不正确!','error','red');
+            } else if (value > 0 && value <= 100) { //合法的
+                dealStyle('输入的成绩正确!','right','green');
+            } else { //超出
+                dealStyle('成绩必须在0-100之间!','error','red');
+            }
+        };
+
+        //2.输入框获得焦点
+        $("score").onfocus = function () {
+            dealStyle('\'请输入您的成绩!','','darkgray');
+            $('score').value = '';
+        };
+
+         /**
+         * 处理公共的样式
+         * @param {string}msg
+         * @param {string}className
+         * @param {string}color
+         */
+        function dealStyle(msg, className, color) {
+            $('prompt').innerText = msg;
+            $('prompt').className = className;
+            $('score').style.borderColor = color;
+        }
+
+        function $(id) {
+            return typeof id === 'string' ? document.getElementById(id) : undefined;
+        }
+    }
+</script>
+</body>
+</html>
