@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="btn">结束定时器</button>
+    <br>
+    <button id="btn1">开启定时器</button>
+    <button id="btn2">结束定时器</button>
+<!--==========================1.循环执行==========================-->
+<script type="text/html">
+    //方式1.循环执行
+    // window.setInterval('console.log("哈哈哈")',2000); //1s = 1000ms
+
+    //方式2：
+    // setInterval(function () {
+    //     console.log('hhhh');
+    // },1000);
+
+    //方式3：
+    var time = setInterval(test,1000);
+    function test() {
+        console.log('hehehe');
+    }
+
+    var btn = document.getElementById('btn');
+    btn.onclick = function () {
+        //清除定时器
+        clearInterval(time);
+    }
+</script>
+
+<!--==========================2.定时一次执行==========================-->
+<script type="text/html">
+    //定时执行 (一次定时器)
+    var timeId = setTimeout(function () {
+        console.log('执行了');
+    },5000);
+    var btn = document.getElementById('btn');
+    btn.onclick = function () {
+        //清除定时器
+        clearTimeout(timeId);
+    }
+</script>
+
+<!--==========================3.防止定时器累加==========================-->
+<script type="text/html">
+    window.onload = function () {
+        //1.获取标签
+        var btn1 = document.getElementById('btn1');
+        var btn2 = document.getElementById('btn2');
+
+        var height = 150,timeId;
+        //2.开启定时器
+        btn1.onclick = function () {
+            //2.0清除定时器(防止定时器的累加，先清后设)
+            clearInterval(timeId);
+
+            //2.1设置定时器
+            timeId = setInterval(function () {
+                height += 1;
+                console.log('身高是' + height + 'cm');
+            },1000);
+        }
+
+        //3.结束定时器
+        btn2.onclick = function () {
+            //3.1清除定时器
+            clearInterval(timeId);
+        }
+    }
+</script>
+
+
+</body>
+</html>
