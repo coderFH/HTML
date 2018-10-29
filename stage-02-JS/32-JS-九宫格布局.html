@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #top {
+            padding: 20px;
+        }
+        #bottom {
+            position: relative;
+        }
+       .box {
+           width: 220px;
+           height: 360px;
+           margin: 0 15px  15px 0;
+           background-color: #e8e8e8;
+       }
+        .box p {
+            color: orangered;
+        }
+    </style>
+</head>
+<body>
+    <div id="top">
+        <button>3列</button>
+        <button>4列</button>
+        <button>5列</button>
+    </div>
+
+    <div id="bottom">
+        <div class="box">
+            <img src="img/jiugongge1.jpg" alt="">
+            <h4>因为遇见你</h4>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="img/jiugongge2.jpg" alt="">
+            <h4>因为遇见你</h4>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="img/jiugongge3.jpg" alt="">
+            <h4>因为遇见你</h4>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="img/jiugongge4.jpg" alt="">
+            <h4>因为遇见你</h4>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="img/jiugongge5.jpg" alt="">
+            <h4>因为遇见你</h4>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div><div class="box">
+            <img src="img/jiugongge6.jpg" alt="">
+            <h4>因为遇见你</h4>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="img/jiugongge7.jpg" alt="">
+            <h4>因为遇见你</h4>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="img/jiugongge8.jpg" alt="">
+            <h4>因为遇见你</h4>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="img/jiugongge9.jpg" alt="">
+            <h4>因为遇见你</h4>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="img/jiugongge10.jpg" alt="">
+            <h4>因为遇见你</h4>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="img/jiugongge11.jpg" alt="">
+            <h4>因为遇见你</h4>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="img/jiugongge12.jpg" alt="">
+            <h4>因为遇见你</h4>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="img/jiugongge1.jpg" alt="">
+            <h4>因为遇见你</h4>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="img/jiugongge13.jpg" alt="">
+            <h4>因为遇见你</h4>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="img/jiugongge14.jpg" alt="">
+            <h4>因为遇见你</h4>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+        <div class="box">
+            <img src="img/jiugongge15.jpg" alt="">
+            <h4>因为遇见你</h4>
+            <p>孙怡邓伦牵手演绎刺绣奇缘</p>
+        </div>
+
+
+
+
+    </div>
+
+<script>
+    window.onload = function () {
+        //1.获取需要的标签
+        var btns = document.getElementById('top').children;
+        var bottom = document.getElementById('bottom');
+
+        //2.监听按钮的点击
+        btns[0].onclick = function () {
+             j_flex(3,bottom);
+        }
+        btns[1].onclick = function () {
+             j_flex(4,bottom);
+        }
+        btns[2].onclick = function () {
+             j_flex(5,bottom);
+        }
+
+        /**
+         *
+         * @param {number}allCols
+         * @param {object}parentNode
+         */
+        function j_flex(allCols,parentNode) {
+            //1.定义变量
+            var boxW = 220,boxH = 360, marginXY = 15;
+            //2.遍历
+            for (var i = 0; i < parentNode.children.length; i++) {
+                //2.1求出当前盒子的行号和列号
+                var row = Math.floor(i / allCols);
+                var col = Math.floor(i % allCols);
+
+                //2.2 盒子定位
+                var currentBox = parentNode.children[i];
+                currentBox.style.position = 'absolute';
+                currentBox.style.left = col * (boxW + marginXY) + 'px';
+                currentBox.style.top = row * (boxH + marginXY) + 'px';
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

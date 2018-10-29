@@ -55,33 +55,31 @@
             // 1.1 获取内容
             var content = $('my_textarea').value;
 
-             // 1.2 判断
-            if (content.length === 0 ) {
+            // 1.2 判断
+            if (content.length === 0) {
                 alert('输入的内容不能为空');
                 return;
             }
 
-             // 1.3 创建li标签放入ul
+            // 1.3 创建li标签放入ul
             var li = document.createElement('li');
             li.innerHTML = content + '\'<a href="javascript:">删除</a>';
-            $("ul").insertBefore(li,$('ul').children[0]);
+            $("ul").insertBefore(li, $('ul').children[0]);
 
-             // 1.4 清空输入框
+            // 1.4 清空输入框
             $('my_textarea').value = '';
 
-             // 1.5 删除评论
+            // 1.5 删除评论
             var as = $('ul').getElementsByTagName('a');
 
-            for (var i=0 ;i<as.length;i++) {
+            for (var i = 0; i < as.length; i++) {
                 var a = as[i];
                 a.onclick = function () {
-                     // 1.6 获取父标签,删除
+                    // 1.6 获取父标签,删除
                     this.parentNode.remove();
                 }
             }
         }
-
-        
     }
     
     /**
