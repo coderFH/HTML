@@ -3,8 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>鲜花表白</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            background-color: #000000;
+            text-align: center;
+            padding: 200px 100px;
+        }
+
+        #time{
+            font-size: 200px;
+            color: red;
+        }
+
+        #content{
+            display: none;
+        }
+    </style>
 </head>
 <body>
+    <div id="time">5</div>
+    <div id="content">
+        <img id="pic" src="img/flower.gif" alt="">
+        <p>我对你的爱如滔滔江水, 连绵布局......</p>
+    </div>
+
+<script>
+    window.onload = function (ev) {
+        // 0 .获取需要的标签
+        var time = document.getElementById('time');
+        var content = document.getElementById('content');
+
+        // 1. 开启定时器
+        var timerId = setInterval(function () {
+             time.innerText -= 1;
+             // 1.1 判断
+            if(time.innerText === '0'){ // 清除定时器
+                clearInterval(timerId);
+
+                // 1.2 界面的显示和隐藏
+                time.style.display = 'none';
+                content.style.display = 'block';
+            }
+        }, 1000);
+    }
+</script>
 
 </body>
 </html>

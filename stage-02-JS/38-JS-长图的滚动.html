@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        body{
+            background-color: #000;
+        }
+
+        #box{
+            width: 750px;
+            height: 400px;
+            border: 2px solid red;
+            overflow: hidden;
+            margin: 100px auto;
+
+            position: relative;
+        }
+
+        #pic{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #to_top, #to_bottom{
+            width: 100%;
+            height: 50%;
+            position: absolute;
+            left: 0;
+            cursor: pointer;
+        }
+
+        #to_top{
+            top: 0;
+            /*background-color: yellowgreen;*/
+        }
+
+        #to_bottom{
+            bottom: 0;
+            /*background-color: red;*/
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <img id="pic" src="img/timg.jpg" alt="">
+        <span id="to_top"></span>
+        <span id="to_bottom"></span>
+    </div>
+<script>
+    window.onload = function (ev) {
+        // 1. 获取标签
+        var pic = document.getElementById('pic');
+        var to_top = document.getElementById('to_top');
+        var to_bottom = document.getElementById('to_bottom');
+        var box = document.getElementById('box');
+
+        var timerId = null, num = 0;
+
+        // 2. 监听鼠标进入
+        // 往上走
+        to_top.onmouseover = function (ev1) {
+             // 2.1 清除定时器
+            clearInterval(timerId);
+
+            // 2.2 设置定时器
+            timerId = setInterval(function () {
+                 // 2.3 设置步长
+                num -= 10;
+                console.log(num);
+
+                // 2.4 走起来
+                if(num >= -2466){
+                    pic.style.top = num +  'px';
+                }else {
+                    clearInterval(timerId);
+                }
+            }, 20);
+        };
+
+        // 往下走
+        to_bottom.onmouseover = function (ev1) {
+            // 3.1 清除定时器
+            clearInterval(timerId);
+
+            // 3.2 设置定时器
+            timerId = setInterval(function () {
+                // 2.3 设置步长
+                num += 10;
+                console.log(num);
+
+                // 2.4 走起来
+                if(num <= 0){
+                    pic.style.top = num +  'px';
+                }else {
+                    clearInterval(timerId);
+                }
+            }, 20);
+        };
+
+        // 出去
+        box.onmouseout = function (ev1) {
+            clearInterval(timerId);
+        }
+    }
+</script>
+</body>
+</html>

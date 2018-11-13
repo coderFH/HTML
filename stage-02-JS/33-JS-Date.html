@@ -3,11 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        #box{
+            width: 300px;
+            height: 300px;
+            background-color: orangered;
+            margin: 100px auto;
+            text-align: center;
+            padding: 30px;
+        }
+
+        #top{
+            font-size: 25px;
+            color: #ffffff;
+            margin-bottom: 40px;
+        }
+
+        #bottom{
+            width: 100%;
+            height: 70%;
+            background-color: greenyellow;
+            font-size: 100px;
+            color: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
 
+    <div id="box">
+        <div id="top"></div>
+        <div id="bottom"></div>
+    </div>
+
 <!--==========================0.定时器的基本属性==========================-->
-<script>
+<script type="text/html">
     var date = new Date();
     console.log(date.getDate()); //日
     console.log(date.getDay());//星期几
@@ -18,6 +50,30 @@
     console.log(date.getSeconds());//秒
     console.log(date.getMilliseconds());//毫秒
     console.log(date.getTime());//时间戳
+</script>
+
+<script>
+    window.onload = function (ev) {
+        // 1. 获取需要的标签
+        var top = document.getElementById('top');
+        var bottom = document.getElementById('bottom');
+
+        // 2. 声明日期对象
+        var date = new Date();
+        // console.log(date);
+
+        var y = date.getFullYear(); // 年
+        var m = date.getMonth() + 1; // 月
+        var d = date.getDate(); // 日
+        var week = date.getDay(); // 星期几
+        console.log(y, m, d, week);
+
+        var weeks = ['星期日', '星期一', '星期二', '星期三','星期四', '星期五', '星期六'];
+
+        // 3. 赋值
+        top.innerText = y + '年' + m + '月' + d + '日  ' + weeks[week];
+        bottom.innerText = d + '';
+    }
 </script>
 
 </body>

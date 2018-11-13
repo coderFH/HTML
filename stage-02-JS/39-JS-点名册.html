@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{
+            text-align: center;
+        }
+
+        #name{
+            font-size: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+   <button id="begin">开始点名</button>
+   <button id="end">结束点名</button>
+   <div id="name"></div>
+<script>
+    window.onload = function (ev) {
+        // 1. 获取需要的标签
+        var begin = document.getElementById('begin');
+        var end = document.getElementById('end');
+        var name = document.getElementById('name');
+
+        // 2. 定义变量
+        var nameArr = ['周杰伦', '谢霆锋', '王菲', '那英', '谢娜', '赵薇', '宋小宝', '小生意'];
+        var timerId = null;
+
+        // 3. 事件的监听
+        begin.onclick = function (ev1) {
+            // 3.1 清除定时器
+            clearInterval(timerId);
+
+            // 3.2 设置定时器
+            timerId = setInterval(function () {
+                // 3.3 随机数
+                var s_index = Math.floor(Math.random() * nameArr.length);
+                name.innerText = nameArr[s_index];
+            }, 20);
+        };
+
+        end.onclick = function (ev1) {
+            clearInterval(timerId);
+        }
+    }
+</script>
+</body>
+</html>

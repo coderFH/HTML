@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+     <style>
+        #time{
+            font-size: 40px;
+            color: red;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="time"></div>
+
+<script>
+    window.onload = function (ev) {
+        // 1. 获取需要的标签
+        var time = document.getElementById('time');
+
+        // 2. 自定义将来的时间
+        var nextDate = new Date('2018/10/19 22:41:00');
+
+        // 3. 开启定时器
+        var timerId = setInterval(function () {
+              // 4. 获取现在的时间
+              var currentDate = new Date();
+
+              // 5. 转化成时间戳
+             var currentTime = currentDate.getTime();
+             var nextTime = nextDate.getTime();
+
+             // 6. 求出剩下的时间 ms
+             var allTime = nextTime - currentTime;
+             if(allTime <= 0){
+                 clearInterval(timerId);
+                 time.innerText = "时间已经过了"
+                 return
+             }
+
+            // 7. 把毫秒转成秒  1s = 1000ms
+            var allSecond = parseInt(allTime / 1000);
+            // console.log(allSecond);
+
+            // 8.转化
+            var d = parseInt(allSecond / 3600 / 24 ); // 天
+            var h = parseInt(allSecond / 3600 % 24); // 小时
+            var m = parseInt(allSecond / 60 % 60); // 分
+            var s = parseInt(allSecond % 60); // 分
+
+            time.innerText = '距离放假还剩' + d + '天' + h + '小时' + m +'分钟' + s +'秒'
+
+        }, 1000);
+    }
+</script>
+</body>
+</html>
