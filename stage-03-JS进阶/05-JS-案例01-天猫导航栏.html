@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            background-color: pink;
+        }
+
+        #nav {
+            width: 900px;
+            height: 63px;
+            /*right:图片居右显示
+            center是指剩下的背景用fff色填充*/
+            background: url("images/doubleOne.png") no-repeat right center #fff;
+            border-radius: 5px;
+            margin: 100px auto;
+
+            position: relative;
+        }
+
+        #nav ul {
+            position: relative;
+        }
+
+        #nav ul li {
+            float: left;
+            width: 88px;
+            height: 63px;
+            line-height: 70px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        #t_mall {
+            width: 88px;
+            height: 63px;
+            position: absolute;
+            background: url("images/tMall.png") no-repeat;
+        }
+    </style>
+</head>
+<body>
+<nav id="nav">
+    <span id="t_mall"></span>
+    <ul>
+        <li>双11狂欢</li>
+        <li>服装会场</li>
+        <li>数码家电</li>
+        <li>家具建材</li>
+        <li>母婴童装</li>
+        <li>手机会场</li>
+        <li>美妆会场</li>
+        <li>进口会场</li>
+        <li>飞猪旅行</li>
+    </ul>
+</nav>
+<script src="../stage-02-JS基础/44-FHTool.js"></script>
+<script>
+    window.addEventListener('load', function (event) {
+        // 1. 获取需要的标签
+        var nav = $('nav');
+        var tMall = nav.children[0];
+        var ul = nav.children[1];
+        var allLis = ul.children;
+
+        // 记录tmall的起始位置
+        var beginX = 0;
+
+        // 2. 遍历
+        for (var i = 0; i < allLis.length; i++) {
+            // 2.1 获取单独的li标签
+            var li = allLis[i];
+
+            // 2.3 监听鼠标的事件
+            li.addEventListener('mouseover', function (evt) {
+                end = this.offsetLeft;
+            });
+
+            li.addEventListener('mousedown', function (evt) {
+                beginX = this.offsetLeft;
+            });
+
+            li.addEventListener('mouseout', function (evt) {
+                end = beginX;
+            });
+        }
+
+
+        // 3. 缓动动画
+        var begin = 0, end = 0;
+        setInterval(function () {
+            // begin = begin + (end - begin) * 0.2;
+            begin += (end - begin) * 0.2;
+            tMall.style.left = begin + 'px';
+        }, 10);
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        html, body, ul {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+        }
+
+        #ps {
+            position: relative;
+        }
+
+        #ps li {
+            width: 250px;
+            height: 360px;
+            box-shadow: 0 0 10px #000;
+            position: absolute;
+
+            transition: all 1s;
+        }
+
+        #ps li.current {
+            left: 50% !important;
+            top: 50% !important;
+            z-index: 99;
+            transform: rotate(0deg) translate(-50%, -50%) scale(1.5) !important;
+        }
+    </style>
+</head>
+<body>
+<ul id="ps">
+</ul>
+<script src="./44-FHTool.js"></script>
+<script src="./underscore-min.js"></script>
+<script>
+    window.onload = function (ev) {
+        // 1. 动态去创建标签
+        for (var i = 0; i < 10; i++) {
+            // 1.1 创建li标签
+            var li = document.createElement('li');
+            $('ps').appendChild(li);
+
+            // 1.2 创建图像标签g
+            var img = document.createElement('img');
+            img.src = 'img/zpq' + (i + 1) + '.jpg';
+            li.appendChild(img);
+        }
+
+        // 2. 获取所有的li标签
+        var allLis = $('ps').children;
+        console.log(allLis);
+
+        // 3. 求出可展示的区间
+        var screenW = document.documentElement.clientWidth - 350;
+        var screenH = document.documentElement.clientHeight - 450;
+
+        // 4. 遍历
+        for (var j = 0; j < allLis.length; j++) {
+            // 4.1 获取单独的li标签
+            var sLi = allLis[j];
+
+            // 4.2 随机分布
+            sLi.style.left = _.random(0, screenW) + 'px';
+            sLi.style.top = _.random(0, screenH) + 'px';
+
+            // 4.3 随机角度
+            sLi.style.transform = 'rotate(' + _.random(0, 360) + 'deg)';
+
+            // 4.4 监听点击事件
+            sLi.addEventListener('click', function (evt) {
+                // 先遍历清除所有的current类
+                for (var m = 0; m < allLis.length; m++) {
+                    allLis[m].className = '';
+                }
+                // 自己绑定current类
+                addClass(this, 'current');
+            });
+        }
+    }
+</script>
+</body>
+</html>

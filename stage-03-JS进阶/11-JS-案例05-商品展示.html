@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        #box{
+            width: 800px;
+            height: 200px;
+            border: 1px solid #cccccc;
+
+            margin: 100px auto;
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        #box_top{
+            position: absolute;
+            left: 0;
+            top: 20px;
+            width: 2600px;
+        }
+
+        #box_top li{
+            float: left;
+        }
+
+        #box_bottom{
+            width: 100%;
+            height: 25px;
+            background-color: #e8e8e8;
+
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+        .mask{
+            position: absolute;
+            left: 0;
+            top: 0;
+            /*width: 100px;*/
+            height: 25px;
+            background-color: orangered;
+            border-radius: 12px;
+
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <ul id="box_top">
+            <li><img src="images/img1.jpg" alt=""></li>
+            <li><img src="images/img2.jpg" alt=""></li>
+            <li><img src="images/img3.jpg" alt=""></li>
+            <li><img src="images/img4.jpg" alt=""></li>
+            <li><img src="images/img5.jpg" alt=""></li>
+            <li><img src="images/img6.jpg" alt=""></li>
+            <li><img src="images/img7.jpg" alt=""></li>
+            <li><img src="images/img8.jpg" alt=""></li>
+            <li><img src="images/img1.jpg" alt=""></li>
+            <li><img src="images/img2.jpg" alt=""></li>
+            <li><img src="images/img1.jpg" alt=""></li>
+            <li><img src="images/img2.jpg" alt=""></li>
+            <li><img src="images/img3.jpg" alt=""></li>
+            <li><img src="images/img4.jpg" alt=""></li>
+            <li><img src="images/img5.jpg" alt=""></li>
+            <li><img src="images/img6.jpg" alt=""></li>
+            <li><img src="images/img7.jpg" alt=""></li>
+            <li><img src="images/img8.jpg" alt=""></li>
+            <li><img src="images/img1.jpg" alt=""></li>
+            <li><img src="images/img2.jpg" alt=""></li>
+        </ul>
+        <div id="box_bottom">
+            <span class="mask"></span>
+        </div>
+    </div>
+
+    <textarea> </textarea>
+<script>
+    window.addEventListener('load', function (ev) {
+        // 1. 获取需要的标签
+        var box = document.getElementById('box');
+        var box_top = box.children[0];
+        var box_bottom = box.children[1];
+        var mask = box_bottom.children[0];
+
+        // 2. 求出滚动条的宽度
+        // 滚动条长度 = ( 盒子的宽度 / 内容的宽度) * 盒子的宽度
+        var maskLen = (box.offsetWidth / box_top.offsetWidth) * box.offsetWidth;
+        mask.style.width = maskLen + 'px';
+
+        // 3. 鼠标操作
+        mask.onmousedown = function (event) {
+            // 3.1 求出鼠标的初始位置
+            var beginX = event.clientX - this.offsetLeft;
+
+            // 3.2 移动
+            document.onmousemove = function (ev1) {
+                // 3.3 求出移动的距离
+                var len = ev1.clientX - beginX;
+
+                // 3.4 边界值
+                if(len < 0 ){
+                    len = 0;
+                }else if( len > box.offsetWidth - mask.offsetWidth){
+                    len = box.offsetWidth - mask.offsetWidth;
+                }
+
+
+                // 3.5 动起来
+                mask.style.left = len + 'px';
+
+                // 3.6 内容走起来
+                // 内容走的距离 = （内容的长度 - 盒子的长度） / (盒子长度 - 滚动条的长度) * 滚动条走的距离
+                var content_len = (box_top.offsetWidth - box.offsetWidth) / (box.offsetWidth - mask.offsetWidth) * len;
+                box_top.style.left = -content_len + 'px';
+                return false;
+            }
+        };
+
+        document.onmouseup = function () {
+            document.onmousemove = null;
+        }
+    });
+</script>
+</body>
+</html>

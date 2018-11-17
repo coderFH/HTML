@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        body {
+            background-color: #000;
+        }
+
+        span {
+            width: 28px;
+            height: 28px;
+            background: url("img/star.png") no-repeat;
+
+            position: absolute;
+            background-size: 100% 100%;
+
+            animation: flash 0.5s alternate infinite;
+        }
+
+        @keyframes flash {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    window.onload = function (ev) {
+        // 1. 求出窗口的宽度和高度
+        // var screenW = screen.width;
+        // var screenH = screen.height;
+        var screenW = document.documentElement.clientWidth;
+        var screenH = document.documentElement.clientHeight;
+        // console.log(screenW, screenH);
+
+        // 2. 动态创建星星
+        for (var i = 0; i < 200; i++) {
+            // 2.1 创建span标签
+            var span = document.createElement('span');
+            document.body.appendChild(span);
+
+            // 2.2 随机的坐标
+            var x = Math.floor(Math.random() * (screenW - 50));
+            var y = Math.floor(Math.random() * (screenH - 50));
+            span.style.left = x + 'px';
+            span.style.top = y + 'px';
+
+            // 2.3 控制频率
+            var rate = Math.random() * 2;
+            span.style.animationDelay = rate + 's';
+
+            // 2.4 随机大小
+            var scale = Math.random() * 1.2;
+            span.style.transform = 'scale(' + scale + ',' + scale + ')';
+
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        #box {
+            width: 350px;
+            height: 350px;
+            /*background-color: red;*/
+            margin: 100px 0 0 100px;
+
+            position: relative;
+        }
+
+        #small_box {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ccc;
+
+            position: relative;
+        }
+
+        #mask {
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255, 255, 0, .4);
+
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: move;
+
+            /*隐藏*/
+            display: none;
+        }
+
+        #big_box {
+            width: 600px;
+            height: 600px;
+            border: 1px solid #cccccc;
+
+            position: absolute;
+            left: 360px;
+            top: 0;
+            overflow: hidden;
+
+            display: none;
+        }
+
+        #big_box img {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #list {
+            margin: 20px 0 0 100px;
+        }
+
+        #list img {
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="small_box">
+        <img src="images/pic001.jpg" alt="">
+        <span id="mask"></span>
+    </div>
+    <div id="big_box">
+        <img id="big_box_img" src="images/pic01.jpg" alt="">
+    </div>
+</div>
+<div id="list">
+    <img src="images/pic0001.jpg" alt="">
+    <img src="images/pic0002.jpg" alt="">
+    <img src="images/pic0003.jpg" alt="">
+</div>
+<script src="../stage-02-JS基础/44-FHTool.js"></script>
+<script>
+    window.addEventListener('load', function () {
+        // 1. 监听鼠标进入小的盒子
+        $('small_box').onmouseover = function () {
+            // 1.1 把隐藏的内容显示出来
+            $('mask').style.display = 'block';
+            $('big_box').style.display = 'block';
+
+            // 1.2 监听鼠标的移动
+            $('small_box').onmousemove = function (event) {
+                // var e = event || window.event;
+                // 1.3 求出鼠标的坐标
+                var pointX = event.clientX - this.offsetParent.offsetLeft - $('mask').offsetWidth * 0.5;
+                var pointY = event.clientY - this.offsetParent.offsetTop - $('mask').offsetHeight * 0.5;
+
+                // 1.4 边界检测
+                if (pointX < 0) { // 最小边界值
+                    pointX = 0;
+                } else if (pointX > this.offsetWidth - $('mask').offsetWidth) { // 最大边界值
+                    pointX = this.offsetWidth - $('mask').offsetWidth;
+                }
+
+                if (pointY < 0) { // 最小边界值
+                    pointY = 0;
+                } else if (pointY > this.offsetHeight - $('mask').offsetHeight) { // 最大边界值
+                    pointY = this.offsetHeight - $('mask').offsetHeight;
+                }
+
+                // 1.5 让放大镜移动起来
+                $('mask').style.left = pointX + 'px';
+                $('mask').style.top = pointY + 'px';
+
+                // 1.6 让大图走起来
+                //计算的公式
+                /*
+                   smallX  / bigX = smallBox.width /  bigBox.width
+                   bigX = smallX / (smallBox.width /  bigBox.width)
+                */
+                $('big_box_img').style.left = - pointX / (this.offsetWidth / $('big_box').offsetWidth) + 'px';
+                $('big_box_img').style.top = - pointY / (this.offsetHeight / $('big_box').offsetHeight) + 'px';
+            }
+        };
+
+        // 2. 监听鼠标离开小的盒子
+        $('small_box').onmouseout = function () {
+            // 1.1 把显示的内容隐藏出来
+            $('mask').style.display = 'none';
+            $('big_box').style.display = 'none';
+        };
+
+        // 3. 遍历列表的图片
+       for (var i = 0; i < $('list').children.length; i++) {
+            var img = $('list').children[i];
+            img.id = i;
+            console.log(11111);
+            console.log(i); // 2
+           // 异步
+            img.onmouseover = function () {
+                console.log(22222);
+                 $('small_box').children[0].src = 'images/pic00' + (parseInt(this.id) + 1) + '.jpg';
+                 $('big_box_img').src = 'images/pic0'+  (parseInt(this.id) + 1) +'.jpg';
+             }
+        }
+
+       // 闭包的方式:先理解
+       // 同步和异步
+       /* for (var i = 0; i < $('list').children.length; i++) {
+            (function (index) {
+                var img = $('list').children[index];
+                img.onmouseover = function () {
+                    $('small_box').children[0].src = 'images/pic00' + (index + 1) + '.jpg';
+                    $('big_box_img').src = 'images/pic0'+  (index + 1) +'.jpg';
+                }
+            })(i)
+        }*/
+    });
+</script>
+</body>
+</html>

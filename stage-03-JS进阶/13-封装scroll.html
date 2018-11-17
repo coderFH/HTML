@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body style="height: 3000px;">
+
+<script>
+
+    // console.log(window.pageYOffset);
+    // console.log(document.compatMode);
+
+    window.onscroll = function (ev) {
+        console.log(scroll().top);
+    };
+
+    /**
+     * 获取scroll家族头部和左边的滚动的长度
+     * @returns {{top: number, left: number}}
+     */
+    function scroll() {
+        // 判断
+        if(window.pageYOffset){
+              return {
+                  'top': window.pageYOffset,
+                  'left': window.pageXOffset
+              }
+        }else if(document.compatMode === 'CSS1Compat'){ // w3c
+              return {
+                  'top': document.documentElement.scrollTop,
+                  'left': document.documentElement.scrollLeft
+              }
+        }
+
+        return {
+            'top': document.body.scrollTop,
+            'left': document.body.scrollLeft
+        }
+    }
+</script>
+</body>
+</html>

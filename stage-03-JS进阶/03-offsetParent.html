@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body>
+    <div id="yeye" style="position: relative;">
+        <div id="father">
+            <div id="son"></div>
+        </div>
+    </div>
+
+<script>
+    var son = document.getElementById('son');
+    //找到第一个有定位的父级元素
+    console.log(son.offsetParent);
+
+    //找父节点
+    console.log(son.parentNode);
+</script>
+</body>
+</html>

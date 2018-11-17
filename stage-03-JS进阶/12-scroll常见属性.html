@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            height: 3000px;
+        }
+    </style>
+</head>
+<body>
+
+<script>
+    // console.log(document.body.scrollTop, document.body.scrollLeft);
+    // console.log(document.body.scrollWidth, document.body.scrollHeight);
+
+    window.onscroll = function (ev) {
+        // console.log(document.body.scrollTop, document.body.scrollLeft);
+        // console.log(document.documentElement.scrollTop, document.documentElement.scrollLeft);
+        // console.log(window.pageYOffset);
+
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
+        console.log(scrollTop, scrollLeft);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <h1>撩课学院</h1>
+    <button id="btn">点我一下</button>
+    <a href="http://www.itlike.com">官网</a>
+
+
+<script type="text/html">
+    console.log(window);
+    console.log(navigator);
+    console.log(location);
+    console.log(history);
+    console.log(screen);
+</script>
+
+<script type="text/html">
+    window.onload = function (ev) {
+        var userAgent = navigator.userAgent;
+        // console.log(userAgent);
+
+        if(/chrome/i.test(userAgent)){
+            alert('我是你哥,我叫谷歌!');
+        }else if(/firefox/i.test(userAgent)){
+            alert('我是一直可爱的狐狸!');
+        }else if(/msie/i.test(userAgent)) {
+            alert('我是IE, 不服就来打我!');
+        }else if("ActiveXObject" in window) {
+            alert('我是IE11!!');
+        }
+    }
+</script>
+
+    <!--================================history================================-->
+<script type="text/html">
+    window.onload = function (ev) {
+        var btn = document.getElementById("btn");
+        btn.addEventListener('click', function (ev1) {
+             // alert(history.length);
+            //history.back();
+            // history.forward();
+           // history.go(-1);
+        });
+    }
+</script>
+
+<!--================================location================================-->
+<script>
+    window.onload = function (ev) {
+        var btn = document.getElementById("btn");
+        btn.addEventListener('click', function (ev1) {
+             // alert(location);
+            // location = 'http://www.itlike.com';
+            // location.href = 'http://www.itlike.com';
+            // location.assign("http://www.itlike.com");
+
+            // location.reload(true);
+            location.replace('01-BOM对象.html');
+        });
+    }
+</script>
+
+</body>
+</html>

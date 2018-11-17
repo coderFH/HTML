@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 400px;
+            height: 400px;
+            background-color: red;
+            margin: 100px;
+            cursor: crosshair;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"></div>
+<script>
+    window.addEventListener('load', function (ev) {
+        // 1. 获取标签
+        var box = document.querySelector('#box');
+
+        // 2. 监听鼠标的移动
+        box.addEventListener('mousemove', function (ev1) {
+            var x = ev1.clientX - this.offsetLeft;
+            var y = ev1.clientY - this.offsetTop;
+
+            box.innerText = '(x:' + x + ', y:' + y +')';
+        });
+
+    });
+</script>
+</body>
+</html>

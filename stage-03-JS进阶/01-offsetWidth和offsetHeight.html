@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 150px;
+            background-color: red;
+            padding: 10px;
+            border: 5px solid orange;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" style="width: 100px;height: 100px;">box</div>
+
+<script>
+    window.onload = function () {
+        var box = document.querySelector('#box');
+        //offsetWidth = 内容的尺寸+内边距+边框
+        console.log(box.offsetWidth,box.offsetHeight);
+
+        //通过style样式获取的宽高,只能获取行内的
+        //而且只获取内容,不包括内边距和边框
+        console.log(box.style.width,box.style.height);
+
+        //所以一般用style.width做赋值的操作,很少会通过这种方式去获取
+        box.style.width = 500 + 'px';
+        box.style.height = 300 + 'px';
+
+    }
+</script>
+
+</body>
+</html>

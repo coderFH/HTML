@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+img{
+    vertical-align: top;
+}
+
+#main{
+    position: relative;
+}
+
+.box{
+    float: left;
+    padding: 15px 0 0 15px;
+    /*background-color: red;*/
+}
+
+.pic{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.pic img{
+    width: 165px;
+}
+

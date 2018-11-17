@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-offsetLeft 和 offsetTop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #father {
+            width: 400px;
+            height: 200px;
+            background-color: red;
+            margin: 100px;
+        }
+
+        #box {
+            width: 200px;
+            height: 150px;
+            background-color: blue;
+            padding: 10px;
+            border: 5px solid orange;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="father">
+        <div id="box"></div>
+    </div>
+
+<script>
+    window.onload = function (ev) {
+        var box = document.querySelector('#box');
+        //距离第一个有定位的父级盒子左边和上边的距离
+        //如果父盒子没有定位,以body为准
+        console.log(box.offsetLeft,box.offsetTop);//120  100
+
+        //如果#father 里 做了 定位,则会答应出20 0
+
+    }
+</script>
+</body>
+</html>
