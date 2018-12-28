@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div id = "app">
+        <h1>{{msg}}</h1>
+        <p>{{message}}</p>
+    </div>
+
+
+<script src="js/vue.js"></script>
+<script>
+    //1.创建Vue的实例
+    const vm = new Vue({
+        el: '#app',   //挂载起哪个试图
+        data : {
+            message : 'hello world',
+            msg : 'wangfuhao'
+        }
+    });
+</script>
+
+</body>
+</html>

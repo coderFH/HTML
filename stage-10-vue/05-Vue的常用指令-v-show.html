@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>v-show</title>
+</head>
+<body>
+
+<!--v-if和v-show的区别就是,如果是show控件会全部创造出来,然后修改样式为none-->
+<div id="app">
+    <p v-show="show">显示出来!</p>
+    <p v-show="hide">不显示出来!</p>
+    <p v-show="height > 1.5">小明的身高:{{height}}</p>
+    <p v-show="0">itLike</p>
+
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+    // 1. 创建Vue的实例
+    new Vue({
+        el: '#app',
+        data: {
+            show: true,
+            hide: false,
+
+            height: 1.68
+        }
+    });
+</script>
+</body>
+</html>

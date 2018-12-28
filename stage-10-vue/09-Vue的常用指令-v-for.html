@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table{
+            width: 600px;
+            border: 2px solid orange;
+            text-align: center;
+        }
+
+        thead {
+            background-color: orangered;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <table>
+        <thead>
+            <tr>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>性别</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr v-for="(p,index) in person">
+                <td>{{p.name}}</td>
+                <td>{{p.age}}</td>
+                <td>{{p.sex}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+    new Vue ({
+        el : "#app",
+        data : {
+            person : [
+                {name: '张三', age: 18, sex: '男'},
+                {name: '李四', age: 28, sex: '女'},
+                {name: '张三', age: 18, sex: '男'},
+                {name: '王五', age: 38, sex: '女'}
+            ]
+        }
+    });
+</script>
+</body>
+</html>

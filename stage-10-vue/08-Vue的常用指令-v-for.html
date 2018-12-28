@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <p v-for="(score,index) in scores">
+            索引:{{index}},分数:{{score}}
+        </p>
+
+        <p v-for="(d,key) in dog">
+            {{key + ':' + d}}
+        </p>
+
+        <p v-for="count in 10">
+            {{count}}
+        </p>
+
+
+        <p v-for="(p,index) in phone">
+            {{p}}
+        </p>
+
+    </div>
+<script src="js/vue.js"></script>
+<script>
+    new Vue ({
+        el : "#app",
+        data : {
+            scores : [100,90,70,60,5],
+            dog : {name : 'pyhton',age:2, width:1.44,weight:'100斤'},
+            phone : '18911223344',
+            str : 'wangfh'
+        }
+    });
+</script>
+
+</body>
+</html>

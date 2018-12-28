@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <img v-bind:src="imgSrc" v-bind:alt="alt">
+        <!--或者-->
+        <img :src="imgSrc1" :alt="alt">
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+        new Vue ({
+            el : "#app",
+            data : {
+                imgSrc : 'img/img_01.jpg',
+                imgSrc1 : 'img/img_02.jpg',
+                alt : '我是美女'
+            }
+        });
+    </script>
+</body>
+</html>

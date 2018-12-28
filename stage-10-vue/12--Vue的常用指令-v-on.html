@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<div id="app">
+    <p>{{msg}}</p>
+    <button v-on:click="msg = '王福豪'">改变内容</button>
+    <!--或者是-->
+    <button @click="msg='王福豪'">改变内容</button>
+
+    <!--执行方法-->
+    <button @click="changeContent()">改变内容</button>
+</div>
+<body>
+
+<script src="js/vue.js"></script>
+<script>
+    // 1. 创建Vue的实例
+    new Vue({
+        el: '#app',
+        data: {
+          msg: 'wangfuhao'
+        },
+        methods: {
+            changeContent() {
+                this.msg = '喜欢我, 就来呀';
+            }
+        }
+    });
+</script>
+</body>
+</html>

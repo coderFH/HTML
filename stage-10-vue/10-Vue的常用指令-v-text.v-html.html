@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <p>{{msg}}哈哈哈</p>
+    <p>{{html}}</p>
+
+    <!--使用v-text的模式比使用{{}}的模式的方便之处就在于
+    加入后边人为的不小心写了其他字符,使用v-text的时候人为的字符串是不显示的-->
+    <p v-text="msg">123</p>
+    <div v-html = "html">
+         我看现不现实
+         <input type="color">
+         这里边不管写啥,都不显示
+    </div>
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+    new Vue ({
+        el : "#app",
+        data : {
+            msg : 'wangfh',
+            html : '<input type="data"><input type="color">'
+        }
+    });
+</script>
+</body>
+</html>
