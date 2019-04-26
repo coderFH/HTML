@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>兄弟选择器</title>
+    <style>
+        /*查找后边一个兄弟元素*/
+        div + p{
+            color: red;
+        }
+
+         /*查找后边所有的兄弟元素*/
+        div ~ p{
+            background-color: skyblue;
+            color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="main">
+        <p>div中的p标签</p>
+        <span>
+               <p>div里面的span里面的p标签</p>
+        </span>
+    </div>
+    <p>与div相邻的p标签</p>
+    <p>与p相邻的p标签</p>
+    <p>与p相邻的p标签</p>
+    <p>与p相邻的p标签</p>
+    <p>与p相邻的p标签</p>
+
+</body>
+</html>
