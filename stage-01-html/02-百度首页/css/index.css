@@ -158,14 +158,14 @@
 
 .list-header .list-header-left {
     float: left;
-    font-size: 0;
+    font-size: 0; /*特殊用法,去除a标签之间的缝隙*/
 }
 
 .list-header .list-header-left  a {
     display: inline-block;
     height: 40px;
     line-height: 40px;
-    font-size: 14px;
+    font-size: 14px; /*因为前边设置了font-size为0去解决缝隙问题,所以在子标签中需要重新设置一下字体*/
     color: #555555;
     text-decoration: none;
     vertical-align: top;
@@ -195,7 +195,7 @@
     margin-right: 10px;
 }
 
-/*设置新闻内容的左边*/
+/*==============================================设置新闻内容的左边==============================================*/
 .list-body-left {
     width: 575px;
     height: 600px;
@@ -204,7 +204,7 @@
     float: left;
 }
 
-#list .list-body-left .content-cell1{
+#list .list-body-left .content-cell1 {
     border-bottom: 1px solid #ccc;
     padding-bottom: 5px;
     /*background-color: blue;*/
@@ -220,25 +220,25 @@
     font-size: 12px;
 }
 
-#list .list-body-left .content-cell2{
+#list .list-body-left .content-cell2 {
     height: 160px;
     border-bottom: 1px solid #ccc;
     padding: 20px 0;
 }
 
-#list .list-body-left .content-cell2 .cell-img{
+#list .list-body-left .content-cell2 .cell-img {
     float: left;
     width: 180px;
     height: 120px;
 }
 
-#list .list-body-left .content-cell2  .cell-content{
+#list .list-body-left .content-cell2  .cell-content {
     width: 350px;
     padding: 20px;
     float: left;
 }
 
-/*设置新闻内容的右边*/
+/*==============================================设置新闻内容的右边==============================================*/
 #list .list-body-right{
     width: 315px;
     height: 600px;
@@ -267,7 +267,7 @@
     vertical-align: middle;
 }
 
-#list .list-body-right .right-body{
+#list .list-body-right .right-body {
     padding: 0 20px;
 }
 
