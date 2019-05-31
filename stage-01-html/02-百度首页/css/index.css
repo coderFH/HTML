@@ -1,98 +1,68 @@
 * {
-    margin: 0px;
-    padding: 0px;
+    /*吧所有的边距清空*/
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-/*====================头部====================*/
+body {
+    height: 3000px;
+}
+
+/******************************头部******************************/
 #header {
+    height: 32px;
+    border-bottom: 1px solid #ebebeb;
     /*background-color: red;*/
-    height: 33px;
-    border-bottom: 1px solid lightgray;
 }
 
-.header-c-left {
+#header a {
+    color: #555;
+    font-size: 13px;
+}
+
+#header .header-left {
+    width: 270px;
+    height: 32px;
     float: left;
-    height: 33px;
-    line-height: 33px;
+    line-height: 32px;
 }
 
-.header-c-left img {
-    vertical-align: middle;
+#header .header-left a {
+    margin-left: 5px;
 }
 
-.header-c-left a,span{
-    color: #555;
-    font-size: 13px;
-    vertical-align: middle;
-}
-
-.header-c-right {
+#header .header-right {
+    width: 590px;
+    height: 32px;
     float: right;
-    height: 33px;
-    line-height: 33px;
+    line-height: 32px;
+    /*文字右对齐*/
+    text-align: right;
 }
 
-.header-c-right a {
-    color: #555;
-    font-size: 13px;
-    margin-left: 10px;
+#header .header-right a {
+    margin-left: 15px;
     font-weight: bolder;
 }
 
-.header-c-right .more {
+#header .header-right a.more-product {
     display: inline-block;
+    background-color: #398bfb;
     width: 86px;
-    height: 33px;
-    background-color: #398bfb;
-    text-decoration: none;
-    text-align: center;
-    line-height: 33px;
-    color: white;
+    height: 32px;
+    line-height: 32px;
     vertical-align: top;
-}
-
-/*====================搜索(自己的实现)====================*/
-#search {
-    width: 641px;
-    margin: 20px auto;
     text-align: center;
+    color: #fff;
+    text-decoration: none;
 }
 
-#search img {
-    width: 270px;
-    height: 112px;
-}
+/******************************头部******************************/
 
-#search form {
-    width: 641px;
-    background-color: red;
-    height: 40px;
-}
-
-#search .input-text {
-    width: 536px;
-    height: 40px;
-    float: left;
-    padding-left: 10px;
-    border: 1px solid #b8b8b8;
-}
-
-#search .submit {
-    width: 105px;
-    height: 40px;
-    background-color: #398bfb;
-    border: none;
-    color: white;
-    font-size: 16px;
-}
-
-#search .input-text:focus {
-    outline: none;
-    border-color: red;
-}
-/*==================好的实现方式=====================*/
+/******************************内容******************************/
 #content {
+    /*background-color: red;*/
     width: 641px;
     margin: 20px auto;
 }
@@ -100,6 +70,7 @@
 #content .content-logo {
     width: 641px;
     text-align: center;
+
 }
 
 #content .content-logo img {
@@ -108,12 +79,14 @@
 }
 
 #content .content-search {
+    /*background-color: green;*/
     width: 641px;
     height: 77px;
     padding-top: 10px;
 }
 
 #content .content-search form {
+    background-color: red;
     height: 40px;
     width: 641px;
 }
@@ -127,6 +100,7 @@
 }
 
 #content .content-search form .search-input:focus {
+    /*去除外边框*/
     outline: none;
     border-color: #398bfb;
 }
@@ -141,40 +115,45 @@
     font-size: 16px;
 }
 
-/*====================新闻====================*/
+/******************************内容******************************/
+
+/******************************列表******************************/
 #list {
-    margin: 0 auto;
     width: 893px;
     height: 600px;
-    border: 1px solid lavender;
+    border: 1px solid #ebebeb;
+    margin: 0 auto;
 }
 
 #list .list-header {
     width: 893px;
     height: 40px;
-    border-bottom: 1px solid lavender;
     line-height: 40px;
+    border-bottom: 1px solid #ebebeb;
 }
 
-.list-header .list-header-left {
+#list .list-header .list-header-left {
     float: left;
-    font-size: 0; /*特殊用法,去除a标签之间的缝隙*/
+    /*解决空格留白问题*/
+    font-size: 0;
 }
 
-.list-header .list-header-left  a {
+#list .list-header .list-header-left a {
+    /*改变标签的类型*/
     display: inline-block;
+    /*background-color: red;*/
     height: 40px;
     line-height: 40px;
-    font-size: 14px; /*因为前边设置了font-size为0去解决缝隙问题,所以在子标签中需要重新设置一下字体*/
-    color: #555555;
-    text-decoration: none;
-    vertical-align: top;
+    font-size: 14px;
     padding: 0 10px;
+
+    text-decoration: none;
+    color: #555555;
+    vertical-align: top;
 }
 
-.list-header .list-header-left  a  img {
+#list .list-header .list-header-left a img {
     vertical-align: middle;
-    margin-top: -7px;
 }
 
 #list .list-header .list-header-left a span {
@@ -185,18 +164,20 @@
     background-color: #ccc;
 }
 
-.list-header .list-header-right {
+#list .list-header .list-header-right {
     float: right;
-    line-height: 40px;
+    padding-right: 10px;
 }
 
-.list-header-right img {
+#list .list-header .list-header-right img {
     vertical-align: middle;
-    margin-right: 10px;
 }
 
-/*==============================================设置新闻内容的左边==============================================*/
-.list-body-left {
+#list .list-body {
+
+}
+
+#list .list-body .list-body-left {
     width: 575px;
     height: 600px;
     /*background-color: red;*/
@@ -204,50 +185,52 @@
     float: left;
 }
 
-#list .list-body-left .content-cell1 {
+#list .list-body .list-body-left .content-cell1{
     border-bottom: 1px solid #ccc;
     padding-bottom: 5px;
-    /*background-color: blue;*/
 }
 
-#list .list-body-left .content-cell1 h3 {
+#list .list-body .list-body-left .content-cell1 h3{
     margin-bottom: 10px;
 }
 
-#list .list-body-left p{
+#list .list-body .list-body-left p{
     margin: 10px 0;
     color: #666666;
     font-size: 12px;
 }
 
-#list .list-body-left .content-cell2 {
+#list .list-body .list-body-left .content-cell2{
     height: 160px;
     border-bottom: 1px solid #ccc;
     padding: 20px 0;
 }
 
-#list .list-body-left .content-cell2 .cell-img {
+#list .list-body .list-body-left .content-cell2 .cell-img{
     float: left;
     width: 180px;
     height: 120px;
 }
 
-#list .list-body-left .content-cell2  .cell-content {
+#list .list-body .list-body-left .content-cell2  .cell-content{
     width: 350px;
     padding: 20px;
     float: left;
 }
 
-/*==============================================设置新闻内容的右边==============================================*/
+
+/*右边*/
 #list .list-body-right{
     width: 315px;
     height: 600px;
     float: right;
+    /*background-color: red;*/
 }
 
-#list .list-body-right .right-top {
+#list .list-body-right .right-top{
     height: 60px;
     width: 315px;
+    /*background-color: green;*/
     padding: 20px;
 }
 
@@ -267,12 +250,13 @@
     vertical-align: middle;
 }
 
-#list .list-body-right .right-body {
+#list .list-body-right .right-body{
     padding: 0 20px;
 }
 
 #list .list-body-right .right-body li{
     list-style: none;
+    /*background-color: red;*/
     float: left;
     width: 130px;
     height: 40px;
@@ -280,5 +264,4 @@
     color: #666666;
     font-size: 14px;
 }
-
-
+/******************************列表******************************/

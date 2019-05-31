@@ -2,78 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>百度一下，你就google</title>
-     <meta name="renderer" content="webkit"/>
+    <title>百度一下,你就不知道</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <!--引入外部的css-->
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <!--头部-->
-    <header id="header">
-        <!--左边-->
-        <div class="header-c-left">
-            <img src="images/weather.png">
-            <span>|</span>
-            <a href="#">换肤</a>
-            <a href="#">消息</a>
-        </div>
-
-        <!--右边-->
-        <div class="header-c-right">
-            <a href="#">新闻</a>
-            <a href="#">hao123</a>
-            <a href="#">地图</a>
-            <a href="#">学术</a>
-            <a href="#">撩课学院</a>
-            <a  class="more" href="#">更多产品</a>
-        </div>
-    </header>
-
-    <!--搜索（自己的实现）-->
-    <div id="search">
+<!--头部-->
+<header id="header">
+    <!--左边-->
+    <div class="header-left">
+            <span>
+                <img src="images/weather.png" alt="" align="center">
+            </span>
+        <span class="msg-span">
+                 <span style="font-size: 10px;">|</span>
+                 <a href="#">换肤</a>
+                 <a href="#">消息</a>
+            </span>
+    </div>
+    <!--右边-->
+    <div class="header-right">
+        <a href="#">新闻</a>
+        <a href="#">hao123</a>
+        <a href="#">地图</a>
+        <a href="#">学术</a>
+        <a href="#">撩课学院</a>
+        <a href="#" class="more-product">更多产品</a>
+    </div>
+</header>
+<!--内容-->
+<section id="content">
+    <!--logo-->
+    <div class="content-logo">
         <img src="images/bd_logo.png" alt="">
-        <form action="">
-            <input class="input-text" type="text">
-            <input class="submit" type="submit" value="百度一下">
+    </div>
+    <!--搜索框-->
+    <div class="content-search">
+        <form action="#">
+            <input type="text" class="search-input">
+            <input type="submit" class="search-submit" value="百度一下">
         </form>
     </div>
-
-
-    <!--（好的实现方式）-->
-    <section id="content">
-        <!--logo-->
-        <div class="content-logo">
-            <img src="images/bd_logo.png" alt="">
+</section>
+<!--列表-->
+<div id="list">
+    <!--列表的头部-->
+    <div class="list-header">
+        <!--左边-->
+        <div class="list-header-left">
+            <a href="#">
+                <img src="images/person_icon.png" alt="">
+                <span>我的关注</span>
+            </a>
+            <a href="#"><span>推荐</span></a>
+            <a href="#"><span>导航 </span></a>
         </div>
-        <!--搜索框-->
-        <div class="content-search">
-            <form action="#">
-                <input type="text" class="search-input">
-                <input type="submit" class="search-submit" value="百度一下">
-            </form>
+        <!--右边-->
+        <div class="list-header-right">
+            <a href="#"><img src="images/setting_icon.png" alt=""></a>
         </div>
-    </section>
-
-
-
-    <!--新闻-->
-    <div id="list">
-        <!--头部-->
-        <div class="list-header">
-             <div class="list-header-left">
-                <a href="#">
-                    <img src="images/person_icon.png" alt="">
-                    <span>我的关注</span>
-                </a>
-                <a href="#"><span>推荐</span></a>
-                 <a href="#"><span>导航 </span></a>
-            </div>
-
-            <div class="list-header-right">
-                <img src="images/setting_icon.png">
-            </div>
-        </div>
-
+    </div>
+    <!--列表的身体-->
+    <div class="list-body">
         <!--左边-->
         <div class="list-body-left">
             <!--文章列表1-->
@@ -107,7 +98,6 @@
                 </div>
             </div>
         </div>
-
         <!--右边-->
         <div class="list-body-right">
             <div class="right-top">
@@ -134,5 +124,6 @@
             </div>
         </div>
     </div>
+</div>
 </body>
 </html>
