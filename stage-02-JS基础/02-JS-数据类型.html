@@ -6,7 +6,8 @@
 </head>
 <body>
 <script>
-    //=========================================1.输出helloworld=========================================
+    console.log("=========================================1.输出helloworld=========================================");
+
     //控制浏览器弹出一个警告框
     // alert("hello,world");
 
@@ -24,7 +25,7 @@
     //在网页中弹出提示框，显示信息，该方法一般与if判断语句结合使用
     // confirm("Hello，JavaScript！");
 
-    //=========================================2.声明变量=========================================
+    console.log("=========================================2.声明变量=========================================");
     //声明变量
     var name;
     var intro;
@@ -42,33 +43,38 @@
     var age = 200;
     console.log(name,intro,age);
 
-    //=========================================3.数据类型=========================================
+    console.log("=========================================3.数据类型=========================================");
     //字符串
+    console.log("=====字符串=====");
     var str = "itlike.com";
     str = "没有蛀牙";
-    console.log(typeof(str))
+    console.log(typeof(str));
 
+    var zhuanyi = '我是\'wfh\'';
+    console.log(zhuanyi);
+
+    console.log("=====数值=====");
     //数值(Number)
     var num1 = 123;
     var num2 = 3.14;
     console.log(typeof(num1),typeof(num2));
-    //最大值
-    console.log(Number.MAX_VALUE);
-    //最小值
-    console.log(Number.MIN_VALUE)
-     // 无穷大：Infinity, 如果超过了最大值就会返回该值
-    console.log(Number.MAX_VALUE + Number.MAX_VALUE); // Infinity
+
+    console.log(Number.MAX_VALUE);   //最大值
+    console.log(Number.MIN_VALUE);  //最小值
+
+    console.log(Number.MAX_VALUE + Number.MAX_VALUE);  // 无穷大：Infinity, 如果超过了最大值就会返回该值
     // 无穷小：-Infinity, 如果超过了最小值就会返回该值
     console.log(typeof Infinity); // number
     console.log(typeof -Infinity); // number
 
-    //是一个特殊的数字，表示Not A Number
-    var num3 = NaN;
+
+    var num3 = NaN; // 是一个特殊的数字，表示Not A Number
     console.log(typeof(num3));//number
 
+    console.log("=====Boolean布尔=====");
     //Boolean布尔
-    var bool = true
-    console.log(typeof (bool))
+    var bool = true;
+    console.log(typeof (bool));
 
     //Null和Undefined
     //Null:空值类型,  值只有一个: null
@@ -83,15 +89,15 @@
     console.log(str1 == str2);
     console.log(str1=== str2); //false
 
-
-    //=========================================4.数据类型转换=========================================
+    console.log("=========================================4.数据类型转换=========================================");
     //1.将其他的数据类型转换为String
     //方式1:toString() 该方法不会影响到原变量，它会将转换的结果返回
 
     var num = 12306;
     var str= num .toString();
     console.log(str); // 12306
-    console.log(typeof str); // string
+    console.log("str typeof = ",typeof str); // string
+    console.log("num typeof = ",typeof num);
 
     var num1 = true;
     var str1 = num1.toString();
@@ -116,6 +122,7 @@
     //对于Number和Boolean实际上就是调用的toString()方法
     //但是对于null和undefined，就不会调用toString()方法, 它会将 null 直接转换为 "null",  将 undefined 直接转换为 "undefined"
     var a = null;
+    console.log("没转之前",typeof(a));
     a = String(a);
     console.log("null转string",a);
     console.log("null转string:type:",typeof (a));
@@ -156,10 +163,12 @@
     var res1 = Number(str1);
     console.log(res1); // 123
     console.log(typeof  res1); // number
+
     //2.如果字符串中有非数字的内容，则转换为NaN
     var str2 = "itlike123";
     var res2 = Number(str2);
     console.log(res2); // NaN
+
     //3.如果字符串是一个空串或者是一个全是空格的字符串，则转换为0
     var str3 = "";
     var res3 = Number(str3);
@@ -214,7 +223,7 @@
     var a = true;
     a = parseInt(a);
 
-    console.log(typeof (a));
+    console.log("对非String使用parseInt()或parseFloat()",typeof (a));
     console.log(a);
 
     //3.将其他的数据类型转换为Boolean
@@ -224,7 +233,7 @@
     //null和undefined都会转换为false
     //对象转换为true
 
-    //=========================================5. 进制表示=========================================
+    console.log("=========================================5. 进制表示=========================================");
     //16进制的数字，则需要以0x开头
     //8进制的数字，则需要以0开头
     //2进制的数字，则需要以0b开头
@@ -234,8 +243,8 @@
     num2 = 0xAacf;
 
     //八进制
-    num= 016;
-    console.log("八进制",num);
+    // num= 016;
+    // console.log("八进制",num);
 
     //二进制
     num = 0b1010;
@@ -245,7 +254,6 @@
     str = "0x345";
     str= parseInt(str,10);
     str = Number(str);
-
     console.log(typeof str);
     console.log(str);
 
