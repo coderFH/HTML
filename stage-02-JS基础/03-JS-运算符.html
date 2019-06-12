@@ -5,18 +5,20 @@
     <title></title>
 </head>
 <body>
-    <script type="text/html">
+
+    <script>
+        console.log("==========================算数运算符=======================");
         // 算术运算符
-        /*var res = 1 + 1;
+        var res = 1 + 1;
         console.log(res); // 2
 
         var num1 = 10;
         var num2 = 20;
         var res2 = num1 + num2;
-        console.log(res2); // 30*/
+        console.log(res2); // 30
 
         // 非Number类型的值进行运算时，会将这些值转换为Number然后在运算
-        /*var res = true + 100;
+        var res = true + 100;
         console.log(res); // 101
 
         var res1 = true + false;
@@ -26,25 +28,27 @@
         console.log(res2); // 10
 
         var res3 = undefined + 10;
-        console.log(res3); // NaN
+        console.log("undefined+10 = ",res3); // NaN
 
         var res4 = '123' + 456;
-        console.log(res4);*/
+        console.log(res4);//123456
 
         // 任何值和NaN做运算都得NaN
         var res5 = 10 + NaN;
-        console.log(res5);
+        console.log(res5); //NaN
 
         var result = 10 + "123";
         console.log(result); // 10123
         result = 1 + "true";
         console.log(result); // 1true
     </script>
-    <script type="text/html">
-        /*var num1 = '100';
+
+    <script>
+        console.log("==========================乘法运算符=======================");
+        var num1 = '100';
         var num2 = '200';
         var res2 = num1 * num2;
-        console.log(res2); // 200000*/
+        console.log(res2); // 200000
 
         var res = 10 % 4;
         console.log(res); // 2
@@ -54,10 +58,12 @@
         var res2 = num1 % num2;
         console.log(res2); // 0
     </script>
-    <script type="text/html">
-        /*var num = -123;
+
+    <script>
+        console.log("==========================正负运算符=======================");
+        var num = -123;
         num = -num;
-        console.log(num); // 123*/
+        console.log(num); // 123
 
         var bool = true;
         var res = +bool;
@@ -73,41 +79,46 @@
 
         var temp = undefined;
         res = +temp;
-        console.log(res); // 0
+        console.log("undefined = ",res); // NaN 正负运算符只能对number类型进行  所以转换后会是NaN
     </script>
-    <script type="text/html">
-        /* var num = 100;
+
+    <script>
+        console.log("==========================赋值运算符=======================");
+        var num = 100;
         var value = num;
         num = 90;
 
-        console.log(value); // 100*/
+        console.log(value); // 100
 
-        /*var num = 100;
+        var num = 100;
         var str = num;
 
-        var 100 = 200;
+        /*var 100 = 200;
         var str1;
         100 = str1;*/
 
-        /*   var a = b = c = d = 10;
+        var a = b = c = d = 10;
         console.log(a);
         console.log(b);
         console.log(c);
-        console.log(d);*/
+        console.log(d);
 
-        /*var a = 10;
+        var a = 10;
         var b = 20;
         a = a + 30;
         b = b / 10;
         a += 30;
-        b /= 10;*/
+        b /= 10;
 
         var a = 10;
         a *= 2 + 5;
         console.log(a); // 70
+
     </script>
-    <script type="text/html">
-        /*var num = 1;
+
+    <script>
+        console.log("========================== 自增运算符=======================");
+        var num = 1;
         num++; // 等价于 num = num + 1;
         console.log(num); // 2
 
@@ -151,15 +162,17 @@
         console.log(a); // 19
         console.log(b); // 29
     </script>
-    <script type="text/html">
-        /* //如果两个值都是true则返回true
+
+    <script>
+        console.log("==========================关系运算符=======================");
+        //如果两个值都是true则返回true
         var result = 10 < 5 && 100 < 200;
         console.log(result);
 
         //只要有一个false，就返回false
         result = true && false;
         result = false && true;
-        result = false && false;*/
+        result = false && false;
 
         //第一个值为true，会检查第二个值
         // 10 < 3 && alert("我来了！！");
@@ -178,13 +191,15 @@
         console.log(result); // null
 
     </script>
-    <script type="text/html">
-        /* var a = 0;
+
+    <script>
+        console.log("==========================逻辑运算符=======================");
+        var a = 0;
         var b = 0;
         var c = 30;
 
         var res = a || b || c;
-        console.log(res);*/
+        console.log(res);
 
         //第一个值为false，则会检查第二个值
         // false || alert("123");
@@ -203,9 +218,10 @@
         var num = 0;
         var res = !num; // 先将10转换为true, 然后再取反
         console.log(res); // false
-
     </script>
-    <script type="text/html">
+
+    <script>
+        console.log("==========================关系运算符1=======================");
         /* var a, b;
         a = 20;
         b = 20;
@@ -229,7 +245,9 @@
         var str1 = '百度一下';
         console.log(str < str1);
     </script>
-    <script type="text/html">
+
+    <script>
+        console.log("==========================关系运算符2=======================");
         console.log(null == 0); // false
         console.log(undefined == 0); // false
         // 永远不要判断两个NaN是否相等
@@ -262,12 +280,14 @@
         console.log(parseInt("1111123") < parseInt("124"));
 
     </script>
-    <script type="text/html">
-       /* var a = 10,
+
+    <script>
+        console.log("======================逗号运算符===========================");
+        var a = 10,
             b = '占山',
             c = 10;
 
-        a = 1 + 1,b = 3 * 4, c = 10 / 2;*/
+        a = 1 + 1,b = 3 * 4, c = 10 / 2;
 
       /* var a, b, c, d;
        d = (a = 1 + 1,b = 3 * 4, c = 10 * 2);
@@ -279,13 +299,16 @@
 
         }
     </script>
+
     <script type="text/html">
         // 弹第一个
         10 > 9 ? alert("语句1") : alert("语句2");
         // 弹第二个
         //  false ? alert("语句1") : alert("语句2");
     </script>
+
     <script>
+        console.log("======================三目运算符===========================");
         // 用户从键盘输入3个整数, 找到最大值并输出?
         // 1. 定义变量
         var num1, num2, num3, max;
@@ -297,19 +320,20 @@
         console.log(num1, num2, num3);
 
         // 3. 比较最大值
-       /* max = num1 >= num2 ? num1 : num2;
+        /* max = num1 >= num2 ? num1 : num2;
         max = max >= num3 ? max : num3;*/
 
-       // 不推荐
-       max = (num1 >= num2 ? num1 : num2) > num3 ? (num1 >= num2 ? num1 : num2) : num3;
+        // 不推荐
+        max = (num1 >= num2 ? num1 : num2) > num3 ? (num1 >= num2 ? num1 : num2) : num3;
 
         // 4. 输出结果
         alert(max);
-
     </script>
-    <script type="text/html">
+
+    <script>
+        console.log("======================自增运算符练习===========================");
         // i++ ++i i-- --i
-        /*  var a = 10, b =20;
+        var a = 10, b =20;
         var c = (a++) + (b++);
         console.log(c); // 30
         // a 11 b 21*/
@@ -318,18 +342,20 @@
         var c = (--a) + (--b); // 9 19
         console.log(c);  // 28
     </script>
-    <script type="text/html">
+
+    <script>
+        console.log("==========================代码块1=======================");
         // ES5
         {
-        var a = 10;
-        var b = 10;
-        var c = 10;
+            var a = 10;
+            var b = 10;
+            var c = 10;
         }
 
         {
-        a++;
-        b++;
-        c = a++ + b++;
+            a++;
+            b++;
+            c = a++ + b++;
         }
 
         {
@@ -338,13 +364,14 @@
         console.log(c);
         }
     </script>
-    <script type="text/html">
-        {
-        var name = '撩课学院';
-        console.log("itlike.com");
-        document.write("喜欢IT, 就上撩课!");
-        }
 
+    <script>
+        console.log("==========================代码块2=======================");
+        {
+            var name = '撩课学院';
+            console.log("itlike.com");
+            document.write("喜欢IT, 就上撩课!");
+        }
         console.log("name = " + name);
     </script>
 
