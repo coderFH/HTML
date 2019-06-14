@@ -6,7 +6,8 @@
 </head>
 <body>
     <!--===========================================1.对象的基本使用===========================================-->
-    <script type="text/html">
+    <script>
+        console.log("=====================1.对象的基本使用=====================");
         // 1. 创建对象
         var obj = new Object();
 
@@ -36,18 +37,21 @@
         console.log(typeof obj); // object
     </script>
 
-    <script type="text/html">
+    <script>
+        console.log("=====================2.对象的基本使用2=====================");
+        //对象的属性不强制要求遵循标识符的规范,怎么写都可以,但还是按照标准来的好
         var obj = new Object();
         obj.name = "wfh";
         obj.if = "如果";
         obj.var = '定义';
         console.log(obj);
 
-        // 语法: 对象["属性名"] = 属性值
 
+        //如果要使用特殊的属性名,不能采用.的方式来操作,需要使用另一种方式  语法: 对象["属性名"] = 属性值
         var obj1 = new Object();
         // obj1.123= '123'; //报错
-        console.log(obj1);
+        obj1[123] = "123";
+        console.log(obj1[123]);
 
         var obj2 = new Object();
         var name = 'name';
@@ -59,11 +63,15 @@
         console.log(obj2);
     </script>
 
-    <script type="text/html">
+    <script>
+        console.log("=====================3.对象的基本使用3=====================");
+        //JS对象的属性值,可以是任意的数据类型,也可以是一个对象
         var obj = new Object();
+        obj.content = null;
+        console.log(obj.content);
 
         var obj2 = new Object();
-        obj2.name = "小花花";
+        obj2.name = "小猫贝贝";
 
         obj.dog = obj2;
 
@@ -72,21 +80,26 @@
     </script>
 
     <!--==========================================2.in 运算符===========================================-->
-    <script type="text/html">
+    <script>
+        console.log("=====================3.in 运算符=====================");
+        //可以检查一个对象中时候含有指定的属性,有则返回true,没有false
         // "属性名" in 对象
         // 1. 创建对象
-        var obj = new Object();
+        var objin = new Object();
 
         // 2. 向对象添加属性: 对象.属性名 = 属性值;
-        obj.name = '张三';
-        obj.age = 18;
-        obj.sex = '男';
+        objin.name = '张三';
+        objin.age = 18;
+        objin.sex = '男';
 
-        console.log("cxxx" in obj);
+        console.log("cxxx" in objin); //false
+        console.log(name in objin); //true
+        console.log("name" in objin); //true
     </script>
 
-    <script type="text/html">
-        // 基本的数据类型
+    <script>
+        console.log("=====================4.基本类型和引用类型在堆栈中的表示=====================");
+
         var a = 10;
         var b = a;
         console.log(a); // 10
@@ -107,6 +120,7 @@
 
      <!--===========================================7. 对象字面量===========================================-->
     <script>
+        console.log("====================5. 对象字面量=====================");
         var obj = {
             name: '张三',
             age: 18,
