@@ -5,8 +5,8 @@
     <title>JS面向对象</title>
 </head>
 <body>
-    <!--===========================================1.js中对象的回顾===========================================-->
-    <script type="text/html">
+    <script>
+        console.log("========================1.js中对象的回顾===================");
         var dog = {
             //属性
             name : '旺财',
@@ -29,8 +29,9 @@
         console.log(dog.name);
     </script>
 
-    <!--===========================================2.使用工厂模式,制作对象模板===========================================-->
-    <script type="text/html">
+
+    <script>
+        console.log("=======================2.使用工厂模式,制作对象模板====================");
         //工程模式
         function Person() {
             var obj = new Object();
@@ -71,8 +72,9 @@
         console.log(p3);
     </script>
 
-    <!--===========================================3.构造函数===========================================-->
-    <script type="text/html">
+
+    <script>
+        console.log("=======================3.构造函数============================");
         //1.构造函数(类)
         function Dog(name,age,dogFriends) {
             //1.1属性
@@ -102,9 +104,11 @@
         console.log(smallDog === bigDog);
     </script>
 
-    <!--===========================================4.this===========================================-->
-    <script type="text/html">
-         // 解析器在调用函数每次都会向函数内部传递进一个隐含的参数, 这个隐含的参数就是this，this指向的是一个对象 ， 这个对象我们称为函数执行的上下文对象
+
+    <script>
+         console.log("=======================4.this========================");
+         // 解析器在调用函数每次都会向函数内部传递进一个隐含的参数, 这个隐含的参数就是this，this指向的是一个对象 ，
+         // 这个对象我们称为函数执行的上下文对象
          function doIt() {
             console.log(this);
          }
@@ -129,8 +133,9 @@
         obj2.logSelf(); // this --> obj2
     </script>
 
-    <!--===========================================5.instanceof===========================================-->
-    <script type="text/html">
+
+    <script>
+        console.log("======================5.instanceof=======================");
         //使用instanceof可以检查一个对象是否是一个类的实例
         // 人类(构造函数)
         function Person(name, age, sex) {
@@ -158,27 +163,28 @@
         console.log(dog);
 
         // 对象 instanceof 构造函数  true false
-       /* console.log(p1 instanceof Person);
-        console.log(p1 instanceof Dog);
-        console.log(dog instanceof Dog);*/
+       console.log(p1 instanceof Person);//true
+        console.log(p1 instanceof Dog); //false
+        console.log(dog instanceof Dog);//true
 
-        console.log(dog instanceof Object);
-        console.log(p1 instanceof Object);
+        console.log(dog instanceof Object);//true
+        console.log(p1 instanceof Object);//true
 
         console.log(typeof dog);
         console.log(typeof p1);
     </script>
 
-    <!--===========================================6.prototype ===========================================-->
-    //让我们有能力动态给对象添加属性和方法
-    <script type="text/html">
+
+    <script>
+         //让我们有能力动态给对象添加属性和方法
+        console.log("===================6.prototype ========================");
         function Person(name, age, sex) {
             this.name = name;
             this.age = age;
             this.sex = sex;
             this.text = '我是嫡系的';
         }
-
+        //向原型库中添加一个方法
         Person.prototype.logName = function () {
              alert('我是' + this.name);
         }
@@ -198,15 +204,16 @@
 
         console.log(p1.logName === p2.logName);
         console.log(p1.logName === p3.logName);
-        console.log(p1.text);
+        console.log(p1.text);//优先从自身去找text属性,如果没有,会去原型库中去找
         console.log(p1.__proto__.text);
         console.log(p1.__proto__);
     </script>
 
     <script>
+        console.log("===================7.测试添加属性和方法 ========================");
         Array.prototype.test = '测试';
         Array.prototype.eat = function () {
-            alert('数组会吃东西!');
+            console.log('数组会吃东西!');
         };
 
         var arr1 = new Array();
