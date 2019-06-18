@@ -20,13 +20,14 @@
         <button>按钮</button>
     </div>
 
-    <!--============================1. 节点的创建和删除============================-->
-    <script type="text/html">
+
+    <script>
+        console.log("================1. 节点的创建和删除================");
         window.onload = function () {
             var box = document.getElementById('box');
             //1.创建节点
             var img = document.createElement('img');
-            img.src = ''
+            img.src = '';
             img.alt = '这是一个美女哦!';
             //在尾部追加这个节点
             box.appendChild(img);
@@ -49,8 +50,9 @@
         }
     </script>
 
-    <!--============================2. 克隆节点============================-->
+
     <script>
+        console.log("==================2. 克隆节点=====================");
         window.onload = function () {
             var box = document.getElementsByClassName('clone')[0];
             var newBox = box.cloneNode(); //浅拷贝,不会拷贝它下边的子元素
@@ -64,8 +66,9 @@
         }
     </script>
 
-    <!--============================3.  节点属性（节点.属性）============================-->
-    <script type="text/html">
+
+    <script>
+        console.log("==============3.  节点属性（节点.属性）===================");
         window.onload = function () {
             //1.获取
             var img = document.getElementsByTagName('img')[0];
@@ -81,9 +84,9 @@
             img.setAttribute('bbb','这是谁');
 
             //3.删除
-            img.removeAttribute('src');
-            img.removeAttribute('aaa');
-            img.removeAttribute('bbb');
+            // img.removeAttribute('src');
+            // img.removeAttribute('aaa');
+            // img.removeAttribute('bbb');
         }
     </script>
 

@@ -14,24 +14,28 @@
         <div>itlike</div>
     </div>
 
-    <!--============================1. 获取父节点(parentNode)============================-->
-    <script type="text/html">
+
+    <script>
+        console.log("==================1. 获取父节点(parentNode)==============");
         window.onload = function () {
             var a = document.getElementsByTagName('a')[0];
+            console.log(a);
             //1.获取父节点
             var parentNode = a.parentNode.parentNode;
             console.log(parentNode);
 
             //2.改变颜色
             var btn = document.getElementsByClassName("btn")[0];
+            console.log(btn);
             btn.onclick = function () {
                 parentNode.style.backgroundColor = 'red';
             }
         }
     </script>
 
-    <!--============================2. 上一个\下一个兄弟节点============================-->
-    <script type="text/html">
+
+    <script>
+        console.log("===========2. 上一个\下一个兄弟节点===========");
         window.onload = function () {
             var span = document.getElementsByClassName('span')[0];
             //上一个兄弟
@@ -44,8 +48,9 @@
         }
     </script>
 
-    <!--============================3. 获取标签中第一个子节点\最后一个子节点============================-->
-    <script type="text/html">
+
+    <script>
+        console.log("=============3. 获取标签中第一个子节点\最后一个子节点================");
         window.onload = function () {
             var box = document.getElementById('box');
             //1.获取第一个子节点
@@ -54,8 +59,10 @@
             console.log(box.lastElementChild || box.lastChild);
         }
     </script>
-    <!--============================4. 获取所有元素节点============================-->
-    <script type="text/html">
+
+
+    <script>
+        console.log("=================4. 获取所有元素节点=======================");
         var box = document.getElementById('box');
         var allNodeList = box.childNodes;
         var newNodeList = [];
@@ -68,8 +75,10 @@
         }
         console.log(newNodeList);
     </script>
-    <!--============================5. 获取任意兄弟节点============================-->
+
+
     <script>
+        console.log("==================5. 获取任意兄弟节点=========================");
         window.onload = function () {
             var p = document.getElementsByClassName('p')[0];
             console.log(p.parentNode.children[p.parentNode.children.length - 2]);
