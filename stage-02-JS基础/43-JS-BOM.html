@@ -11,7 +11,8 @@
     <a href="http://www.itlike.com">官网</a>
 
 
-<script type="text/html">
+<script>
+    console.log("================1.bom的常见对象=============");
     console.log(window);
     console.log(navigator);
     console.log(location);
@@ -19,10 +20,11 @@
     console.log(screen);
 </script>
 
-<script type="text/html">
+<script>
+    console.log("================2.navigator================");
     window.onload = function (ev) {
         var userAgent = navigator.userAgent;
-        // console.log(userAgent);
+        console.log(userAgent);
 
         if(/chrome/i.test(userAgent)){
             alert('我是你哥,我叫谷歌!');
@@ -36,21 +38,23 @@
     }
 </script>
 
-    <!--================================history================================-->
-<script type="text/html">
+
+<script>
+    console.log("=================3.history=====================");
     window.onload = function (ev) {
         var btn = document.getElementById("btn");
         btn.addEventListener('click', function (ev1) {
-             // alert(history.length);
-            //history.back();
-            // history.forward();
-           // history.go(-1);
+            alert(history.length);
+            history.back();
+            history.forward();
+            history.go(-1);
         });
     }
 </script>
 
-<!--================================location================================-->
+
 <script>
+    console.log("=================location====================");
     window.onload = function (ev) {
         var btn = document.getElementById("btn");
         btn.addEventListener('click', function (ev1) {
