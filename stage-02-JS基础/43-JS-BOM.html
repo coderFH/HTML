@@ -14,14 +14,14 @@
 <script>
     console.log("================1.bom的常见对象=============");
     console.log(window);
-    console.log(navigator);
+    console.log(navigator); //当前浏览器的一些信息
     console.log(location);
-    console.log(history);
+    console.log(history);//操作浏览器向前向后的翻页
     console.log(screen);
 </script>
 
 <script>
-    console.log("================2.navigator================");
+    console.log("================2.navigator(想看到效果,请注释3案例)================");
     window.onload = function (ev) {
         var userAgent = navigator.userAgent;
         console.log(userAgent);
@@ -34,6 +34,8 @@
             alert('我是IE, 不服就来打我!');
         }else if("ActiveXObject" in window) {
             alert('我是IE11!!');
+        } else {
+            alert('我是谁你不知道吧!!');
         }
     }
 </script>
@@ -53,21 +55,21 @@
 </script>
 
 
-<script>
-    console.log("=================location====================");
-    window.onload = function (ev) {
-        var btn = document.getElementById("btn");
-        btn.addEventListener('click', function (ev1) {
-             // alert(location);
-            // location = 'http://www.itlike.com';
-            // location.href = 'http://www.itlike.com';
-            // location.assign("http://www.itlike.com");
+<!--<script>-->
+    <!--console.log("=================location====================");-->
+    <!--window.onload = function (ev) {-->
+        <!--var btn = document.getElementById("btn");-->
+        <!--btn.addEventListener('click', function (ev1) {-->
+             <!--// alert(location);-->
+            <!--// location = 'http://www.itlike.com';-->
+            <!--// location.href = 'http://www.itlike.com';-->
+            <!--// location.assign("http://www.itlike.com");-->
 
-            // location.reload(true);
-            location.replace('01-BOM对象.html');
-        });
-    }
-</script>
+            <!--// location.reload(true);-->
+            <!--location.replace('01-BOM对象.html');-->
+        <!--});-->
+    <!--}-->
+<!--</script>-->
 
 </body>
 </html>
