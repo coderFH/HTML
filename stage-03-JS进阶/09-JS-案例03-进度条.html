@@ -64,7 +64,7 @@
          <div id="progress_value">0%</div>
     </section>
 
-<script src="../stage-02-JS基础/44-FHTool.js"></script>
+<script src="../stage-02-JS基础/js/44-FHTool.js"></script>
 <script>
     window.addEventListener('load', function () {
         // 1. 监听鼠标按下
@@ -78,7 +78,7 @@
                 var x = ev1.clientX - beginLeft;
                 // 边界值处理
                if(x < 0){ // 最小值
-                   x =0;
+                   x = 0;
                }else if(x > $('progress_bar').offsetWidth - $('mask').offsetWidth){ // 最大值
                    x = $('progress_bar').offsetWidth - $('mask').offsetWidth
                }
@@ -90,7 +90,7 @@
                 $('progress_value').innerText = Math.floor(x / ($('progress_bar').offsetWidth - $('mask').offsetWidth) * 100 )+ '%';
 
                 // 结束移动
-                return false;
+                return false;//移动事件结束
             };
 
             document.onmouseup = function (ev1) {

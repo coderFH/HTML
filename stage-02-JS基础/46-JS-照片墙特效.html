@@ -26,6 +26,7 @@
             box-shadow: 0 0 10px #000;
             position: absolute;
 
+            /*点击图片的时候,有个过渡的效果*/
             transition: all 1s;
         }
 
@@ -50,7 +51,7 @@
             var li = document.createElement('li');
             $('ps').appendChild(li);
 
-            // 1.2 创建图像标签g
+            // 1.2 创建图像标签
             var img = document.createElement('img');
             img.src = 'img/zpq' + (i + 1) + '.jpg';
             li.appendChild(img);

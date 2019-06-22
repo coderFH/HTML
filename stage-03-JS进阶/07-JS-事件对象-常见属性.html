@@ -57,14 +57,14 @@
 
         // clientX 和 clientY   是以当前可视区域为基准，类似于固定定位。
         //光标相对于该网页的水平位置和垂直位置
-        alert(event.clientX + ',' + event.clientY);
+        alert("clientX 和 clientY "+ event.clientX + ',' + event.clientY);
 
         // screenX 和 screenY   是以屏幕为基准进行测量，即：当前元素距离屏幕的尺寸
         //光标相对于该屏幕的水平位置和垂直位置
-        alert(event.screenX + ',' + event.screenY);
+        alert("screenX 和 screenY" + event.screenX + ',' + event.screenY);
 
         // pageX  和 pageY  是以当前文档（绝对定位）为基准，不适用于IE6-8;
-        alert(event.pageX + ',' + event.pageY);
+        alert("pageX  和 pageY" + event.pageX + ',' + event.pageY);
     })
 </script>
 </body>

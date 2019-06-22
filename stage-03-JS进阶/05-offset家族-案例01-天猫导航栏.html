@@ -62,7 +62,7 @@
         <li>飞猪旅行</li>
     </ul>
 </nav>
-<script src="../stage-02-JS基础/44-FHTool.js"></script>
+<script src="../stage-02-JS基础/js/44-FHTool.js"></script>
 <script>
     window.addEventListener('load', function (event) {
         // 1. 获取需要的标签
@@ -80,14 +80,15 @@
             var li = allLis[i];
 
             // 2.3 监听鼠标的事件
+            //鼠标进入
             li.addEventListener('mouseover', function (evt) {
                 end = this.offsetLeft;
             });
-
+            //鼠标点下
             li.addEventListener('mousedown', function (evt) {
                 beginX = this.offsetLeft;
             });
-
+            //鼠标移除
             li.addEventListener('mouseout', function (evt) {
                 end = beginX;
             });
