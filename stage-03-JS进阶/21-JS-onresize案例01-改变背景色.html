@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="./js/LKTool.js"></script>
+<script>
+    window.addEventListener('load', function (ev) {
+
+        // 1. 先调用
+        changeBgColor();
+
+        // 2. 页面的尺寸发生改变
+        window.addEventListener('resize', changeBgColor)
+    });
+
+    function  changeBgColor() {
+        var bgColor;
+        if(client().width >= 960){ // 红色
+            bgColor = 'red';
+        }else if(client().width >= 640){ //蓝色
+            bgColor = 'blue';
+        }else { // 绿色
+            bgColor = 'green';
+        }
+        document.body.style.backgroundColor = bgColor;
+    }
+</script>
+</body>
+</html>

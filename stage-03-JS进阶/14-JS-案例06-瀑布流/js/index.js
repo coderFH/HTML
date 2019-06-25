@@ -3,39 +3,54 @@ window.addEventListener('load', function (ev) {
     waterFull('main', 'box');
 
     // 2. 动态加载新的盒子
+    var timerId = null;
     window.addEventListener('scroll', function (ev1) {
-        // 2.1 判断是否具备加载的条件
-        if (checkWillLoadImage()) { // true
-            // 2.2 造数据
-            var dataArr = [
-                {'src': 'img01.jpg'},
-                {'src': 'img04.jpg'},
-                {'src': 'img05.jpg'},
-                {'src': 'img06.jpg'},
-                {'src': 'img08.jpg'},
-                {'src': 'img10.jpg'},
-                {'src': 'img02.jpg'},
-                {'src': 'img30.jpg'}
-            ];
+        clearTimeout(timerId);
+        timerId = setTimeout(function () {
+            // 2.1 判断是否具备加载的条件
+            if (checkWillLoadImage()) { // true
+                // 2.2 造数据
+                var dataArr = [
+                    {'src': 'img01.jpg'},
+                    {'src': 'img04.jpg'},
+                    {'src': 'img05.jpg'},
+                    {'src': 'img06.jpg'},
+                    {'src': 'img08.jpg'},
+                    {'src': 'img10.jpg'},
+                    {'src': 'img02.jpg'},
+                    {'src': 'img30.jpg'}
+                ];
 
-            // 2.2 遍历假数据, 不断加载
-            for (var i = 0; i < dataArr.length; i++) {
-                var newBox = document.createElement('div');
-                newBox.className = 'box';
-                $('main').appendChild(newBox);
+                // 2.2 遍历假数据, 不断加载
+                for (var i = 0; i < dataArr.length; i++) {
+                    var newBox = document.createElement('div');
+                    newBox.className = 'box';
+                    $('main').appendChild(newBox);
 
-                var newPic = document.createElement('div');
-                newPic.className = 'pic';
-                newBox.appendChild(newPic);
+                    var newPic = document.createElement('div');
+                    newPic.className = 'pic';
+                    newBox.appendChild(newPic);
 
-                var newImg = document.createElement('img');
-                newImg.src = 'images/' + dataArr[i].src;
-                newPic.appendChild(newImg);
+                    var newImg = document.createElement('img');
+                    newImg.src = 'images/' + dataArr[i].src;
+                    newPic.appendChild(newImg);
+                }
+
+                // 2.3 重新布局
+                waterFull('main', 'box');
             }
+        },200);
+    });
 
-            // 2.3 重新布局
-            waterFull('main', 'box');
-        }
+    //3.页面的尺寸发生改变
+    var timer = null;
+    window.addEventListener('resize',function () {
+        //3.1 清除定时器
+        clearTimeout(timer);
+        //3.2 设置定时器
+        timer = setTimeout(function () {
+            waterFull('main','box');
+        },200);
     });
 });
 
@@ -89,12 +104,9 @@ function waterFull(parentBox, childBox) {
             allBox[i].style.top = minBoxHeight + 'px';
             // 2.2.6 更新最矮的高度
             heightArr[minBoxIndex] += boxHeight;
-
         }
     }
-
     console.log(heightArr, minBoxHeight, minBoxIndex);
-
 }
 
 /**

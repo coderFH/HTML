@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            padding: 20px;
+            border: 10px solid #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="box"></div>
+
+    <script>
+        var box = document.getElementById('box');
+        // 内容 + 内边距
+        console.log(box.clientWidth, box.clientHeight);
+        // 边框 + 内边距 + 内容
+        console.log(box.offsetWidth, box.offsetHeight);
+    </script>
+</body>
+</html>

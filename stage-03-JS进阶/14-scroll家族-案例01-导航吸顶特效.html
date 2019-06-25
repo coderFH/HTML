@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        img {
+            vertical-align: top;
+            width: 100%;
+        }
+        section {
+            width: 70%;
+            margin: 0 auto;
+        }
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header id="head">
+        <img src="images/top.png">
+    </header>
+    <nav id="nav">
+        <img src="images/nav.png">
+    </nav>
+
+    <section>
+        <img src="images/body01.png" alt="">
+        <img src="images/body02.png" alt="">
+    </section>
+
+    <script src="./js/LKTool.js"></script>
+    <script>
+        window.addEventListener('load',function () {
+            var navTopH = $('nav').offsetTop;
+            window.addEventListener('scroll',function () {
+                var scrollTopH = scroll().top;
+                if (scrollTopH >= navTopH) {
+                    addClass($('nav'),"nav")
+                }else  {
+                    removeClass($('nav'),'nav')
+                }
+            });
+        });
+    </script>
+</body>
+</html>
