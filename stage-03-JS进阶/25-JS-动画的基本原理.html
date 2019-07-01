@@ -3,8 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 150px;
+            height: 150px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 100px;
+        }
+    </style>
+
 </head>
 <body>
+    <button id="btn">往右走</button>
+    <div id="box"></div>
 
+<script src="./js/LKTool.js"></script>
+<script>
+    // 基本原理: 盒子的offsetLeft + 步长
+    window.onload = function (ev) {
+        var timer = null,target = 600;
+        $('btn').onclick = function (ev1) {
+            //1.清除定时器
+            clearInterval(timer);
+            //2.设置定时器
+            timer = setInterval(function () {
+                $('box').style.left = $('box').offsetLeft + 10 + 'px';
+
+                 if($('box').offsetLeft >= target){
+                     $('box').style.left = target + 'px';
+                     clearInterval(timer);
+                 }
+            });
+        }
+    }
+</script>
 </body>
 </html>

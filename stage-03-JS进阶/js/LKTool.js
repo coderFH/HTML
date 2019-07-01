@@ -118,3 +118,26 @@ function client() {
         'height': document.body.clientHeight
     }
 }
+
+/**
+ * 匀速动画函数
+ * @param {object}obj
+ * @param {number}target
+ * @param {number}speed
+ */
+function constant(obj, target, speed) {
+    // 1. 清除定时器
+    clearInterval(obj.timer);
+
+    // 2. 判断方向
+    var dir = obj.offsetLeft <= target ? speed : -speed;
+
+    // 3. 设置定时器
+    obj.timer = setInterval(function () {
+        obj.style.left = obj.offsetLeft + dir + 'px';
+        if(Math.abs(target - obj.offsetLeft) <= Math.abs(dir)){
+            obj.style.left = target + 'px';
+            clearInterval(obj.timer);
+        }
+    });
+}

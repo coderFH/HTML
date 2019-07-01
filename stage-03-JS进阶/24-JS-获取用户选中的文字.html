@@ -3,8 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #word {
+            margin: 100px;
+            width: 300px;
+        }
+
+        #share_weibo {
+            width: 26px;
+            height: 26px;
+            background: url("images/share.gif");
+
+            position: absolute;
+            display: none;
+        }
+    </style>
 </head>
 <body>
+    <p id="word">腾讯科技讯 据外媒报道，微软联合创始人比尔-盖茨是很多有抱负的企业家崇拜的偶像。但是，阿里巴巴创始人马云在周四却称，在他刚开出道的时候，他非常恨盖茨。 “在我年轻的时候，我非常恨比尔-盖茨，因为我当时觉得微软抢走了我们的一切机会。”马云在以色列特拉维夫的一次创新峰会上演讲时说。 “还有IBM、甲骨文，它们抢走了一切机会。”马云继续说。 在1999年创立阿里巴巴的时候，马云认为这些大公司索要的高昂价格让初创公司往往很难用上它们的高科技，就像他的阿里巴巴当年还小的时候一样。但是，他继续说，他很快意识到这不是盖茨或其他大咖的错。相反，他用了阻碍很多潜在企业家进步的常见借口抹杀了自己的机会。</p>
+    <div id="share_weibo"></div>
+    <script src="js/LKTool.js"></script>
+    <script>
+        window.onload = function () {
+            //1.存放选中的文字
+            var selectedText = "";
 
+            //2.监听鼠标的松开事件
+            $('word').onmouseup = function (ev1) {
+                //2.1 获取选中的文字
+                if (window.getSelection) { //标准模式 获取选中的文字
+                    selectedText = window.getSelection().toString();
+                } else { //IE系列
+                    selectedText = document.selection.createRange().text;
+                }
+                //2.2 显示新浪图标
+                if (selectedText !== '') {
+                    //显示,并改变位置
+                    $('share_weibo').style.display = 'block';
+                    $('share_weibo').style.left = ev1.clientX + 'px';
+                    $('share_weibo').style.top =  ev1.clientY + 'px';
+                }
+            }
+
+            //3.监听文档的点击事件
+            document.onmousedown = function (ev1) {
+                // 3.1 获取点击的区域
+                var targetId = ev1.target ? ev1.target.id : ev1.srcElement.id;
+                // 3.2 判断
+                if(targetId !== 'share_weibo'){ // 点击了图标以外的区域
+                    $('share_weibo').style.display = 'none';
+                }else { // 点击了图标
+                    window.location.href = 'http://v.t.sina.com.cn/share/share.php?searchPic=false&title=' + selectedText + '&url=http://www.itlike.com';
+
+                }
+            }
+        };
+    </script>
 </body>
 </html>

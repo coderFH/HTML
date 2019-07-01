@@ -3,8 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        #box{
+            width: 150px;
+            height: 150px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 100px;
+        }
+
+        #box1{
+            width: 150px;
+            height: 150px;
+            background-color: yellowgreen;
+            position: absolute;
+            left: 200px;
+            top: 300px;
+        }
+    </style>
 </head>
 <body>
+   <button id="btn1">按钮1</button>
+   <button id="btn2">按钮2</button>
+   <div id="box"></div>
+   <div id="box1"></div>
+<script src="./js/LKTool.js"></script>
+<script>
+    // 基本原理: 盒子的offsetLeft + 步长
+    window.onload = function (ev) {
+       $('btn1').onmousedown = function (ev1) {
+           constant($('box'), 800, 20);
+           constant($('box1'), 800, -20);
+       };
 
+        $('btn2').onmousedown = function (ev1) {
+            constant($('box'), 100, 20);
+            constant($('box1'), 500, 5);
+        }
+    };
+</script>
 </body>
 </html>
