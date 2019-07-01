@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html,body {
+            width: 100%;
+            height: 3000px;
+        }
+
+        #panel {
+            width: 100%;
+            height: 100%;
+            background-color: #000000;
+
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0.4;
+            /* IE8*/
+            filter: alpha(opacity: 40);
+
+            display: none;
+        }
+
+        #login {
+            width: 300px;
+            height: 300px;
+            background-color: skyblue;
+            border-radius: 5px;
+
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            margin-left: -150px;
+            margin-top: -150px;
+
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">立即登录</button>
+    <div id="panel"></div>
+    <div id="login"></div>
+<script src="./js/LKTool.js"></script>
+
+<script>
+    window.onload = function () {
+        //1.监听按钮的点击
+        $("btn").onclick = function (ev1) {
+            var event = ev1 || window.event;
+            //阻止冒泡
+            if (event && event.stopPropagation) {
+                event.stopPropagation();
+            } else {
+                event.cancelBubble = true;
+            }
+
+            //1.1 显示蒙版和登录的面板
+            $('panel').style.display = 'block';
+            $('login').style.display = 'block';
+
+            //1.2隐藏滚动条
+            document.body.style.overflow = 'hidden';
+
+        }
+
+        //2.监听文档的点击
+        document.onclick = function (ev1) {
+            // 2.1 获取点击的标签
+            var targetId = ev1.target ? ev1.target.id : ev1.srcElement.id;
+
+            //2.2 判断
+            if (targetId !== 'login') {//点击了登录以外的区域
+                // 1.1 显示蒙版和登录的面板
+                $('panel').style.display = 'none';
+                $('login').style.display = 'none';
+
+                // 1.2 显示滚动条
+                document.body.style.overflow = 'auto';
+            } else {
+                window.location.href = 'http://www.itlike.com';
+            }
+        }
+    };
+</script>
+</body>
+</html>
