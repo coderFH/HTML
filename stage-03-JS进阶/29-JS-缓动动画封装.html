@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">往右走</button>
+    <button id="btn1">往左走</button>
+    <div id="box"></div>
+
+    <script src="js/LKTool.js"></script>
+    <script>
+        window.onload = function () {
+            $('btn').onclick = function () {
+                buffer($('box'),800);
+            };
+            
+            $('btn1').onclick = function () {
+                console.log('test');
+                buffer($('box'),200);
+            }
+
+            function buffer(obj,target) {
+                //1.1 清除定时器
+                clearInterval(obj.timer);
+
+                //1.2 设置定时器
+                obj.timer = setInterval(function () {
+                    //1.3 求出步长
+                    var speed = (target - obj.offsetLeft) * 0.2;
+                    console.log('之前的:' + speed);
+
+                    speed = (target >= obj.offsetLeft) ? Math.ceil(speed) : Math.floor(speed);
+                    console.log('之后的:' + speed);
+
+                    //1.4 走起来
+                    box.style.left = obj.offsetLeft + speed + 'px';
+                    box.innerText = obj.offsetLeft + 'px';
+
+                    //1.5 判断
+                    if (box.offsetLeft === target) {
+                        clearInterval(obj.timer);
+                    }
+                },20);
+            }
+        };
+    </script>
+</body>
+</html>
