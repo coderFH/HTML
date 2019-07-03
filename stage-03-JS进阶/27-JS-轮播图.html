@@ -27,7 +27,7 @@
             width: 100%;
             height: 100%;
             position: relative;
-            /*overflow: hidden;*/
+            overflow: hidden;
         }
 
         #top ul {
@@ -99,7 +99,7 @@
         // 4. 第一个圆点选中
         addClass($('ol').children[0], 'current');
 
-        // 5. 监听鼠标进入
+        // 5. 底部的小圆圈,监听鼠标进入
         var olLis = $('ol').children;
         for (var j = 0; j < olLis.length; j++) {
             (function (index) {
