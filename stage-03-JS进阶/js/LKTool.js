@@ -174,8 +174,8 @@ function buffer(obj, json, fn) {
         for(var k in json){
             // 1.3 获取初始值
             if("opacity" === k){ // 透明度
-                begin =  Math.round(parseFloat(getCssStyleAttr(obj, k)) * 100) || 100;
-                target = parseInt(json[k] * 100);
+                begin =  parseInt( parseFloat(getCssStyleAttr(obj, k)) * 100);
+                target = parseInt(parseFloat(json[k]) * 100);
             }else if("scrollTop" === k){
                 begin = Math.ceil(obj.scrollTop);
                 target = parseInt(json[k]);
@@ -198,11 +198,11 @@ function buffer(obj, json, fn) {
                 obj.style.filter = 'alpha(opacity:' + (begin + speed) +')';
             }else if("scrollTop" === k){
                 obj.scrollTop = begin + speed;
+            }else if("zIndex" === k){
+                obj.style[k] = json[k];
             }else {
                 obj.style[k] = begin + speed + "px";
             }
-
-            console.log(begin, target);
 
             // 1.5 判断
             if(begin !== target){
@@ -213,9 +213,6 @@ function buffer(obj, json, fn) {
         // 1.3 清除定时器
         if(flag){
             clearInterval(obj.timer);
-
-            console.log(fn);
-
             // 判断有没有回调函数
             if(fn){
                 fn();
