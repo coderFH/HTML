@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">按钮1</button>
+    <button id="btn1">按钮2</button>
+    <div id="box"></div>
+
+<script src="./js/LKTool.js"></script>
+<script>
+    window.onload = function (ev) {
+         $('btn').onclick = function (ev1) {
+             buffer($('box'), {"opacity": 0.4,'width': 400, 'top': 200, 'left': 466}, function () {
+                 buffer($('box'), {'width': 100, 'top': 400, 'left': 30, 'height': 500,"opacity": 0.8}, function () {
+                     buffer($('box'), {'width': 30, 'top': 100, 'left': 500, 'height': 50,"opacity": 1}, null);
+                 });
+             });
+         };
+
+        $('btn1').onclick = function () {
+            buffer($('box'), {'width': 100, 'top': 400, 'left': 30, 'height': 500}, null);
+        }
+    };
+</script>
+</body>
+</html>

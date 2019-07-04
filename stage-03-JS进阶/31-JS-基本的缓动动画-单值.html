@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">往下走</button>
+    <button id="btn1">往上走</button>
+    <div id="box"></div>
+
+<script src="./js/LKTool.js"></script>
+<script>
+    window.onload = function () {
+        $('btn').onclick = function () {
+            // buffer($('box'),'left',800);
+            buffer($('box'),'top',800);
+        };
+
+        $('btn1').onclick = function () {
+            // buffer($('box'),'left',200);
+            buffer($('box'),'top',200);
+        }
+    };
+
+    function buffer(obj,attr,target) {
+        //1.1 创建定时器
+        clearInterval(obj.timer);
+
+        //1.2 设置定时器
+        obj.timer = setInterval(function () {
+            //1.3 获取动画的初始值
+            var begin = parseInt(getCssStyleAttr(obj,attr));
+
+            //1.4 求出步长
+            var speed = (target -  begin) * 0.2;
+            speed = (target >= begin) ? Math.ceil(speed) : Math.floor(speed);
+
+            //1.5 走起来
+            obj.style[attr] = begin + speed + 'px';
+            obj.innerText = begin + '';
+
+            //1.6判断
+            if (begin === target) {
+                clearInterval(obj.timer);
+            }
+        },20);
+    }
+</script>
+</body>
+</html>

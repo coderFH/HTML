@@ -141,3 +141,85 @@ function constant(obj, target, speed) {
         }
     });
 }
+
+/**
+ *
+ * @param {object}obj
+ * @param {string}attr
+ * @returns {string}
+ */
+function getCssStyleAttr(obj, attr) {
+    if(obj.currentStyle){ // IE 和 opera
+        return obj.currentStyle[attr];
+    }else {
+        return window.getComputedStyle(obj, null)[attr];
+    }
+}
+
+/**
+ * 缓动动画
+ * @param obj
+ * @param json
+ * @param fn
+ */
+function buffer(obj, json, fn) {
+    // 1.1 清除定时器
+    clearInterval(obj.timer);
+
+    // 1.2 设置定时器
+    var begin = 0, target = 0, speed = 0;
+    obj.timer = setInterval(function () {
+        // 1.3.0 旗帜
+        var flag = true;
+        for(var k in json){
+            // 1.3 获取初始值
+            if("opacity" === k){ // 透明度
+                begin =  Math.round(parseFloat(getCssStyleAttr(obj, k)) * 100) || 100;
+                target = parseInt(json[k] * 100);
+            }else if("scrollTop" === k){
+                begin = Math.ceil(obj.scrollTop);
+                target = parseInt(json[k]);
+            }else { // 其他情况
+                begin = parseInt(getCssStyleAttr(obj, k)) || 0;
+                target = parseInt(json[k]);
+            }
+
+            // 1.4 求出步长
+            speed = (target - begin) * 0.2;
+
+            // 1.5 判断是否向上取整
+            speed = (target > begin) ? Math.ceil(speed) : Math.floor(speed);
+
+            // 1.6 动起来
+            if("opacity" === k){ // 透明度
+                // w3c的浏览器
+                obj.style.opacity = (begin + speed) / 100;
+                // ie 浏览器
+                obj.style.filter = 'alpha(opacity:' + (begin + speed) +')';
+            }else if("scrollTop" === k){
+                obj.scrollTop = begin + speed;
+            }else {
+                obj.style[k] = begin + speed + "px";
+            }
+
+            console.log(begin, target);
+
+            // 1.5 判断
+            if(begin !== target){
+                flag = false;
+            }
+        }
+
+        // 1.3 清除定时器
+        if(flag){
+            clearInterval(obj.timer);
+
+            console.log(fn);
+
+            // 判断有没有回调函数
+            if(fn){
+                fn();
+            }
+        }
+    }, 20);
+}

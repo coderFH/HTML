@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        #box {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+        }
+
+        #close {
+            width: 25px;
+            height: 25px;
+            background-color: transparent;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+   <div id="box">
+       <span id="close"></span>
+       <div id="top">
+            <img src="images/360-top.jpg">
+       </div>
+       <div id="bottom">
+           <img src="images/360-bottom.jpg">
+       </div>
+   </div>
+
+<script src="./js/LKTool.js"></script>
+<script>
+    window.onload = function (ev) {
+        $('close').onclick = function () {
+            buffer($("bottom"),{'height':0},function () {
+                buffer($('box'),{'width' : 0},function () {
+                    $('box').style.display = 'none';
+                })
+            });
+        }
+    };
+</script>
+</body>
+</html>
