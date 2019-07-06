@@ -165,9 +165,10 @@
 
         //4. 让滚动的内容归位
         var scroll_w = slider.offsetWidth;
-        for (var j = 1; j < slider_main_img.length;j++) {
+        for (var j = 1; j < slider_main_img.length;j++) {//除了第一张以外的都放到右边
             slider_main_img[j].style.left = scroll_w + 'px';
         }
+
         //5. 遍历监听操作
         var slider_ctl_child = slider_ctl.children;
         for (var i = 0;i < slider_ctl_child.length; i++) {
@@ -186,9 +187,8 @@
                     if (iNow < 0) {
                         iNow = slider_main_img.length - 1;
                     }
-                    slider_main_img[iNow].style.left = -scroll_w + 'px';
-                    buffer(slider_main_img[iNow], {"left": 0});
-
+                    slider_main_img[iNow].style.left = -scroll_w + 'px'; //让上一张快速的出现在可视区域的左边
+                    buffer(slider_main_img[iNow], {"left": 0}); //然后做动画进来
                 } else if(this.className === "slider-ctl-next") { //右边
                     autoPlay();
                 } else { //下边
