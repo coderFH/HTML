@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var Calculator = {
+        //结果
+        result : 0,
+        jia : function (num) {
+            this.result += num;
+            return this;
+        },
+        jian : function (num) {
+            this.result -= num;
+            return this;
+        },
+        cheng : function (num) {
+            this.result *= num;
+            return this;
+        },
+        chu : function (num) {
+            this.result /= num;
+            return this;
+        },
+        log : function () {
+            console.log(this.result);
+            return this;
+        },
+        clean : function () {
+            this.result = 0;
+            return this;
+        }
+    };
+    Calculator.jia(6).jia(6).cheng(2).chu(3).jian(4).log();
+    Calculator.clean().jia(2).log();
+</script>
+</body>
+</html>

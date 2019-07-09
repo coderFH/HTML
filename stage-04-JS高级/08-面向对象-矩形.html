@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="main" style="position: relative;"></div>
+<script>
+    function Rect(options) {
+        this._init(options);
+    }
+
+    Rect.prototype = {
+        //属性
+        _init : function (options) {
+            //父标签
+            this.parentId = options.parentId;
+            //位置
+            this.left = options.left || 100;
+            this.top = options.top || 100;
+            //自身的属性
+            this.width = options.width || 100;
+            this.height = options.height || 50;
+            this.bgColor = options.bgColor || '#000';
+            this.borderRadius = options.borderRadius || 0;
+            this.border = options.border || 'none';
+        },
+
+        //行为
+        render : function () {
+            //1.获取父标签
+            var parentEle = document.getElementById(this.parentId);
+
+            //2.创建矩形标签
+            var rectEle = document.createElement('div');
+            parentEle.appendChild(rectEle);
+
+            rectEle.style.position = 'absolute';
+            rectEle.style.left = this.left + 'px';
+            rectEle.style.top = this.top + 'px';
+
+            rectEle.style.width = this.width + 'px';
+            rectEle.style.height = this.height + 'px';
+
+            rectEle.style.backgroundColor = this.bgColor;
+            rectEle.style.border = this.border;
+            rectEle.style.borderRadius = this.borderRadius + 'px';
+        }
+    };
+
+    // 创建矩形对象
+    var rect = new Rect({
+        parentId: 'main',
+        left: 200,
+        top: 200,
+        width: 500,
+        height: 300,
+        bgColor: 'pink',
+        borderRadius: 20,
+        border: '10px solid #000'
+    });
+    // console.log(rect);
+    rect.render();
+    
+</script>
+</body>
+</html>

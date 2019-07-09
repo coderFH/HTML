@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    console.log('---------------1.封装--------------------');
+    //封装,将零散的东西,封装到一起,使其更像一个整体
+    var p0 = {
+        name: '李四',
+        age: 28,
+        address: '北京'
+    };
+
+    var p1 = {
+        name: '张三',
+        age: 18,
+        address: '上海'
+    };
+
+    console.log('---------------2.继承--------------------');
+
+    var p2 = {};
+    // 继承: 继承资源
+    for(var key in p1){
+        p2[key] = p1[key];
+    }
+    console.log(p2);
+
+    console.log('---------------3.多态--------------------');
+
+    //多态的讲解
+    var obj = {name: '张三'};
+    console.log(obj.toString()); // [object Object]
+
+    var arr = [1, 2, 3];
+    console.log(arr.toString()); // 1,2,3  不同的类型调用toString,结果不同,就是对多态的一种运用
+
+    // swift
+    // var i = 1; // Int
+    // var f = 1.1; // float
+    // i+f  js中可以(系统会进行隐式转换),但是在swift等强类型的语言中 就不行
+
+
+    var i = 1; // Int
+    var f = 1.1; // float
+    console.log(i + f); //js中就可以
+
+</script>
+
+</body>
+</html>
