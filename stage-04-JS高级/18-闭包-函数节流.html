@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //之前涉及到频繁调用的事件,比如滚动,也面大小变化,我们会在定时器中进行,现在可以对定时器进行一个封装
+    window.onresize = throttle(function () {
+        console.log(1111);
+    },2000);
+
+    //2.将函数的形参作为实参传递给另一个函数调用
+    function throttle(fn, delay) {
+        var timer = null;
+        return function () {
+            clearInterval(timer);
+            timer = setTimeout(fn,delay);
+        }
+    }
+</script>
+</body>
+</html>

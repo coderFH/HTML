@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    (function (window) {
+        //1.变量
+        var intro = ['我', '是', 'M', 'T'];
+        var site = 'www.baidu.com';
+
+        //2.操作变量的函数
+        function one() {
+            console.log(intro.join(''));
+        }
+
+        function two() {
+            console.log(site.toUpperCase());
+        }
+
+        window.myTool = {
+            fn1 : one,
+            fn2 : two
+        }
+    })(window);
+
+    myTool.fn1();
+    myTool.fn2();
+</script>
+
+</body>
+</html>

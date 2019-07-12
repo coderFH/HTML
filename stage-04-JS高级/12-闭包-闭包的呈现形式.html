@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //到底如何理解闭包:
+    /*
+    * 一个函数和它所捕获的变量\常量环境组合起来称为闭包
+    *   一般指定义在函数内部的函数
+    *   一般它捕获的是外层函数的局部变量\常量
+    * */
+    function fn1() {
+        var num = 10;
+        function fn2() {
+            num ++;
+            console.log("fn2内部的" + num);
+        }
+        console.log("fn1内部的" + num);
+        return fn2;
+    }
+    var f = fn1();
+    f();
+</script>
+
+</body>
+</html>

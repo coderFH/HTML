@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    /*
+    OC:
+       - (void)viewDidLoad {
+            [super viewDidLoad];
+            FHBlock f = [self fn1];
+            f();
+            f();
+        }
+
+        - (FHBlock)fn1 {
+            int num = 10;
+            void (^block)(void) = ^{
+                NSLog(@"Hello - %d", num); // 10  OC中,如果不对变量进行修改,只是在堆中新开一个空间去存num,和栈中的num是两回事,
+                * 如果想改变num,需要加__block,系统会对变量包装成一个对象,然后将num的地址值传递给该对象,通过修改该对象内部的num来达到目的
+            };
+            num = 20;
+            NSLog(@"%d",num);  // 20
+            return block;
+        }
+
+     swift:
+        override func viewDidLoad() {
+            typealias Fn = () -> Void
+            super.viewDidLoad()
+            func fn1() -> Fn {
+                var num = 10;
+                func fn2() -> Void {
+    //                num += 1;
+                    print(num);  //20  20  //swfit的实现更像是直接在num前加了__block一样,我不管你内部是否改变这个值,其实本质操作的是一个地址
+                }
+                num = 20
+                return fn2;
+            }
+        let f = fn1();
+        f();
+        f();
+    }
+
+    */
+
+    /*
+    1. 函数执行完后, 函数内部声明的局部变量是否还存在? 存在
+    2. 在函数外部能直接访问函数内部的局部变量吗?   不能
+    */
+    function fn1() {
+        var num = 10;
+        function fn2() {
+            num++;
+            console.log("fn2中的num",num);
+        }
+        num = 20;
+        console.log("fn1中的num",num);  //js中的闭包,跟swfit比较类似,在外边修改num,闭包内的值是会跟着变的
+        return fn2;
+    }
+
+    var f = fn1();
+    f();
+    f();
+    console.log(f);
+    f = null;
+
+</script>
+</body>
+</html>

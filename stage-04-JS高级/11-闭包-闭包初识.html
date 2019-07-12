@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+
+<script>
+    //在没有学习闭包的时候,一般这样去处理按钮的点击
+    //1.首先,这样写有问题,一直会弹出 第4个 因为代码是按顺序执行,for循环结束 i 已经等于3,按钮点击是非常滞后的行为,所以有问题
+    window.onload = function (ev) {
+        // 有问题1:
+        /*
+        var btns = document.getElementsByTagName('button');
+        for (var i = 0; i < btns.length; i++) {
+            var btn = btns[i];
+            btn.onclick = function () {
+                alert('第' + (i + 1) + '个');
+            }
+        }*/
+
+        //2.针对上边的问题,我们想到的解决方式是遍历每一个btn的时候,给他们动态的绑定一个index属性,这样在点击时,访问自己的index就可以
+        //但是这种方法会额外的增加一个属性,如果不增加属性该如何处理
+        /*
+        var btns = document.getElementsByTagName('button');
+        for (var i = 0; i < btns.length; i++) {
+            var btn = btns[i];
+            btn.idx = i;
+            btn.onclick = function () {
+                alert('第' + (this.idx + 1) + '个');
+            }
+        }*/
+
+        //针对2的问题 就可以使用闭包解决
+        var btns = document.getElementsByTagName('button');
+        for (var i = 0; i < btns.length; i++) {
+            (function (i) {
+                var btn = btns[i];
+                btn.onclick = function () {
+                    alert('第' + (i + 1) + '个');
+                }
+            })(i);
+        }
+    }
+</script>
+</body>
+</html>

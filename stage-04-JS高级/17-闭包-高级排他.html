@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        li{
+            border: 1px solid #000;
+            background-color: #ccc;
+            cursor: pointer;
+        }
+
+        .current{
+            background-color: orangered;
+        }
+    </style>
+</head>
+<body>
+
+<ul>
+    <Li class="current"></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+    <Li></Li>
+</ul>
+
+<script>
+    //没有闭包前的操作
+    //需要每次都遍历,十分耗性能
+    /*
+    window.onload = function () {
+        var allLis = document.getElementsByTagName('li');
+        for(var i=0; i<allLis.length; i++){
+            var li = allLis[i];
+            li.onmouseover = function () {
+                for(var j=0; j<allLis.length; j++){
+                    allLis[j].className = '';
+                }
+                this.className = 'current';
+            }
+        }
+    }*/
+
+    window.onload = function (ev) {
+        var allLis = document.getElementsByTagName('li');
+
+        // 记录鼠标移动前选中li对应的索引
+        var preSelectIndex = 0;
+        for(var i=0; i<allLis.length; i++){
+            (function (i) {
+                var li = allLis[i];
+                li.onmouseover = function () {
+                    // 1. 清除之前选中的li的current
+                    allLis[preSelectIndex].className = '';
+                    // 2. 让当前的设置上去
+                    this.className = 'current';
+                    // 3. 赋值
+                    preSelectIndex = i;
+                }
+            })(i);
+        }
+    }
+
+</script>
+</body>
+</html>

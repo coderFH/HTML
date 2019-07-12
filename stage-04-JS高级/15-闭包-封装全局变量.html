@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="btn">点我</button>
+
+<script>
+    /*
+    * 封闭作用域, 小闭包
+      (function(){})();
+      ;(function(){})();
+      +(function(){})();
+      -(function(){})();
+      * */
+
+    //定义小闭包
+    var a = function () {
+
+    };
+
+    (function () {
+
+    })();
+
+    /*js中查找变量,是从函数内部往外查找,比如使用window变量,他会从所有的全局变量中查找window变量
+    * 全局变量太多了,会十分的消耗性能,所有使用闭包的时候,可以将window当参数传递进去,在内部直接使用
+    * */
+
+    (function (window) {
+        var document = window.document;
+    })(window);
+
+    //比如获取btn这个变量
+    var btn = document.getElementById('btn');
+    btn.onclick = function () {
+        console.log(btn);//这里打印一个还好,如果打印特别多,每次都会在这个函数外部去遍历btn,十分的耗性能
+    }
+
+    //所以我们也可以通过闭包传参
+    var btn = document.getElementById('btn');
+    (function (btn) {
+        btn.onclick = function (ev) {
+            console.log(btn);
+            console.log(btn);
+            console.log(btn);
+            console.log(btn);
+            console.log(btn);
+            console.log(btn);
+            console.log(btn);
+            console.log(btn);
+            console.log(btn);
+            console.log(btn);
+        }
+    })(btn)
+
+</script>
+</body>
+</html>

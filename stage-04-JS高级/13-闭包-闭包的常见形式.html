@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    /*
+    *
+    常见的闭包使用形式?
+        1. 将函数作为另一个函数的返回值
+        2. 将函数的形参作为实参传递给另一个函数调用
+    * */
+
+    //1.将函数作为另一个函数的返回值
+    function fn1() {
+        var num = 10;
+        function fn2() {
+            num++;
+            console.log(num);
+        }
+        return fn2;
+    }
+    var f = fn1();
+    f(); //11
+    f(); //12
+
+    //2. 将函数的形参作为实参传递给另一个函数调用
+    function logMsgDelay(msg, time) {
+        setTimeout(function() {
+            console.log(msg);
+        },time);
+    }
+    logMsgDelay('wangfh',3000);
+
+</script>
+
+</body>
+</html>
