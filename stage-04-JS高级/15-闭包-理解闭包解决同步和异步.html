@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+
+
+<script>
+    /*
+     封闭作用域又称值为封闭空间，还有一个昵称叫小闭包，以及匿名函数自调。
+     写法:
+     (function(){})();
+     ;(function(){})();
+     +(function(){})();
+     -(function(){})();
+   */
+
+    //定义小闭包
+    var a = function () {
+
+    };
+
+    (function () {
+
+    })();
+
+    var btns = document.getElementsByTagName('button');
+
+    /*
+      借助小闭包, 把每次循环的i值都封闭起来
+    */
+    for (var i = 0; i < btns.length; i++) {
+        console.log('全局的i：' + i);
+        (function (i) {
+            console.log('局部的i：' + i);
+            var btn = btns[i];
+            btn.onclick = function () {
+                alert('第' + (i + 1) + '个')
+            }
+        })(i);
+    }
+
+</script>
+</body>
+</html>

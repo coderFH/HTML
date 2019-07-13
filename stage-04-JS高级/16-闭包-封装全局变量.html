@@ -9,23 +9,6 @@
 <button id="btn">点我</button>
 
 <script>
-    /*
-    * 封闭作用域, 小闭包
-      (function(){})();
-      ;(function(){})();
-      +(function(){})();
-      -(function(){})();
-      * */
-
-    //定义小闭包
-    var a = function () {
-
-    };
-
-    (function () {
-
-    })();
-
     /*js中查找变量,是从函数内部往外查找,比如使用window变量,他会从所有的全局变量中查找window变量
     * 全局变量太多了,会十分的消耗性能,所有使用闭包的时候,可以将window当参数传递进去,在内部直接使用
     * */

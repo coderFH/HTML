@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    (function (w) {
+        // 1. 私有的数据
+        var money = 1000;
+        // 2. 提供操作私有数据的函数
+        function get() {
+            money *= 10;
+            console.log('赚了一笔钱, 总资产:' + money + '元');
+        }
+
+        function send() {
+            money --;
+            console.log('花了一笔钱, 总资产:' + money + '元');
+        }
+
+        // 向外部暴露对象
+        w.myTool = {
+            'get': get,
+            'send': send
+        }
+
+    })(window);
+
+    myTool.get();
+    myTool.send();
+
+</script>
+
+</body>
+</html>

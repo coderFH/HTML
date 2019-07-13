@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--
+1. 内存溢出
+   一种程序运行出现的错误
+   当程序运行需要的内存超过了剩余的内存时, 就出抛出内存溢出的错误
+
+
+2. 内存泄露
+   占用的内存没有及时释放
+   内存泄露积累多了就容易导致内存溢出
+   常见的内存泄露:
+    1. 占用内存很大的全局变量
+    2. 没有及时清理的计时器/定时器
+    3. 闭包
+-->
+
+<script type="text/javascript">
+    // 1. 内存溢出
+    /* var arrObj = {};
+     for(var i=0; i<100000000; i++){
+         arrObj[i] = new Array(999999);
+         console.log(arrObj);
+     }*/
+
+
+    // 2. 常见的内存泄露
+    // 占用内存很大的全局变量
+    /* var num = new Array(99999999);
+     var num1 = new Array(99999999);
+     var num2 = new Array(99999999);
+     var num3 = new Array(99999999);
+     var num4 = new Array(99999999);
+     var num5 = new Array(99999999);
+     var num6 = new Array(99999999);
+     var num7 = new Array(99999999);
+     num = null;*/
+
+
+    // 没有及时清理的计时器/定时器
+    /* var intervalId = setInterval(function () {
+         console.log("-----");
+     }, 1000);
+     clearInterval(intervalId);*/
+
+    // 闭包
+    function fn1() {
+        var num  = 1111;
+        function fn2() {
+            num--;
+            console.log(num);
+        }
+
+        return fn2;
+    }
+
+    var f = fn1();
+    f();
+
+    f = null;
+</script>
+
+</body>
+</html>
