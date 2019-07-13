@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+        this.run = function () {
+            console.log(this.age + '跑');
+        };
+    }
+
+    // ============= 标准调用
+    var p = new Person('zs', 18);
+    console.log(p);
+
+    var p1 = new Person();
+    console.log(p1);
+
+    var p2 = new Person;
+    console.log(p2);
+
+    console.log('-------');
+
+    //=============问题调用
+    // var p3 = Person('zs', 18); //错误的调用  这就是普通的函数调用 this是当前的window
+
+    var p4 = new Person("王五",18);
+    var run = p4.run;
+    // run();    也是错误的调用
+
+    // var p5 = Person();
+    // console.log(p5); //Undefined
+
+</script>
+</body>
+</html>

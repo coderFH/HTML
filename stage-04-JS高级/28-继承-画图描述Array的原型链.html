@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var arr = [1, 2, 3];
+    console.log(arr.constructor.name); // Array  产生arr真是的构造函数
+
+    console.log(arr.__proto__.constructor.name);
+
+    console.log(Array.__proto__.constructor.name);
+
+    console.log(Function.__proto__.constructor.name);
+
+    console.log(Function.prototype.__proto__.constructor.name);
+
+    console.log(Object.prototype.__proto__);
+    console.log(Object.__proto__.constructor.name);
+
+    console.log(Array.prototype.__proto__.constructor.name);
+
+</script>
+
+</body>
+</html>

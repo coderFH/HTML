@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--用于获取一个对象的真实类型-->
+
+<script>
+    function Person() {}
+    var p = new  Person();
+    console.log(p.constructor.name); // Person
+
+    //当我们把原型更换后
+    Person.prototype = {
+        // constructor: Person, // 一定要设置, 指向Object
+        name: 'FH',
+        age: 18
+    };
+    var p1 = new Person();
+    console.log(p1.constructor.name); // 更换了原型后,打印出结果是object,如果我想依然是Person,需要做以下操作
+
+    Person.prototype = {
+        constructor: Person, // 一定要设置, 指向Object
+        name: 'Wang',
+        age: 18
+    };
+    var p2 = new Person();
+    console.log(p2.constructor.name);  // object
+
+</script>
+</body>
+</html>

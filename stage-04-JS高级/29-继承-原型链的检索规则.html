@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--
+对象.属性的方法去访问属性的时候，先查找有没有对应的实例属性，如果有那么就直接使用
+如果没有，那么就去该对象的原型对象上面去找，如果有那么就直接使用
+如果没有，那么就接着查找原型对象的原型对象，如果有，那么就直接使用，
+如果没有，那么就继续上面的搜索过程
+直到搜索到Object.prototype为止，如果还是没有找到就返回undefined或者是报错
+注意：
+	原型链搜索的路径越长，查询属性所花费的时间就越多
+	原则：就近原型
+-->
+<body>
+
+<script>
+    function Person(name) {
+        this.name = name;
+        // this.toString = function () {
+        //     console.log('我是增加在对象上面的方法');
+        // }
+    }
+
+   //  Person.prototype.toString = function () {
+   //     console.log('我是增加在原型对象上面的方法');
+   // };
+
+    // 如果没有，那么就去该对象的原型对象上面去找，如果有那么就直接使用
+    // 如果没有，那么就接着查找原型对象的原型对象，如果有，那么就直接使用，
+
+    //依次注释22行和27行的tostring方法,看看有何区别
+    var p = new Person('张三');
+    console.log(p);
+    p.toString();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--
+获取原型对象 类: 类名.prototype
+          对象: 对象.__proto__
+-->
+<script>
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    //原型对象
+    Person.prototype.run = function () {
+        console.log('跑');
+    }
+
+    //获取原型对象的方式1:
+    console.log(Person.prototype);
+
+    //方式2:
+    var p = new Person();
+    console.log(p.__proto__);
+
+    // prototype还可以修改指向
+    var newF = {
+        'add' : function () {
+            console.log('sum');
+        }
+    };
+    p.__proto__ = newF;
+    console.log(p.__proto__);
+
+
+    //这种方式相当于把它原有的原型对象给干掉了
+    Person.prototype = {};
+    console.log(Person.prototype);
+
+    p.__proto__ = {};
+    console.log(Person.prototype);
+    console.log(p.__proto__);
+
+</script>
+
+</body>
+</html>

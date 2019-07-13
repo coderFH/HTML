@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--02-关于创建出来的对象类型获取-->
+<script>
+    console.log('------------------- 01-关于创建出来的对象类型获取 -------------------');
+
+    var obj = {'name' : "张三"};
+    console.log(typeof obj);     //Object
+    console.log(obj.toString()); //[object Object]
+    console.log(obj.constructor.name); // Object
+
+    console.log('--------');
+    var arr = [1, 2, 3];
+    console.log(typeof arr); //object
+    console.log(arr.toString()); //1,2,3
+    console.log(arr.constructor.name); // Array
+    console.log(Object.prototype.toString.call(arr)); //[object Array]
+
+    console.log('--------');
+    var date = new Date();
+    console.log(typeof date); //object
+    console.log(date.toString()); //Sat Jul 13 2019 10:57:45 GMT+0800 (中国标准时间)
+    console.log(date.constructor.name);  //Date
+    console.log(Object.prototype.toString.call(date)); //[object Date]
+
+    console.log('------------------- 02-根据自己声明的构造函数创建的对象 -------------------');
+
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    function Dog(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    function Cat(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // 1. 实例化-->实例
+    var p = new Person('zs', 18);
+    var d = new Dog('小花', 8);
+    var c = new Cat('小猫', 3);
+
+    //  object
+    console.log(typeof p);
+    console.log(typeof d);
+    console.log(typeof c);
+
+    // [object Object]
+    console.log(p.toString());
+    console.log(d.toString());
+    console.log(c.toString());
+
+    // [object Object]
+    console.log(Object.prototype.toString.call(p));
+    console.log(Object.prototype.toString.call(d));
+    console.log(Object.prototype.toString.call(c));
+
+    // ....
+    console.log(p.constructor.name);
+    console.log(d.constructor.name);
+    console.log(c.constructor.name);
+
+    console.log('------------------- 03-创建出来的对象类型验证 -------------------');
+
+    console.log(p instanceof Person); //true
+    console.log(d instanceof Dog);//true
+    console.log(c instanceof Cat);//true
+
+    console.log(p instanceof Object);//true
+    console.log(d instanceof Object);//true
+    console.log(c instanceof Object);//true
+
+    console.log(p instanceof Dog);//false
+    console.log(d instanceof Cat);//false
+    console.log(c instanceof Person);//false
+
+    console.log(p);
+    console.log(d);
+    console.log(c);
+
+    console.log([] instanceof Object);//true
+
+</script>
+</body>
+</html>

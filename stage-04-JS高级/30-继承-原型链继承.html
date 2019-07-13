@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/html">
+    //================================ 1. 先定义两个类,用其中一个类调用另一个类的属性,看看结果 =============================
+    function Person() {
+        this.name = "wangfh";
+        this.pets = ['小皮','小灰'];
+    }
+    Person.prototype.run = function () {
+        console.log('跑');
+    };
+
+    function Student() {
+        this.num = '001';
+    }
+
+    var stu = new Student();
+    console.log(stu.num); // 001
+    console.log(stu.name); //undefined
+    console.log(stu.pets); //undefined
+
+    //=========================== 有问题: 因为这两个类没有任何关系,stu调用person的属性  会显示undefined ====================
+</script>
+
+<script type="text/html">
+    //================================ 2.针对1的问题,我们来实现js中的继承 =============================
+    /**
+     * 构造函数Person
+     * @constructor
+     */
+    function Person() {
+        this.name = "wangfh";
+        this.pets = ['小皮','小灰'];
+    }
+
+    Person.prototype.run = function () {
+        console.log('跑');
+    };
+
+    /**
+     * 构造函数Student
+     * @constructor
+     */
+    function Student() {
+        this.num = '001';
+    }
+
+    // 让Student的原型对象--->Person的原型对象
+    Student.prototype = Person.prototype;
+
+    var stu = new Student();
+    console.log(stu.num); //001
+    console.log(stu.name); //undefined
+    console.log(stu.pets); //undefined
+    stu.run();
+
+    //这么处理只是原型继承了Person,但是属于Person的属性并没有继承过来,所以依旧undefined 但是run方法可以调用
+</script>
+
+
+<script type="text/html">
+    //================================ 3.针对2的问题,我们来进行改进 =============================
+    /**
+     * 构造函数Person
+     * @constructor
+     */
+    function Person() {
+        this.name = "wangfh";
+        this.pets = ['小皮','小灰'];
+    }
+
+    Person.prototype.run = function () {
+        console.log('跑');
+    };
+
+
+    /**
+     * 构造函数Student
+     * @constructor
+     */
+    function Student() {
+        this.num = '001';
+    }
+
+    // 1. 构造父类的实例
+    var p = new Person();
+    // 2. 并设置为子类的原型对象
+    Student.prototype = p;
+
+    var stu = new Student();
+    console.log(stu);
+
+    console.log(stu.num);
+    console.log(stu.name);
+    console.log(stu.pets);
+    stu.run();
+    console.log(stu.constructor.name);
+
+    //3.有一个问题 就是当我们stu.constructor.name可以看到打印的是Person 我想让他是Student改如何处理
+</script>
+
+<script>
+    //================================ 4.针对3的问题,我们来进行改进 =============================
+    /**
+     * 构造函数Person
+     * @constructor
+     */
+    function Person() {
+        this.name = "wangfh";
+        this.pets = ['小皮','小灰'];
+    }
+
+    Person.prototype.run = function () {
+        console.log('跑');
+    };
+
+
+    /**
+     * 构造函数Student
+     * @constructor
+     */
+    function Student() {
+        this.num = '001';
+    }
+
+    // 1. 构造父类的实例
+    var p = new Person();
+    // 2. 并设置为子类的原型对象
+    Student.prototype = p;
+    // 3.修复constructor指针即可
+    Student.prototype.constructor = Student;
+
+    var stu = new Student();
+    console.log(stu);
+
+    console.log(stu.num);
+    console.log(stu.name);
+    console.log(stu.pets);
+    stu.run();
+    console.log(stu.constructor.name);
+
+    // 到此为止:原型链继承已经结束
+    // 问题: 继承过来的实例属性, 如果是引用类型, 会被多个子类的实例共享
+</script>
+
+</body>
+</html>
