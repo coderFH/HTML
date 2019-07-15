@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //====================Animal====================
+    function Animal(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    Animal.prototype.eat = function () {
+        console.log('吃');
+    };
+    Animal.prototype.run = function () {
+        console.log('跑');
+    };
+
+    //====================Person====================
+    function Person(job, name, age) {
+        Animal.call(this,name,age);
+        this.job = job;
+    }
+
+    function Temp() {}
+    Temp.prototype = Animal.prototype;
+    var t = new Temp();
+    Person.prototype = t;
+    t.constructor.name = Person;
+
+    Person.prototype.jump = function () {
+        console.log('跳');
+    };
+
+    //====================Student====================
+    function Student(className, job, name, age) {
+        Person.call(this,job,name,age);
+        this.className = className;
+    }
+
+    function StuTmp() {}
+    StuTmp.prototype = Person.prototype;
+    var stuT = new StuTmp();
+    Student.prototype = stuT;
+    stuT.prototype = Student;
+
+    Student.prototype.study = function () {
+        console.log('学');
+    };
+
+    var stu1 = new Student('01','作曲','周杰伦',18);
+    console.log(stu1.name,stu1.age,stu1.job,stu1.className);
+    stu1.eat();
+    stu1.run();
+    stu1.jump();
+    stu1.study();
+
+    var stu2 = new Student('02','作词','陈信宏',19);
+    console.log(stu2.name,stu2.age,stu2.job,stu2.className);
+    stu2.eat();
+    stu2.run();
+    stu2.jump();
+    stu2.study();
+
+
+</script>
+</body>
+</html>

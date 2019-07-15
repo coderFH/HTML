@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //============================ 1.拷贝的方式1 ========================
+    var obj = {name : '周杰伦',age : 18};
+    var obj2 = {};
+    for (var key in obj) {
+        obj2[key] = obj[key];
+    }
+    console.log(obj2);
+
+    //============================ 2.拷贝的方式2 ========================
+    var obj3 = {classNumber : '09'};
+    Object.assign(obj3,obj,{address : '上海'});
+    console.log(obj3);
+
+    //============================ 3.复杂类型的拷贝 ========================
+    var p = {
+        name : '张三',
+        pets : ['小花', '小黑', '土豆']
+    };
+    var copyP = {};
+
+    Object.assign(copyP,p);
+    copyP.pets.push('马铃薯');
+
+    console.log(p);
+    console.log(copyP);
+    //打印可知,对于复杂类型数据拷贝,其实是浅拷贝,一个数组增加了一个对象,另一个数组也会跟着变,要想不跟着变,就需要深拷贝
+</script>
+</body>
+</html>

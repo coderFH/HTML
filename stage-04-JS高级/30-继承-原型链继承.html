@@ -147,6 +147,14 @@
 
     // 到此为止:原型链继承已经结束
     // 问题: 继承过来的实例属性, 如果是引用类型, 会被多个子类的实例共享
+
+    //比如我创建一个新的Student对象
+    var stu2 = new Student();
+    stu2.pets.push("小白");
+    console.log(stu.pets);  //打印可见,我修改了stu2的pets,stu也跟着改了
+    console.log(stu2.pets);
+
+    //所以,到此为止,原型链继承已经完毕,针对上面出现的问题,请继续往下看
 </script>
 
 </body>

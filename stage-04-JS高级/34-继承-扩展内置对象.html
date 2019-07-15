@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //比如我们想对Array增加一个run方法,一般的处理方式是
+     Array.prototype.run = function () {
+        console.log('跑');
+    };
+
+    var arr = [1, 2, 3];
+    arr.run();
+
+    var arr2 = [2];
+    arr2.run();
+
+    //但是这样有个问题,比如我添加一个push方法,但系统的Array本身有一个push方,这样添加会把系统的方法覆盖,所以一般使用下边的方式
+
+    //新弄一个类,然后让它的原型指向Array的原型,这样保证系统的方法新类都有, 然后扩展的方法再去向自己的原型添加
+    function MyArray() {}
+
+    MyArray.prototype = new Array();
+    MyArray.prototype.run = function () {
+        console.log('跑');
+    };
+
+    var arr1 = new MyArray();
+    console.log(arr1);
+    arr1.run();
+
+</script>
+</body>
+</html>

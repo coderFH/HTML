@@ -7,21 +7,34 @@
 <body>
 
 <script>
-    var arr = [1, 2, 3];
-    console.log(arr.constructor.name); // Array  产生arr真是的构造函数
+    var arr = [1, 2, 3]; // 0
+    console.log(arr.__proto__);   //查看Array的原型对象是谁  1
+    console.log(Array.prototype); //查看Array的原型对象是谁 这个效果跟上边的通过实例获取的效果一致 2
+    console.log(arr.__proto__.constructor.name); //查看这个实例是由谁构造出来的 3
+    // console.log(arr.constructor.name); 他本质也是找到原型对象,然后找到constructor,跟上边的一句一个意思
+    //至此,Array构造函数,实例对象,Array原型的关系就绘制清除了
 
-    console.log(arr.__proto__.constructor.name);
 
-    console.log(Array.__proto__.constructor.name);
+    //然后看Array构造函数的原型,和它是谁构造出来的
+    console.log(Array.__proto__);   // Array的原型对象 是 Founction原型对象  4
+    console.log(Array.__proto__.constructor.name); // Founction的构造函数  5
+    console.log(Function.prototype); // 6
+    // 所以 Arr的构造函数 是 Founction构造函数的实例对象  // 7
 
+    //然后Function的原型对象和由谁构造出来的
+    console.log(Function.__proto__);  //获取Fouction的原型对象 8
     console.log(Function.__proto__.constructor.name);
 
-    console.log(Function.prototype.__proto__.constructor.name);
 
-    console.log(Object.prototype.__proto__);
-    console.log(Object.__proto__.constructor.name);
+    //看Array原型对象的原型对象,以及构造函数
+    console.log(arr.__proto__.__proto__); //Object  9
+    console.log(arr.__proto__.__proto__.constructor.name);  // Object构造函数 10
+    console.log(Object.prototype) // 11
+    //所以Array原型对象 是 Object 实例化出来的 // 12
+    console.log(arr.__proto__.__proto__.__proto__); //13
 
-    console.log(Array.prototype.__proto__.constructor.name);
+    console.log(Object.__proto__); //14 object构造函数作为对象 调用__proto__发现结果是 Function的原型
+    //所以 object构造函数 是 Function构造的函数的 实例 对象 15
 
 </script>
 

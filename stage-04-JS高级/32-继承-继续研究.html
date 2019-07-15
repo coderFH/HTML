@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/html">
+//================================ 1.针对之前原型在对象上,导致共享的处理 =============================
+    /**
+     * 构造函数Person
+     * @constructor
+     */
+    function Person() {
+        this.name = "wangfh";
+        this.pets = ['小皮','小灰'];
+    }
+
+    Person.prototype.run = function () {
+        console.log('跑');
+    };
+
+
+    /**
+     * 构造函数Student
+     * @constructor
+     */
+    function Student() {
+        Person.call(this);
+        this.num = '001';
+    }
+
+    // 1. 构造父类的实例
+    var p = new Person();
+    // 2. 并设置为子类的原型对象
+    Student.prototype = p;
+    // 3.修复constructor指针即可
+    Student.prototype.constructor = Student;
+
+    var stu = new Student();
+    console.log(stu);
+
+    console.log(stu.num);
+    console.log(stu.name);
+    console.log(stu.pets);
+    stu.run();
+    console.log(stu.constructor.name)
+
+    var stu2 = new Student();
+    stu.pets.push('小花');
+    stu2.pets.push("小白");
+    console.log(stu.pets);
+    console.log(stu2.pets);
+
+    //问题: 父类构造函数的参数无法修改
+
+</script>
+
+<script type="text/html">
+    //================================ 2.针对1的问题的处理 =============================
+    /**
+     * 构造函数Person
+     * @constructor
+     */
+    function Person(name, pets) {
+       this.name = name;
+       this.pets = pets;
+    }
+
+    Person.prototype.run = function () {
+        console.log('跑');
+    };
+
+    /**
+     * 构造函数Student
+     * @constructor
+     */
+    function Student(num, name, pets) {
+        Person.call(this, name, pets);
+        this.num = num;
+    }
+
+    // 1. 构造父类的实例
+    var p = new Person();
+    // 2. 并设置为子类的原型对象
+    Student.prototype = p;
+    // 3.修复constructor指针即可
+    Student.prototype.constructor = Student;
+
+    var stu1 = new Student('001', '张三', ['小花']);
+    console.log(stu1);
+
+    var stu2 = new Student('002', '李四', ['土豆']);
+    console.log(stu2);
+
+    //问题: 父类属性重复  1.实例上有一份 2.原型对象上有一份
+</script>
+
+<script>
+    //================================ 3.针对2的问题的处理(寄生组合式继承,完美) =============================
+    /**
+     * 构造函数Person
+     * @constructor
+     */
+    function Person(name, pets) {
+       this.name = name;
+       this.pets = pets;
+    }
+
+    Person.prototype.run = function () {
+        console.log('跑');
+    };
+
+    /**
+     * 构造函数Student
+     * @constructor
+     */
+    function Student(num, name, pets) {
+        // 1. 借调
+        Person.call(this, name, pets);
+
+        this.num = num;
+    }
+
+    // 1. 构造函数
+    function Temp() {}
+    // 2. 指向
+    Temp.prototype = Person.prototype;
+    // 3. 产生对象
+    var stuPro = new Temp();
+    // 4. 修改Student的指向
+    Student.prototype = stuPro;
+    // 5. 增强动作
+    stuPro.constructor = Student;
+
+    var stu1 = new Student('001', '张三', ['小花']);
+    console.log(stu1);
+
+    var stu2 = new Student('002', '李四', ['土豆']);
+    console.log(stu2);
+</script>
+
+</body>
+</html>
