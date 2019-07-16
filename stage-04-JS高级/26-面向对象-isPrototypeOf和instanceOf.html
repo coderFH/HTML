@@ -5,9 +5,9 @@
     <title>Title</title>
 </head>
 <!--
-isPrototypeOf: 判断一个对象, 是否是某个 实例 的 原型对象
+isPrototypeOf: 判断一个对象, 是否是某个 实例 的 原型对象  我的理解就是  我的原型是不是你的原型对象
 	  Person.prototype.isPrototypeOf(p)
-instanceOf : 判断一个对象, 是否是某个构造函数的原型链上
+instanceOf : 判断一个对象, 是否是某个构造函数的原型链上  A对象是否在B的原型链上   我的理解 我构造函数的原型 在不在 你的原型链上
 -->
 <body>
 
@@ -16,7 +16,7 @@ instanceOf : 判断一个对象, 是否是某个构造函数的原型链上
     function Person() {}
 
     var p = new Person();
-    console.log(Person.prototype.isPrototypeOf(p)); //true
+    console.log(Person.prototype.isPrototypeOf(p)); //true   Person的原型(Person.prototype或者p.__proto__) 是不是p的原型对象
     console.log(p.__proto__.isPrototypeOf(p)); //true
 
     var obj = {
@@ -39,8 +39,9 @@ instanceOf : 判断一个对象, 是否是某个构造函数的原型链上
     Person.prototype = obj1;
 
     var p4 = new Person();
-    console.log(p4 instanceof Person); //true
-    console.log(p3 instanceof Person); //false   原型链更换成了obj1 p3不在原型链上 所以是false
+
+    console.log(p4 instanceof Person); //true   p4的构造函数的原型 在不在 Person原型链上  很明显在
+    console.log(p3 instanceof Person); //false  原型链更换成了obj1  p3的构造函数的原型 不在Person的原型链上 因为Person的原型换成了obj1 所以是false
 
 </script>
 </body>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //1.要拷贝的对象
+    var obj = {
+        name: '撩课',
+        age: 18,
+        friends: ['小花', '小黑'],
+        goodF: {
+            name: '小撩',
+            age: 19,
+            address: '上海',
+            pets: [
+                {name: '土豆'},
+                {name: '马铃薯'}
+            ]
+        },
+        bir: new Date()
+    };
+
+
+    function deepCopyObjToNewObj(fromObj,toObj) {
+        for (var key in fromObj) {
+            //1. 取出键值对
+            var fromValue = fromObj[key];
+
+            //2.检查当前的属性值是什么类型
+            if (!isObj(fromValue)) { //如果是值类型,那就直接拷贝赋值
+                toObj[key] = fromValue;
+            } else {
+                //如果是引用类型
+                //那么就再调用一次这个方法
+                //去内部拷贝这个对象的所有属性
+                var tempObj = new fromValue.constructor;
+                // console.log(tempObj);
+                deepCopyObjToNewObj(fromValue,tempObj);
+                toObj[key] = tempObj;
+            }
+        }
+    }
+
+    var newObj = {};
+    deepCopyObjToNewObj(obj,newObj);
+    obj.goodF.pets[0]['size'] = '200px';
+    console.log(obj);
+    console.log(newObj);
+
+
+    //========================== 辅助函数 ==========================
+    /**
+     * 辅助函数, 判断是否是对象
+     * @param {object}obj
+     * @returns {boolean}
+     */
+    function isObj(obj) {
+        return obj instanceof Object;
+    }
+
+    //了解:判断是否是数组
+    function isArray(obj) {
+        // return Array.isArray(obj);
+        return Object.prototype.toString.call(obj) === '[object Array]';
+    }
+
+</script>
+</body>
+</html>

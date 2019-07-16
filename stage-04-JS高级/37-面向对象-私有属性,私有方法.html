@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function Caculator() {
+        //1.私有变量
+        var result = 0;
+
+        //2.私有函数
+        function checkNum(num) {
+            var isNum = typeof num === 'number';
+            if (!isNum) {
+                alert('输入有误,请重新输入');
+            }
+            return isNum;
+        }
+
+        this.jia = function (num) {
+            if (checkNum(num)) {
+                result += num;
+            }
+            return this;
+        };
+        this.jian = function (num) {
+            if (checkNum(num)) {
+                result -= num;
+            }
+            return this;
+        };
+        this.logResult = function () {
+            console.log(result);
+            return this;
+        };
+        this.cleanResult = function () {
+            result = 0;
+            return this;
+        };
+    }
+
+    var c = new Caculator();
+    c.jia(2).jia('a').jian(1);
+    c.logResult();
+    c.cleanResult();
+    c.jia(2).jia(3).jia(1).logResult();
+
+</script>
+</body>
+</html>
