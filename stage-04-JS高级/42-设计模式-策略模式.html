@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    var Celue = {
+        slow : function (distance) {
+            console.log('慢速运动策略耗时:', distance * 2, '小时');
+        },
+        normal: function (distance) {
+            console.log('普通运动策略耗时:', distance, '小时');
+        },
+        fast: function (distance) {
+            console.log('快速运动策略耗时:', distance / 2, '小时');
+        }
+    };
+
+    function PersonRun(from, to) {
+        this.from = from;
+        this.to = to;
+    }
+
+    PersonRun.prototype.run = function (celue) {
+        celue(this.to - this.from);
+    };
+
+    var p = new PersonRun(0,20);
+    p.run(Celue.slow);
+    p.run(Celue.normal);
+    p.run(Celue.fast);
+
+</script>
+
+</body>
+</html>

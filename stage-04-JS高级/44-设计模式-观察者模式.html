@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    // 消息的发布者
+    // 可以让别人订阅某个消息
+    // 可以发布消息
+    var lk = {
+        targetActions : [],
+        //1.添加用户
+        addUser : function (target, action) {
+            var obj = {
+                target : target,
+                action : action
+            };
+            this.targetActions.push(obj);
+        },
+
+        //2.发布消息
+        publishMsg : function () {
+            for (var i = 0, len = this.targetActions.length; i < len; i++) {
+                var obj = this.targetActions[i];
+                var target = obj['target'];
+                var action = obj['action'];
+                action.call(target,'明天周末啦!');
+            }
+        }
+    };
+
+    var stu1 = { name : '张三' };
+    var stu2 = { name : '李四' };
+
+    lk.addUser(stu1,function (msg) {
+        console.log('已推送',this.name,msg);
+    });
+
+    lk.addUser(stu2,function (msg) {
+        console.log('已推送', this.name,msg);
+    });
+
+    //开始广播
+    lk.publishMsg();
+</script>
+
+<script>
+    var notify = {
+        typeTargetAction : {},
+        addUser : function (type, target, action) {
+            debugger
+            if (typeof this.typeTargetAction[type] === 'undefined') {
+                this.typeTargetAction[type] = [];
+            }
+            var obj = {
+                target : target,
+                action : action
+            };
+            this.typeTargetAction[type].push(obj);
+        },
+        publishMsg: function (type, msgContent) {
+            var targetActions = this.typeTargetAction[type] || [];
+            for (var i = 0, len = targetActions.length; i < len; i++) {
+                var obj = targetActions[i];
+                var target = obj['target'];
+                var action = obj['action'];
+                action.call(target, msgContent);
+            }
+        }
+    };
+
+    var stu1 = {name: '张三'};
+    var stu2 = {name: '李四'};
+
+
+    notify.addUser('h5', stu1, function (msgContent) {
+        console.log(msgContent, '已推送', this.name);
+    });
+
+    notify.addUser('h5', stu2, function (msgContent) {
+        console.log(msgContent, '已推送', this.name);
+    });
+
+    notify.addUser('java', stu1, function (msgContent) {
+        console.log(msgContent, '已推送', this.name);
+    });
+
+    notify.addUser('python', stu2, function (msgContent) {
+        console.log(msgContent, '已推送', this.name);
+    });
+
+    //  广播消息
+    notify.publishMsg('h5', 'H5学院消息: 今晚上课');
+    notify.publishMsg('java', 'Java学院消息: 今晚不上课');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<!--
+类似于, 点餐人员, 关注的是菜单;
+厨房老大关注的是分配,
+厨师关注的是做菜, 业务分离, 低耦合
+-->
+
+<script>
+
+    //厨师
+    var cook1 = {
+        name : "王小二",
+        make : function (foodType) {
+            switch (foodType) {
+                case 'tudou':
+                console.log(this.name, '做土豆');
+                break;
+            case 'jidan':
+                console.log(this.name, '做鸡蛋');
+                break;
+            case 'fanqie':
+                console.log(this.name, '做番茄');
+                break;
+            default:
+                console.log('不会做');
+            }
+        }
+    };
+
+    var cook2 = {
+        name : "王大二",
+        make : function (foodType) {
+            switch (foodType) {
+                case 'tudou':
+                    console.log(this.name, '做土豆加辣椒');
+                    break;
+                case 'jidan':
+                    console.log(this.name, '做鸡蛋加白糖');
+                    break;
+                case 'fanqie':
+                    console.log(this.name, '做番茄加酱油');
+                    break;
+                default:
+                    console.log('不会做');
+            }
+        }
+    };
+
+    // 服务员点餐
+    // 服务员, 帮客人点菜
+    var foodList = ['tudou', 'jidan', 'fanqie'];
+
+    // 厨房根据菜单, 创建不同的命令, 分配给不同的厨师
+    // 点餐系统
+    function MakeFoodCommand(cook, foodType) {
+        this.cook = cook;
+        this.foodtype = foodType;
+    }
+
+    MakeFoodCommand.prototype.execute = function () {
+        this.cook.make(this.foodtype);
+    };
+
+    // 点餐系统生成做菜命令
+    var commonds = [];
+    for (var i = 0;i < foodList.length; i++) {
+        var commond = null;
+        if (i % 2 === 0) {
+            commond = new MakeFoodCommand(cook1,foodList[i]);
+        }  else {
+            commond = new MakeFoodCommand(cook2,foodList[i]);
+        }
+        commonds.push(commond);
+    }
+
+    console.log(commonds);
+
+    //开始根据不同的规则,让这些命令开始执行
+    commonds.forEach(function (cmd) {
+        console.log(cmd);
+        cmd.execute();
+    })
+
+</script>
+
+</body>
+</html>

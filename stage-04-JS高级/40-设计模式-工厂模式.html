@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--
+简单工厂模式:给定原材料,加工出给定的产品
+-->
+<script>
+    //咖啡机
+    //放入咖啡豆和水,加工出不同比例的咖啡
+
+    function makeCoffee(dou, water) {
+        var obj = new Object();
+        obj.dou = dou;
+        obj.water = water;
+        obj.bili = dou / water;
+        return obj;
+    }
+
+    var coffee = makeCoffee(1,10);
+    console.log('造出纯度为', coffee.bili, '的咖啡');
+
+     var coffee2 = makeCoffee(2,10);
+    console.log('造出纯度为', coffee2.bili, '的咖啡');
+</script>
+
+<!--
+复杂工厂模式
+果汁厂(苹果汁,橘子汁,香蕉汁,...)
+-->
+<script>
+    /*
+    * 果汁工厂
+    * */
+    function FruitMaker() {}
+
+     /**
+      *  对外招商
+      * @param type 类型
+      * @param meta 材料
+      */
+    FruitMaker.prototype.make = function (type,meta) {
+        if (typeof this[type] === 'function') {
+            var func = this[type];
+            func.prototype = FruitMaker.prototype;
+            return new func(meta);
+        }  else {
+            throw '很抱歉,公司不能生产这种产品,后期会扩充生产线';
+        }
+    };
+
+
+    //遍历传递过来的json 把key对象的函数放入到FruitMaker对象中,比如 把Apple对象的value  放入到FruitMaker对象里
+    /*
+        其实下边的操作,就是完成了这种方式的赋值
+        this['Apple'] = function (meta) {
+            console.log('造了一杯苹果汁, 材料有:', meta);
+        };
+        this['Pear'] = function (meta) {
+            console.log('造了一杯梨汁, 材料有:', meta);
+        }
+    */
+    // 3. 设置工厂具备能力-扩展生产线
+    FruitMaker.prototype.extend = function (obj) {
+        for (var key in obj) {
+            this[key] = obj[key];
+        }
+    };
+
+    // 4. 工厂扩展生产线
+    FruitMaker.prototype.extend();
+    //调用extend这个原型方法,把可以生成那种果汁和果汁的生产方法按key:value的方式传递过去
+    FruitMaker.prototype.extend({
+        'Apple' : function (meta) {
+            console.log('造了一杯苹果汁, 材料有:', meta);
+        },
+        "Pear" : function (meta) {
+            console.log('造了一杯梨汁, 材料有:', meta);
+        }
+    });
+
+    // 1.实例化水果工厂
+    var maker = new FruitMaker();
+
+    var appleObj = maker.make('Apple', '一个苹果, 一斤水');
+    console.log(appleObj.constructor.name);
+    var pearObj = maker.make('Pear', '两个梨, 一吨水');
+    console.log(pearObj.constructor.name);
+
+</script>
+
+</body>
+</html>

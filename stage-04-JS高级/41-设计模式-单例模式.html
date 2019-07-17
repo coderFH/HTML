@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<!--
+特点:在整个程序的运行过程中一个类型只有一个实例对象.
+	通过指定的构造函数, 无论创建多少次对象, 都只有一个
+-->
+<body>
+
+<!--全局变量-->
+<script>
+    var instance = null;
+    function Tool() {
+        //1.判断
+        if (instance) {
+            return instance;
+        }
+
+        //2.指向
+        instance = this;
+        this.name = 'wangfuhao';
+        this.intro = 'coderFH';
+    }
+    //3.实例化
+    var t1 = new Tool();
+    var t2 = new Tool();
+    var t3 = new Tool();
+    console.log(t1 === t2);
+    console.log(t3 === t2);
+
+    /*
+    使用一个全局变量来保存单例对象,该全局变量在整个作用域中都可以被访问或者是修改,可能会轻易的被覆盖或者是修改.
+    修改之后,创建出来的实例对象就不再是之前的那个单例对象了.
+    */
+</script>
+
+
+<!--优化: 即时函数 (最常用的方式)-->
+<script>
+    (function (w) {
+        var instance = null;
+        function Tool() {
+            // 1. 判断
+            if (instance) {
+                return instance;
+            }
+            // 2. 指向
+            instance = this;
+            this.name = 'wangfuhao';
+            this.intro = 'coderFH';
+        }
+        w.ToolInstance = Tool;
+    })(window);
+    var t1 = new window.ToolInstance();
+    var t2 = new ToolInstance();
+    var t3 = new ToolInstance();
+    console.log(t1 === t2);
+    console.log(t1 === t3);
+    t1.name = 'fh';
+    console.log(t1);
+    console.log(t2);
+    console.log(t3);
+</script>
+
+<!--闭包-惰性函数(了解)不容易理解-->
+<script>
+    function Tool1() {
+        //1.声明
+        var instance = null;
+        var oldPrototype = Tool1.prototype; // 保存Tool的原型对象
+        // 惰性函数, 函数只会在第一次被执行, 后面直接调用
+        Tool1 = function () {
+            return instance;
+        };
+        Tool1.prototype = oldPrototype;
+        instance = new Tool1();
+
+        instance.constructor = Tool1;
+
+        instance.name = "李四";
+        instance.age = 18;
+        return instance;
+    }
+
+    Tool.prototype.run = function () {
+        console.log('跑');
+    };
+
+    var t1 = new Tool();
+    Tool.prototype.desc = 'xxx';
+
+    var t2 = new Tool();
+    var t3 = new Tool();
+    var t4 = new Tool();
+
+    console.log(t1 === t2);
+    console.log(t3 === t4);
+    console.log(t3 === t1);
+
+    console.log(t1.desc);
+    console.log(t2.desc);
+    console.log(t3.desc);
+
+    console.log(t1.constructor);
+
+
+</script>
+</body>
+</html>

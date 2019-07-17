@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    function Fruit() {}
+    Fruit.prototype.make = function () {
+        this.water();
+        this.cailiao();
+        this.jiaoban();
+        this.liangliang();
+    };
+    Fruit.prototype.water = function () {
+        console.log('烧好开水, 倒开水');
+    };
+    Fruit.prototype.cailiao = function () {
+        throw new Error('必须由子类重写这个方法');
+    };
+    Fruit.prototype.jiaoban = function () {
+        console.log('搅拌搅拌');
+    };
+    Fruit.prototype.liangliang = function () {
+        console.log('凉一下, 就可以喝了');
+    };
+
+    function Apple() {
+        Fruit.call(this);
+    }
+    Apple.prototype = new Fruit();
+    Apple.prototype.cailiao = function () {
+        console.log('放苹果');
+    };
+
+
+    function Pear() {
+        Fruit.call(this);
+    }
+    // 继承原型对象方法
+    Pear.prototype = new Fruit();
+    Pear.prototype.cailiao = function () {
+        console.log('放梨子');
+    };
+
+
+    var pear = new Pear();
+    pear.make();
+
+    var apple = new Apple();
+    apple.make();
+
+</script>
+
+</body>
+</html>
