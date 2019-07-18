@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div {
+            width: 275px;
+            height: 340px;
+            background: url("./images/off.png");
+            -webkit-background-size: cover;
+            background-size: cover;
+        }
+
+        .selected{
+            background-image: url("./images/on.png");
+        }
+    </style>
+
+</head>
+<body>
+
+<div></div>
+
+<p></p>
+<p></p>
+<button id="on">开灯</button>
+<button id="off">关灯</button>
+<button id="auto">自动开关</button>
+
+<script type="text/javascript" src="./js/jquery-3.3.1.js"></script>
+
+<script>
+
+    $(function () {
+        $('#on').click( function () {
+            $('div').addClass('selected');
+        });
+        $('#off').click(function () {
+            $('div').removeClass('selected');
+        });
+        $('#auto').click(function () {
+            $('div').toggleClass('selected');
+        })
+    });
+
+</script>
+</body>
+</html>

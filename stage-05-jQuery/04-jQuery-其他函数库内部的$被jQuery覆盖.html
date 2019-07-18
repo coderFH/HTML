@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div{
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="div1">div1</div>
+<div id="div2">div2</div>
+<div id="div3">div3</div>
+
+<button id="btn1">隐藏</button>
+<button id="btn2">改变颜色</button>
+
+<script src="./js/other_lib.js"></script>
+<script type="text/javascript" src="./js/jquery-3.3.1.js"></script>
+
+<script>
+    window.onload = function () {
+        // 0 . 解除jQuery对$的引用
+        var _ = $.noConflict();
+
+        _('#btn1').on('click', function () {
+            _('#div1').hide();
+        });
+
+        _('#btn2').on('click', function () {
+            _('#div2').css('background', 'green');
+            _('#div3').css('background', 'blue');
+        });
+
+        console.log($);
+    }
+</script>
+</body>
+</html>

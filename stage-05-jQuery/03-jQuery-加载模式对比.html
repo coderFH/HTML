@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="./js/jquery-3.3.1.js"></script>
+<script>
+    /*
+      $(document).ready()
+	执行时机
+		所有的DOM节点加载完毕之后调用, 不包括资源加载;
+		开发实际应用: 做图片轮播器时, 没有必要等待所有的图片加载完成才开始滚动
+	执行次数
+		可以执行多次,第N次都不会被上一次覆盖
+		ready函数, 会把内部接收到的函数保存到一个数组里面, 等后期统一执行, 所以, 调用多次, 就有多次执行
+	简写方案
+		$(function () {
+
+       });
+    */
+    $(document).ready(function () {
+        console.log('ready1');
+    });
+
+    $(document).ready(function () {
+        console.log('ready2');
+    });
+
+    $(function () {
+        console.log('ready方法的简写');
+    });
+    
+
+    /*
+     window.onload
+	执行时机
+		所有的DOM节点加载完毕之后调用, 包括资源加载, 比如图片
+	执行次数
+		此处是 = 赋值, 所有后面的会覆盖前面的函数内容, 调用多次, 只会执行一次
+	简写方案
+		无
+    */
+    //onload会产生覆盖
+    window.onload = function () {
+        console.log('xxx');
+    };
+
+    window.onload = function () {
+        console.log('xxx2');
+    }
+</script>
+</body>
+</html>

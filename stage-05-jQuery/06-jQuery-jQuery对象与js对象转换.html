@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+<div id="test">wangfh</div>
+
+<script type="text/javascript" src="./js/jquery-3.3.1.js"></script>
+
+<script>
+    //1. 获取标签
+    var div = document.getElementById('test');
+    var $div = $('#test');
+    console.log(div);
+    console.log($div);
+
+    //2. 验证不能相互调用方法
+    console.log(div.innerText);
+    console.log($div.innerText); //undefined
+
+    // console.log(div.html()); //报错,js原生对象没有html方法
+    console.log($div.html());
+
+    //3. 转换
+    //JS -> JQ
+    var $divChange = $(div);
+    console.log($divChange.html());
+
+    //JQ -> JS
+    var divChange = $div.get(0);
+    console.log(divChange.innerText);
+
+</script>
+</body>
+</html>

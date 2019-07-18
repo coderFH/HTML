@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="box"></div>
+
+    <p></p>
+    <p></p>
+
+    <button id="get_style">获取样式</button>
+    <button id="set_style">修改样式</button>
+
+<script type="text/javascript" src="./js/jquery-3.3.1.js"></script>
+
+<script>
+    $(function () {
+        // 0. 获取需要的标签
+        var $box = $('#box');
+
+        // 1. 获取样式
+        $('#get_style').click(function () {
+            var w = $box.css('width');
+            var h = $box.css('height');
+            var bg = $box.css('background-color');
+            console.log('宽度: ' + w + ', 高度: ' + h + ', 背景颜色: ' + bg);
+        });
+
+        //2.设置样式
+        $('#set_style').click(function () {
+            // 方式一
+            /* $box.css('width', '300px');
+             $box.css('height', '300px');
+             $box.css('background-color', 'yellow');*/
+
+            // 方式二 链式调用
+            // $box.css('width', '300px').css('height', '300px').css('background-color', 'yellow');
+
+            // 方式三
+            $box.css({
+                'width': '300px',
+                'height': '300px',
+                'background-color': 'yellow'
+            });
+        });
+    });
+
+
+</script>
+</body>
+</html>

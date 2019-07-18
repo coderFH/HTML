@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        div{
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="div1">div1</div>
+<div id="div2">div2</div>
+<div id="div3">div3</div>
+
+<button id="btn1">隐藏</button>
+<button id="btn2">改变颜色</button>
+
+<script type="text/javascript" src="./js/jquery-3.3.1.js"></script>
+<script src="./js/other_lib.js"></script>
+
+<script>
+    //方式1:
+   // jQuery(function () {
+   //     jQuery('#btn1').on('click', function () {
+   //         jQuery('#div1').hide();
+   //     });
+   //
+   //     jQuery('#btn2').on('click', function () {
+   //         jQuery('#div2').css('background', 'green');
+   //         jQuery('#div3').css('background', 'blue');
+   //     });
+   // });
+
+    //方式2:
+    window.onload = function () {
+        (function ($) {
+            $('#btn1').on('click', function () {
+                $('#div1').hide();
+            });
+
+            $('#btn2').on('click', function () {
+                $('#div2').css('background', 'green');
+                $('#div3').css('background', 'blue');
+            });
+        })(jQuery);
+        console.log($);
+    }
+
+</script>
+</body>
+</html>
