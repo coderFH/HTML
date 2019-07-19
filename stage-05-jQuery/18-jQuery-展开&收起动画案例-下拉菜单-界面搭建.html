@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .firstNav {
+            width: 600px;
+            height: 400px;
+            margin: 100px auto;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        .firstNav>li {
+            width: 100px;
+            float: left;
+            text-align: center;
+        }
+        .firstNav>li>span {
+            display: inline-block;
+            width: 100%;
+            height: 44px;
+            line-height: 44px;
+        }
+        .secondNav {
+            border: 1px solid #ccc;
+            border-top: none;
+        }
+        .secondNav>li {
+            margin-top: 1px;
+        }
+        .secondNav {
+            display: none;
+        }
+        .current .secondNav {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<ul class="firstNav">
+    <li class="current">
+        <span>一级菜单1</span>
+        <ul class="secondNav">
+            <li>二级菜单1</li>
+            <li>二级菜单2</li>
+            <li>二级菜单3</li>
+            <li>二级菜单4</li>
+            <li>二级菜单5</li>
+        </ul>
+    </li>
+    <li>
+        <span>一级菜单1</span>
+        <ul class="secondNav">
+            <li>二级菜单1</li>
+            <li>二级菜单2</li>
+            <li>二级菜单3</li>
+            <li>二级菜单4</li>
+            <li>二级菜单5</li>
+        </ul>
+    </li>
+    <li>
+        <span>一级菜单1</span>
+        <ul class="secondNav">
+            <li>二级菜单1</li>
+            <li>二级菜单2</li>
+            <li>二级菜单3</li>
+            <li>二级菜单4</li>
+            <li>二级菜单5</li>
+        </ul>
+    </li>
+    <li>
+        <span>一级菜单1</span>
+        <ul class="secondNav">
+            <li>二级菜单1</li>
+            <li>二级菜单2</li>
+            <li>二级菜单3</li>
+            <li>二级菜单4</li>
+            <li>二级菜单5</li>
+        </ul>
+    </li>
+    <li>
+        <span>一级菜单1</span>
+        <ul class="secondNav">
+            <li>二级菜单1</li>
+            <li>二级菜单2</li>
+            <li>二级菜单3</li>
+            <li>二级菜单4</li>
+            <li>二级菜单5</li>
+        </ul>
+    </li>
+    <li>
+        <span>一级菜单1</span>
+        <ul class="secondNav">
+            <li>二级菜单1</li>
+            <li>二级菜单2</li>
+            <li>二级菜单3</li>
+            <li>二级菜单4</li>
+            <li>二级菜单5</li>
+        </ul>
+    </li>
+</ul>
+
+<script src="./js/jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+        // 1. 先让第一个二级菜单隐藏
+        $('.firstNav>li.current .secondNav').css('display','none');
+
+        $('.firstNav>li').hover(function () {
+            $(this).children('.secondNav').stop().slideToggle(200);
+        })
+    });
+</script>
+</body>
+</html>

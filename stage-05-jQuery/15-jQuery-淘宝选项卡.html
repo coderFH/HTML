@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            box-sizing: border-box;
+        }
+
+        a{
+            text-decoration: none;
+            color: #000;
+        }
+
+        #tab{
+            width: 500px;
+            height: 120px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+        }
+
+        /*选项卡--头部*/
+        #tab_header{
+            height: 29px;
+            line-height: 28px;
+            /*background-color: red;*/
+            overflow: hidden;
+        }
+
+        #tab_header ul{
+            width: 500px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        #tab_header ul li{
+            flex: 1;
+            text-align: center;
+            background-color: #e8e8e8;
+            border-bottom: 1px solid #cccccc;
+        }
+
+        #tab_header ul li.selected{
+            background-color: #ffffff;
+            border-bottom: none;
+
+            /*左右线条*/
+            border-left: 1px solid #cccccc;
+            border-right: 1px solid #cccccc;
+        }
+
+        #tab_header ul li:nth-child(1){
+            border-left: none;
+        }
+
+        #tab_header ul li:nth-last-child{
+            border-right: none;
+        }
+
+        #tab_header ul li:hover{
+            cursor: pointer;
+            font-weight: bolder;
+            color: orangered;
+        }
+        /*选项卡--头部*/
+
+        /*选项卡--主要内容*/
+        #tab_content{
+
+        }
+
+        #tab_content .dom{
+            padding-top: 20px;
+            display: none;
+        }
+
+        #tab_content .dom ul li{
+            float: left;
+            width: 220px;
+            /*background-color: red;*/
+            text-align: center;
+            margin: 5px;
+        }
+        /*选项卡--主要内容*/
+    </style>
+</head>
+<body>
+
+<div id="tab">
+    <!--头部-->
+    <div id="tab_header">
+        <ul>
+            <li class="selected">公告</li>
+            <li>规则</li>
+            <li>论坛</li>
+            <li>安全</li>
+            <li>公益</li>
+        </ul>
+    </div>
+    <!--主要内容-->
+    <div id="tab_content">
+        <div class="dom" style="display: block">
+            <ul>
+                <li><a href="#">数据七夕:金牛爱送玫瑰</a></li>
+                <li><a href="#"> 阿里打造"互联网监管"</a></li>
+                <li><a href="#">10万家店60万新品</a></li>
+                <li><a href="#">全球最大网上时装周</a></li>
+            </ul>
+        </div>
+        <div class="dom" >
+            <ul>
+                <li>
+                    <a href="#">“全额返现”要管控啦</a>
+                </li>
+                <li>
+                    <a href="#">淘宝新规发布汇总(7月)</a>
+                </li>
+                <li>
+                    <a href="#">炒信规则调整意见反馈</a>
+                </li>
+                <li>
+                    <a href="#">质量相关规则近期变更</a>
+                </li>
+            </ul>
+        </div>
+        <div class="dom">
+            <ul>
+                <li>
+                    <a href="#">阿里建商家全链路服务</a>
+                </li>
+                <li>
+                    <a href="#">个性化的消费时代来临</a>
+                </li>
+                <li>
+                    <a href="#">跨境贸易是中小企业机</a>
+                </li>
+                <li>
+                    <a href="#">美妆行业虚假信息管控</a>
+                </li>
+            </ul>
+        </div>
+        <div class="dom">
+            <ul>
+                <li>
+                    <a href="#">接次文件，毁了一家店</a>
+                </li>
+                <li>
+                    <a href="#">账号安全神器阿里钱盾</a>
+                </li>
+                <li>
+                    <a href="#">新版阿里110上线了</a>
+                </li>
+                <li>
+                    <a href="#">卖家学违禁避免被处罚</a>
+                </li>
+            </ul>
+        </div>
+        <div class="dom">
+            <ul>
+                <li>
+                    <a href="#">为了公益high起来</a>
+                </li>
+                <li>
+                    <a href="#">魔豆妈妈在线申请</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="./js/jquery-3.3.1.js"></script>
+<script>
+    function TabFn() {}
+    TabFn.prototype = {
+        constructor: TabFn,
+        init : function () {
+            this.bindEvent();
+        },
+        // 绑定事件
+        bindEvent: function () {
+            $('#tab_header ul li').mouseover(function () {
+                $(this).addClass('selected').siblings().removeClass('selected');
+                var index = $(this).index();
+                var indexCon = $('#tab_content .dom').eq(index);
+                indexCon.css('display', 'block').siblings().css('display', 'none');
+            });
+        }
+    };
+    var tab = new TabFn();
+    tab.init();
+
+</script>
+</body>
+</html>

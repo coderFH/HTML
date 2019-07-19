@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .ad {
+            background: url("./images/ad.png") no-repeat;
+            width: 150px;
+            height: 300px;
+            position: fixed;
+            top: 50%;
+            margin-top: -150px;
+        }
+        .close {
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .left {
+            left: 0;
+        }
+        .right {
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="ad left">
+    <img class="close" src="./images/close.png">
+</div>
+
+<div class="ad right">
+    <img class="close" src="./images/close.png">
+</div>
+
+<button class="toggle">显示或隐藏</button>
+
+<script src="./js/jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+        $('.close').click(function () {
+            //1.父标签隐藏
+            $(this).parent().hide(1000,function () {
+                console.log('隐藏完成');
+            });
+        });
+
+        $('.toggle').click(function () {
+            $('.ad').toggle(2000,function () {
+                console.log('切换完成');
+            })
+        })
+    });
+</script>
+
+</body>
+</html>

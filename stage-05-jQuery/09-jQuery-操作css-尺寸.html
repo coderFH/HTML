@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border: 10px solid red;
+            padding: 20px;
+            margin: 10px;
+            background-color: #2aabd2;
+        }
+    </style>
+</head>
+<body>
+
+<div></div>
+
+<script src="./js/jquery-3.3.1.js"></script>
+
+<script>
+    $(function () {
+        var div = $('div');
+        console.log(div.width());   //设置或返回元素的宽度（不包括内边距、边框或外边距）
+        console.log(div.height());
+
+        console.log(div.innerWidth()); //返回元素的宽度（包括内边距）
+        console.log(div.innerHeight());
+
+        console.log(div.outerWidth()); //返回元素的宽度（包括内边距和边框）
+        console.log(div.outerHeight());
+
+        console.log(div.outerWidth(true));//返回元素的宽度（包括内边距、边框和外边距)
+        console.log(div.outerHeight(true));
+
+        // div.width(300); //可以设置宽度
+
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--基本选择器-->
+<div id="id">id选择器的内容</div>
+<div class="class">class选择器的内容</div>
+<div class="class">class选择器的内容</div>
+<p>标签选择器1</p>
+<p>标签选择器2</p>
+
+<!--层级的标签-->
+<ul id="ul1">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <ul id="ul2">
+        <li>11</li>
+        <li>22</li>
+    </ul>
+</ul>
+
+<div>div1</div>
+<div>div2</div>
+
+<p id="x">呵呵呵</p>
+
+<!--属性选择器-->
+<a href="http://www.itlike.com">撩课学院</a>
+<a href="http://www.baidu.com">百度一下</a>
+
+<!--筛选选择器-->
+<div>
+    <p id="filter">哈哈哈哈</p>
+</div>
+
+
+<script src="./js/jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+        // baseSelector();
+        levelSelector();
+        // attrSelect();
+        filterSelector();
+    });
+
+    function baseSelector() {
+        $('#id').css('background-color','red');
+        $('.class').eq(1).css('background-color','green');
+        $('p').css('background-color','purple');
+    }
+
+    function levelSelector() {
+        $('#ul1 li').css('background-color','red');
+        $('#ul1>li').css('background-color','purple'); //直接后代
+
+        $('#ul1+div').css('background-color','yellow'); //兄弟选择器
+
+        $('#ul1~div').css('background-color', 'orange'); //查找后边所有的兄弟元素
+        $('#ul1').nextAll('div').css('background-color','red'); //这种写法 和上边一样效果
+    }
+
+    function attrSelect() {
+        $('a[href*="like"]').text('itLike');
+    }
+
+    function filterSelector() {
+        $('#filter').parent().css('background-color','yellow');
+    }
+</script>
+
+</body>
+</html>

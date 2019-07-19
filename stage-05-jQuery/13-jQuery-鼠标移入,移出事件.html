@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #big {
+            width: 300px;
+            height: 300px;
+            background-color: red;
+            margin: 100px auto;
+        }
+
+        #small {
+            width: 100px;
+            height: 100px;
+            background-color: purple;
+        }
+    </style>
+</head>
+<body>
+
+<div id="big">
+    <div id="small"></div>
+</div>
+
+<script src="./js/jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+        var $big = $('#big');
+        $big.mouseenter(function () {
+            console.log('鼠标进去');
+        });
+        $big.mouseleave(function () {
+            console.log('鼠标移开');
+        });
+        $big.mouseover(function () {
+            console.log('鼠标在里面');
+        });
+        $big.mouseout(function () {
+            console.log('鼠标离开');
+        });
+        $big.hover(function () {
+            console.log('进入或离开');
+        })
+    });
+</script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .sort-box {
+            width: 320px;
+            height: 550px;
+            border: 1px solid #cccccc;
+            margin: 50px auto;
+        }
+        .sort-box .title {
+            color: purple;
+            font-size: 20px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .film-list li {
+            border-top: 1px dashed #cccccc;
+            line-height: 30px;
+            margin: 0 10px 5px;
+            box-sizing: border-box;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .film-sort-num {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background-color: #cccccc;
+            text-align: center;
+            line-height: 20px;
+        }
+
+        .film-img {
+            width: 80px;
+            float: left;
+        }
+        .film-content {
+            float: right;
+            width: 210px;
+            line-height: 18px;
+            margin-left: 10px;
+        }
+
+        .film-list li:nth-child(-n+3) span:nth-child(1) {
+            background-color: purple;
+        }
+
+        .film-list li div {
+            display: none;
+        }
+
+        .film-list .current div{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="sort-box">
+    <p class="title">风云榜</p>
+    <ul class="film-list">
+        <li class="current">
+            <span class="film-sort-num">1</span>
+            <span>电影名称</span>
+            <div>
+                <img class="film-img" src="./images/01.jpg" alt="">
+                <p class="film-content">《西虹市首富》是由闫非、彭大魔编剧兼执导，沈腾、宋芸桦、张一鸣、常远、张晨光、魏翔等主演的喜剧片，于2018年7月27日在中国大陆上映。</p>
+            </div>
+        </li>
+        <li>
+            <span class="film-sort-num">1</span>
+            <span>电影名称</span>
+            <div>
+                <img class="film-img" src="./images/01.jpg" alt="">
+                <p class="film-content">《西虹市首富》是由闫非、彭大魔编剧兼执导，沈腾、宋芸桦、张一鸣、常远、张晨光、魏翔等主演的喜剧片，于2018年7月27日在中国大陆上映。</p>
+            </div>
+        </li>
+        <li>
+            <span class="film-sort-num">1</span>
+            <span>电影名称</span>
+            <div>
+                <img class="film-img" src="./images/01.jpg" alt="">
+                <p class="film-content">《西虹市首富》是由闫非、彭大魔编剧兼执导，沈腾、宋芸桦、张一鸣、常远、张晨光、魏翔等主演的喜剧片，于2018年7月27日在中国大陆上映。</p>
+            </div>
+        </li>
+        <li>
+            <span class="film-sort-num">1</span>
+            <span>电影名称</span>
+            <div>
+                <img class="film-img" src="./images/01.jpg" alt="">
+                <p class="film-content">《西虹市首富》是由闫非、彭大魔编剧兼执导，沈腾、宋芸桦、张一鸣、常远、张晨光、魏翔等主演的喜剧片，于2018年7月27日在中国大陆上映。</p>
+            </div>
+        </li>
+        <li>
+            <span class="film-sort-num">1</span>
+            <span>电影名称</span>
+            <div>
+                <img class="film-img" src="./images/01.jpg" alt="">
+                <p class="film-content">《西虹市首富》是由闫非、彭大魔编剧兼执导，沈腾、宋芸桦、张一鸣、常远、张晨光、魏翔等主演的喜剧片，于2018年7月27日在中国大陆上映。</p>
+            </div>
+        </li>
+        <li>
+            <span class="film-sort-num">1</span>
+            <span>电影名称</span>
+            <div>
+                <img class="film-img" src="./images/01.jpg" alt="">
+                <p class="film-content">《西虹市首富》是由闫非、彭大魔编剧兼执导，沈腾、宋芸桦、张一鸣、常远、张晨光、魏翔等主演的喜剧片，于2018年7月27日在中国大陆上映。</p>
+            </div>
+        </li>
+        <li>
+            <span class="film-sort-num">1</span>
+            <span>电影名称</span>
+            <div>
+                <img class="film-img" src="./images/01.jpg" alt="">
+                <p class="film-content">《西虹市首富》是由闫非、彭大魔编剧兼执导，沈腾、宋芸桦、张一鸣、常远、张晨光、魏翔等主演的喜剧片，于2018年7月27日在中国大陆上映。</p>
+            </div>
+        </li>
+        <li>
+            <span class="film-sort-num">1</span>
+            <span>电影名称</span>
+            <div>
+                <img class="film-img" src="./images/01.jpg" alt="">
+                <p class="film-content">《西虹市首富》是由闫非、彭大魔编剧兼执导，沈腾、宋芸桦、张一鸣、常远、张晨光、魏翔等主演的喜剧片，于2018年7月27日在中国大陆上映。</p>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<script src="./js/jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+        $('.film-list li').hover(function () {
+            $(this).addClass('current').siblings().removeClass('current');
+        })
+    });
+    
+</script>
+</body>
+</html>

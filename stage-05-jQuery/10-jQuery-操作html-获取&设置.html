@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box">
+    <p id="content">内容</p>
+</div>
+
+<input id="name" type="text" value="itlike">
+<a href="http://www.baidu.com">撩课</a>
+
+<script src="./js/jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+       getContent();
+
+       setContent();
+    });
+
+    /* 获取内容 */
+    function getContent() {
+        var $box = $('#box');
+
+        // 1. 获取文字
+        var text = $box.text();
+        console.log(text);
+
+        //2.获取标签
+        var html = $box.html();
+        console.log(html);
+
+        //3. 获取表单元素的值
+        var name = $("#name").val();
+        console.log(name);
+
+        //4.获取标签属性
+        var href = $('a').attr('href');
+        console.log(href);
+    }
+
+    /* 设置内容 */
+    function setContent() {
+        var $box = $('#box');
+
+        //1.一般设置
+        $box.text('我是改变后的内容');
+        $box.html('<h1>改后的标题</h1>');
+
+        $('#name').val('我能改你');
+
+        $box.text(function (index, oldValue) {
+            return index + '今天剁手了么?' + oldValue;
+        });
+
+        $('a').text('百度');
+    }
+
+    /* 设置属性 */
+    function setAttribute() {
+        // $('a').attr('href','http://www.baidu.com');
+        // $('a').attr('target',"_self");
+
+        //这种设置方法和上面的一个意思
+        $('a').attr({
+            'href' : 'http://www.baidu.com',
+            'target' : '_self'
+        });
+    }
+</script>
+
+</body>
+</html>
