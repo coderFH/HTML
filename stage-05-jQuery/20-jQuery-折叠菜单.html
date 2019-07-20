@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .nav {
+        width: 300px;
+        margin: 100px auto;
+        border: 1px solid orange;
+    }
+    .top {
+        width: 300px;
+        height: 30px;
+        line-height: 30px;
+        box-sizing: border-box;
+        background-color: orange;
+        border-bottom: 1px solid white;
+
+    }
+    .top .arrow {
+        background: url("images/arrow_right.png") no-repeat;
+        float: right;
+        width: 16px;
+        height: 16px;
+        margin-top: 7px;
+    }
+
+    .list {
+        width: 100px;
+        display: none;
+    }
+</style>
+
+<body>
+
+<ul class="nav">
+    <li>
+        <div class="top">
+            <span class="arrow"></span>
+            <span>一级菜单</span>
+        </div>
+        <div class="list">
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </div>
+    </li>
+    <li>
+        <div class="top">
+            <span class="arrow"></span>
+            <span>一级菜单</span>
+        </div>
+        <div class="list">
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </div>
+    </li>
+    <li>
+        <div class="top">
+            <span class="arrow"></span>
+            <span>一级菜单</span>
+        </div>
+        <div class="list">
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </div>
+    </li>
+    <li>
+        <div class="top">
+            <span class="arrow"></span>
+            <span>一级菜单</span>
+        </div>
+        <div class="list">
+            <ul>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </div>
+    </li>
+</ul>
+
+<script src="./js/jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+        //1.点击li
+        $('.nav>li').click(function () {
+           $(this).children('.list').slideDown().end().siblings().children('.list').slideUp();
+
+           //2.箭头旋转
+            $('.top>.arrow').css({
+                'transform' : 'rotate(0deg)'
+            });
+
+            $(this).find('.arrow').css({
+                'transform' : 'rotate(90deg)'
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

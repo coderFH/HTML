@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+
+</style>
+
+<body>
+
+<ul>
+    <li>哈哈哈哈或</li>
+    <li>哈哈哈哈或</li>
+    <li>哈哈哈哈或</li>
+    <li>哈哈哈哈或</li>
+    <li>哈哈哈哈或</li>
+    <li>哈哈哈哈或</li>
+</ul>
+
+<script src="./js/jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+        // 1. 遍历数组
+        /* var arr = ['a', 'b', 'c', 'd'];
+         $.each(arr, function (index, value) {
+             console.log(index, value);
+             if(index === 1){
+                 return false;
+             }
+         });
+
+         $(arr).each(function (index, value) {
+             console.log(this);
+         });*/
+
+        // 2. 遍历对象
+        var obj = {
+            'name': '撩课学院',
+            'intro': '喜欢IT, 就上撩课(itlike.com)'
+        };
+        /*$.each(obj, function (key, value) {
+            console.log(key + "----" + value);
+        });*/
+
+        /*$(obj).each(function (key, value) {
+            console.log(key + "----" + value);
+        })*/
+
+        // 3. 伪数组
+        var fadeArray = {'0': '张三', '1': 18, 'length': 2};
+        // console.log($(fadeArray));
+        $.each(fadeArray, function (index, value) {
+            console.log(index, value);
+        });
+
+        $(fadeArray).each(function (index, value) {
+            console.log(this);
+        });
+
+        $('li').each(function (index, value) {
+            console.log(index, value);
+        });
+
+        $.each($('li'), function (index, value) {
+            console.log(index, value);
+        })
+    });
+</script>
+
+</body>
+</html>

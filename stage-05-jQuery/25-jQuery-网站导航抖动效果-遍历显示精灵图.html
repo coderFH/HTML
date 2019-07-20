@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    .box {
+        width: 350px;
+        height: 350px;
+        margin: 100px auto;
+        cursor: pointer;
+    }
+    .box ul li {
+        float: left;
+        width: 80px;
+        height: 80px;
+        text-align: center;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        margin: 2px;
+    }
+    .box>ul>li>span {
+        display: block;
+        width: 24px;
+        height: 24px;
+        background: url("images/bg.png") 0 -24px no-repeat;
+        margin: 10px auto;
+    }
+</style>
+
+<body>
+
+<div class="box">
+    <ul>
+        <li><span></span>百度</li>
+        <li><span></span>淘宝</li>
+        <li><span></span>新浪</li>
+        <li><span></span>网易</li>
+        <li><span></span>搜狐</li>
+        <li><span></span>腾讯</li>
+        <li><span></span>优酷</li>
+        <li><span></span>京东</li>
+    </ul>
+</div>
+
+
+<script src="./js/jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+        // 1. 展示图片
+        var $li = $('.box>ul>li');
+        $li.each(function (index, value) {
+            $(this).children('span').css({
+                'background': ' url("images/bg.png") 0 -' + index * 24 + 'px no-repeat'
+            })
+        });
+
+        // 2. 抖动动画
+        $li.hover(function () {
+            shake(this);
+        }, function () {
+            // 停止抖动
+            stopShake(this);
+        });
+
+        function shake(ele) {
+            // 1. 设置css
+            $(ele).css({
+                'position': 'relative'
+            });
+
+            // 2. 确定走动的值
+            var animateLeft = $(ele).css('left') === '10px' ? '-10px' : '10px';
+            $(ele).animate({
+                left: animateLeft
+            }, 100, function () {
+                shake(ele);
+            });
+        }
+
+        function stopShake(ele) {
+            $(ele).stop(true, false).css({
+                left: '0'
+            })
+        }
+    });
+</script>
+
+</body>
+</html>

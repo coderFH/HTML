@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    .box1 {
+        width: 300px;
+        height: 300px;
+        margin: 100px auto;
+        border: 1px solid red;
+        background: red;
+    }
+
+    .box2 {
+        width: 200px;
+        height: 200px;
+        border: 1px solid green;
+        background: green;
+    }
+
+    .box3 {
+        width: 100px;
+        height: 100px;
+        border: 1px solid yellow;
+        background: yellow;
+    }
+</style>
+
+<body>
+
+<div class="box1">
+    <div class="box2">
+        <div class="box3"></div>
+    </div>
+</div>
+
+
+<script src="./js/jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+        // $('.box3').css('background','orange');
+
+        //通过box3拿到父标签
+        // $('.box3').parent().css('background','cyan');
+
+        //在改变父标签颜色的同时,也改变自己的颜色 通过addBack()控制 (额外添加调用链上一级)
+        // $('.box2').parent().addBack().css('background','pink');
+
+        //从后代节点进行查找(被包装成jQuery对象)
+        $('.box1').find('.box3').css('background','cyan');
+
+    });
+</script>
+
+</body>
+</html>

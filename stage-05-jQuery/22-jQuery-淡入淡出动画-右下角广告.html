@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+    .ad {
+        background: url("images/ad-pic.png") no-repeat;
+        width: 300px;
+        height: 194px;
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+        /*display: none;*/
+    }
+
+    .close {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 2px;
+        right: 5px;
+        background-color: red;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+
+<div class="ad">
+    <div class="close"></div>
+</div>
+
+<script src="./js/jquery-3.3.1.js"></script>
+<script>
+    $(function () {
+        //1.设置定时器
+        var opacity = 0.3;
+        var timer = setInterval(function () {
+            opacity  = opacity === 1 ? 0.3 : 1;
+            $('.ad').fadeTo(1000,opacity);
+        },1000);
+
+        //2.关闭
+        $('.close').click(function () {
+            //2.1 清除定时器
+            clearInterval(timer);
+            //2.2滑动
+            $(this).parent().stop(true).slideUp();
+        })
+    });
+</script>
+
+</body>
+</html>
