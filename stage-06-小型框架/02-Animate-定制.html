@@ -3,8 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="css/animate.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: none;
+        }
+
+        .animated {
+            -webkit-animation-duration: 5s;
+            -webkit-animation-fill-mode: both;
+            animation-duration: 3s;
+            animation-fill-mode: both
+        }
+
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin: 100px auto;
+        }
+    </style>
 </head>
+
 <body>
+
+<!--执行一个动画,如果时间我们想改,可以拷贝出来,自己去任意的改-->
+<div class="box animated rollOut"></div>
 
 </body>
 </html>

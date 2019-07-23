@@ -7,7 +7,75 @@
 </head>
 
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+        border: none;
+        list-style: none;
+        box-sizing: border-box;
+        touch-action: none;
+    }
+    .box {
+        position: relative;
+    }
 
+    .head {
+        width: 100%;
+        height: 40px;
+        background-color: #ccc;
+    }
+
+    .head li {
+        width: 50%;
+        height: 100%;
+        float: left;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .head li.current {
+        color: #e9232c;
+    }
+
+    .line {
+        width: 50%;
+        height: 3px;
+        background-color: #e9232c;
+
+        position: absolute;
+        left: 0;
+        top: 37px;
+    }
+
+    .list {
+        width: 200%;
+    }
+    .list>div {
+        width: 50%;
+        float: left;
+    }
+    .list>div ul {
+        padding: 10px;
+    }
+
+    .list>div ul li {
+        height: 36px;
+        line-height: 36px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .more {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        color: #000;
+    }
 </style>
 
 <body>
@@ -44,9 +112,47 @@
 <script src="js/touch.js"></script>
 <script>
     $(function () {
+        //1. 监听头部li标签的点击
+        $('.head li').tap(function () {
+            //1.1 获取点击的索引
+            var index = $(this).index();
+            console.log(index);
+            //1.2 改变选择的样式
+            $(this).addClass('current').siblings().removeClass('current');
+            //1.3 动起来
+            dealWithSwipe(index);
+        });
 
+        //2. 监听左滑动和右滑动
+        var $list = $('.list');
+        $list.swipeLeft(function () {
+            dealWithSwipe(1);
+        });
+
+        $list.swipeRight(function () {
+            dealWithSwipe(0);
+        });
+
+        /**
+         * 统一处理左滑动和右滑动
+         * @param index 索引
+         */
+        function dealWithSwipe(index) {
+            //1.1 改变选择的样式
+            $('.head li').eq(index).addClass('current').siblings().removeClass('current');
+
+            //1.2 让线条移动起来
+            $('.line').css({
+                transform : 'translateX(' + index * 100 + '%)',
+                transition: 'all 0.25s linear'
+            });
+            //1.3 让大的列表走起
+            $('.list').css({
+                transform: 'translateX(' + -index * 50 + '%)',
+                transition: 'all 0.25s linear'
+            });
+        }
     });
 </script>
-
 </body>
 </html>

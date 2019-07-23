@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01-ScrollReveal初体验</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: none;
+        }
+
+        ul{
+            width: 980px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        ul li{
+            width: 200px;
+            height: 300px;
+            background-color: skyblue;
+            margin: 10px;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+    <li class="sr"></li>
+</ul>
+<script type="text/javascript" src="js/scrollreveal.min.js"></script>
+<script type="text/javascript">
+    window.onload = function (ev) {
+        // 参数
+        var config = {
+            reset: true, // 滚动鼠标时，动画开关
+            origin: 'right', // 动画开始的方向
+            duration: 1000, // 动画持续时间
+            delay: 0, // 延迟
+            rotate: {x:0, y:0, z:0}, // 过度到0的初始角度
+            opacity: 0, // 初始透明度
+            scale: 2, //缩放
+            easing: 'cubic-bezier(0.6, 0.2, 0.2, 1)', // 缓动'ease', 'ease-in-out'，'linear'...
+
+            // 回调函数
+            beforeReveal: function(domEl){},
+            beforeReset: function(domEl){},
+            afterReveal: function(domEl){},
+            afterReset: function(domEl){}
+        };
+
+
+        window.sr = ScrollReveal();
+        sr.reveal('.sr', config);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="css/animate.min.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border: none;
+        }
+
+        .box{
+            width: 900px;
+            margin: 20px auto;
+            overflow: hidden;
+            border: 1px solid red;
+        }
+
+        .box div{
+            width: 450px;
+            height: 300px;
+
+        }
+
+        .box div:nth-child(1){
+            float: left;
+            background-color: green;
+        }
+
+        .box div:nth-child(2){
+            float: right;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="wow slideInLeft"></div>
+    <div class="wow slideInRight"></div>
+</div>
+<div class="box">
+    <div class="test wow bounceIn" data-wow-offset="800"></div>
+    <div class="wow shake"></div>
+</div>
+<div class="box">
+    <div class="wow flip"></div>
+    <div class="wow bounceInRight"></div>
+</div>
+<div class="box">
+    <div class="wow slideInLeft"></div>
+    <div class="wow slideInRight"></div>
+</div>
+<div class="box">
+    <div class="wow slideInLeft"></div>
+    <div class="wow slideInRight"></div>
+</div>
+<div class="box">
+    <div class="wow slideInLeft"></div>
+    <div class="wow slideInRight"></div>
+</div>
+<div class="box">
+    <div class="wow slideInLeft"></div>
+    <div class="wow slideInRight"></div>
+</div>
+<div class="box">
+    <div class="wow slideInLeft"></div>
+    <div class="wow slideInRight"></div>
+</div>
+<div class="box">
+    <div class="wow slideInLeft"></div>
+    <div class="wow slideInRight"></div>
+</div>
+<div class="box">
+    <div class="wow slideInLeft"></div>
+    <div class="wow slideInRight"></div>
+</div>
+<div class="box">
+    <div class="wow slideInLeft"></div>
+    <div class="wow slideInRight"></div>
+</div>
+<div class="box">
+    <div class="wow slideInLeft"></div>
+    <div class="wow slideInRight"></div>
+</div>
+
+<script src="js/jquery-3.3.1.js"></script>
+<script src="js/wow.min.js"></script>
+<script>
+    $(function () {
+        var wow = new WOW({
+            boxClass:     'wow',      // animated element css class (default is wow)
+            animateClass: 'animated', // animation css class (default is animated)
+            offset:       0,          // distance to the element when triggering the animation (default is 0)
+            mobile:       true,       // trigger animations on mobile devices (default is true)
+        });
+
+        wow.init();
+    });
+</script>
+</body>
+</html>
