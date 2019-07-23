@@ -2,19 +2,73 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Title</title>
 </head>
 
 <style>
+    *{
+        /*清除所有的默认手势*/
+        touch-action: none;
+    }
 
+    .box{
+        width: 100px;
+        height: 100px;
+        background-color: red;
+
+        position: absolute;
+        left: 50px;
+        top: 50px;
+    }
 </style>
 
 <body>
 
-<script src="./js/jquery-3.3.1.js"></script>
+<div class="box"></div>
+
+<script src="js/zepto.js"></script>
+<script src="js/fx.js"></script>
+<script src="js/touch.js"></script>
+
 <script>
     $(function () {
+        /*$('.box').swipe(function () {
+            console.log('滑动了.....')
+        })*/
 
+        /*$('.box').swipeLeft(function () {
+            console.log('左滑动了.....')
+        })*/
+
+        /*$('.box').swipeRight(function () {
+            console.log('右滑动了.....')
+        })*/
+
+        var $box = $('.box');
+        $box.swipeLeft(function () {
+            $(this).animate({
+                left: '10px'
+            }, 1000)
+        });
+
+        $box.swipeRight(function () {
+            $(this).animate({
+                left: '200px'
+            }, 1000)
+        });
+
+        $box.swipeUp(function () {
+            $(this).animate({
+                top: '20px'
+            }, 1000)
+        });
+
+        $box.swipeDown(function () {
+            $(this).animate({
+                top: '320px'
+            }, 1000)
+        });
     });
 </script>
 

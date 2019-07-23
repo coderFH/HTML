@@ -7,14 +7,44 @@
 
 <style>
 
+    p {
+        height: 40px;
+        background-color: green;
+        margin: 10px;
+    }
 </style>
 
 <body>
 
+<p>
+    <input type="date">
+    <span>干啥子</span>
+</p>
+
 <script src="./js/jquery-3.3.1.js"></script>
 <script>
     $(function () {
+        $('p').click(function (event) {
+            //阻止冒泡
+            event.stopPropagation();
+            alert('哈哈哈');
+        });
 
+        $(document).click(function () {
+            //1.替换节点
+            // var $newTag = $('<h1>0000</h1>');
+            // $('p').replaceWith($newTag);
+
+            //2.复制节点
+            //加上first的限制,会永远只复制第一个p标签,否则会把新复制的p标签也一块拷贝了,呈现出2,4,8这种指数的增长
+            //false是浅拷贝,只拷贝标签,事件是不会拷贝进去的
+            // var $newTag = $('p:first').clone(false);
+            // $('body').append($newTag);
+
+            //3.深拷贝,连同标签上的事件
+            var $nweTag = $('p:first').clone(true);
+            $('body').append($nweTag);
+        });
     });
 </script>
 

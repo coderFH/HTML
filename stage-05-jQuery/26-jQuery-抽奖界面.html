@@ -6,15 +6,117 @@
 </head>
 
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .box {
+        width: 300px;
+        height: 300px;
+        border: 1px solid orange;
+        margin: 100px auto;
+    }
+    .goods li {
+        width: 100px;
+        height: 100px;
+        float: left;
+        /*background-color: red;*/
+        box-sizing: border-box;
+    }
+
+    .goods img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .current {
+        border: 1px solid orange;
+    }
+
+    #begin img{
+        border-radius: 50%;
+    }
 
 </style>
 
 <body>
 
+
+<div class="box">
+    <ul class="goods">
+        <li><img src="" alt=""></li>
+        <li class="current"><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li id="begin"><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+        <li><img src="" alt=""></li>
+    </ul>
+
+</div>
+
 <script src="./js/jquery-3.3.1.js"></script>
 <script>
     $(function () {
+        // 0. 数据源
+        var goodsNames = ['耳机', '平板电脑', '感谢参与', '平板鞋', 'begin', '特步', '玩偶', 'ipone手机', '安卓手机'];
+        var goodsImage = [];
+        for (var i = 1;i < 10; i++)  {
+            goodsImage.push('./images/reward' + i + '.png');
+        }
 
+        // 1. 展示数据源
+        $('.goods>li>img').each(function (index, value) {
+            $(this).attr('src',goodsImage[index]);
+        });
+
+        // 2. 监听按钮的点击
+        var currentGunIndex = 0;
+        var showIndex = 0;
+        $('#begin').click(function () {
+            //2.0 清除定时器
+            clearInterval(timer);
+            //2.1 控制滚动次数
+            var count = Math.floor(Math.random() * 8) + 50;
+
+            //2.2 指定滚动路径
+            var showIndexs = [0,1,2,5,8,7,6,3];
+            //2.3根据路径回滚
+            var timer = setInterval(function () {
+                //2.4 判断
+                if (count <= 0) {
+                    if (showIndex === 2)  { //没有中奖
+                        alert('运气不好哦~');
+                    } else {
+                        alert('恭喜中奖, 奖品是:' + goodsNames[showIndex]);
+                    }
+                    // 2.5 清除定时器
+                    clearInterval(timer);
+                    return;
+                }
+
+                //2.5 条件
+                count--;
+
+                // 滚动的循环 1,2,3,4,5,6,7,0,1,2,3....
+                currentGunIndex = (currentGunIndex + 1) % showIndexs.length;
+
+                // 从滚动路径中找到当前盒子的下标
+                showIndex = showIndexs[currentGunIndex];
+
+                // 2.6 让当前的盒子被选中
+                $('.goods>li').eq(showIndex).addClass('current').siblings().removeClass('current');
+
+                // 2.7 控制启动按钮的旋转
+                $('#begin').css({
+                    'transform': 'rotate(' + (currentGunIndex - 1) * 45 +'deg)'
+                });
+            },50);
+        });
     });
 </script>
 

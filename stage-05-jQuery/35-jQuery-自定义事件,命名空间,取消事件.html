@@ -7,14 +7,38 @@
 
 <style>
 
+    .box {
+        width: 200px;
+        height: 100px;
+        background-color: red;
+    }
+
 </style>
 
 <body>
+<div class="box"></div>
 
 <script src="./js/jquery-3.3.1.js"></script>
 <script>
     $(function () {
 
+        var $box = $('.box');
+        //1.自定义事件
+        $box.on('abc',function () {
+            console.log('自定义事件');
+        });
+        $box.trigger('abc');
+
+        //2. 命名空间
+        $box.on('click.one',function () {
+            console.log('click.one');
+        });
+
+        $box.on('click.two',function () {
+            console.log('click.two');
+        });
+
+        $box.off('.two');  //关闭two事件
     });
 </script>
 

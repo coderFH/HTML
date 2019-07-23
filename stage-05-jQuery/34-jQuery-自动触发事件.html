@@ -11,10 +11,29 @@
 
 <body>
 
+<form action="http://www.baidu.com">
+    <input type="submit">
+</form>
+
 <script src="./js/jquery-3.3.1.js"></script>
 <script>
     $(function () {
+        var $submint = $(':submit');
+        $submint.on('click',function () {
+            alert('提交');
+        });
 
+        /*
+        1. 会触发事件的默认行为.
+        2.触发事件时, 会造成事件冒泡
+        */
+        // $submint.trigger('click');
+
+        /*
+         1. 不会触发事件的默认行为.
+         2.触发事件时, 不会造成事件冒泡
+        */
+        $submint.triggerHandler('click');
     });
 </script>
 

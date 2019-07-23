@@ -6,15 +6,45 @@
 </head>
 
 <style>
+    div {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+    }
 
 </style>
 
 <body>
 
+<div></div>
+<button>点我</button>
+
 <script src="./js/jquery-3.3.1.js"></script>
 <script>
     $(function () {
+        $('button').on('click',function (event) {
+            console.log(event.type);
+            console.log(event.target);
+        });
 
+        $('div').on('click',{'name' : '撩课'},function (event) {
+            console.log(event.type);
+            console.log(event.data['name']);
+        })
+        
+        $('div').on({
+            'click' : function (event) {
+                console.log('-------------click事件被触发----------');
+            },
+            'mouseenter' : function (event) {
+                console.log('----------mouseenter事件被触发--------');
+            }
+        })
+
+        //一次事件
+        $('button').one('click',function (event) {
+            console.log('1111');
+        })
     });
 </script>
 

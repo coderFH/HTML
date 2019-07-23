@@ -7,14 +7,30 @@
 
 <style>
 
+    div {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        margin: 10px;
+    }
 </style>
 
 <body>
 
-<script src="./js/jquery-3.3.1.js"></script>
+    <button id="btn">改变颜色</button>
+    <div></div>
+    <div></div>
+
+<!--<script src="./js/jquery-3.3.1.js"></script>-->
+<script src="js/zepto.js"></script>
+<script src="js/selector.js"></script>
 <script>
     $(function () {
-
+        $('#btn').on('click', function () {
+            $('div:eq(1)').css({
+                backgroundColor: 'green'
+            });
+        })
     });
 </script>
 

@@ -6,15 +6,101 @@
 </head>
 
 <style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .box {
+        width: 520px;
+        height: 280px;
+        margin: 100px auto;
+        border: 1px solid orangered;
+        /*overflow: hidden;*/
+    }
+
+    .box>ul {
+        position: relative;
+    }
+
+    .box>ul>li {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .box>ul>li>img {
+        width: 520px;
+        height: 280px;
+    }
 
 </style>
 
 <body>
 
+<div class="box">
+    <ul>
+        <li><img src="./images/lunbo1.jpg" alt=""></li>
+    </ul>
+</div>
+
 <script src="./js/jquery-3.3.1.js"></script>
 <script>
+    /*
+       要求:
+       点击页面的左边, 展示左边的一张图片
+       点击页面的右边, 展示右边的一张图片
+       越界循环
+     */
     $(function () {
+        // 1. 准备数据源
+        var imageNames = [];
+        for (var i = 1; i < 5; i++) {
+            imageNames.push('./images/lunbo' + i + '.jpg');
+        }
+        console.log(imageNames);
 
+        //2.设置当前的索引
+        var currentShowImgIndex = 0;
+
+        //3.监听点击
+        $(document).click(function (event) {
+            //3.1 定义变量
+            var middleX = $(window).width() * 0.5;
+            var isLeft = false;
+
+            //3.2 判断
+            if (event.pageX <= middleX) { //左边
+                isLeft = true;
+                currentShowImgIndex = (currentShowImgIndex - 1 + imageNames.length) % imageNames.length;
+            } else { //右边
+                isLeft = false;
+                currentShowImgIndex = (currentShowImgIndex + 1) % imageNames.length;
+            }
+
+            //3.3 创建节点,放在ul的最前边
+            var imageName = imageNames[currentShowImgIndex];
+            console.log(imageName);
+            var $newTag = $('.box>ul>li').clone();
+            $newTag.children('img').attr('src',imageName);
+            $('.box>ul').prepend($newTag);
+
+            //3.4 动画展示和删除
+            if (isLeft) {
+                $('.box>ul>li:last').animate({
+                    left : '-520px'
+                },200,function () {
+                    $(this).remove();
+                })
+            } else {
+                $('.box>ul>li:last').animate({
+                    left : '520px'
+                },200,function () {
+                    $(this).remove();
+                })
+            }
+        })
     });
 </script>
 

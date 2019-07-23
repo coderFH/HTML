@@ -6,16 +6,176 @@
 </head>
 
 <style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
 
+    #main {
+        position: relative;
+    }
+
+    .box {
+        float: left;
+        padding: 15px 0 0 15px;
+    }
+
+    .pic {
+        border-right: 1px solid #ddd;
+        padding: 10px;
+        background-color: white;
+        border-radius: 5px;
+    }
+
+    .pic img {
+        width: 165px;
+    }
 </style>
 
 <body>
 
+<div id="main">
+    <div class="box"><div class="pic"><img src="./resource/img01.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img02.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img03.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img04.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img05.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img06.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img07.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img08.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img09.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img10.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img11.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img12.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img13.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img14.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img15.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img16.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img17.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img18.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img19.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img20.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img21.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img22.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img23.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img24.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img25.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img26.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img27.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img28.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img29.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img30.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img31.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img32.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img33.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img34.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img35.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img36.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img37.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img38.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img39.jpg" alt=""></div></div>
+    <div class="box"><div class="pic"><img src="./resource/img40.jpg" alt=""></div></div>
+</div>
+
 <script src="./js/jquery-3.3.1.js"></script>
 <script>
     $(function () {
-
+        // 1. 实现瀑布流布局
+        waterFull();
+        // 2. 动态加载新的盒子
+        $(window).on('scroll', function () {
+            // 2.1 判断是否具备加载的条件
+            if (checkWillLoadImage()) { // true
+                console.log(1111);
+                // 2.2 造数据
+                var dataArr = [
+                    {'src': 'img01.jpg'},
+                    {'src': 'img03.jpg'},
+                    {'src': 'img04.jpg'},
+                    {'src': 'img07.jpg'},
+                    {'src': 'img08.jpg'},
+                    {'src': 'img10.jpg'},
+                    {'src': 'img12.jpg'},
+                    {'src': 'img30.jpg'}
+                ];
+                // 2.2 遍历假数据, 不断加载
+                $.each(dataArr, function (index, value) {
+                    // 1. 创建标签
+                    var newBox = $('<div>').addClass('box').appendTo($('#main'));
+                    var newPic = $('<div>').addClass('pic').appendTo($(newBox));
+                    $('<img>').attr('src', './resource/' + $(value).attr('src')).appendTo($(newPic));
+                    console.log($(value).attr('src'));
+                });
+                // 2.3 重新布局
+                waterFull();
+            }
+        })
     });
+
+    /**
+     * 实现瀑布流的布局
+     */
+    function waterFull() {
+        // 1. 求出父盒子的宽度
+        //  1.1 获取所有的子盒子
+        var allBox = $('#main>.box');
+        // 1.2 求出子盒子的宽度
+        var boxWidth = $(allBox).eq(0).outerWidth();
+        // 1.3 获取窗口的宽度
+        var clientW = $(window).width();
+        // 1.4 求出总列数
+        var cols = Math.floor(clientW / boxWidth);
+
+        // 1.5 父盒子居中
+        $('#main').css({
+            width: cols * boxWidth + 'px',
+            margin: '0 auto'
+        });
+
+        // 2. 子盒子定位
+        //  2.1 定义变量
+        var heightArr = [], boxHeight = 0, minBoxHeight = 0, minBoxIndex = 0;
+        // 2.2 遍历所有的子盒子
+        $.each(allBox, function (index, value) {
+            // 2.2.1 求出每一个子盒子的高度
+            boxHeight = $(value).outerHeight();
+            // 2.2.2 取出第一行盒子的高度放入高度数组中
+            if (index < cols) { // 第一行
+                heightArr.push(boxHeight);
+            } else { // 剩余行的盒子
+                // 2.2.3 取出数组中最矮的高度
+                minBoxHeight =  Math.min.apply(this, heightArr);
+                // 2.2.4 求出最矮高度对应的索引
+                minBoxIndex =  $.inArray(minBoxHeight, heightArr);
+                // 2.2.5 盒子定位
+                $(value).css({
+                    position: 'absolute',
+                    left: minBoxIndex * boxWidth + 'px',
+                    top: minBoxHeight + 'px'
+                });
+                // 2.2.6 更新最矮的高度
+                heightArr[minBoxIndex] += boxHeight;
+            }
+        });
+    }
+
+    /**
+     * 判断是否具备加载子盒子的条件
+     * @returns {boolean}
+     */
+    function checkWillLoadImage() {
+        // 1. 获取最后一个盒子
+        var lastBox = $('#main>.box').last();
+        // 2. 求出高度
+        var lastBoxDis = $(lastBox).outerHeight() * 0.5 + $(lastBox).offset().top;
+        // 3. 求出窗口的高度
+        var clientH =  $(window).height();
+        // 4. 求出页面滚动产生的高度
+        var scrollTopH = $(window).scrollTop();
+        // 5. 对比
+        return lastBoxDis <= clientH + scrollTopH;
+    }
+
 </script>
 
 </body>

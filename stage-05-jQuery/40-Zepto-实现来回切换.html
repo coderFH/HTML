@@ -6,15 +6,27 @@
 </head>
 
 <style>
-
+    .box{
+        width: 100px;
+        height: 100px;
+        background-color: green;
+    }
 </style>
 
 <body>
 
-<script src="./js/jquery-3.3.1.js"></script>
+<button id="btn">来回切换</button>
+<div class="box"></div>
+
+<!--<script src="./js/jquery-3.3.1.js"></script>-->
+<script src="js/zepto.js"></script>
+<script src="js/fx.js"></script>
+<script src="js/fx_methods.js"></script>
 <script>
     $(function () {
-
+        $('#btn').on('click', function () {
+            $('.box').toggle(1000);
+        })
     });
 </script>
 

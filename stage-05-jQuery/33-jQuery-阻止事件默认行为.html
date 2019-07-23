@@ -11,10 +11,15 @@
 
 <body>
 
+<a href="http://www.baidu.com">百度</a>
 <script src="./js/jquery-3.3.1.js"></script>
 <script>
     $(function () {
-
+        $('a').on('click',function (event) {
+            //阻止默认事件
+            event.preventDefault();
+            alert('我阻止了,不让你跳转');
+        })
     });
 </script>
 
