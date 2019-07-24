@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="css/swiper.css">
+    <style>
+        .box{
+            width: 520px;
+            height: 280px;
+        }
+    </style>
+</head>
+<body>
+<div class="swiper-container box">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <img src="images/01.jpg" alt="">
+        </div>
+        <div class="swiper-slide">
+            <img src="images/02.jpg" alt="">
+        </div>
+        <div class="swiper-slide">
+            <img src="images/03.jpg" alt="">
+        </div>
+        <div class="swiper-slide">
+            <img src="images/04.jpg" alt="">
+        </div>
+    </div>
+
+    <!--添加分页-->
+    <div class="swiper-pagination"></div>
+
+    <!--导航按钮-->
+    <!--<div class="swiper-button-prev"></div>&lt;!&ndash;左箭头&ndash;&gt;
+    <div class="swiper-button-next"></div>&lt;!&ndash;右箭头&ndash;&gt;-->
+    <div class="swiper-button-prev swiper-button-white"></div> <!-- 白色 -->
+    <div class="swiper-button-next swiper-button-black"></div> <!-- 黑色 -->
+
+</div>
+
+<script src="js/swiper.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        // 无线循环
+        loop : true,
+        // 设置自动播放
+        autoplay: true,
+        // 设置分页
+        pagination:{
+            el: '.swiper-pagination',
+            type:'progressbar'
+        },
+        // 左右导航
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+        },
+
+        /*effect : 'fade',*/
+        /*effect : 'cube',*/
+        /*effect : 'flip',*/
+        effect : 'coverflow',
+
+        speed: 2000,
+
+        direction: 'vertical'
+    });
+</script>
+</body>
+</html>

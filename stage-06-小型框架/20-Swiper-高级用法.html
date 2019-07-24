@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/swiper.css">
+    <style>
+        .box{
+            width: 600px;
+            height: 200px;
+            background-color: red;
+        }
+
+        /*.box>div>div:nth-child(1){
+            background-color: red;
+        }
+
+        .box>div>div:nth-child(2){
+            background-color: green;
+        }
+
+        .box>div>div:nth-child(3){
+            background-color: blue;
+        }*/
+
+        /*.swiper-button-prev{
+            width: 40px;
+            height: 40px;
+            background: url("images/01.jpg");
+        }*/
+    </style>
+</head>
+<body>
+<div class="swiper-container box">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">slider1</div>
+        <div class="swiper-slide">slider2</div>
+        <div class="swiper-slide">slider3</div>
+    </div>
+    <!--添加分页-->
+    <div class="swiper-pagination"></div>
+
+    <!--导航按钮-->
+    <div class="swiper-button-prev"></div><!--左箭头-->
+    <div class="swiper-button-next"></div><!--右箭头-->
+
+    <!--<div class="swiper-scrollbar"></div>-->
+</div>
+
+<script src="js/swiper.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        // 无线循环
+        loop : true,
+
+        // 设置自动播放
+        autoplay: true,
+        /* autoplay: {
+             delay: 1000,
+             stopOnLastSlide: false,
+             disableOnInteraction: true
+         },*/
+
+        // 设置分页
+        pagination:{
+            el: '.swiper-pagination'
+        },
+
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev'
+        },
+
+        scrollbar: {
+            el: '.swiper-scrollbar'
+        }
+    });
+</script>
+</body>
+</html>

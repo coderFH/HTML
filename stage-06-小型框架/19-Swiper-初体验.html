@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/swiper.css">
+    <style>
+        .box{
+            width: 600px;
+            height: 200px;
+            background-color: purple;
+        }
+
+        .box>div>div:nth-child(1){
+            background-color: red;
+        }
+
+        .box>div>div:nth-child(2){
+            background-color: green;
+        }
+
+        .box>div>div:nth-child(3){
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+
+<div class="swiper-container box">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">slider1</div>
+        <div class="swiper-slide">slider2</div>
+        <div class="swiper-slide">slider3</div>
+    </div>
+</div>
+
+<script src="js/swiper.js"></script>
+<script>
+    var swiper = new Swiper('.swiper-container');
+</script>
+</body>
+</html>

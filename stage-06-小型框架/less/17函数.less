@@ -1,0 +1,13 @@
+@color: screen(#ff6600, #0000ff);
+
+h1{
+  background-color: multiply(red, skyblue);
+}
+
+h2{
+  background-color: @color;
+  &:hover{
+    /*background-color: darken(@color, 60%);*/
+    background-color: lighten(@color, 20%);
+  }
+}

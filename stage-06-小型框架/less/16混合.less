@@ -1,0 +1,20 @@
+.yuanjiao(@radius:20px, @rotate:40deg) {
+  border-radius: @radius;
+  transform: rotate(@rotate);
+}
+
+.box1, .box2 {
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+}
+
+.box1 {
+  background-color: green;
+  .yuanjiao();
+}
+
+.box2 {
+  background-color: red;
+  .yuanjiao(60px, 120deg);
+}
