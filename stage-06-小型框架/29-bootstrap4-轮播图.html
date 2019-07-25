@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <title>07-bootstrap初体验-轮播图</title>
+    <style>
+        #lk, #lk1{
+            width: 780px;
+            height: 400px;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+
+<div id="lk" class="carousel slide" data-ride="carousel">
+    <!--分页-->
+    <ol class="carousel-indicators">
+        <li data-target="#lk" data-slide-to="0" class="active"></li>
+        <li data-target="#lk" data-slide-to="1"></li>
+        <li data-target="#lk" data-slide-to="2"></li>
+    </ol>
+    <!--中间的滚动内容-->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="./images/01.jpg">
+        </div>
+        <div class="carousel-item">
+            <img src="./images/02.jpg">
+        </div>
+        <div class="carousel-item">
+            <img src="./images/03.jpg">
+        </div>
+    </div>
+    <!--左边-->
+    <a class="carousel-control-prev" href="#lk" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <!--右边-->
+    <a class="carousel-control-next" href="#lk" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+
+<div id="lk1" class="carousel slide" data-ride="carousel">
+    <!--分页-->
+    <ol class="carousel-indicators">
+        <li data-target="#lk1" data-slide-to="0" class="active"></li>
+        <li data-target="#lk1" data-slide-to="1"></li>
+        <li data-target="#lk1" data-slide-to="2"></li>
+    </ol>
+    <!--中间的滚动内容-->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="./images/01.jpg">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>撩课学院</h5>
+                <p>新的文件发的尾部积分本网</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="./images/01.jpg">
+        </div>
+        <div class="carousel-item">
+            <img src="./images/02.jpg">
+        </div>
+    </div>
+    <!--左边-->
+    <a class="carousel-control-prev" href="#lk1" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <!--右边-->
+    <a class="carousel-control-next" href="#lk1" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<!-- bootstrap依赖于JQ -->
+<script src="./js/jquery-3.3.1.js"></script>
+<!--弹窗、提示、下拉菜单 -->
+<script src="./js/popper.js"></script>
+<script src="./js/bootstrap.js"></script>
+<script>
+    $(function () {
+        $('#lk').carousel({
+            interval: 500
+        })
+    })
+</script>
+</body>
+</html>
