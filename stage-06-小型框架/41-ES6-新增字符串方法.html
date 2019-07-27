@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script type="text/html">
+    /* 1)  startsWith()
+    判断字符串是否以 XX 开头
+    */
+    let url = 'http://www.itlike.com';
+    console.log(url.startsWith('http:'));
+</script>
+
+<script>
+    /* 2) endsWith()
+    判断字符串是否以 XX 结尾*/
+
+    let file = 'index.html';
+    console.log(file.endsWith('html'));  // true
+
+    let str = 'liaoke';
+    console.log(str.includes('ak')); // true
+
+    let title = '撩课在线';
+    console.log(title.repeat(11));
+
+    //  "2030111111"
+    let y1 = '2030'.padEnd(10, '1');
+    //   "2030-11-22"
+    let y2 = '11-22'.padStart(10, '2030-MM-DD');
+    console.log(y1, y2);
+</script>
+</body>
+</html>

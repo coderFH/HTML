@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script id="数组解构" type="text/html">
+    //  普通写法
+    let nameArr = ['撩课', '小撩', '小煤球'];
+
+    /*let name1 = nameArr[0];
+    let name2 = nameArr[1];
+    let name3 = nameArr[2];*/
+
+    // 等价
+    let [name1, name2, name3, name4] = nameArr;
+    console.log(name1, name2, name3, name4);
+</script>
+
+<script id="对象解构" type="text/html">
+    let {name, age, gender} = {name: '小煤球', age: 1, gender: '公'};
+    console.log(name);
+    console.log(age);
+    console.log(gender);
+</script>
+
+<script id="解构重命名" type="text/html">
+    // let name = '张三';
+    let {name: lkName, age: lkAge, gender: lkGender} = {name: '小煤球111', age: 11, gender: '公'};
+    console.log(lkName);
+    console.log(lkAge);
+    console.log(lkGender);
+</script>
+
+<script id="默认解构" type="text/html">
+    let {name, age, gender = '母'} = {name: '小煤球', age: 1};
+    console.log(name);
+    console.log(age);
+    console.log(gender);
+</script>
+
+<script id="省略解构" type="text/html">
+    let [, sex, ] = [ '小煤球', 1, '公'];
+    console.log(sex);
+</script>
+
+<script>
+    //es5的写法
+    function ajax(options) {
+        let method = options.method || 'GET';
+        let data = options.data || {};
+    }
+
+    function ajax({method = 'GET', data}) {
+        console.log(method, data);
+    }
+
+    ajax({
+        method: 'POST',
+        data: {'id': 'xxxx', 'name': 'xxxx'}
+    })
+</script>
+</body>
+</html>

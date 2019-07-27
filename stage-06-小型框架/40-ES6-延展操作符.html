@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script id="数组的延展">
+    let arr1 = ['a', 'b', 'c'];
+    let arr2 = [1, 2, 3];
+    let result = [...arr1, ...arr2];
+    console.log(result);
+</script>
+
+<script id="对象的延展">
+    let smallDog = {name1:'小煤球', age1: 1};
+    let bigDog = {name2: 'Python', age2: 2};
+    let dog = {...smallDog, ...bigDog};
+    console.log(dog);
+</script>
+
+<script>
+    function getMinValue() {
+        console.log(Math.min(...arguments));
+    }
+    getMinValue(1, -88, 2, 10, 9);
+</script>
+</body>
+</html>
