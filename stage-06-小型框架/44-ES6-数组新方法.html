@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script id="from">
+    let oldArr = ['小煤球', 10, {df1: '小Python', df2: '土豆'}];
+    let newArr = Array.from(oldArr); //将一个数组或者类数组变成新数组,是浅拷贝操作
+    console.log(oldArr);
+    console.log(newArr);
+    console.log(newArr === oldArr);
+</script>
+
+<script id="of">
+    //of 创建一个具有可变数量参数的新数组实例,而不考虑参数的数量或类型
+    console.log(Array.of(8));
+    console.log(Array.of(1, 2, 3));
+
+    console.log(Array(8));
+    console.log(Array(1, 2, 3));
+</script>
+
+<script id="fill">
+    let array1 = [1, 2, 3, 4, 5]; // [)
+    // 用 撩 替换 索引[2,5]中的内容
+    console.log(array1.fill('撩', 2, 5));
+    // 用 撩 替换 索引[1]中的内容
+    console.log(array1.fill('撩', 1));
+    // 用 撩 替换 数组中所有内容
+    console.log(array1.fill('撩'));
+</script>
+</body>
+</html>

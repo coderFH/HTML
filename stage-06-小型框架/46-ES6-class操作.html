@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    //es5 中的类 通过构造函数创建
+    // 1. 构造函数
+    /*
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    Person.prototype = {
+        constructor: Person,
+        print(){
+            console.log(`我叫:${this.name}, 今年: ${this.age}岁了!`);
+        }
+    };
+    */
+    //2.class
+    class Person{
+        constructor(name, age){
+            this.name = name;
+            this.age = age;
+        }
+        print(){
+            console.log(`我叫:${this.name}, 今年: ${this.age}岁了!`);
+        }
+    }
+
+    let p = new Person('张三', 19);
+    p.print();
+
+</script>
+
+</body>
+</html>

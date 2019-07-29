@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script id="set">
+    // 创建一个集合
+    let set = new Set(['张三', '李四', '王五', '张三', '李四']);
+    console.log(set);
+
+    // 一个属性
+    console.log(set.size);
+
+    // 四个方法
+    // add
+    console.log(set.add('刘德华').add('旋之华'));
+    console.log(set);
+
+
+    // delete
+    console.log(set.delete('张三'));
+    console.log(set.delete('李四'));
+    console.log(set);
+
+    // has
+    console.log(set.has('张三'));
+    console.log(set.has('张三1'));
+
+    // clear
+    console.log(set.clear()); // undefined
+    console.log(set);
+</script>
+
+<script id="map">
+    let obj = {
+        'name': '张三',
+        'age': '李四',
+        '10': '小动物的',
+    };
+
+    // 创建一个Map
+    let obj1 = {a: 1},
+        obj2 = {b: 2};
+    const map = new Map([
+        ['name', '张三'],
+        ['age', 18],
+        ['sex', '男'],
+        [obj1, '今天天气很好'],
+        [obj2, '适合敲代码'],
+        [[1,2], 'hhh']
+    ]);
+    console.log(map);
+    console.log(map.size);
+
+    let  map1 = new Map([
+        ['name', '张三'],
+        ['age', 18],
+        ['sex', '男'],
+        [[1,2], 'hhh']
+    ]);
+
+    // 注意事项
+    map1.set({}, '呵呵呵呵呵');
+    map1.set({}, '哈哈哈哈');
+    console.log(map1);
+    console.log({} === {});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script id="属性简写">
+    let name = '小花';
+    let gender = '女';
+    let Person = {
+        name,
+        gender,
+        log() {
+            console.log(`我是:${name},性别:${gender}`);
+        }
+    };
+    Person.log();
+</script>
+
+<script id="super">
+    let dog1 = {name : '小煤球'};
+    let dog2 = {
+        __proto__ : dog1,
+        getDogName() {
+            return super.name
+        }
+    };
+    console.log(dog2.getDogName());
+    console.log(Object.is(Function, Object)); //对比两个值是否相等
+</script>
+
+<script id="setPrototypeOf">
+    let obj = {name: 'xxx'};
+    let dog3 = { name: '小煤球' };
+
+    Object.setPrototypeOf(dog3, obj);
+
+    let dog4 = {
+        __proto__: obj
+    };
+    console.log(dog3.__proto__.name);
+    console.log(dog4.__proto__.name);
+</script>
+
+<script id="浅拷贝">
+    //Object.assign 拷贝
+    let obj1 = { dog1: { name: '小煤球' } };
+    let obj2 = { name: '小Python' };
+    let obj3 = {};
+    Object.assign(obj3, obj1, obj2);
+    console.log(obj3);
+
+    // 延展拷贝
+    let obj4 = { dog1: { name: '小煤球' } };
+    let obj5 = { name: '小Python' };
+    console.log({ ...obj4, ...obj5 });
+</script>
+
+<script id="深拷贝">
+    // JSON.parse和JSON.stringify
+    let obj6 = { dog1: { name: '小煤球' } };
+    let obj7 = { name: '小Python' };
+
+    let obj8 = JSON.parse(JSON.stringify({ ...obj6, ...obj7}));
+    obj8.dog1.name = 'xxxxx';
+    console.log(obj.dog6);
+
+    console.log(obj6);
+</script>
+
+</body>
+</html>
