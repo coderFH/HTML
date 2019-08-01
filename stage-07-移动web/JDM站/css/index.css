@@ -1,0 +1,186 @@
+body {
+    background-color: #f5f5f5;
+    font-size: 1.2rem;
+}
+
+.jd-layout {
+    min-width: 30rem;
+    max-width: 64rem;
+    height: 100rem;
+    margin: 0 auto;
+    position: relative;
+    /*background-color: red;*/
+}
+
+/* ================================================= 头部(搜索)开始 ================================================= */
+.jd-header {
+    width: 100%;
+    height: 4rem;
+    position: fixed;
+    left: 0;
+    top: 0;
+    /*background-color: green;*/
+    z-index: 999;
+}
+
+.jd-header .jd-header-box {
+    min-width: 30rem;
+    max-width: 63rem;
+    height: 4rem;
+    background-color: transparent;
+    margin: 0 auto;
+    position: relative;
+}
+
+.jd-header .jd-header-box .icon-logo {
+    background-position: 0 -10.3rem;
+    width: 6rem;
+    height: 3rem;
+
+    position: absolute;
+    top: 0.5rem;
+    left: 0.7rem;
+}
+
+.jd-header .jd-header-box .jd-login {
+    width: 5rem;
+    height: 3.5rem;
+    line-height: 4rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fff;
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.jd-header .jd-header-box form {
+    width: 100%;
+    height: 4rem;
+    padding-left: 7.5rem;
+    padding-right: 6.5rem;
+}
+
+.jd-header .jd-header-box form input {
+    width: 100%;
+    height: 3rem;
+    margin-top: 0.5rem;
+    border-radius: 1.5rem;
+    padding-left: 4rem;
+}
+
+.jd-header .jd-header-box form .icon-search {
+    background-position: -12rem 0;
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 1rem;
+    left: 8.5rem;
+}
+/* ================================================= 头部(搜索)结束================================================= */
+
+/* ================================================= 轮播图 开始 ================================================= */
+.jd-banner {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.jd-banner ul{
+    width: 1000%;
+    transform: translateX(-10%);
+    -webkit-transform: translateX(-10%);
+}
+
+.jd-banner ul li {
+    float: left;
+    width: 10%;
+}
+
+.jd-banner ul li a img {
+    width: 100%;
+    display: block;
+}
+
+.jd-banner ol {
+    width: 12rem;
+    height: 1rem;
+
+    position: absolute;
+    left: 50%;
+    bottom: 6px;
+    margin-left: -6rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.jd-banner ol li {
+    width: 0.6rem;
+    height: 0.6rem;
+    border: 1px solid #fff;
+    border-radius: 50%;
+}
+
+.jd-banner ol li.current {
+    background-color: #fff;
+}
+
+/* ================================================= 轮播图 结束 ================================================= */
+
+/* ================================================= 导航 开始 ================================================= */
+.jd-nav{
+    background-color: #fff;
+    padding: 1rem;
+}
+
+.jd-nav ul li{
+    width: 20%;
+    float: left;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.jd-nav ul li img {
+    width: 4rem;
+    height: 4rem;
+}
+/* ================================================= 导航 结束 ================================================= */
+
+/* ================================================= 秒杀 开始 ================================================= */
+.jd-product {
+    margin: 15px 8px 10px;
+}
+
+.jd-product section {
+    width: 100%;
+    border: 0.1rem solid #e0e0e0;
+    background-color: #fff;
+    margin-bottom: 1rem;
+}
+
+.jd-product section .s-kill-title {
+    width: 100%;
+    height: 3rem;
+
+    /*伸缩布局*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.s-kill-left {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+}
+
+.s-kill-left>img {
+    width: 7rem;
+    height: 2.8rem;
+}
+
+/* ================================================= 秒杀 结束 ================================================= */
