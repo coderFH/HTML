@@ -1,4 +1,6 @@
-*,::before,::after {
+*,
+::before,
+::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -19,7 +21,6 @@ a {
     text-decoration: none;
     color: #666666;
 }
-
 
 ul,ol {
     list-style: none;
@@ -48,4 +49,71 @@ input {
     background: url("../images/sprites.png") no-repeat;
     -webkit-background-size: 20rem 20rem;
     background-size: 20rem 20rem;
+}
+
+/*************************导航样式***************************/
+.header {
+    width: 100%;
+    height: 4.4rem;
+    background: url("../images/header-bg.png") repeat-x;
+    -webkit-background-size: 0.1rem 4.4rem;
+    background-size: 0.1rem 4.4rem;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.header .icon-back,
+.header .icon-menu {
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    top: 0;
+    padding: 10px;
+
+    /*背景图的定位从内容开始计算*/
+    -webkit-background-origin: content-box;
+    background-origin: content-box;
+
+    /*背景图从内容开始显示*/
+    background-clip: content-box;
+}
+
+.header .icon-back {
+    left: 0;
+    background-position: -2rem 0;
+}
+
+.header .icon-menu {
+    right: 0;
+    background-position: -6rem 0;
+}
+
+.header h3 {
+    width: 100%;
+    height: 4.4rem;
+    line-height: 4.4rem;
+    text-align: center;
+    /*background-color: red;*/
+    padding-left: 4rem;
+    padding-right: 4rem;
+    overflow: hidden;
+    font-size: 1.6rem;
+    color: #666666;
+}
+
+.header form {
+    width: 100%;
+    height: 4.4rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
+}
+
+.header form input {
+    width: 100%;
+    height: 3.4rem;
+    border: 1px solid #e0e0e0;
+    margin-top: 0.5rem;
+    padding-left: 0.5rem;
 }

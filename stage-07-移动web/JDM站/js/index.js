@@ -1,8 +1,10 @@
 window.addEventListener('load',()=> {
-    //轮播图
+    // 轮播图
     carousel();
     // 改变导航条的背景
     changeNavBarColor();
+    // 秒杀倒计时
+    secondKill();
 });
 
 //处理尺寸改变的时候,刷新下布局
@@ -20,8 +22,8 @@ window.addEventListener('resize',()=>{
 function carousel() {
     //1.获取需要的标签
     let banner = document.getElementsByClassName('jd-banner')[0];
-    console.log(banner);
-    let bannerW = banner.offsetWidth / 10;  //除以10是因为单位是rem
+    let bannerW = banner.offsetWidth;  //除以10是因为单位是rem
+    console.log(bannerW);
     let imageBox = banner.getElementsByTagName('ul')[0];  //图片
     let indicatorBox = banner.getElementsByTagName('ol')[0]; //指示器
     let allPoints = indicatorBox.getElementsByTagName('li'); //所有的原点
@@ -40,8 +42,8 @@ function carousel() {
     };
 
     let changeTransitionX = (x) => {
-        imageBox.style.transform = `translateX(${x}rem)`;
-        imageBox.style.webkitTransform = `translateX(${x}rem)`;
+        imageBox.style.transform = `translateX(${x}px)`;
+        imageBox.style.webkitTransform = `translateX(${x}px)`;
     };
 
     let autoplay = () => {
@@ -50,7 +52,7 @@ function carousel() {
         addTransition();
         //改变位置
         changeTransitionX(-index * bannerW);
-    }
+    };
 
 
     // 3.让图片盒子滚起来
@@ -58,23 +60,9 @@ function carousel() {
     let timer = null;
     timer = setInterval(autoplay,3000);
 
-    //4.当图片过渡结束(判断边界值)
-    imageBox.addEventListener('transitionEnd',()=>{
-        //4.1 判断最大索引和最小索引
-        if (index >= 9) {
-            index = 1;
-        } else if(index <= 0) {
-            index = 8;
-        }
-        //4.2 清除过渡
-        removeTransition();
-        changeTransitionX(-index * bannerW);
-        //4.3 指示器
-        changePoint();
-    });
-
-    imageBox.addEventListener('webkitTransitionEnd', () => {
-        // 4.1 判断最大索引和最小索引
+    //4.当图片过渡结束(判断边界值
+    mjd.transitionEnd(imageBox,()=> {
+         // 4.1 判断最大索引和最小索引
         if (index >= 9) { // 最大值
             index = 1;
         } else if (index <= 0) { // 最小值
@@ -176,4 +164,40 @@ function changeNavBarColor() {
         //3.4 设置颜色的渐变
         headerBox.style.backgroundColor = `rgba(236,45,45,${opt})`;
     })
+}
+
+/*
+* 秒杀倒计时
+* */
+function secondKill() {
+    //1. 获取需要的标签
+    let sKillTime = document.getElementsByClassName('s-kill-time')[0];
+    let spans = sKillTime.getElementsByTagName('span');
+    sKillTime.style.display = 'block';
+
+    //2.设置定时器
+    let timer = null,time = 17 * 60 * 60;
+    timer = setInterval(()=> {
+        time--;
+        //2.1判断
+        if (time <= 0) {
+            clearInterval(timer);
+        }
+
+        //2.2 拆分时分秒
+        let h = Math.floor(time / (60 * 60));
+        let m = Math.floor(time % (60 * 60) / 60);
+        let s = time % 60;
+
+        //2.3 把内容显示在页面上
+        spans[0].innerHTML = h >= 10 ? Math.floor(h/10) : 0;
+        spans[1].innerHTML = h % 10;
+
+        spans[3].innerHTML = m >= 10 ? Math.floor(m/10) : 0;
+        spans[4].innerHTML = m % 10;
+
+        spans[6].innerHTML = s >= 10 ? Math.floor(s/10) : 0;
+        spans[7].innerHTML = s % 10;
+
+    },1000);
 }
