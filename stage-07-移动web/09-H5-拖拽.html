@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            font-size: 10px;
+        }
+
+        div {
+            width: 20rem;
+            height: 20rem;
+            background-color: red;
+            float: left;
+            margin: 1rem;
+        }
+
+        div:nth-child(2) {
+            background-color: green;
+        }
+
+        div:nth-child(3) {
+            background-color: blue;
+        }
+
+        p {
+            height: 4.5rem;
+            background-color: purple;
+            line-height: 4.5rem;
+            text-align: center;
+            cursor: move;
+            font-size: 1.6rem;
+            color: #fff;
+            border-bottom: 1px solid #fff;
+        }
+    </style>
+</head>
+<body>
+
+	<div id="div1">
+		<p id="box1" draggable="true">拖拽内容1</p>
+		<p id="box2" draggable="true">拖拽内容2</p>
+		<p id="box3" draggable="true">拖拽内容3</p>
+	</div>
+	<div id="div2"></div>
+	<div id="div3"></div>
+
+
+    <script src="./js/jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            //1.找到拖动对象
+            document.ondragstart = function (e) {
+                console.log('该对象被开始拖拽');
+                e.dataTransfer.setData('domId',e.target.id);
+                console.log(e.target.id);
+            };
+
+            document.ondrag = function () {
+                console.log('该对象被拖拽');
+            };
+
+            document.ondragend = function () {
+                console.log('该对象拖动结束');
+            };
+            
+            //2.找到目标对象
+            document.ondragenter = function () {
+                console.log('进入目标对象');
+            };
+            
+            document.ondragover = function (e) {
+                console.log('悬浮在目标对象上方');
+
+                //清除默认行为
+                e.preventDefault();
+                // return false;  这句跟上一句效果一致
+            };
+
+            document.ondragleave = function () {
+                console.log('离开目标对象');
+            };
+
+            document.ondrop = function (e) {
+                let id = e.dataTransfer.getData('domId');
+                e.target.appendChild(document.getElementById(id));
+            }
+        });
+    </script>
+</body>
+</html>

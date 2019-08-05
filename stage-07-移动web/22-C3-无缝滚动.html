@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        nav {
+            width: 900px;
+            height: 100px;
+            border: 1px solid skyblue;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        nav ul li {
+            float: left;
+            width: 100px;
+            height: 100px;
+        }
+
+        nav ul li img {
+            width: 100%;
+            height: 100%;
+        }
+
+        nav ul {
+            background-color: red;
+            width: 200%;
+            animation: moving 5s linear infinite;
+        }
+        
+        /*定义动画*/
+        @keyframes moving {
+            from{transform: translateX(0)}
+            to{transform: translateX(-900px)}
+        }
+
+        nav:hover ul{
+            -webkit-animation-play-state: paused;
+            -moz-animation-play-state: paused;
+            -o-animation-play-state: paused;
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><img src="images/f01.png" alt=""></li>
+        <li><img src="images/f02.png" alt=""></li>
+        <li><img src="images/f03.png" alt=""></li>
+        <li><img src="images/f04.png" alt=""></li>
+        <li><img src="images/f05.png" alt=""></li>
+        <li><img src="images/f06.png" alt=""></li>
+        <li><img src="images/f07.png" alt=""></li>
+        <li><img src="images/f08.png" alt=""></li>
+        <li><img src="images/f09.png" alt=""></li>
+        <li><img src="images/f01.png" alt=""></li>
+        <li><img src="images/f02.png" alt=""></li>
+        <li><img src="images/f03.png" alt=""></li>
+        <li><img src="images/f04.png" alt=""></li>
+        <li><img src="images/f05.png" alt=""></li>
+        <li><img src="images/f06.png" alt=""></li>
+        <li><img src="images/f07.png" alt=""></li>
+        <li><img src="images/f08.png" alt=""></li>
+        <li><img src="images/f09.png" alt=""></li>
+    </ul>
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        html {
+            font-size: 10px;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        .net {
+            width: 20rem;
+            height: 4rem;
+            line-height: 4rem;
+            text-align: center;
+            margin: 10rem auto;
+            border: 0.5rem;
+            font-size: 1.8rem;
+            color: #E9232C;
+            background-color: #e0e0e0;
+            display: none;
+
+            position: fixed;
+            top: 10rem;
+            left: 10rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="net"></div>
+    <button id="btn">获取网络状态</button>
+
+
+    <script src="./js/jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            //1.测试当前的网络
+            $('#btn').on('click',()=>{
+                alert(window.navigator.onLine);
+            });
+
+            //2.当网络连接的时候
+            window.addEventListener('online',function () {
+                $('.net').text('网络处于连接状态').fadeIn(400).delay(1000).fadeOut();
+            });
+
+            //3.当网络连接断开的时候
+            window.addEventListener('offline',function () {
+                $('.net').text('您当前的网络出现问题').fadeIn(400).delay(1000).fadeOut();
+            })
+        })
+    </script>
+</body>
+</html>

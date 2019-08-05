@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+        <style>
+        body {
+            perspective: 200px;
+            text-align: center;
+        }
+
+        img {
+            margin: 100px auto;
+            transition: all 15s;
+        }
+
+        img:active {
+            /*transform: translateX(300px);*/
+            /*transform: translateY(300px);*/
+            /*
+            translateZ是物体到屏幕的距离 Z是来控制物体近大远小的具体情况
+            translateZ 越大，我们看到的物体越近，物体越大
+            */
+            transform: translateZ(300px);
+        }
+    </style>
+</head>
+<body>
+
+    <img src="images/mac.png" width="60%" alt="">
+
+</body>
+</html>

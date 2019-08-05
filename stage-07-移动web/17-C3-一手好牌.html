@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        section {
+            width: 120px;
+            height: 163px;
+            margin: 200px auto;
+            position: relative;
+        }
+
+        section div{
+             width: 100%;
+             height: 100%;
+             background: #fff url("images/pk.png") no-repeat -17px -17px;
+             position: absolute;
+             top: 0;
+             left: 0;
+             transition: all 1s;
+
+             transform-origin: bottom left
+        }
+
+         section div:nth-child(2){
+             background-position: -142px -17px;
+         }
+
+         section div:nth-child(3){
+             background-position: -269px -17px;
+         }
+
+         section div:nth-child(4){
+             background-position: -395px -17px;
+         }
+
+         section div:nth-child(5){
+             background-position: -523px -17px;
+         }
+
+         section div:nth-child(6){
+             background-position: -17px -184px;
+         }
+
+         section:hover div:nth-child(1) {
+             transform: rotate(15deg);
+         }
+
+         section:hover div:nth-child(2){
+             transform: rotate(30deg);
+         }
+
+         section:hover div:nth-child(3){
+             transform: rotate(45deg);
+         }
+
+         section:hover div:nth-child(4){
+             transform: rotate(60deg);
+         }
+
+         section:hover div:nth-child(5){
+             transform: rotate(75deg);
+         }
+
+         section:hover div:nth-child(6){
+             transform: rotate(90deg);
+         }
+
+    </style>
+</head>
+<body>
+
+    <section>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </section>
+
+</body>
+</html>

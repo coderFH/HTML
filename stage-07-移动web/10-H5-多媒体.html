@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        html {
+            font-size: 10px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #e0e0e0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        figcaption {
+            font-size: 3rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .player {
+            width: 72rem;
+            height: 36rem;
+            margin: 0 auto;
+            background: #373737 url('./images/loading.gif') center/30rem no-repeat;
+            text-align: center;
+            position: relative;
+        }
+
+        .player video {
+            display: none;
+            margin: 0 auto;
+            height: 100%;
+        }
+
+        /*video::-webkit-media-controls {*/
+            /*display: none !important;*/
+        /*}*/
+
+        .controls {
+            width: 70rem;
+            height: 4.4rem;
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 0.8rem;
+            position: absolute;
+            left: 50%;
+            bottom: 0.5rem;
+            margin-left: -35rem;
+            z-index: 9999;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        .switch{
+            flex: 1;
+            font-size: 3rem;
+            color: #fff;
+        }
+
+        .progress {
+            flex: 6.5;
+            background-color: #555555;
+            height: 1rem;
+            border-radius: 0.3rem;
+
+            position: relative;
+        }
+
+        .progress .bar {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 2;
+        }
+
+        .progress .line{
+            width: 0;
+            height: 100%;
+            background-color: #fff;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 0.3rem;
+        }
+
+        .time{
+            flex: 2.5;
+            color: #fff;
+            font-size: 1.6rem;
+        }
+
+        .expand {
+            flex: 1;
+            font-size: 2rem;
+            color: #fff;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<figure>
+    <figcaption>优酷视频</figcaption>
+    <section class="player">
+        <video src="http://vfx.mtime.cn/Video/2017/03/31/mp4/170331093811717750.mp4"></video>
+        <!--控制层-->
+        <div class="controls">
+            <!--播放/暂停-->
+            <a href="javascript:;" class="switch itlike-play3"></a>
+            <!--进度条-->
+            <div class="progress">
+                <div class="line"></div>
+                <div class="bar"></div>
+            </div>
+            <!--当前播放的时长/播放的总时长-->
+               <div class="time">
+                   <span class="current">00:00:00</span> /
+                   <span class="total">00:00:00</span>
+               </div>
+               <!--全屏/取消全屏-->
+               <a href="javascript:;" class="expand itlike-enlarge"></a>
+        </div>
+    </section>
+</figure>
+
+
+<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript">
+    $(function () {
+        //1.获取视频标签
+        let video = $('video').get(0);
+        // 2. 当浏览器可以播放音频/视频时
+        video.addEventListener('canplay', ()=>{
+           // 2.1 显示视频标签
+           $(video).show();
+
+           // 2.2  确定时长
+           let totalTime = formatTime(video.duration);
+           // console.log(totalTime);
+           $('.total').html(totalTime);
+       });
+
+       // 3. 播放和暂停
+       $('.switch').on('click', function (){
+            // 3.1 判断
+            if($(this).hasClass('itlike-play3')){ // 播放
+                video.play();
+                $(this).addClass('itlike-pause2').removeClass('itlike-play3'); // 切换图标
+            }else { // 暂停
+                video.pause();
+                $(this).addClass('itlike-play3').removeClass('itlike-pause2'); // 切换图标
+            }
+       });
+
+       // 4. 进度条的显示
+       video.addEventListener('timeupdate', ()=>{
+           // console.log(video.currentTime);
+           // 4.1 求出播放进度
+           // 当前的时间 / 总时间 * 100 + '%'
+           let w = video.currentTime / video.duration * 100 + '%';
+           // console.log(c);
+           $('.line').css('width', w);
+           // 4.2 修改当前播放的时间
+           $('.current').html(formatTime(video.currentTime));
+       });
+
+       // 5. 全屏
+       $('.expand').on('click', function () {
+           if($(this).hasClass('itlike-enlarge')){ // 全屏
+               video.webkitRequestFullScreen();
+           }else { // 取消全屏
+               document.webkitCancelFullScreen();
+           }
+       });
+
+       // 6. 视频播放完成
+       video.addEventListener('ended', ()=>{
+            // 6.1 当前的视频时间清零
+            video.currentTime = 0;
+           // 6.2 切换图标
+            $('.switch').addClass('itlike-play3').removeClass('itlike-pause2');
+       });
+
+       // 7. 点击bar跃进
+       $('.bar').on('click', function (e) {
+            // 当前视频播放的位置 =  点击位置 / bar的长度 * 总时长
+            // 7.1 获取点击的位置
+           let offset = e.offsetX;
+           // console.log(offset, $(this).width());
+           // 7.2 求出当前的位置
+           // let current = offset / $(this).width() * video.duration;
+          // console.log(current);
+           // 7.3 改变当前播放的时间
+           video.currentTime = offset / $(this).width() * video.duration;
+       });
+
+
+       let formatTime = (time)=>{
+          let h = Math.floor(time / (60 * 60));
+          let m = Math.floor(time % (60 * 60) / 60);
+          let s = Math.floor(time % 60);
+          // 00:00:00
+          return (h < 10 ? '0'+ h : h) + ':' + (m < 10 ? '0'+ m : m) + ':' + (s < 10 ? '0'+ s : s);
+       }
+   });
+
+</script>
+</body>
+</html>

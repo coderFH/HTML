@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box:-webkit-full-screen {
+            background-color: purple;
+        }
+
+        #box {
+            width: 300px;
+            height: 200px;
+            margin: 10px auto;
+        }
+
+        #box img {
+            width: 100%;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="box" style="text-align: center">
+        <img src="images/mac.png">
+        <br>
+        <br>
+        <br>
+        <div style="text-align: center">
+            <button id="full">全屏</button>
+            <button id="cancel_full">取消全屏</button>
+            <button id="is_full">当前的状态</button>
+        </div>
+    </div>
+
+    <script src="./js/jquery-3.3.1.js"></script>
+    <script>
+        $(function () {
+            let box = $('#box').get(0);
+            //1.全屏显示
+            $('#full').on('click',()=>{
+                if (box.requestFullscreen)  { //正常浏览器
+                    box.requestFullscreen();
+                } else if(box.webkitRequestFullScreen){ // webkit内核
+                    box.webkitRequestFullScreen()
+                }else if(box.mozRequestFullScreen){ // moz内核
+                    box.mozRequestFullScreen()
+                }else if(box.msRequestFullScreen){ // ie内核
+                    box.msRequestFullScreen();
+                }else {
+                    box.oRequestFullScreen();
+                }
+            });
+
+            //2.取消
+            $('#cancel_full').on('click',()=>{
+                document.webkitCancelFullScreen();
+            });
+
+            //3. 判断当前是否是全屏状态
+            $('#is_full').on('click',() => {
+                alert(document.webkitIsFullScreen === false ? '非全屏':'全屏');
+            });
+        });
+    </script>
+</body>
+</html>
