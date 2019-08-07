@@ -20,4 +20,7 @@
 		根据package.json下载当前项目所依赖的包
 	npm install 包名 -g
 		全局安装包,  用于一些编译根据, 比如: gulp,  webpack等
+
+	npm i --save iview@2.0.0
+	    安装指定版本
 */
