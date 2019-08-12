@@ -1,4 +1,15 @@
 /*
+
+mongoDB的基本指令
+	show dbs
+		显示当前所有的数据库
+	use 数据库名
+		进入到指定数据库中
+	db
+		显示当前所在的数据库
+	show collections
+		显示数据库中的所有集合
+
 ========= 1.创建并进入it_like数据库
 use it_like
 
