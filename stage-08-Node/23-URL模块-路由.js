@@ -8,20 +8,21 @@ let url = require('url');
 http.createServer((req, res)=>{
     // 1.1 获取url的路径
     let pathUrl = url.parse(req.url);
-    console.log('======' + pathUrl);
     let pathName = pathUrl.pathname;
-    console.log('======' + pathName);
 
     // 1.2 处理路径
     if(pathName.lastIndexOf('.') === -1){ // 没有
         pathName += '/index.html';
     }
+
+    //path.normalize();将路径规范化
+    //   /stage-06-小型框架/bootstrap案例
     let fileUrl = '.' + path.normalize(pathName);
     console.log(fileUrl);
 
     // 取出文件的后缀
     let extName = path.extname(fileUrl);
-    console.log('fffff' + extName);
+    console.log(extName);
 
     // 1.3 读取文件
     fs.readFile(fileUrl, (err, data)=>{
@@ -45,12 +46,11 @@ http.createServer((req, res)=>{
  */
 let getContentType = (extName, callBack)=>{
     // 1. 读取文件
-    fs.readFile('./mime.json', (err, data)=>{
+    fs.readFile('./stage-08-Node/file/mime.json', (err, data)=>{
         if(err){
             throw err;
             return;
         }
-
         let mineJson = JSON.parse(data);
         let contentType = mineJson[extName] || 'text/plain';
         callBack(contentType);

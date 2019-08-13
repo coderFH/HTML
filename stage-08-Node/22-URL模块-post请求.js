@@ -10,7 +10,7 @@ http.createServer((req, res)=>{
    });
    req.on('end', ()=>{
        console.log(postData);
-       //querystring.parse:查询字符串 'name=zhangsan&pwd=1233&pwd=123456' 被解析成
+       //querystring.parse:查询字符串 'name=zhangsan&pwd=1233&pwd=123456' 被解析成 字典的形式
        postData = querystring.parse(postData);
        res.end(util.inspect(postData));
    });
