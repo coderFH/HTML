@@ -1,0 +1,25 @@
+.babelrc 的作用?
+    就是让我们当前的服务器支持预编译
+
+什么是babel?
+    babel其实就是个解释器,你写的es6的语法 它会实时的帮你转成es5语法
+
+安装babel?
+    npm i babel-preset-env --save-dev
+
+安装babel插件?
+    npm install babel-register --save-dev
+
+如何验证babel确实帮我们转成es5了?
+    babel src -d dist  // 把src下的文件转换成es5语法,并且输出到dist文件夹下
+
+安装后台管理页面需要的第三方库
+    npm i --save bootstrap@3.3.7 font-awesome nprogress jquery echarts
+
+
+每次修改代码后 都需要重新运行 很麻烦
+    可以使用nodemon这个插件  npm install --save-dev nodemon   全局安装  npm install -g nodemon
+    安装完之后 配置package.json 中的 scripts  然后再终端中运行 npm run dev
+
+新的模板框架nunjucks 不使用ejs了
+    npm i --save nunjucks
