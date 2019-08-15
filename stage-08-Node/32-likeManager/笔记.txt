@@ -23,3 +23,7 @@
 
 新的模板框架nunjucks 不使用ejs了
     npm i --save nunjucks
+
+
+安装mongoose
+    npm i mongoose --save
