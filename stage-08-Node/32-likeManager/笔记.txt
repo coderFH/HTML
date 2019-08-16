@@ -24,6 +24,8 @@
 新的模板框架nunjucks 不使用ejs了
     npm i --save nunjucks
 
-
 安装mongoose
     npm i mongoose --save
+
+安装上传图片处理工具
+    npm i formidable --save

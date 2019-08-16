@@ -7,6 +7,7 @@ import sowingRouter from './../router/sowing'
 
 //引入中间件
 import bodyParser from './../middle_wares/body_parser'
+import errorLog from  './../middle_wares/error_log'
 
 //引入模板引擎
 import nunjucks from 'nunjucks'
@@ -30,6 +31,10 @@ app.use(bodyParser);
 //挂载路由容器
 app.use(indexRouter);
 app.use(sowingRouter);
+
+//6.挂载错误的中间件
+//错误的中间件,放这里比较合适
+app.use(errorLog);
 
 app.listen(3000,()=>{
     console.log('server is running');

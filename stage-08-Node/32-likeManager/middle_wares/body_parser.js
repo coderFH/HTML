@@ -18,9 +18,9 @@ export default (req,res,next)=>{
         data += chunk;
     });
     req.on('end',()=>{
-        console.log(queryString.parse(data));
+        // console.log(queryString.parse(data));
         req.body = queryString.parse(data);
         next();
     });
-    res.end('success');
+    // res.end('success');
 }

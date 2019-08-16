@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--enctype:设置之后就走文件传输-->
+   <form action="/" method="post" enctype="multipart/form-data">
+       时间: <input type="text" name="l_time"><br>
+       地点: <input type="text" name="l_address"><br>
+       人物: <input type="text" name="l_person"><br>
+       选择文件<input type="file" name="l_file"><br>
+       <input type="submit" value="提交">
+   </form>
+   <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script>
+        //正常文本提交
+
+        /*$('form').on('submit', function (e) {
+             $.ajax({
+                 url: $(this).attr('action'),
+                 type: $(this).attr('method'),
+                 data: $(this).serialize(),
+                 success: function (data) {
+                     console.log(data);
+                     debugger
+                 }
+             })
+        })*/
+
+        // 图片的提交
+        $('form').on('submit', function (e) {
+             $.ajax({
+                 url: $(this).attr('action'),
+                 type: $(this).attr('method'),
+
+                 //表单的提交     $(this)[0]:jquery对象 转 js对象
+                 data: new FormData($(this)[0]),
+                 //不要让jquery给我们发送的数据进行序列化
+                 processData : false,
+                 //不要给我们设置请求头
+                 contentType : false,
+
+                 success: function (data) {
+                     console.log(data);
+                     debugger
+                 }
+             })
+        })
+    </script>
+</body>
+</html>
