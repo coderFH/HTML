@@ -16,7 +16,6 @@
 安装后台管理页面需要的第三方库
     npm i --save bootstrap@3.3.7 font-awesome nprogress jquery echarts
 
-
 每次修改代码后 都需要重新运行 很麻烦
     可以使用nodemon这个插件  npm install --save-dev nodemon   全局安装  npm install -g nodemon
     安装完之后 配置package.json 中的 scripts  然后再终端中运行 npm run dev
