@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input id="account" type="text" name="account">
+    <input id="pwd" type="text" name="pwd">
+    <button id="send">发送一个请求</button>
+<script src="/js/AjaxTool.js"></script>
+<script>
+   window.addEventListener('load', function (ev) {
+       var btn = document.getElementById('send');
+       btn.addEventListener('click', function (ev1) {
+           // 1. 获取数据
+           var account = document.getElementById('account').value;
+           var pwd = document.getElementById('pwd').value;
+
+           // 2. 处理数据
+           var paramObj = {
+               'account': account,
+               'pwd': pwd
+           }
+           var params = {
+               'requestType': 'post',
+               'url': 'http://localhost:3000/api/five',
+               'paramObj': paramObj,
+               'timeout': 2000
+           }
+
+           // 3. 发起请求
+           AjaxTool.ajaxRequest(params, function (xhr) {
+               console.log('成功' + xhr.responseText);
+           }, function () {
+               console.log('失败');
+           });
+       });
+   });
+
+   function getRandomStr() {
+       return Math.random() + (new Date().getTime())
+   }
+</script>
+</body>
+</html>

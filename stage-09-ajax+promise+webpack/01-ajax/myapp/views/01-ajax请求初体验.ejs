@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button id="send">发送一个请求</button>
+<script>
+   window.addEventListener('load', function (ev) {
+       var btn = document.getElementById('send');
+       btn.addEventListener('click', function (ev1) {
+           // 使用原生的ajax技术, 发送一个网络请求
+          // 1.创建XMLHttpRequest对象 (找到一个电话)
+          var xhr;
+          if(window.XMLHttpRequest){
+              xhr = new XMLHttpRequest();
+          }else {
+              xhr = new ActiveXObject('Microsoft.XMLHTTP');
+          }
+
+          // 2.准备发送 (输入电话号码)
+          /*
+             参数1: 请求方式 (get/post)
+             参数2: 请求url
+             参数3: 是否异步
+          */
+          xhr.open('get', 'http://localhost:3000/api/one', true);
+
+          // 3. 发送请求(拨出电话)
+         xhr.send();
+
+         // 4. 监听服务器的响应 (等待电话拨通)
+         // 一旦服务器响应回来之后, 就会执行这个函数
+         xhr.onreadystatechange = function () {
+             // 5. 处理响应的数据 (对方说话)
+             // console.log(xhr.readyState);
+             if(xhr.readyState === 4){  // 代表服务器已经给了响应, 不代表响应成功
+                  if(xhr.status === 200){
+                      console.log(xhr.response);
+                  }
+             }
+         }
+       });
+   });
+</script>
+</body>
+</html>

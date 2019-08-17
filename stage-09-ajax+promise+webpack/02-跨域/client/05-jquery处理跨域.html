@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+   <input type="button" value="点击" id="btn">
+<script src="js/jquery.js"></script>
+<script>
+    $(function () {
+       $('#btn').click(function () {
+           $.ajax({
+               type: 'get',
+               url: 'http://localhost:3000/',
+               dataType: 'jsonp',
+               jsonp: 'callback',
+               jsonpCallback:'abc',  //http://localhost:3000/?callback=abc
+               data: {},
+               success: function (data) {
+                   console.log(data);
+               },
+               error: function (data) {
+                  console.log(data);
+               }
+           })
+       })
+    });
+</script>
+</body>
+</html>

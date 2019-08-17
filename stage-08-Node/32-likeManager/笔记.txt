@@ -29,3 +29,10 @@
 
 安装上传图片处理工具
     npm i formidable --save
+
+
+快速的创建express模板
+    express --view=ejs myapp
+
+使用分页插件
+    npm i twbs-pagination --save

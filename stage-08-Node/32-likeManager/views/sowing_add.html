@@ -59,6 +59,8 @@
     </div>
 </div>
 {% endblock %}
+
+{% block script %}
 <script>
     $('form').on('submit', function (e) {
         $.ajax({
@@ -71,7 +73,7 @@
             contentType: false,
             success: function (data) {
                 if(data.status_code === 200){
-                    debugger;
+                    // debugger;
                     window.location.href = '/sowing_list'; //成功的话跳转
                 }
             }
@@ -79,7 +81,6 @@
         return false;
     })
 </script>
-{% block script %}
 {% endblock %}
 
 

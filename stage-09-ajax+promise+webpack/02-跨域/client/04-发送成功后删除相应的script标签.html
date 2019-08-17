@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    jsonp({
+       url: 'http://localhost:3000/',
+       data: '',
+       success: function (data) {
+           console.log(1111);
+       }
+    });
+
+    jsonp({
+        url: 'http://localhost:3000/',
+        data: '',
+        success: function (data) {
+            console.log(2222);
+        }
+    });
+
+    jsonp({
+        url: 'http://localhost:3000/',
+        data: '',
+        success: function (data) {
+            console.log(data);
+        }
+    });
+
+    jsonp({
+        url: 'http://localhost:3000/',
+        data: '',
+        success: function (data) {
+            console.log(5555);
+        }
+    });
+
+    jsonp({
+        url: 'http://localhost:3000/',
+        data: '',
+        success: function (data) {
+            console.log(6666);
+        }
+    });
+
+    jsonp({
+        url: 'http://localhost:3000/',
+        data: '',
+        success: function (data) {
+            console.log(7777);
+        }
+    });
+
+    function jsonp(option) {
+         // 0. 将用户通过对象的命名空间传递进来的函数挂载到全局
+        var callbackName = 'itlike_' + Math.random().toString().substr(2)+ Math.random().toString().substr(2);
+        window[callbackName] = function (data) {
+            option.success(data);
+            // 删除script标签
+            document.body.removeChild(script);
+        };
+        // 1. 处理url的拼接
+        option.url = option.url + '?callback=' + callbackName;
+        // 2. 创建script标签
+        var script = document.createElement('script');
+        script.src = option.url;
+        document.body.appendChild(script);
+    }
+</script>
+</body>
+</html>

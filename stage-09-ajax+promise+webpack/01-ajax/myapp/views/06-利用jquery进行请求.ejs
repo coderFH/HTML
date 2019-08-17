@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="http://localhost:3000/api/five" method="post">
+        <input id="account" type="text" name="account">
+        <input id="pwd" type="text" name="pwd">
+        <input id="send" type="submit" value="请求">
+    </form>
+<script src="../node_modules/jquery/dist/jquery.js"></script>
+<script>
+   $('form').on('submit', function () {
+       $.ajax({
+           url: $(this).attr('action'),
+           type: $(this).attr('method'),
+           data: $(this).serialize(), //序列化
+           success: function (data) {
+               console.log(data);
+           }
+       });
+
+       // 阻止默认事件
+       return false;
+   });
+</script>
+</body>
+</html>

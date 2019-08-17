@@ -84,7 +84,6 @@ router.post('/sowing/api/add', (req, res, next) => {
             s_time: body.s_time,
             // 下架时间
             e_time: body.e_time,
-
         });
 
         sowing.save((err, result) => {
@@ -96,24 +95,39 @@ router.post('/sowing/api/add', (req, res, next) => {
                 status_code: 200,
                 result: '添加数据成功'
             });
-        })
+        });
     });
 });
 
-
 /**
- * 获取轮播图数据(所有)
+ * 获取轮播图数据(所有,带页码)
  */
 router.get('/sowing/api/list', (req, res, next) => {
-    Sowing.find((err, docs) => {
+    // 获取所有的,不带页码
+    // Sowing.find((err, docs) => {
+    //     if (err) {
+    //         return next(err);
+    //     }
+    //     res.json({
+    //         status_code: 200,
+    //         result: docs
+    //     })
+    // })
+
+    // 1. 接收传递的参数
+    let {page, pageSize} = req.query;
+    page = Number.parseInt(page);
+    pageSize = Number.parseInt(pageSize);
+    // 2. 查询数据
+    Sowing.find().skip((page - 1) * pageSize).limit(pageSize).exec((err, sowings) => {
         if (err) {
             return next(err);
         }
         res.json({
             status_code: 200,
-            result: docs
+            result: sowings
         })
-    })
+    });
 });
 
 /*
@@ -192,9 +206,25 @@ router.get('/sowing/api/remove/:sowingId', (req, res, next) => {
 });
 
 /*
+  获取记录的总数(局部刷新轮播图数据时需要用到)
+*/
+router.get('/sowing/api/count', (req, res, next)=>{
+   Sowing.count((err, count)=>{
+       if(err){
+          return next(err);
+       }
+       res.json({
+           status_code: 200,
+           result: count
+       });
+   });
+});
+
+/*
   加载轮播图的列表页面
 */
 router.get('/sowing_list', (req, res, next) => {
+    //radix 10 : 以十进制进行转换
     const page = Number.parseInt(req.query.page, 10) || 1;
     const pageSize = 3;
     // 查询数据库中所有的数据
