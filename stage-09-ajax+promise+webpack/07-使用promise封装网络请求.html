@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    function xhr(options) {
+        return new Promise(function (resolve, reject) {
+            var xhr = new XMLHttpRequest();
+            xhr.open(options.type || 'get', options.url);
+            xhr.onreadystatechange = function () {
+                if(xhr.readyState === 4 && xhr.status === 200){
+                    resolve(xhr.responseText);
+                }else {
+                    reject();
+                }
+            };
+            xhr.send();
+        })
+    }
+
+    // axios
+    xhr({
+        url: '',
+        type: '',
+        data: ''
+    }).then((data)=>{
+        return xhr({
+
+        })
+    }).then(data=>{
+
+    });
+
+    $.ajax({
+
+    }).then(data =>{
+
+    });
+</script>
+</body>
+</html>
