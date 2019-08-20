@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <div id="app">
+       <ul ref="ulParent">
+           <li style="height: 60px;">1</li>
+           <li style="height: 70px;">2</li>
+           <li style="height: 80px;">3</li>
+           <li style="height: 90px;">4</li>
+           <li style="height: 100px;">5</li>
+       </ul>
+
+       <button @click="getAllLiHeight()">获取高度</button>
+       <button @click="dealSome()">验证some</button>
+   </div>
+
+<script src="js/vue.js"></script>
+<script>
+    new Vue ({
+        el : "#app",
+        data : {
+            dataArr :['撩课', 'itLike.com', '哈哈哈哈']
+        },
+        methods : {
+            getAllLiHeight(){
+                let liHeightArr = [];
+                //1. 获取DOM对象
+                let allLis = this.$refs.ulParent.getElementsByTagName('li');
+                console.log(allLis);
+
+                //2.把伪数组转成真数组
+                console.log(Array.prototype.slice.call(allLis));
+                Array.prototype.slice.call(allLis).forEach((li)=>{
+                    liHeightArr.push(li.clientHeight);
+                });
+                console.log(liHeightArr);
+            },
+            dealSome(){
+                let result = this.dataArr.some((str)=>{
+                    return str === 'itLike.com'
+                });
+                console.log(result);
+            }
+        }
+    });
+</script>
+</body>
+</html>

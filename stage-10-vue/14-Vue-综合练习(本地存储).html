@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+     <style>
+        #app{
+            margin: 50px auto;
+            width: 600px;
+        }
+
+        fieldset{
+            border: 1px solid orangered;
+            margin-bottom: 20px;
+        }
+
+        fieldset input{
+            width: 200px;
+            height: 30px;
+            margin: 10px 0;
+        }
+
+        table{
+            width: 600px;
+            border: 2px solid orangered;
+            text-align: center;
+        }
+
+        thead{
+            background-color: orangered;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="app">
+        <!--第一部分-->
+        <fieldset>
+            <legend>学生录入系统</legend>
+            <div>
+                <span>姓名:</span>
+                <input type="text" placeholder="请输入姓名" v-model="newPerson.name">
+            </div>
+
+            <div>
+                <span>年龄:</span>
+                <input type="text" placeholder="请输入年龄" v-model="newPerson.age">
+            </div>
+
+            <div>
+                <span>性别:</span>
+                <select v-model="newPerson.sex">
+                    <option value="男">男</option>
+                    <option value="女">女</option>
+                </select>
+            </div>
+
+            <div>
+                <span>手机:</span>
+                <input type="text" placeholder="请输入手机号" v-model="newPerson.phone">
+            </div>
+            <button @click="createNewPerson()">创建新用户</button>
+
+        </fieldset>
+        <!--第二部分-->
+        <table>
+            <thead>
+            <tr>
+                <td>姓名</td>
+                <td>性别</td>
+                <td>年龄</td>
+                <td>手机</td>
+                <td>删除</td>
+            </tr>
+            </thead>
+
+            <tbody>
+                <tr v-for="(p,index) in persons">
+                    <td v-text = "p.name"></td>
+                    <td v-text = "p.age"></td>
+                    <td v-text = "p.sex"></td>
+                    <td v-text = "p.phone"></td>
+                    <td>
+                        <button @click="delPerson(index)">删除</button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+<script src="js/vue.js"></script>
+<script>
+    new Vue ({
+        el : "#app",
+        mounted(){
+            //请求数据
+            this.getPersonList();
+        },
+
+        data : {
+            persons : [],
+            newPerson : {name : "", age : 0, phone : ""}
+        },
+
+        methods : {
+            getPersonList(){
+                this.persons = JSON.parse(window.localStorage.getItem('persons') || '[]');
+            },
+            createNewPerson(){
+                if (this.newPerson.name === '')  {
+                    alert('姓名不能为空!');
+                    return;
+                }
+                if (this.newPerson.age <= 0) {
+                    alert('请输入正确的年龄');
+                    return;
+                }
+                if (this.newPerson.phone === '') {
+                    alert("手机号码不正确");
+                    return;
+                }
+                //插入数据
+                this.persons.unshift(this.newPerson);
+                window.localStorage.setItem('persons',JSON.stringify(this.persons));
+                //清空数据
+                this.newPerson = {name : "", age : 0, phone : ""}
+            },
+
+            delPerson(index) {
+                this.persons.splice(index,1);
+                window.localStorage.setItem('persons',JSON.stringify(this.persons));
+            }
+        }
+    });
+</script>
+</body>
+</html>

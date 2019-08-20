@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+     <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div id="app">
+        <h2>默认情况</h2>
+        <!--默认情况下,点击了按钮,因为冒泡机制,所以两个事件都会相应-->
+        <div class="box" @click = "boxClick()">
+            <button @click = "btnClick">点击按钮</button>
+        </div>
+
+        <hr>
+
+        <h2>阻止冒泡</h2>
+        <!--阻止冒泡-->
+        <div class="box" @click = "boxClick()">
+            <button @click.stop = "btnClick">点击按钮</button>
+        </div>
+
+        <hr>
+        <h2>阻止默认事件</h2>
+        <!--@click.prevent="shop()" 就跳转不了了,而是相应你定义的事件-->
+        <a href="http://www.baidu.com" @click.prevent="boxClick()">百度一下</a>
+
+        <hr>
+        <h2>事件的捕获</h2>
+        <div class="box" @click.capture="boxClick()">
+            <button @click="btnClick()">点击按钮</button>
+        </div>
+
+
+        <hr>
+        <h2>self</h2>
+        <!--元素上绑定了self,事件就不会相应,但依然能传递事件-->
+        <div class="big-box" @click="bigBoxClick()">
+            <div class="box" @click.self="boxClick()">
+                <button @click="btnClick()">点击按钮</button>
+            </div>
+        </div>
+
+         <hr>
+        <h2>once</h2>
+         <!--once 事件只触发一次-->
+         <button @click.once="btnClick()">点我</button>
+
+    </div>
+
+<script src="js/vue.js"></script>
+<script>
+    new Vue ({
+        el : "#app",
+        data : {
+
+        },
+        methods : {
+            bigBoxClick() {
+                console.log('点击了大盒子');
+            },
+            boxClick() {
+                console.log('点击了盒子');
+            },
+            btnClick() {
+                console.log('点击了按钮');
+            }
+        }
+    });
+</script>
+</body>
+</html>
