@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <fh-div></fh-div>
+</div>
+
+<template id="fh_div">
+    <div>
+        <h1>{{msg}}</h1>
+        <input type="date">
+        <img src="img/img_02.jpg" alt="" width="200">
+    </div>
+</template>
+
+<script src="js/vue.js"></script>
+<script>
+
+    //1. 注册组件
+    Vue.component("fh-div",{
+        template : '#fh_div',
+        //注意:这里的data一定要返回一个函数
+        data(){
+            return {
+                msg : '我是MT'
+            }
+        }
+    });
+
+    new Vue ({
+        el : "#app",
+    });
+
+</script>
+</body>
+</html>

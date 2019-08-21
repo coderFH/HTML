@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <my-btn msg="耳机会到么" imgsrc="img/img_02.jpg"></my-btn>
+</div>
+
+<template id="my_div">
+    <div>
+        <h1>{{msg}}</h1>
+        <img :src="imgsrc" alt="" width="200">
+    </div>
+</template>
+
+<script src="js/vue.js"></script>
+<script>
+
+    //1. 注册组件
+    Vue.component("my-btn",{
+        template: '#my_div',
+        props: ['msg', 'imgsrc']
+    });
+
+    new Vue ({
+        el : "#app",
+    });
+
+</script>
+</body>
+</html>

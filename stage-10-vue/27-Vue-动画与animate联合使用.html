@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/animate.css">
+</head>
+<body>
+
+<div id="app">
+    <button @click="flag = !flag">切换</button>
+    <p></p>
+
+    <transition
+        enter-active-class="bounceIn"
+        leave-active-class="bounceOut"
+        :duration="{ enter: 1000, leave: 1000 }"
+    >
+        <img v-if="flag" class="animated" src="img/img_02.jpg" alt="" width="200">
+    </transition>
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+    // 1. 创建Vue的实例
+    new Vue({
+        el: '#app',
+        data: {
+            flag: false
+        }
+    });
+</script>
+</body>
+</html>

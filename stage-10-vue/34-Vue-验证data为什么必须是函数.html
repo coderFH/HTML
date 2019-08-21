@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <!--当有多个组件对象时,返回函数,可以保证每次修改值只是改自己的 而不是全部都跟着改-->
+    <my-btn></my-btn>
+    <my-btn></my-btn>
+    <my-btn></my-btn>
+    <my-btn></my-btn>
+    <my-btn></my-btn>
+    <my-btn></my-btn>
+    <my-btn></my-btn>
+</div>
+
+<template id="my_btn">
+    <button @click="counter += 1">点击的次数:{{counter}}</button>
+</template>
+
+<script src="js/vue.js"></script>
+<script>
+
+    //1. 注册组件
+    Vue.component("my-btn",{
+        template : '#my_btn',
+        data(){
+            return {
+                counter : 0
+            }
+        }
+    });
+
+    new Vue ({
+        el : "#app",
+    });
+
+</script>
+</body>
+</html>

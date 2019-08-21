@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    <fh-div></fh-div>
+</div>
+
+<script type="text/template" id="fh_div">
+    <div>
+        <h1>哈哈哈哈</h1>
+        <input type="date">
+        <img src="img/img_02.jpg" alt="" width="200">
+    </div>
+</script>
+
+<script src="js/vue.js"></script>
+<script>
+
+    //1. 注册组件
+    Vue.component("fh-div",{
+        template : '#fh_div'
+    });
+
+    new Vue ({
+        el : "#app",
+    });
+
+</script>
+</body>
+</html>

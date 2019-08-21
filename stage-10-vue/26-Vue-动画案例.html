@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        li {
+            border:1px dashed palegoldenrod;
+            margin: 5px;
+            line-height: 25px;
+            width: 50%;
+            padding-left: 10px;
+        }
+
+        li:hover {
+            cursor: pointer;
+            background-color: palegoldenrod;
+            transition: all 0.8s ease;
+        }
+
+        .singer-enter,.singer-leave-to {
+            opacity: 0;
+            transform: translateY(80px);
+        }
+
+        .singer-enter-active,.singer-leave-active {
+            transition: all 0.6s ease;
+        }
+
+        .singer-move {
+            transition: all 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <div>
+        <label>歌手:<input type="text" v-model="singer"></label>
+        <label>歌名:<input type="text" v-model="name"></label>
+        <button @click='add()'>添加</button>
+    </div>
+
+    <transition-group tag='ul' name="singer">
+        <!-- index + 1 是为了让系统能够区分是哪个li -->
+        <li v-for="(list,index) in lists" @click="del(index)" :key="index + 1">  
+            {{list.singer}} : {{list.name}}
+        </li>
+    </transition-group>
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+    // 1. 创建Vue的实例
+    new Vue({
+        el: '#app',
+        data: {
+            singer : "",
+            name : "",
+            lists : [
+                { singer: '周杰伦', name: '以父之名'},
+                { singer: '谢霆锋', name: '因为爱所以爱'},
+                { singer: '那英', name: '默'},
+                { singer: '刘德华', name: '忘情水'},
+            ]  
+        },
+        methods: {
+            del(index) {
+                this.lists.splice(index,1);
+            },
+            add() {
+                this.lists.push({singer:this.singer,name : this.name});
+                this.singer = this.name = ""; //清空操作
+            }
+        }
+    });
+</script>
+</body>
+</html>

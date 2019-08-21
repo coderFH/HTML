@@ -6,7 +6,11 @@
 </head>
 <body>
 
-<div id="app"></div>
+<div id="app">
+    <p v-if="isShow">{{str1}}</p>
+    <p v-else>{{str2}}</p>
+    <button @click="dealDestory()">销毁</button>
+</div>
 
 <script src="js/vue.js"></script>
 <script>
@@ -17,10 +21,14 @@
             console.log('beforeCreate()');
         },
         data: {
-
+            isShow : false,
+            str1 : 'jay',
+            str2 : "周杰伦"
         },
         methods: {
-
+            dealDestory(){
+                this.$destroy(); //这个方法会调用生命周期内部的销毁方法
+            }
         },
         created(){
             console.log('created()');
@@ -31,6 +39,10 @@
         mounted(){
             // 结束创建期间的生命周期函数
             console.log('mounted()');
+            this.intervalId = setInterval(()=>{
+                console.log('++++++----++++++');
+                this.isShow = !this.isShow;
+            },1000);
         },
 
         beforeUpdate(){
@@ -43,6 +55,8 @@
 
         beforeDestroy(){
             console.log('beforeDestroy()');
+            //手动销毁定时器
+            clearInterval(this.intervalId);
         },
 
         destroyed(){
