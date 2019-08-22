@@ -3,39 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="bs/css/bootstrap.css">
+    <style>
+        body {
+            background-color: #e8e8e8;
+        }
+    </style>
 </head>
 <body>
 
 <div id="app">
-    <my-computer>
-        <div slot="cpu">Inter Core i8</div>
-        <img slot="gpu" src="img/img_01.jpg" width="100" alt="">
-        <p slot="memory">1GB</p>
-        <input type="color" slot="hard-drive">
-    </my-computer>
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-2">
+            <div class="page-header">
+                <h1>撩课教育</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-2">
+            <div class="list-group">
+                <!-- 使用 router-link 组件来导航. -->
+                <!-- 通过传入 `to` 属性指定链接. -->
+                <!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+                <router-link class="list-group-item" to="/h5">HTML5学院</router-link>
+                <router-link class="list-group-item" to="/java">JavaEE</router-link>
+                <router-link class="list-group-item" to="/python">Python</router-link>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="panel">
+                <!-- 路由出口 -->
+                <!-- 路由匹配到的组件将渲染在这里 -->
+                <router-view></router-view>
+            </div>
+        </div>
+    </div>
 </div>
 
-<template id="my_computer">
-    <div id="main">
-        <slot name="cpu">这里是插CPU的</slot>
-        <slot name="gpu">这里是插GPU的</slot>
-        <slot name="memory">这里是插内存条的</slot>
-        <slot name="hard-drive">这里是插硬盘的</slot>
+<!--子组件-->
+<template id="h5">
+    <div>
+        <h2>HTML5学院</h2>
+        <p>掌握未来10年的神技!</p>
+        <img src="img/h5.jpg" alt="" width="250">
+        <div>
+            <ul class="nav nav-tabs">
+                <router-link tag="li" to="/h5/basic">精英班</router-link>
+                <router-link tag="li" to="/h5/big">架构班</router-link>
+            </ul>
+            <div class="tab-content">
+                <router-view></router-view>
+            </div>
+        </div>
     </div>
 </template>
+
+<template id="basic">
+    <div>
+        <h3>精英班</h3>
+        <p>我们不一样, 都是精英!</p>
+        <img src="img/img_01.jpg" alt="" width="200">
+    </div>
+</template>
+
+<template id="big">
+    <div>
+        <h3>架构班</h3>
+        <p>我们不一样, 都是架构师!</p>
+        <img src="img/img_02.jpg" alt="" width="200">
+    </div>
+</template>
+
+<template id="java">
+    <div>
+        <h2>Java学院</h2>
+        <p>都说Java是世界上最好的语言!</p>
+        <img src="img/java.jpg" alt="" width="250">
+    </div>
+</template>
+
+<template id="python">
+    <div>
+        <h2>Python学院</h2>
+        <p>人生苦短, 我用Python!</p>
+        <img src="img/python.jpg" alt="" width="250">
+    </div>
+</template>
+
 <script src="js/vue.js"></script>
+<script src="js/vue-router.js"></script>
 <script>
-    Vue.component('my-computer',{
-        template: '#my_computer'
+    // 1. 创建组件
+    const Html5 = Vue.extend({
+        template: '#h5'
     });
 
-    // 1. 创建Vue的实例
+    const Basic = Vue.extend({
+        template: '#basic'
+    });
+
+    const Big = Vue.extend({
+        template: '#big'
+    });
+
+    const Java = Vue.extend({
+        template: '#java'
+    });
+
+    const Python = Vue.extend({
+        template: '#python'
+    });
+
+    // 2. 定义路由
+    const routes = [
+        {
+            path: '/h5',
+            component: Html5,
+            children: [
+                {
+                    path: 'basic',
+                    component: Basic},
+                {path: 'big', component: Big},
+                {path: '/', redirect: 'basic'}
+            ]
+        },
+        {path: '/java', component: Java},
+        {path: '/python', component: Python},
+        // 配置根路由
+        {path: '/', redirect: '/h5'}
+    ];
+
+    // 3. 创建路由实例
+    const router = new VueRouter({
+        routes
+    });
+
+    // 4. 创建Vue的实例
     new Vue({
-        el: '#app',
-        data: {
-
-        }
-    });
+        router
+    }).$mount('#app');
 </script>
 </body>
 </html>
