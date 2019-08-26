@@ -2,7 +2,7 @@
   "name": "todo",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "wangfuhao <wangfuhao@dongyin.net.cn>",
+  "author": "wangfuhao <>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
