@@ -6,8 +6,8 @@
 </template>
 
 <script>
-  //1.引入组件
-  import TabBar from './components/TabBar'
+//1.引入组件
+import TabBar from './components/TabBar'
 export default {
   name: 'App',
   components : {
