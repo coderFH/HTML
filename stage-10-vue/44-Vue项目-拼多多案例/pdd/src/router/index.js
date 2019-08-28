@@ -10,7 +10,7 @@ import Search from './../pages/Search/Search'
 import Me from './../pages/Me/Me'
 
 // 引入二级的路由版块
-import Hot from './../pages/Home/Children/Hot'
+import Hot from '../pages/Home/Children/Hot/Hot'
 import Box from './../pages/Home/Children/Box'
 import Dress from './../pages/Home/Children/Dress'
 import Ele from './../pages/Home/Children/Ele'
