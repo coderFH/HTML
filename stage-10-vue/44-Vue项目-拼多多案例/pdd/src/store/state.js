@@ -4,5 +4,9 @@ export default {
   // 首页导航
   homenav: {},
   // 首页的商品列表
-  homeshoplist: {}
+  homeshoplist: {},
+  // 推荐列表数据
+  recshoplist: [],
+  // 搜索列表数据
+  searchgoods: [],
 }

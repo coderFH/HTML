@@ -10,7 +10,15 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/api': {  //使用"/api"来代替线上服务器地址
+        target: 'http://mobile.yangkeduo.com/proxy/api/api/barrow/query', //源地址
+        changeOrigin: true, //改变源
+        pathRewrite: {
+          '^/api': '' //路径重写
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -20,7 +28,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
     /**
      * Source Maps
      */

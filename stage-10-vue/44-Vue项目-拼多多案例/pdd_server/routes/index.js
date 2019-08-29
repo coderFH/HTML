@@ -30,4 +30,12 @@ router.get('/api/homeshoplist', (req, res)=>{
   res.json({success_code: 200, message: data});
 });
 
+/*
+  获取搜索分类列表
+ */
+router.get('/api/searchgoods', (req, res)=>{
+  const data = require('./../data/search');
+  res.json({success_code: 200, message: data});
+});
+
 module.exports = router;

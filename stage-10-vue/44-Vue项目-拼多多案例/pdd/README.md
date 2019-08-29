@@ -25,4 +25,6 @@ npm i vuex --save
 npm i axios --save
 npm i swiper --save
 npm i iscroll --save
+npm i better-scroll --save
+
 
