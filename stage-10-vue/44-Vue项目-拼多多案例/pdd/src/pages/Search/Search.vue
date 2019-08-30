@@ -10,7 +10,11 @@
         <ul>
           <li
             class="menu-item"
-            v-for="(goods,index) in searchgoods" :key="index"
+            v-for="(goods,index) in searchgoods"
+            :key="index"
+            :class="{current : currentIndex === index}"
+            @click="clickLeftLi(index)"
+            ref = 'menuList'
           >
             <span>{{goods.name}}</span>
           </li>
@@ -58,11 +62,23 @@
         },
         data() {
             return {
+                scrollY : 0, //右侧列表滑动的Yzhou坐标(实时更新)
+                rightLiTops:[],//所有分类的头部位置
                 isShow : false
             }
         },
         computed : {
-            ...mapState(['searchgoods'])
+            ...mapState(['searchgoods']),
+            //1.用于动态决定左侧哪个选项被选中
+            currentIndex() {
+                //1.1 获取数据
+                const {scrollY,rightLiTops} = this;  //语法糖,这么写的相当于this.scrollY 和 this.rightLiTops
+                //1.2 取出索引
+                return rightLiTops.findIndex((liTop,index)=>{
+                    this._leftScroll(index);
+                    return scrollY >= liTop && scrollY < rightLiTops[index+1];
+                });
+            }
         },
         components : {
             SearchNav,
@@ -81,13 +97,46 @@
                 });
                 // 1.2.2 右边的视图
                 this.rightScroll = new BScroll('.shop-wrapper', {
-                    probeType: 3
+                    probeType: 3  //设置一个滑动的灵敏度
                 });
                 // 1.2.3 监听右边的滚动
                 this.rightScroll.on('scroll', (pos) => {
                     this.scrollY = Math.abs(Math.round(pos.y));
                 });
             },
+            // 1.3 求出右边所有版块的头部高度
+            _initRightLiTops() {
+                //1.临时数组
+                let tempArr = [];
+                //2.定义变量计算高度
+                let top = 0;
+                tempArr.push(top);
+                //3.取出所有的li
+                let allLis = this.$el.getElementsByClassName('shops-li');
+                Array.prototype.slice.call(allLis).forEach((li,index)=>{
+                    //判断
+                    if (index == allLis.length - 1) {
+                        li.style.paddingBottom = `${window.innerHeight - li.clientHeight - 100}px`;
+                    }
+                    top += li.clientHeight;
+                    tempArr.push(top);
+                });
+                //4. 更新数据
+                this.rightLiTops = tempArr;
+            },
+            //1.4 点击左边
+            clickLeftLi(index) {
+                this.scrollY = this.rightLiTops[index];
+                this.rightScroll.scrollTo(0,-this.scrollY,300);
+            },
+            //1.5 左右联动
+            _leftScroll(index) {
+                // 1. 取出左边所有的li标签
+                let menuLists = this.$refs.menuList;
+                let el = menuLists[index];
+                //2.滚动到对应的元素上去
+                this.leftScroll.scrollToElement(el,0,0,-100);
+            }
         },
         watch : {
             searchgoods() {
