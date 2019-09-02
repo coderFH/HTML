@@ -9,4 +9,6 @@ export default {
   recshoplist: [],
   // 搜索列表数据
   searchgoods: [],
+  // 用户信息
+  userInfo: {}
 }

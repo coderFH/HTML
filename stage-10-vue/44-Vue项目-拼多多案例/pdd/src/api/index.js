@@ -18,3 +18,9 @@ export const getRecShopList = (params) => ajax(PDD_BASE_URL, params);
 
 // 4. 搜索列表
 export const getSearchgoods = () => ajax(BASE_URL + '/api/searchgoods');
+
+// 5. 获取短信验证码
+export const getPhoneCode = (phone) => ajax(BASE_URL + '/api/send_code', {phone});
+
+// 6. 手机验证码登录
+export const phoneCodeLogin = (phone, code) => ajax(BASE_URL + '/api/login_code', {phone, code}, 'POST');

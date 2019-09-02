@@ -8,6 +8,7 @@ import Recommend from './../pages/Recommend/Recommend'
 import Cart from './../pages/Cart/Cart'
 import Search from './../pages/Search/Search'
 import Me from './../pages/Me/Me'
+import Login from './../pages/Login/Login'
 
 // 引入二级的路由版块
 import Hot from '../pages/Home/Children/Hot/Hot'
@@ -31,9 +32,9 @@ export default new VueRouter({
       path : '/home',
       component : Home,
       children: [
-        {path: 'hot', component: Hot},
-        {path: 'box', component: Box},
-        {path: 'dress', component: Dress},
+        {path: 'hot', component: Hot,meta: {showBottomTabBar: true}},
+        {path: 'box', component: Box,meta: {showBottomTabBar: true}},
+        {path: 'dress', component: Dress,meta: {showBottomTabBar: true}},
         {path: 'ele', component: Ele},
         {path: 'food', component: Food},
         {path: 'general', component: General},
@@ -43,10 +44,11 @@ export default new VueRouter({
         {path: '/home', redirect: '/home/hot'}
       ]
     },
-    {path : '/recommend',component : Recommend},
-    {path : '/cart',component : Cart},
-    {path : '/search',component : Search},
-    {path : '/me',component : Me},
+    {path : '/recommend',component : Recommend,meta: {showBottomTabBar: true}},
+    {path : '/cart',component : Cart,meta: {showBottomTabBar: true}},
+    {path : '/search',component : Search,meta: {showBottomTabBar: true}},
+    {path : '/me',component : Me,meta: {showBottomTabBar: true}},
+    {path: '/login', component: Login},
     {path : '/',redirect : '/home'}
   ]
 });
