@@ -29,9 +29,9 @@ npm i better-scroll --save // 搜索页左右视图的滑动框架
 
 //服务端
 npm i svg-captcha --save //验证码框架
-npm i express-session --save //session框架
+npm i express-session --save //session框架,用于报错验证码,和用户输入的做对比使用
 npm i mongoose --save 
-npm i blueimp --save //md5加密框架
-npm i moment Base64 request --save // 短信验证码依赖的库
+npm i blueimp-md5 --save //md5加密框架
+npm i moment js-base64 request --save // 短信验证码依赖的库
 
 

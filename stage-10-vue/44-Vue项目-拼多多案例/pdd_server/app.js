@@ -4,6 +4,9 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//wfh-引入session,用于报错验证码,和用户输入的做对比使用
+var session = require('express-session');
+
 var indexRouter = require('./routes');
 var usersRouter = require('./routes/users');
 
@@ -30,6 +33,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//wfh---配置session
+app.use(session({
+  secret : '12345',// 对sessionId进行cookie签名
+  cookie : {maxAge : 100 * 60 * 60 *24},//设置session的有效时间,单位ms
+  resave : false,
+  saveUninitialized : true,
+}));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
