@@ -6,14 +6,17 @@
 </template>
 
 <script>
-//1.引入组件
-import TabBar from './components/TabBar'
-export default {
-  name: 'App',
-  components : {
-    TabBar
+  //1.引入组件
+  import TabBar from './components/TabBar'
+  export default {
+    name: 'App',
+    components : {
+      TabBar
+    },
+    mounted() {
+        this.$store.dispatch('reqUserInfo');
+    }
   }
-}
 </script>
 
 <style scoped  lang="stylus" ref="stylesheet/stylus">

@@ -95,7 +95,7 @@ router.post('/api/login_pwd',(req,res)=>{
   User.findOne({name},(err,user)=>{
     if (user) { //4.1 用户已经注册
       if (user.pwd !== pwd) { //密码错误
-        req.send({err_code: 0,message : '用户名或密码错误'});
+        res.send({err_code: 0,message : '用户名或密码错误'});
       } else {
         req.session.userid = user._id;
         res.send({
@@ -199,6 +199,33 @@ router.post('/api/login_code', (req, res)=>{
       });
     }
   });
+});
+
+/*
+  根据session中的userid, 去查询对应的用户返回给客户端
+*/
+const filter = {'pwd': 0, 'l_time': 0, '__v': 0}; //过滤数据使用,不要的传0
+router.get('/api/userinfo', (req, res)=>{
+  // 1. 取出userId
+  const userId = req.session.userid;
+  // 2. 查询
+  User.findOne({_id: userId}, filter, (err, user)=>{
+    if(!user){
+      // 清除上一次的userId
+      delete req.session.userid;
+      res.send({err_code: 0, message: '请先登录'});
+    }else {
+      res.send({success_code: 200, data: user});
+    }
+  })
+});
+
+// 退出登录
+router.get('/api/logout', (req, res)=>{
+  // 清除session中的userid
+  delete req.session.userid;
+  // 返回数据
+  res.send({success_code: 200, message: '退出登录成功'});
 });
 
 module.exports = router;

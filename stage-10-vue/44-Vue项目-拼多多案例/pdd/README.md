@@ -26,7 +26,9 @@ npm i axios --save //网络请求框架
 npm i swiper --save //轮播图框架
 npm i iscroll --save //轮播图下边的滑动框架
 npm i better-scroll --save // 搜索页左右视图的滑动框架
+npm i mescroll --save //下拉刷新使用的
 npm i mint-ui --save
+npm i vue-lazyload --save //相当于sdwebimage
 
 //服务端
 npm i svg-captcha --save //验证码框架

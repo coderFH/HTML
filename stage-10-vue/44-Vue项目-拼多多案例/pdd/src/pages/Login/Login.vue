@@ -48,7 +48,7 @@
           <div :class="{current: !loginMode}">
             <section>
               <section class="login-message">
-                <input type="tel" maxlength="11" placeholder="用户名">
+                <input type="tel" maxlength="11" placeholder="用户名" v-model="user_name">
               </section>
               <section class="login-verification">
                 <input type="password" maxlength="20" placeholder="密码" v-if="pwdMode" v-model="pwd">
@@ -79,114 +79,153 @@
 </template>
 
 <script>
-  import {getPhoneCode, phoneCodeLogin} from './../../api/index';
-  import { Toast } from 'mint-ui';
-  export default {
-    name: "Login",
-    data() {
-      return {
-        loginMode: true, // 登录方式, true 手机验证码登录, flase 账号登录
-        phone: '', // 手机号码
-        countDown: 0, // 倒计时
-        code: '', // 验证码
-        user_name: '', // 用户名
-        pwd: '', // 密码
-        pwdMode: true, // 密码的显示方式, true 密文  false 明文
-        captcha: '', // 图形验证码
-        userInfo: {}
-      }
-    },
-    computed: {
-      phoneRight() { //计算属性
-        return /^1[34578]\d{9}$/.test(this.phone);
-      }
-    },
-    methods: {
-      // 1. 处理登录的方式
-      dealLoginMode(flag) {
-        this.loginMode = flag;
-      },
-      // 2. 获取短信验证码
-      async getVerifyCode() {
-        // 2.1 开启倒计时
-        if(this.phoneRight){
-            this.countDown = 60;
-            // 2.2 设置定时器
-            this.intervalId = setInterval(()=>{
-                this.countDown --;
-                if(this.countDown === 0){
-                    clearInterval(this.intervalId);
+    import {getPhoneCode, phoneCodeLogin, pwdLogin} from './../../api/index';
+    import { Toast } from 'mint-ui';
+
+    import {mapActions} from 'vuex'
+
+    export default {
+        name: "Login",
+        data() {
+            return {
+                loginMode: true, // 登录方式, true 手机验证码登录, flase 账号登录
+                phone: '', // 手机号码
+                countDown: 0, // 倒计时
+                code: '', // 验证码
+                user_name: '', // 用户名
+                pwd: '', // 密码
+                pwdMode: true, // 密码的显示方式, true 密文  false 明文
+                captcha: '', // 图形验证码
+                userInfo: {}
+            }
+        },
+        computed: {
+            phoneRight() {
+                return /^1[34578]\d{9}$/.test(this.phone);
+            }
+        },
+        methods: {
+            ...mapActions(['syncUserInfo']),
+
+            // 1. 处理登录的方式
+            dealLoginMode(flag) {
+                this.loginMode = flag;
+            },
+            // 2. 获取短信验证码
+            async getVerifyCode() {
+                // 2.1 开启倒计时
+                if(this.phoneRight){
+                    this.countDown = 60;
+                    // 2.2 设置定时器
+                    this.intervalId = setInterval(()=>{
+                        this.countDown --;
+                        if(this.countDown === 0){
+                            clearInterval(this.intervalId);
+                        }
+                    }, 1000);
+
+                    // 2.3 获取短信验证码
+                    const result = await getPhoneCode(this.phone);
+                    console.log(result);
+
+                    // 2.4 获取验证码失败
+                    if(result.err_code === 0){
+                        // console.log(result.message);
+                        Toast({
+                            message: result.message,
+                            position: 'center',
+                            duration: 3000
+                        });
+
+                        // 2.5 后续处理
+                        setTimeout(()=>{
+                            clearInterval(this.intervalId);
+                            this.countDown = 0;
+                        }, 3000);
+                    }
                 }
-            }, 1000);
 
-            // 2.3 获取短信验证码
-            const result = await getPhoneCode(this.phone);
-            console.log(result);
+            },
+            // 3. 密码的显示方式
+            dealPwdMode(flag){
+                this.pwdMode = flag;
+            },
+            // 4. 获取图形验证码
+            getCaptcha(){
+                this.$refs.captcha.src = 'http://localhost:1688/api/captcha?time=' + new Date();
+            },
+            // 5. 登录
+            async login(){
+                console.log(111);
+                // 5.1 登录模式
+                if(this.loginMode){ // 验证码登录
+                    console.log(222);
+                    if(!this.phone){
+                        console.log(333);
+                        Toast('请输入手机号码!');
+                        return;
+                    }else if(!this.phoneRight){
+                        console.log(444);
+                        Toast('请输入正确的手机号码!');
+                        return;
+                    }
+                    console.log(555);
+                    if(!this.code){
+                        console.log(666);
+                        Toast('请输入验证码!');
+                        return;
+                    }else if(!(/^\d{6}$/gi.test(this.code))){
+                        console.log(777);
+                        Toast('请输入正确的验证码!');
+                        return;
+                    }
 
-            // 2.4 获取验证码失败
-            if(result.err_code === 0){
-               // console.log(result.message);
-              Toast({
-                message: result.message,
-                position: 'center',
-                duration: 3000
-              });
+                    // 5.2 手机验证码登录
+                    const result = await phoneCodeLogin(this.phone, this.code);
+                    console.log(result);
+                    if(result.success_code === 200){
+                        this.userInfo = result.data;
+                    }else {
+                        this.userInfo = {
+                            message: '登录失败, 手机号码或验证码不正确!'
+                        }
+                    }
+                }else { // 账号和密码的登录
+                    if(!this.user_name){
+                        Toast('请输入用户名!');
+                        return;
+                    }else if(!this.pwd){
+                        Toast('请输入密码!');
+                        return;
+                    }else if(!this.captcha){
+                        Toast('请输入验证码!');
+                        return;
+                    }
+                    // 5.2 发起请求
+                    const result = await pwdLogin(this.user_name, this.pwd, this.captcha);
+                    if (result.success_code === 200) {
+                        this.userInfo = result.data;
+                    } else {
+                        this.userInfo = {
+                            message: '登录失败, 用户名和密码不正确!'
+                        }
+                    }
+                }
 
-              // 2.5 后续处理
-              setTimeout(()=>{
-                 clearInterval(this.intervalId);
-                 this.countDown = 0;
-              }, 3000);
+                // 6. 后续的处理
+                console.log(this.userInfo);
+                if(!this.userInfo._id){
+                    Toast(this.userInfo.message);
+                }else {
+                    // 6.1 同步用户的信息
+                    this.syncUserInfo(this.userInfo);
+                    // 6.2 回到主界面
+                    this.$router.back();
+                }
+
             }
         }
-
-      },
-
-      // 3. 密码的显示方式
-      dealPwdMode(flag){
-         this.pwdMode = flag;
-      },
-
-      // 4. 获取图形验证码
-      getCaptcha(){
-         this.$refs.captcha.src = 'http://localhost:1688/api/captcha?time=' + new Date();
-      },
-      // 5. 登录
-      async login(){
-         // 5.1 登录模式
-         if(this.loginMode){ // 验证码登录
-            if(!this.phone){
-              Toast('请输入手机号码!');
-              return;
-            }else if(!this.phoneRight){
-              Toast('请输入正确的手机号码!');
-              return;
-            }
-
-            if(!this.code){
-              Toast('请输入验证码!');
-              return;
-            }else if(!(/^\d{6}$/gi.test(this.code))){
-              Toast('请输入正确的验证码!');
-              return;
-            }
-
-            // 5.2 手机验证码登录
-            const result = await phoneCodeLogin(this.phone, this.code);
-            // console.log(result);
-            if(result.success_code === 200){
-                this.userInfo = result.data;
-            }else {
-                this.userInfo = {
-                    message: '登录失败, 手机号码或验证码不正确!'
-                }
-            }
-         }else {
-
-         }
-      }
     }
-  }
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">

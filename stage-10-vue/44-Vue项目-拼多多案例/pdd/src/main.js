@@ -12,7 +12,17 @@ import store from './store'
 import LyTab from 'ly-tab'
 Vue.use(LyTab);
 
+// 引入字体图标
+import '@/common/css/style.css'
 import "common/stylus/mixins.styl"
+
+//配置图片的懒加载
+import VueLazyload from 'vue-lazyload'
+import loading from './common/img/loading.jpg'
+
+Vue.use(VueLazyload,{
+  loading
+});
 
 new Vue({
   el: '#app',

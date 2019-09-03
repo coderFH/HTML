@@ -15,103 +15,30 @@
     <!--中间的列表-->
     <main class="jd_shopCart_list">
       <section>
-        <div class="shopCart_list_con">
+        <div class="shopCart_list_con" v-for="(goods, index) in cartGoods" :key="index">
           <div class="list_con_left">
-            <a href="javascript:;" class="cart_check_box" checked></a>
+            <a
+              href="javascript:;"
+              class="cart_check_box"
+              :checked="goods.checked"
+              @click.stop="singerGoodsSelected(goods)"
+            ></a>
           </div>
           <div class="list_con_right">
             <div class="shop_img">
-              <img src="http://t00img.yangkeduo.com/goods/images/2018-08-30/1093ac9bfaa77304a8c3f25d4bfcb743.jpeg"
+              <img :src="goods.thumb_url"
                    alt="">
             </div>
             <div class="shop_con">
-              <a href="">香朵儿运动服套装女2018春秋新款学生韩版宽松时尚休闲大码两件套</a>
-              <p class="shop_price">&yen;30.99</p>
+              <a href="">{{goods.goods_name}}</a>
+              <p class="shop_price">{{goods.price / 100 | moneyFormat}}</p>
               <div class="shop_deal">
                 <div class="shop_deal_left">
-                  <span>-</span>
-                  <input type="tel" value="1">
-                  <span>+</span>
+                  <span @click.stop="updateGoodsCount(goods, false)">-</span>
+                  <input disabled="disabled" type="tel" value="1" v-model="goods.buy_count">
+                  <span @click.stop="updateGoodsCount(goods, true)">+</span>
                 </div>
-                <div class="shop_deal_right">
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="shopCart_list_con">
-          <div class="list_con_left">
-            <a href="javascript:;" class="cart_check_box"></a>
-          </div>
-          <div class="list_con_right">
-            <div class="shop_img">
-              <img src="http://t00img.yangkeduo.com/goods/images/2018-08-30/1093ac9bfaa77304a8c3f25d4bfcb743.jpeg"
-                   alt="">
-            </div>
-            <div class="shop_con">
-              <a href="">香朵儿运动服套装女2018春秋新款学生韩版宽松时尚休闲大码两件套</a>
-              <p class="shop_price">&yen;30.99</p>
-              <div class="shop_deal">
-                <div class="shop_deal_left">
-                  <span>-</span>
-                  <input type="tel" value="1">
-                  <span>+</span>
-                </div>
-                <div class="shop_deal_right">
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="shopCart_list_con">
-          <div class="list_con_left">
-            <a href="javascript:;" class="cart_check_box"></a>
-          </div>
-          <div class="list_con_right">
-            <div class="shop_img">
-              <img src="http://t00img.yangkeduo.com/goods/images/2018-08-30/1093ac9bfaa77304a8c3f25d4bfcb743.jpeg"
-                   alt="">
-            </div>
-            <div class="shop_con">
-              <a href="">香朵儿运动服套装女2018春秋新款学生韩版宽松时尚休闲大码两件套</a>
-              <p class="shop_price">&yen;30.99</p>
-              <div class="shop_deal">
-                <div class="shop_deal_left">
-                  <span>-</span>
-                  <input type="tel" value="1">
-                  <span>+</span>
-                </div>
-                <div class="shop_deal_right">
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="shopCart_list_con">
-          <div class="list_con_left">
-            <a href="javascript:;" class="cart_check_box"></a>
-          </div>
-          <div class="list_con_right">
-            <div class="shop_img">
-              <img src="http://t00img.yangkeduo.com/goods/images/2018-08-30/1093ac9bfaa77304a8c3f25d4bfcb743.jpeg"
-                   alt="">
-            </div>
-            <div class="shop_con">
-              <a href="">香朵儿运动服套装女2018春秋新款学生韩版宽松时尚休闲大码两件套</a>
-              <p class="shop_price">&yen;30.99</p>
-              <div class="shop_deal">
-                <div class="shop_deal_left">
-                  <span>-</span>
-                  <input type="tel" value="1">
-                  <span>+</span>
-                </div>
-                <div class="shop_deal_right">
+                <div class="shop_deal_right" @click.stop="clickTrash(goods)">
                   <span></span>
                   <span></span>
                 </div>
@@ -124,10 +51,15 @@
     <!--底部通栏-->
     <div id="tab_bar">
       <div class="tab-bar-left">
-        <a href="javascript:;" class="cart_check_box" checked></a>
+        <a
+          href="javascript:;"
+          class="cart_check_box"
+          :checked="isSelectedAll"
+          @click.stop="selectedAll(isSelectedAll)"
+        ></a>
         <span style="font-size: 16px;">全选</span>
         <div class="select-all">
-          合计：<span class="total-price">&yen;999.00</span>
+          合计：<span class="total-price">{{totalPrice | moneyFormat}}</span>
         </div>
       </div>
       <div class="tab-bar-right">
@@ -138,9 +70,89 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex';
+    import {MessageBox} from 'mint-ui'
     export default {
         name: "Cart",
+        data() {
+            return {
+                isSelectedAll: false, // 是否选中所有的商品
+                totalPrice: 0, // 商品的总价格
+                currentDelGoods: {}, // 删除的商品
+            }
+        },
+        computed: {
+            ...mapState(['userInfo', 'cartGoods'])
+        },
         methods: {
+            // 1. 单个商品的增加和减少
+            updateGoodsCount(goods, isAdd) {
+                // console.log(goods, isAdd);
+                this.$store.dispatch('updateGoodsCount', {goods, isAdd});
+                // 计算商品的总价格
+                this.getAllGoodsPrice();
+            },
+            // 2. 单个商品的选中和取消选中
+            singerGoodsSelected(goods) {
+                this.$store.dispatch('singerGoodsSelected', {goods});
+                // 2.1 判断是否全选
+                this.hasSelectedAll();
+                // 2.2 计算商品的总价格
+                this.getAllGoodsPrice();
+            },
+            // 3. 是否全选
+            selectedAll(isSelected) {
+                // 3.1 总体控制
+                this.isSelectedAll = !isSelected;
+                this.$store.dispatch('selectedAll', {isSelected});
+
+                // 3.2 计算商品的总价格
+                this.getAllGoodsPrice();
+            },
+            // 4. 判断是否全选
+            hasSelectedAll() {
+                let flag = true;
+                // 4.1 遍历购物车的数据
+                this.cartGoods.forEach((goods, index) => {
+                    if (!goods.checked) {
+                        flag = false;
+                    }
+                });
+                console.log(this.cartGoods.length);
+                // 4.2 赋值
+                this.isSelectedAll = flag;
+            },
+            // 5. 计算商品的总价格
+            getAllGoodsPrice() {
+                let totalPrice = 0;
+                // 5.1 遍历
+                this.cartGoods.forEach((goods, index) => {
+                    if (goods.checked) {
+                        totalPrice += goods.price / 100 * goods.buy_count;
+                    }
+                });
+                // 5.2 赋值
+                this.totalPrice = totalPrice;
+            },
+            // 6. 点击垃圾篓
+            clickTrash(goods) {
+                MessageBox.confirm('您确定删除该商品吗?').then(action => {
+                    if (action === 'confirm') {
+                        this.currentDelGoods = goods;
+                        this.$store.dispatch('delGoodsSinger', {goods});
+                        if(this.cartGoods.length === 0){
+                            this.isSelectedAll = false;
+                        }
+                        // 计算商品的总价格
+                        this.getAllGoodsPrice();
+                    }
+                })
+            }
+        },
+        filters: {
+            moneyFormat(money) {
+                return '¥' + money.toFixed(2);
+            }
         }
     }
 </script>

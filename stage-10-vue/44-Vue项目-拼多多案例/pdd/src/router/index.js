@@ -10,7 +10,7 @@ import Search from './../pages/Search/Search'
 import Me from './../pages/Me/Me'
 import Login from './../pages/Login/Login'
 
-// 引入二级的路由版块
+// 引入二级的路由版块 方式1:
 import Hot from '../pages/Home/Children/Hot/Hot'
 import Box from './../pages/Home/Children/Box'
 import Dress from './../pages/Home/Children/Dress'
@@ -20,6 +20,9 @@ import General from './../pages/Home/Children/General'
 import Man from './../pages/Home/Children/Man'
 import Mbaby from './../pages/Home/Children/Mbaby'
 import Shirt from './../pages/Home/Children/Shirt'
+
+//这种方式的引入是,用到的时候再引入 方式2:
+// const Hot = ()=> import('./../pages/Home/Children/Hot/Hot');
 
 //2.声明使用
 Vue.use(VueRouter);

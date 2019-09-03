@@ -33,7 +33,8 @@
             <!--身体-->
             <ul class="shops-items">
               <li v-for="(item, index) in goods.items" :key="index">
-                <img :src="item.icon" alt="">
+                <!--v-lazy:vue-load插件,相当于sd-->
+                <img v-lazy="item.icon" alt="">
                 <span>{{item.title}}</span>
               </li>
             </ul>
