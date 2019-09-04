@@ -36,5 +36,3 @@ npm i express-session --save //session框架,用于报错验证码,和用户输�
 npm i mongoose --save 
 npm i blueimp-md5 --save //md5加密框架
 npm i moment js-base64 request --save // 短信验证码依赖的库
-
-
