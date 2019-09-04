@@ -7,8 +7,14 @@
 <body>
 
     <div id = "app">
+        <!--胡须语法,也叫插值表达式语法-->
         <h1>{{msg}}</h1>
         <p>{{message}}</p>
+        <!--不仅仅可以直接写变量,也可以写简单的表达式-->
+        <p>{{firstName + lastName}}</p>
+        <p>{{firstName + " " + lastName}}</p>
+        <p>{{firstName}} {{lastName}}</p>
+        <p>{{counter * 2}}</p>
     </div>
 
 
@@ -19,7 +25,10 @@
         el: '#app',   //挂载起哪个试图
         data : {
             message : 'hello world',
-            msg : 'wangfuhao'
+            msg : 'wangfuhao',
+            firstName : 'Tracy',
+            lastName : 'McGrady',
+            counter : 100
         }
     });
 </script>

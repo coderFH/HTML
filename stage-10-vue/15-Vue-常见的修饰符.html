@@ -56,6 +56,10 @@
          <!--once 事件只触发一次-->
          <button @click.once="btnClick()">点我</button>
 
+        <!--监听某个按键的点击-->
+        <!--回车的点击-->
+        <input type="text" v-on:keyup.enter="keyup">
+
     </div>
 
 <script src="js/vue.js"></script>
@@ -74,6 +78,9 @@
             },
             btnClick() {
                 console.log('点击了按钮');
+            },
+            keyup() {
+                console.log('keyup');
             }
         }
     });

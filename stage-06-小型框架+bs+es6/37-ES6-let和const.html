@@ -23,21 +23,26 @@
     var str = '李四';
 
    console.log(str);
-    // var str = '张三; //报错
+    //报错
+    // var str = '张三;
 </script>
 
-<script id="不可以重复声明变量">
+<script id="let不可以重复声明变量">
     let site = 'itLike';
     // let site = 'baidu';重复声明  报错
     console.log(site);
 </script>
 
-<script id="不存在变量提升">
-    // console.log(t);
-    // let t = 'itLike'; 报错
+<script id="let不存在变量提升">
+    console.log(t);
+    //报错
+    // let t = 'itLike';
+
+    //用var就不会报错,很明显这种方式不好
+    var t = 'itLike';
 </script>
 
-<script id="可以定义常量">
+<script id="const可以定义常量">
     const E = 2.718;
     // E = 1.22; //报错,常量  不能改
     console.log(E);
@@ -45,7 +50,7 @@
 
 <script>
     const LK = {
-    name:'itLike',
+        name:'itLike',
         intro: '喜欢IT, 就上撩课(itLike.com)'
     };
 

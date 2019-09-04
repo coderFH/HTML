@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="app">
+    <!-- 通过多次调用,会发现计算属性是有缓存的,只会调用一次,而通过函数会每次都去重新计算,性能不好-->
+    <p>{{fullName}}</p>
+    <p>{{fullName}}</p>
+    <p>{{fullName}}</p>
+    <p>{{fullName}}</p>
+
+    <p>{{getFullName()}}</p>
+    <p>{{getFullName()}}</p>
+    <p>{{getFullName()}}</p>
+    <p>{{getFullName()}}</p>
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+    // 1. 创建Vue的实例
+    new Vue({
+        el: '#app',
+        data: {
+            firstName: 'kobe',
+            lastName: 'Bryant'
+        },
+        methods:{
+          getFullName : function () {
+              console.log('getFullName');
+              return this.firstName + ' ' + this.lastName;
+          }
+        },
+        computed: {
+            fullName : function() {
+                console.log('fullName');
+                return this.firstName + ' ' + this.lastName;
+            }
+        }
+    });
+</script>
+</body>
+</html>

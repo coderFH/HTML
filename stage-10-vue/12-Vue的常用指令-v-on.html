@@ -12,7 +12,17 @@
     <button @click="msg='王福豪'">改变内容</button>
 
     <!--执行方法-->
+    <!--事件调用的方法没有参数,()可以省略-->
     <button @click="changeContent()">改变内容</button>
+
+    <!--在事件定义时,写函数时省略了小括号,但是方法本身需要一个参数的,这个时候,vue会默认将浏览器生产的event事件对象作为参数传入到方法中-->
+    <button @click="btn2click()">写函数时省略了小括号,但是方法本身需要一个参数的</button>
+    <button @click="btn2click">写函数时省略了小括号,但是方法本身需要一个参数的</button>
+
+    <!-- 定义方法时,我们需要event对象,同时又需要其他参数-->
+    <button @click="btn3click">我们需要event对象,同时又需要其他参数</button>
+    <!--在调用方式,如何手动的获取到浏览器参数的event对象: $event-->
+    <button @click="btn3click(123,$event)">我们需要event对象,同时又需要其他参数</button>
 </div>
 <body>
 
@@ -25,8 +35,16 @@
           msg: 'wangfuhao'
         },
         methods: {
+            //es6语法
             changeContent() {
                 this.msg = '喜欢我, 就来呀';
+            },
+            //如果函数需要参数,但是没有传入,那么函数的形参为undefine
+            btn2click(abc){
+                console.log(abc);
+            },
+            btn3click(abc) {
+                console.log(abc,event);
             }
         }
     });

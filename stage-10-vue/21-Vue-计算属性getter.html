@@ -26,13 +26,14 @@
         data : {
             name: 'Rose Jack'
         },
-        methods:{
+        methods : {
             reverseStr(){
                 return this.name.split('').reverse().join('')
             }
         },
-        computed: {  // 计算选项
-            reverse: {
+        //计算属性
+        computed : {
+            reverse : {
                 get() {
                     return this.name.split('').reverse().join('');
                 }

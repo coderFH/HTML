@@ -17,22 +17,28 @@
     new Vue({
         el: '#app',
         data: {
-            firstName: 'zhang',
-            lastName: 'xing'
+            firstName: 'kobe',
+            lastName: 'Bryant'
         },
         methods:{
           deal(){
-              this.fullName = 'wang cai';
+              this.fullName = 'Tracy McGrady';
           }
         },
-        computed: {  // 计算选项
+        computed: {
+            // 如果计算属性没有set方法,可以使用这种方式简写,也就是只读属性
+            // fullName : function() {
+            //   return this.firstName + ' ' + this.lastName;
+            // }
+
            fullName: {
                get(){
                    return this.firstName + ' ' + this.lastName;
                },
 
-               set(str){
-                   let nameArr = str.split(' ');
+               set(newValue){
+                   console.log(newValue);
+                   let nameArr = newValue.split(' ');
                    this.firstName = nameArr[0];
                    this.lastName = nameArr[1];
                }

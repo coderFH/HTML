@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button>按钮1</button>
+<button>按钮2</button>
+<button>按钮3</button>
+<button>按钮4</button>
+<button>按钮5</button>
+
+<script>
+    //1.变量作用域: 变量在什么范围内是可用的
+    //var 没有块级作用域
+    {
+        var name = "wfh";
+        console.log(name);
+    }
+    console.log(name);
+
+    //2.没有块级作用域引起的问题
+    var func;
+    if (true) {
+        var age = 18;
+        func = function () {
+            console.log(age);
+        };
+        func()
+    }
+    age = 20;
+    func(); //没有块级作用域,其他地方修改了,就直接修改了
+
+    //3.没有块级作用域额引起的问题:for的块级
+    var btns = document.getElementsByTagName('button');
+    //正是因为没有块级作用域,点击按钮的时候,i其实已经循环到了5 多以打印的是一直会是'第5个按钮被点击'
+    for (var i = 0 ; i< btns.length ; i++) {
+    //     btns[i].addEventListener('click',function () {
+    //         console.log('第' + i + '个按钮被点击');
+    //     })
+
+        //一般的解决方式是实用闭包
+        //为什么闭包可以解决? 因为闭包有作用域
+        // (function (i) {
+        //     btns[i].addEventListener('click',function () {
+        //         console.log('第' + i + '个按钮被点击');
+        //     })
+        // })(i);
+
+    }
+
+    //其实闭包的原理类似于下边的代码,我在外部随便改这个name,abc函数传过去的name是不受外边影响的,abc有自己的作用域,
+    // 这里传的name参数,就有点类似于闭包传的i 你外界值随便改,不影响我函数内部
+    var name = "why";
+    function abc(name) {
+        console.log(name);
+    }
+    name = 'wfh';
+    abc("aaa");
+
+    //es6中的写法, j有了自己的作用域 j改变也是改自己的,跟其他作用域的j没有任何关系
+    const btns1 = document.getElementsByTagName('button');
+    for (let j = 0; j < btns1.length; j++) {
+        btns1[j].addEventListener('click',function () {
+            console.log('第' + j + '个按钮被点击');
+        })
+    }
+</script>
+
+</body>
+</html>

@@ -6,7 +6,12 @@
 </head>
 <body>
 
-<!--v-if和v-show的区别就是,如果是show控件会全部创造出来,然后修改样式为none-->
+    <!--
+    v-if:当条件为false时,包含v-if指令的元素,根本就不会存在dom中
+    v-show:如果是show控件会全部创造出来,然后修改样式为none
+    显示隐藏切换频率高的时候,用v-show
+    当只有一次切换用v-if
+    -->
 <div id="app">
     <p v-show="show">显示出来!</p>
     <p v-show="hide">不显示出来!</p>

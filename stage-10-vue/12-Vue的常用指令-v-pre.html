@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<div id="app">
+    <!--有时候我就想显示{{}}改怎么办? 就使用v-pre 意思就是原封不动的显示-->
+    <h2>{{message}}</h2>
+    <h2 v-pre>{{message}}</h2>
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+    new Vue ({
+        el : "#app",
+        data : {
+            message : '你好啊'
+        }
+    });
+</script>
+</body>
+</html>

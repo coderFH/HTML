@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .select {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <ul>
+        <li v-for="(m,index) in movies"
+            :class="selectIdx === index ? 'select' : '' "
+            @click="liClick(index)"
+            :key="index"
+        >
+            {{index + "-" + m}}
+        </li>
+    </ul>
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+    new Vue ({
+        el : "#app",
+        data : {
+            movies : ['复仇者联盟','哪吒魔丸降世','大话西游','大圣归来'],
+            isSelect : false,
+            selectIdx : -1
+        },
+        methods : {
+            liClick : function (index) {
+                this.selectIdx = index;
+            }
+        }
+    });
+</script>
+</body>
+</html>

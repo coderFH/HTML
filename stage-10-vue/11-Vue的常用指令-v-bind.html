@@ -3,12 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
         <img v-bind:src="imgSrc" v-bind:alt="alt">
         <!--或者-->
         <img :src="imgSrc1" :alt="alt">
+
+        <!--动态绑定class(对象语法)-->
+        <h2 :class="{active : isActive}">绑定class</h2>
+        <button @click="btnClick">按钮</button>
+
+        <h2 :class='getClasses()'>绑定class</h2>
+        <button @click="btnClick">按钮</button>
+
+        <!--动态绑定class(数组语法),用到很少-->
+        <h2 :class="['active']">绑定class</h2>
+        <button @click="btnClick">按钮</button>
     </div>
 
     <script src="js/vue.js"></script>
@@ -18,7 +34,16 @@
             data : {
                 imgSrc : 'img/img_01.jpg',
                 imgSrc1 : 'img/img_02.jpg',
-                alt : '我是美女'
+                alt : '我是美女',
+                isActive : true,
+            },
+            methods : {
+                btnClick : function () {
+                    this.isActive = !this.isActive;
+                },
+                getClasses : function () {
+                    return {active : this.isActive}
+                }
             }
         });
     </script>
