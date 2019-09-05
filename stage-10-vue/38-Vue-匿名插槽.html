@@ -3,27 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-
-    <style>
-
-    </style>
-
 </head>
 <body>
 
 <div id="app">
-
+    <cpn><input tyep="text" placeholder="外部传的" /></cpn>
+    <cpn><h2>外部传的文本</h2></cpn>
+    <cpn></cpn>
 </div>
+
+<template id="cpn">
+    <div>
+        <h2>我是标题</h2>
+        <slot><h3>我是默认的,你外部不传,就用我</h3></slot>
+    </div>
+</template>
 
 <script src="js/vue.js"></script>
 <script>
     new Vue ({
         el : "#app",
-        data : {
-
-        },
-        methods : {
-
+        components : {
+            cpn : {
+                template : '#cpn'
+            }
         }
     });
 </script>

@@ -4,8 +4,40 @@
     <meta charset="UTF-8">
     <title>数组</title>
 </head>
+
 <body>
     <script>
+        /*
+        补充=====
+        数组的三种遍历方式:
+        1. for(let i = 0; i < books.length; i++)
+        2. for(let i in books) 这种方式和1是一样的 都是取出下标
+        3. for(let i of books) 这种方式会直接取出数组中的具体值
+        高阶函数reduce/filter/map
+        filter中的回调函数有一个要求:必须返回一个 boolean值
+        true : 函数内部会自动将这次回调的n加入到新数组
+        false : 函数内部会过滤这次的n
+
+        找出数组中小于100的, 然后全部乘以2  最后再相加
+        * */
+        const nums = [10,20,100,101,22,220,333];
+        let newNums = nums.filter(function (n) {
+            return n < 100;
+        }).map(function (n) {
+            return n * 2;
+        });
+        console.log(newNums);
+        //reduce的使用:对数组中所有的内容进行汇总
+        //preValue:上一次遍历返回的值
+        let total = newNums.reduce(function (preValue,n) {
+            return preValue += n;
+        });
+        console.log(total);
+        //简介写法
+        let total1 = nums.filter(n => n < 100).map(n => n * 2).reduce((pre,n) => pre + n);
+        console.log(total1);
+
+        //以上的内容是复习时,补充的
         console.log("==================1.数组的创建方式==================");
         // 1. 使用Array构造函数
         var arr1 = new Array();//创建一个空数组对象

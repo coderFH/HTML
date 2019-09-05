@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="app">
+<!--    默认情况下,我们使用插槽的样式就可以-->
+    <cpn></cpn>
+
+<!--    但有时候插槽的样式不是我们的想要的,但是我们需要用子组件的数据,就可以用这种方式去拿数据,然后自己实现样式-->
+    <cpn>
+        <template slot-scope="slot">
+            <span>{{slot.data.join('-')}}</span>
+        </template>
+
+    </cpn>
+</div>
+
+<template id="cpn">
+    <div>
+        <slot :data="pLanguage">
+            <ul>
+                <li v-for="item in pLanguage">{{item}}</li>
+            </ul>
+        </slot>
+    </div>
+</template>
+<script src="js/vue.js"></script>
+<script>
+    Vue.component('cpn',{
+        template: '#cpn',
+        data() {
+            return {
+                pLanguage : ['Java','OC','Swift',"JS","C","C++"]
+            }
+        }
+    });
+
+    // 1. 创建Vue的实例
+    new Vue({
+        el: '#app'
+    });
+
+</script>
+</body>
+</html>
