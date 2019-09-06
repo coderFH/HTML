@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--我们引入的main.js中 引用了mathUtils模块,mathUtils是通过commjs的方式导出的,浏览器是不认识的 所以会报错
+    所以我们需要使用 webpack ./src/main.js -o ./dist/bundle.js  命令,对main.js进行打包,然后引入打包后的文件,浏览器就能识别了
+-->
+<!--<script src="src/main.js"></script>-->
+
+<script src="dist/bundle.js"></script>
+</body>
+</html>

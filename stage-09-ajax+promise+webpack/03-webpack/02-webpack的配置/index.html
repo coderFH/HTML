@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+</div>
+
+<!--目标: 直接命令行使用npm run build 就自动的实现打包 相当于与webpack ./src/main.js -o ./dist/bundle.js 这句命令-->
+<!--首先在webpack.config.js中配置文件的出口和入口,这个时候其实直接执行webpack就可以打包了-->
+<!--然后在package.json中的script选项添加一个build值,对应的命令是webpack-->
+<!--最后,执行npm run build 就可以实现打包-->
+<!--在script中配置命令,有一个好处,就是如果我在终端中直接使用webpack命令,他使用的其实是全局的,
+如果通过配置,用npm run build 会优先使用本地的webpack-->
+
+<!--
+loader的学习
+使webpack具备加载css文件的能力
+
+1.安装loader
+npm install --save-dev css-loader
+npm install --save-dev style-loader
+
+2.配置webpack.config.js
+-->
+
+<!--
+less文件的加载
+1.npm install less-loader less --save-dev
+2.配置webpack.config.js
+-->
+
+<!--
+加载图片
+1.npm install url-loader --save-dev
+2.npm i file-loader --save-dev
+2.配置webpack.config.js
+-->
+
+<!--
+打包的时候把es6语法转为es5
+1.npm install -D babel-loader @babel/core @babel/preset-env
+2.配置一个.babelrc文件
+3.配置webpack.config.js
+-->
+
+<!--
+安装vue
+1.npm i vue --save
+2.配置webpack.config.js
+-->
+
+<!--
+将index.html文件打包到dist文件夹下
+1.npm install html-webpack-plugin --save-dev
+2.配置webpack.config.js
+-->
+
+<!--
+压缩js文件
+npm i uglifyjs-webpack-plugin@1.1.1 --save-dev
+-->
+
+<!--
+每次更新代码 都需要 npm run build 很麻烦
+1.npm i webpack-dev-server@2.9.1 --save-dev
+2.配置webpack.config.js
+3.配置package.json dev项为 webpack-dev-server
+4.运行 npm run dev
+-->
+
+<!--
+配置文件抽离
+1.npm install webpack-merge --save-dev 安装代码合并的库
+2.看bulid文件夹
+3.配置package.json文件 看9,10行
+-->
+
+<!--因为dist文件夹下生成的会自动导入js文件,所以这里就注释了-->
+<!--<script src="dist/bundle.js"></script>-->
+</body>
+</html>

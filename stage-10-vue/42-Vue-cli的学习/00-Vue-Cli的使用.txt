@@ -1,0 +1,46 @@
+全局安装脚手架
+npm install -g vue-cli
+
+现在脚手架的版本是3.0,如果想使用2.0版本的脚手架 执行这个命令
+npm install -g @vue/cli-init
+
+2.0版本初始化的方式
+vue init webpack jh_demo(文件夹的名字)
+
+3.0版本的初始化方式
+vue create jh-demo (文件夹的名字)
+    Project name (vuecli2test)              项目名字
+    Project description (A Vue.js project)  描述
+    Author                                  作者
+    Vue build                               运行的方式
+    Install vue-router                      是否安装路由
+    Use ESLint to lint your code            检查代码规范
+    Set up unit tests                       单元测试
+    Setup e2e tests with Nightwatch         端到端的测试
+
+
+cd jh_demo
+npm install
+npm run dev
+
+
+1. 打包
+	npm run build
+2. 发布上线
+	本地服务器
+		npm install -g serve
+        serve dist
+	    访问
+		    http://localhost:
+
+
+	线上(动态web)服务器
+		1. 修改配置文件：webpack.base.conf.js
+			output:{
+                publicPath: '/xxx/'    // 最终要生成项目的名称
+            }
+		2. 重新打包
+			npm run build
+		3. 把dist文件夹名称修改为项目的名称，部署上线
+			如果是Tomcat服务器，直接部署到webapps目录下
+		4. 根据网址目录访问
