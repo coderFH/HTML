@@ -88,9 +88,9 @@ module.exports = {
         }),
         new gulifywebpackplugin() //压缩js代码,高版本的已经压缩了
     ],
-    //配置每次自动运行的服务
-    devServer:{
-        contentBase: './dist', //为哪个文件夹提供本地服务
-        inline : true //页面实时刷新
-    }
+    //配置每次自动运行的服务 ,也有问题,先注释   先用 npm run bulid运行吧
+    // devServer:{
+    //     contentBase: './dist', //为哪个文件夹提供本地服务
+    //     inline : true //页面实时刷新
+    // }
 };

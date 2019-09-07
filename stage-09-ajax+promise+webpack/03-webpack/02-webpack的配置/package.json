@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "prodbuild" : "webpack --config ./bulid/prod.config.js",
-    "devbuild" : "webpack --config ./bulid/dev.config.js",
+    "prodbuild": "webpack --config ./bulid/prod.config.js",
+    "devbuild": "webpack --config ./bulid/dev.config.js",
     "dev": "webpack-dev-server"
   },
   "author": "",
@@ -16,6 +16,7 @@
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "babel-loader": "^8.0.6",
+    "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "css-loader": "^3.2.0",
     "file-loader": "^4.2.0",
