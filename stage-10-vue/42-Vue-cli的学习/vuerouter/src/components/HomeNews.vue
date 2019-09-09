@@ -1,10 +1,10 @@
 <template>
   <div>
     <ul>
-      <li>news1</li>
-      <li>news2</li>
-      <li>news3</li>
-      <li>news4</li>
+      <li>新闻1</li>
+      <li>新闻2</li>
+      <li>新闻3</li>
+      <li>新闻4</li>
     </ul>
   </div>
 </template>

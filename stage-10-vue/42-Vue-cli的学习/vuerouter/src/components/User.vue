@@ -12,7 +12,7 @@
             userId() {
                 //$router 就是router创建时的那个对象
                 //$route 是当前活跃的路由,配置路由的时候,可以配置很多过,但每次只有一个是处于活跃状态的
-                //userId router里配的是啥 这里就取啥
+                //userId: router里配的是啥 这里就取啥
                 return this.$route.params.userId;
             }
         }

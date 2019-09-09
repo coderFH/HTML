@@ -11,6 +11,8 @@
 <script>
     export default {
         name: "SearchNav",
+
+
         props : {
             showSearchPanel : Function
         }
