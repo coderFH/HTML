@@ -1,8 +1,9 @@
 <template>
   <tab-bar>
     <tab-bar-item path="/home" activeColor="blue">
-      <img slot="item-icon" src="../../assets/img/icon_home.png">
-      <img slot="item-icon-active" src="../../assets/img/icon_home_selected.png">
+      <!--这里能用@ 是因为webpack.base.conf.js 里配置了resolve的alias属性-->
+      <img slot="item-icon" src="@/assets/img/icon_home.png">
+      <img slot="item-icon-active" src="@/assets/img/icon_home_selected.png">
       <div slot="item-text">首页</div>
     </tab-bar-item>
 
