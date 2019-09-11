@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    import {axRequest1} from "./js/request.js";
+    import {axRequest2, axRequest4} from "./js/request";
+    import {axRequest3} from "./js/request";
+
+    axRequest1({
+        url : '/api/homecasual'
+    },res => {
+        console.log(res);
+    },err => {
+        console.log(err);
+    });
+
+    axRequest2({
+        baseConfig : {
+            url : '/api/homecasual',
+        },
+        success : (res) => {
+            console.log(res);
+        },
+        failure : (err) => {
+            err.log();
+        }
+    });
+
+    axRequest3({
+        url : '/api/homecasual'
+    }).then(res => {
+        console.log(res);
+    }).catch(err => {
+        console.log(err);
+    });
+
+    axRequest4({
+        url : '/api/homecasual'
+    }).then(res => {
+        console.log(res);
+    }).catch(err => {
+        console.log(err);
+    });
+
+</script>
+</body>
+</html>

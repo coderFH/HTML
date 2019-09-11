@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script src="./js/axios.min.js"></script>
+<script>
+    console.log('==========================axios的基本使用==========================');
+    axios({
+        url:'http://localhost:1688/api/homecasual',
+        //专门针对get请求的参数拼接
+        params : {
+            type : 'pop',
+            page : 1
+        }
+    }).then(res => {
+        console.log(res);
+    });
+
+    console.log('==========================axios的全局配置==========================');
+    axios.defaults.baseURL = 'http://localhost:1688';
+    axios.defaults.timeout = 5000;
+
+    console.log('==========================axios发送并发请求==========================');
+    // axios.all([axios({
+    //     url : '/api/homecasual'
+    // }),axios({
+    //     url : '/api/homenav',
+    //     params: {
+    //         type: 'sell',
+    //         page : 5
+    //     }
+    // })]).then(results => {
+    //     console.log(results);
+    //     console.log(results[0]);
+    //     console.log(results[1]);
+    // });
+
+    //then后,也可以通过这种方式去取值,也叫延展的操作
+    axios.all([axios({
+        url : '/api/homecasual'
+    }),axios({
+        url : '/api/homenav',
+        params: {
+            type: 'sell',
+            page : 5
+        }
+    })]).then(axios.spread((res1,res2) =>  {
+        console.log(res1);
+        console.log(res2);
+    }));
+
+    //==========================创建对应的axios实例,自己用自己的实例,即使baseurl不一致也无所谓================================
+    const instance1 = axios.create({
+        baseURL : 'http://localhost:1688',
+        timeout : 5000
+    });
+
+    instance1({
+        url : '/api/homecasual'
+    }).then(res => {
+        console.log(res);
+    });
+
+    instance1({
+        url : '/api/homenav',
+        params : {
+            type : 'pop',
+            page : 1
+        }
+    }).then(res => {
+        console.log(res);
+    });
+
+    const instance2 = axios.create({
+        baseURL : "http://localhost:1688", //可以配置自己的域名
+        timeout : 5000
+    });
+
+    instance2({
+        url : '/api/homenav',
+        params : {
+            type : 'pop',
+            page : 1
+        }
+    }).then(res => {
+        console.log(res);
+    });
+</script>
+</body>
+</html>
