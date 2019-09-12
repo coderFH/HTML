@@ -97,10 +97,13 @@
 
                 });
                 // 1.2.2 右边的视图
+                // 0和1 是不侦测
+                //2.是手指滚动的过程中侦测,离开后的惯性滚动过程不侦测
+                //3.是都侦测
                 this.rightScroll = new BScroll('.shop-wrapper', {
                     probeType: 3  //设置一个滑动的灵敏度
                 });
-                // 1.2.3 监听右边的滚动
+                // 1.2.3 监听右边的滚动,默认情况下,betterscroll是不能实时监听滚动位置,需要设置probeType.
                 this.rightScroll.on('scroll', (pos) => {
                     this.scrollY = Math.abs(Math.round(pos.y));
                 });
