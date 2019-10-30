@@ -29,7 +29,7 @@ Stack.prototype.peek = function() {
 
 //4.判断栈是否为空
 Stack.prototype.isEmpty = function() {
-    return this.items.length == 0
+    return this.items.length === 0
 };
 
 //5.获取栈中元素的个数
