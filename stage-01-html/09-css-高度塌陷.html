@@ -9,8 +9,8 @@
         #box1{
             border: 5px solid red;
             /*方法1：*/
-            /*开启BFC*/
-            /*不要这句话 就会是box1的高度塌陷*/
+            /*开启BFC*
+            /*不要下边这句话 就会是box1的高度塌陷*/
             /*overflow: hidden;*/
         }
 
@@ -24,7 +24,7 @@
         #box3{
             height: 100px;
             background-color: blue;
-             clear: both;
+            clear: both;
         }
 
          /*方法3：使用after伪类，向父元素后添加一个块元素，并对其清除浮动*/
