@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box1{
+            width: 600px;
+            height: 200px;
+            background-color: red;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #box2{
+            width: 190px;
+            height: 190px;
+            background-color: purple;
+        }
+
+        #box3{
+            width: 390px;
+            height: 190px;
+            background: yellow;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+        #box4{
+            flex: 4;
+            /*height: 100px;*/
+            background-color: deepskyblue;
+        }
+
+        #box5{
+            flex: 1;
+            /*height: 100px;*/
+            background-color: olivedrab;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2"></div>
+        <div id="box3">
+            <div id="box4"></div>
+            <div id="box5"></div>
+        </div>
+    </div>
+</body>
+</html>

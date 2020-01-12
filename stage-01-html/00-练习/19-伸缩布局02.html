@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #box1{
+            width: 500px;
+            height: 500px;
+            background-color: red;
+
+            /*伸缩布局*/
+            display: flex;
+
+            /*主轴的方向*/
+            flex-direction: row;
+
+            /*用于指定Flex子项是否换行*/
+            /*flex-wrap: nowrap;*/
+            flex-wrap: wrap;
+            /*flex-wrap: wrap-reverse;*/
+
+            /*======================align-content只作用于多行的情况下，用于多行的对齐方式=====================*/
+            /*默认值，当Flex子项未设置高度或者高度值为auto时，stretch起作用，将Flex子项高度设置为行高度;*/
+            /*align-content: stretch;*/
+            /*align-content: flex-start;*/
+            /*align-content: flex-end;*/
+            align-content: center;
+            /*align-content: space-between;*/
+            /*align-content: space-around;*/
+
+        }
+
+        .item{
+            background-color: purple;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+   <div id="box1">
+       <div class="item" style="height: 60px; width: 200px">item1</div>
+       <div class="item" style="height: 70px; width: 250px">item2</div>
+       <div class="item" style="height: 80px; width: 80px">item3</div>
+       <div class="item" style="height: 70px; width: 250px">item4</div>
+       <div class="item" style="height: 80px; width: 80px">item5</div>
+       <div class="item" style="height: 60px; width: 200px">item6</div>
+       <div class="item" style="height: 70px; width: 250px">item7</div>
+       <div class="item" style="height: 80px; width: 80px">item8</div>
+       <div class="item" style="height: 70px; width: 250px">item9</div>
+       <div class="item" style="height: 80px; width: 80px">item10</div>
+   </div>
+</body>
+</html>

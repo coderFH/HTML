@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伸缩布局</title>
+    <style>
+        #box1 {
+            width: 500px;
+            height: 500px;
+            background-color: red;
+
+            /*伸缩布局*/
+            display: flex;
+
+            /*======================flex-direction=====================*/
+            /*默认值,表示水平方向从左到右排列，此时水平方向轴线为主轴*/
+            /*flex-direction: row;  */
+
+            /*与row相反*/
+            /*flex-direction: row-reverse;*/
+
+            /*表示垂直方向从上到下排列，此时垂直方向轴线为主轴*/
+            /*flex-direction: column;*/
+
+            /*与column相反*/
+            /*flex-direction: column-reverse;*/
+
+
+            /*======================justify-content(可以理解为水平方向的对齐方式)=====================*/
+            /*默认值*/
+            /*justify-content: flex-start;*/
+            /*justify-content: flex-end;*/
+            justify-content: center;
+            /*justify-content: space-between;*/
+            /*justify-content: space-around;*/
+            /*justify-content: space-evenly;*/
+
+             /*======================align-items (可以理解为竖直方向的对齐方式)=====================*/
+            /*默认值，当Flex子项未设置高度或者高度值为auto时，stretch起作用，将Flex子项高度设置为行高度。这里需要注意，在只有一行的情况下，行的高度为容器的高度，即Flex子项高度为容器的高度*/
+            /*align-items: stretch;*/
+            /*align-items: flex-start;*/
+            /*align-items: flex-end;*/
+            /*align-items: center;*/
+            /*表示基线对齐，当行内轴与侧轴在同一线上，即所有Flex子项的基线在同一线上时，效果等同于flex-start*/
+            align-items: baseline;
+
+        }
+        .item {
+            width: 100px;
+            /*height: auto !important;*/  /* 测试align-items: stretch的效果;*/
+            background-color: purple;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+       <div class="item" style="height: 60px">item1</div>
+       <div class="item" style="height: 70px">item2</div>
+       <div class="item" style="height: 80px">item3</div>
+   </div>
+</body>
+</html>

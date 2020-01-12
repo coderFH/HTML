@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box1{
+            width: 1200px;
+            height: 500px;
+            background-color: red;
+            /*伸缩布局*/
+            display: flex;
+            /*主轴的方向*/
+            flex-direction: row;
+        }
+
+    </style>
+</head>
+<body>
+<div id="box1">
+    <!--复合属性`flex`，是`flex-grow` 、 `flex-shrink` 和 `flex-basis` 的简写属性，用来指定`Flex`子项如何分配空间-->
+    <!--最常改变的其实是flex-shrink这个值,另外两个很少用到-->
+    <!--flex 1,2,3,4 其实就是宽度按照1/10 2/10 3/10 4/10的比例进行划分-->
+    <div class="item" style="height: 60px; flex: 1; background-color: orchid;">item1</div>
+    <div class="item" style="height: 70px; flex: 2; background-color: green;">item2</div>
+    <div class="item" style="height: 80px; flex: 3; background-color: blue;">item3</div>
+    <div class="item" style="height: 70px; flex: 4; background-color: purple;">item4</div>
+</div>
+</body>
+</html>
