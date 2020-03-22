@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        p {
+            font-style:italic; 
+            font-weight: bolder;
+            font-size: 30px;
+            font-family: "宋体";
+
+            /* 以上属性的简写方式 */
+            font:italic bolder 30px "宋体";
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        1.规定文字样式的属性
+            font-style: 
+                normla : 正常的
+                italic : 倾斜的; 
+            快捷键 : fs   fsn
+        2.规定文字粗细的属性
+            font-weight: bold;
+                单词取值: bold:加粗   bolder:比加粗还要粗  lighter:细线(默认的)
+                数字取值: 100-900
+            快捷键: fw    
+        3.规定文字大小的属性
+            font-size: 单位是px
+            快捷键: fz
+        4.规定文字字体的属性
+            font-family
+            快捷键: ff
+            注意点:1.如果取值是中文,需要双引号或者单引号引起来
+                  2.设置的字体,必须是用户电脑安装了的
+            如果设置的文字不存在,会使用默认的,如果也不想用默认的怎么办?
+                可以使用备选方案,字体用逗号隔开.font-family: "方案1","备选方案1","备选方案2",...;
+
+        简写的方式:
+            font: 样式 粗细 大小 字体
+            注意点: 1.在缩写格式中, style  weight 是可以省略的
+                   2.在缩写格式中, weight 和 style 位置可以交换
+                   3.在缩写格式中,size和family是不可以删除的,位置也不可以交换
+     -->
+    <i>我是文字</i>
+    <p>我是一个段落</p>
+</body>
+</html>

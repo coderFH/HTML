@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        /* ul li:last-child{
+            background-color: red;
+        } */
+
+        ul li:nth-child(2n+1){
+            background-color: red;
+        }
+
+        p:first-child {
+            color: rebeccapurple;
+        }
+
+        p:first-of-type {
+            color: orange;
+        }
+
+        p:last-child {
+            color: red;
+        }
+
+        p:last-of-type {
+            color: salmon;
+        } 
+
+    
+    </style>
+</head>
+<body>
+    <!-- 
+        CSS3中新增的选择器最具代表性的就是序号选择器
+
+        1.同级别的第几个
+        :first-child 选中同级别中第一个标签
+        :last-child  选中同级别中最后一个标签
+        :nth-child(n) 选中同级别中第n个标签
+        :nth-last-child 选中同级别中倒数第几个
+        :only-child 选中父元素中,只有一个标签的
+            eg:body里只有这个代码 就会选中我是段落2,因为div里子元素只有一个
+            <p>我是段落1</p>
+            <div>
+                <p>我是段落2</p>
+            </div>
+
+        注意点: 不区分类型,像 : <p>我是段落1</p> 跟他同级的第一个其实是<ul> 而ul不满足是p标签
+            所以最终的结果只有'我是段落4'变了颜色
+
+        2.同类型的第几个
+        :first-of-type 选中同级别中同类型中的第一个标签
+        :last-of-type  选中同级别中同类型中的最后一个标签
+        :nth-last-of-type(n) 选中同级别中同类型的第n个标签
+        :nth-last-of-type()  选中同级别中同类型的倒数第几个
+        :only-of-type()  选中父元素中唯一类型的某个标签
+            eg:body里只有这个代码 就都会选中,因为div里子元素只有一个,如果再添加其他p标签
+            就不能选中,因为这个类型不是唯一的了
+            <p>我是段落1</p>
+            <div>
+                <p>我是段落2</p>
+            </div>
+     -->
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+</ul>
+
+<p>我是段落1</p>
+<p>我是段落2</p>
+<p>我是段落3</p>
+
+<div>
+    <p>我是段落4</p>
+    <p>我是段落5</p>
+    <p>我是段落6</p>
+</div>
+
+<p>我是段落1</p>
+<div>
+    <p>我是段落2</p>
+</div>
+
+</body>
+</html>

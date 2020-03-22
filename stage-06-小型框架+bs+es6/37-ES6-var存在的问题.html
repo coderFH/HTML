@@ -37,9 +37,9 @@
     var btns = document.getElementsByTagName('button');
     //正是因为没有块级作用域,点击按钮的时候,i其实已经循环到了5 多以打印的是一直会是'第5个按钮被点击'
     for (var i = 0 ; i< btns.length ; i++) {
-    //     btns[i].addEventListener('click',function () {
-    //         console.log('第' + i + '个按钮被点击');
-    //     })
+        // btns[i].addEventListener('click',function () {
+        //     console.log('第' + i + '个按钮被点击');
+        // })
 
         //一般的解决方式是实用闭包
         //为什么闭包可以解决? 因为闭包有作用域
