@@ -16,3 +16,5 @@ class Dog {
 
 let dog = new Dog("旺财",18,"0")
 dog.eat("骨头");
+
+export {}

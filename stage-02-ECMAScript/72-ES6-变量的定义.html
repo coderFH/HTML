@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>07-JavaScript变量定义-ES6</title>
+</head>
+<body>
+    <script>
+        /*
+        为了解决老板标准的的两个注意点
+        2.在JavaScript中如果定义了同名的变量, 那么后定义的变量会覆盖先定义的变量
+        3.在老版本的标准的(ES6之前)JavaScript中可以先使用变量, 再定义变量, 并不会报错
+        在ES6中就推出了一种新的定义变量的方式
+
+        格式:
+        ES6之前: var 变量名称;
+        ES6开始: let 变量名称;
+        */
+        /*
+        // 定义一个变量
+        let num;
+        // 给变量初始化
+        num = 666;
+        // 取出存储的数据
+        console.log(num);
+        // 修改变量中存储的数据
+        num = 888;
+        // 取出存储的数据
+        console.log(num);
+        */
+
+        /*
+        // var num = 123;
+        // var num = 888;
+        let num = 123;
+        let num = 888; //会明确的报错
+        console.log(num);
+        */
+
+        console.log(num); //undefined 但不会报错
+        var num = 123;
+
+        console.log(num); //ES6中使用let会明确报错
+        let num = 123;
+    </script>
+
+    <script id="var的问题">
+        /*
+            var不能用于定义常量
+            var可以重复声明变量
+            var存在变量提升
+            var不支持块级作用域
+        */
+    
+        var PI = 3.14;
+        PI = 1.99;
+        console.log(PI);
+    
+    
+        var str = '张三';
+        var str = '李四';
+    
+       console.log(str);
+        //报错
+        // var str = '张三;
+    </script>
+    
+    <script id="let不可以重复声明变量">
+        let site = 'itLike';
+        // let site = 'baidu';重复声明  报错
+        console.log(site);
+    </script>
+    
+    <script id="let不存在变量提升">
+        console.log(t);
+        //报错
+        // let t = 'itLike';
+    
+        //用var就不会报错,很明显这种方式不好
+        var t = 'itLike';
+    </script>
+    
+    <script id="const可以定义常量">
+        const E = 2.718;
+        // E = 1.22; //报错,常量  不能改
+        console.log(E);
+    </script>
+    
+    <script>
+        const LK = {
+            name:'itLike',
+            intro: '喜欢IT, 就上撩课(itLike.com)'
+        };
+    
+        LK.name = '撩课';
+        console.log(LK);
+    </script>
+    
+    
+    <script id="作用域问题">
+        {
+            let s1 = 'itLike';
+            console.log(s1);
+        }
+    
+        if(1){
+            let str1 = '小撩';
+        }
+    
+        // console.log(s1);  //作用域问题,报错
+        // console.log(str1);  /报错
+    </script>
+</body>
+</html>

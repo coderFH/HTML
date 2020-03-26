@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+        1.基本数据类型
+        Number 数值类型
+        在JavaScript中无论是整数还是小数都是属于数值类型的
+
+        String 字符串类型
+        在JavaScript中无论是通过单引号还是通过双引号括起来的内容都是属于字符串类型的
+
+        Boolean 布尔类型
+        在JavaScript中布尔类型比较特殊, 只有两个取值true/false
+
+        Undefined 未定义类型
+        在JavaScript中未定义类型比较特殊, 只有一个取值undefined
+
+        Null 空类型
+
+        2.引用数据类型
+        Object 对象类型
+
+        3.在JavaScript中为了方便我们检测某一种数据是属于哪一种数据类型的, JavaScript提供了一个名称叫做typeof的操作符
+        格式: typeof 需要检测的数据;
+    */
+    console.log("=========================================1.数据类型=========================================");
+    //字符串
+    console.log("=====字符串=====");
+    var str = "itlike.com";
+    str = "没有蛀牙";
+    console.log(typeof(str));
+
+    var zhuanyi = '我是\'wfh\'';
+    console.log(zhuanyi);
+
+    console.log("=====数值=====");
+    //数值(Number)
+    var num1 = 123;
+    var num2 = 3.14;
+    console.log(typeof(num1),typeof(num2));
+
+    console.log(Number.MAX_VALUE);   //最大值
+    console.log(Number.MIN_VALUE);  //最小值
+
+    console.log(Number.MAX_VALUE + Number.MAX_VALUE);  // 无穷大：Infinity, 如果超过了最大值就会返回该值
+    // 无穷小：-Infinity, 如果超过了最小值就会返回该值
+    console.log(typeof Infinity); // number
+    console.log(typeof -Infinity); // number
+
+
+    var num3 = NaN; // 是一个特殊的数字，表示Not A Number
+    console.log(typeof(num3));//number
+
+    console.log("=====Boolean布尔=====");
+    //Boolean布尔
+    var bool = true;
+    console.log(typeof (bool));
+
+    //Null和Undefined
+    //Null:空值类型,  值只有一个: null
+    //Undefined:未定义类型, 值只有一个: undefind
+    var a = null;
+    var b = undefined;
+    console.log(typeof (a),typeof b);//object undefined
+
+    //undefined值实际上是由null值衍生出来的，所以如果比较undefined和null是否相等，会返回true
+    var str1 = null;
+    var str2 = undefined;
+    console.log(str1 == str2);
+    console.log(str1=== str2); //false
+   
+
+    console.log("=========================================2. 进制表示=========================================");
+    //16进制的数字，则需要以0x开头
+    //8进制的数字，则需要以0开头
+    //2进制的数字，则需要以0b开头
+    //十六进制
+    num = 0x18;
+    num1 = 0xcf;
+    num2 = 0xAacf;
+
+    //八进制
+    // num= 016;
+    // console.log("八进制",num);
+
+    //二进制
+    num = 0b1010;
+
+    //注意:"010"这种字符串，有些浏览器会当成8进制解析，有些会当成10进制解析
+    //可以在parseInt()或parseFloat中传递一个第二个参数，来指定数字的进制
+    str = "0x345";
+    str= parseInt(str,10);
+    str = Number(str);
+    console.log(typeof str);
+    console.log(str);
+
+</script>
+
+</body>
+</html>

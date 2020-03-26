@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    //0.正常情况下,没有定义的num进行打印,直接报错
+    // console.log(num);
+
+    //1.正常的异常处理
+    try {
+        console.log(num);
+    } catch(e) {
+        console.log(e);
+    }
+
+    //2. 自己定义异常信息
+    function devide(a,b) {
+        if (0 === b) { //分子为零
+            throw '分子不能为零';
+        }
+        return a / b;
+    }
+
+    try {
+        console.log(devide(10, 0));
+    } catch (e) {
+        console.log(e);
+    } finally {
+        console.log('不管有错没错, 都会进来执行, 一般在这里释放资源');
+    }
+    console.log(1111);
+
+</script>
+
+</body>
+</html>

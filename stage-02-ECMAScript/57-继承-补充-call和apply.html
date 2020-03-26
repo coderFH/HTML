@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--
+
+bind,call,apply这三个方法的作用是什么?
+    这三个方法都是用于修改函数或者方法中的this的
+1.bind方法作用
+    修改函数或者方法中的this为指定的对象, 并且会返回一个修改之后的新函数给我们
+    注意点: bind方法除了可以修改this以外, 还可以传递参数, 只不过参数必须写在this对象的后面
+2.call方法作用
+    修改函数或者方法中的this为指定的对象, 并且会立即调用修改之后的函数
+    注意点: call方法除了可以修改this以外, 还可以传递参数, 只不过参数必须写在this对象的后面
+3.apply方法作用
+    修改函数或者方法中的this为指定的对象, 并且会立即调用修改之后的函数
+    注意点: apply方法除了可以修改this以外, 还可以传递参数, 只不过参数必须通过数组的方式传递
+
+call和apply两个方法是Function的原型对象上面的方法
+两个函数的作用是一样的，都可以用来借用方法实现
+参数：
+	第一个参数是调用该方法的对象（函数内部的this绑定的对象）
+	第二个参数
+		call:参数列表
+		apply:数组
+实例
+	对象1.方法.call(调用方法的真正的对象，参数1，参数2，参数3)；
+	对象1.方法.apply(调用方法的真正的对象，[参数1，参数2，参数3...])
+
+-->
+<script>
+
+    var demo1 = {
+        name : '老实人',
+        showName: function (params1,paramss2) {
+            console.log(this.name, params1, paramss2);
+        }
+    };
+
+    var demo2 = {
+        name: '小偷'
+    };
+
+    demo1.showName('农夫','老师');
+    // demo2.showName('白玉堂','楚留香'); //发现demo2中并没哟showName,调用直接保存
+
+    //针对以上问题,我们可以使用call或apply偷过来
+    demo1.showName.call(demo2,'白展堂','楚留香');
+    //或者
+    demo1.showName.apply(demo2,['白展堂','楚留香']);
+
+
+    //===================== 使用call或call可以解决一些继承问题================
+   function Person() {
+       this.name = "张三";
+       this.age = 18;
+   }
+
+   function Student() {
+       Person.call(this);
+       this.sex = "男";
+   }
+
+   var s = new Student();
+   console.log(s);
+
+</script>
+
+</body>
+</html>

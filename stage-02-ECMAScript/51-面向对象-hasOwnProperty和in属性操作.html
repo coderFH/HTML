@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--
+in 判断一个对象, 是否拥有某个属性(如果对象身上没有, 会到原型对象里面查找)
+    in的特点: 只要类中或者原型对象中有, 就会返回true
+hasOwnProperty: 只到对象自身查找
+-->
+<script>
+    //================================= 1.in =================================
+    function Person(name, age) {
+        this.name = name;
+        this.age = age;
+    }
+    Person.prototype.address = '上海';
+    var p = new Person('张三',18);
+    console.log(name in p);      //false  既不在函数身上也不在原型上 这里name不加" " 说明name就是window的一个变量,不属于Person  所以是false
+    console.log('name' in p);    //true
+    console.log('address' in p); //true  自身找不到,然后去原型上找 就找到了
+
+    //================================= 2. hasOwnProperty =================================
+    console.log(p.hasOwnProperty('name'));   //ture
+    console.log(p.hasOwnProperty('address')); //false 只找自身,不找原型  自身没有,所以false
+
+</script>
+
+</body>
+</html>

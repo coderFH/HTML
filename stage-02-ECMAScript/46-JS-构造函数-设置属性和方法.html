@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    // -------------------------------- 01.实例属性/实例方法 --------------------------------
+    //实例属性/实例方法
+    //都是绑定在使用构造函数创建出来的对象p上; 最终使用的时候也是使用对象p来进行访问
+    function Person(name, age, doFunc) {
+        this.name = name;
+        this.age = age;
+        this.doFunc = doFunc;
+    }
+    var p = new Person('张三', 18, function () {
+        console.log('张三在上课!');
+    });
+    console.log(p.name);
+    console.log(p.age);
+    p.doFunc();
+
+
+    // -------------------------------- 02. 静态属性/静态方法 --------------------------------
+    // 记录总共创建了多少个人对象
+    // 记录总共创建了多少个人对象
+    function Person1(name, age, doFunc) {
+        this.name = name;
+        this.age = age;
+        this.doFunc = doFunc;
+
+        // 创建静态属性
+        if(!Person1.personCount){
+            Person1.personCount = 0;
+        }
+        Person1.personCount++;
+    }
+
+    // 创建静态的方法  注意: 静态方法一般放在类的外面
+    Person1.printPersonCount = function () {
+        console.log('总共创建了' + Person1.personCount + '个人');
+    };
+    var p1 = new Person1('张三', 18, function () {
+        console.log('张三在上课!');
+    });
+
+    var p2 = new Person1('李四', 18, function () {
+        console.log('李四在放羊!');
+    });
+
+    var p3 = new Person1('王五', 18, function () {
+        console.log('王五在放羊!');
+    });
+
+    var p4 = new Person1('赵六', 18, function () {
+        console.log('赵六在放羊!');
+    });
+
+    // 输出
+    Person1.printPersonCount();
+    
+</script>
+</body>
+</html>

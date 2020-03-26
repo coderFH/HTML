@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>02-JavaScript常见输出方式</title>
+
+</head>
+<body>
+
+<script>
+    /*
+    1.通过弹窗的形式来输出
+    alert(需要输出的内容);
+    confirm(需要输出的内容);
+    prompt(需要输出的内容);
+    注意点:
+    如果需要输出的内容不是数字, 那么就必须通过单引号或者双引号括起来
+    在JavaScript中是严格区分大小写的, alert()和ALERT()不是一回事
+    在编写JavaScript代码的时候, 一定要记住每一句代码后面都需要添加一个分号, 并且这个分号必须是英文的分号
+    我们会发现有时候不写分号程序也能够运行, 这里并不是因为不需要分号, 而是浏览器自动帮助我们添加了分号, 浏览器自动添加会消耗一定的性能, 并且有可能会添加错误
+
+    2.通过网页内容区域的形式来输出
+    document.write(需要输出的内容);
+    注意点:
+    如果需要输出的内容不是数字, 那么就必须通过单引号或者双引号括起来
+
+    3.通过开发者工具控制台的形式来输出
+    console.log(需要输出的内容);  // 普通输出
+    console.warn(需要输出的内容); // 警告输出
+    console.error(需要输出的内容); // 错误输出
+    注意点:
+    如果需要输出的内容不是数字, 那么就必须通过单引号或者双引号括起来
+    */
+    /*
+    // alert(123);
+    // alert('abc');
+    // alert("指趣学院");
+    // alert("abc");
+
+    // confirm(123);
+    // confirm('abc');
+
+    // prompt(123);
+    // prompt("abc");
+
+    // Alert(123);
+    alert(666)
+    */
+
+    /*
+    // document.write(123);
+    document.write('abc');
+    */
+
+    // console.log(123);
+    console.log("abc");  // 普通输出
+    console.warn("abc"); // 警告输出
+    console.error("abc"); // 错误输出
+
+    ///控制浏览器弹出一个警告框
+    // alert("hello,world");
+
+    // 可以向body中输出一个内容
+    document.write("hello,world");
+
+    //向控制台输出一个内容
+    console.log("hello world");
+    console.warn("警告输出");
+    console.error("错误输出");
+
+    //在网页中弹出输入框，一般用于接收用户输入的信息
+    // prompt("hello,world");
+
+    //在网页中弹出提示框，显示信息，该方法一般与if判断语句结合使用
+    // confirm("Hello，JavaScript！");
+</script>
+</body>
+</html>

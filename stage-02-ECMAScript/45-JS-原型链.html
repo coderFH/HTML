@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>104-JavaScript-原型链</title>
+    <script>
+        /*
+        1.对象中__proto__组成的链条我们称之为原型链
+        2.对象在查找属性和方法的时候, 会先在当前对象查找
+          如果当前对象中找不到想要的, 会依次去上一级原型对象中查找
+          如果找到Object原型对象都没有找到, 就会报错
+         */
+        function Person(myName, myAge) {
+            this.name = myName;
+            this.age = myAge;
+
+            //查找currentType时,会先从自身找
+            this.currentType = "构造函数中的type";
+            this.say = function () {
+                console.log("构造函数中的say");
+            }
+        }
+
+        //默认情况下,Person原型对象里的constructor,是指向Person构造函数的,
+        //如果我们写了下边的代码,就破坏了了原型对象里constructor的指向
+        //所以  constructor: Person, 重新让它指回来
+        Person.prototype = {
+            // 注意点: 为了不破坏原有的关系, 在给prototype赋值的时候, 需要在自定义的对象中手动的添加constructor属性, 手动的指定需要指向谁
+            constructor: Person,
+            currentType: "人",
+            say: function () {
+                console.log("hello world");
+            }
+        }
+        let obj1 = new Person("lnj", 34);
+        obj1.say();
+        console.log(obj1.currentType);
+        console.log(Person.prototype.constructor);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

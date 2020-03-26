@@ -10,8 +10,9 @@ function xx(flag : boolean) : number {
         var c = a + 1 
         return b
     }
+    return 0
     // return b //let 有块级作用域,b已经没有了
-    return c  // c就没有块级作用域的问题,var就是个大bug,以后都很少使用了(只针对js,swift中var是变量)
+    // return c  // c就没有块级作用域的问题,在js中可以返回,var就是个大bug,以后都很少使用了(只针对js,swift中var是变量)
 }
 xx(true)
 
@@ -48,17 +49,16 @@ console.log(reset);
 interface Person {
     personName : string,
     personAge : number,
-    personSex : Sex
+    personSex : string
 }
 
 let person : Person = {
     personName : "小白",
     personAge : 18,
-    personSex : Sex.man
+    personSex : 'girl'
 }
 
 let {personName,personAge,personSex} = person
 console.log(personName,personAge,personSex);
 
-
-
+export{}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /**
+     * 构造函数
+     * @param {object}option
+     * @constructor
+     */
+    function Dog(option) {
+        this._init(option)
+    }
+
+    Dog.prototype = {
+        constructor : Dog, //记得把指向修改回来
+
+        _init: function(option){
+            // 属性
+            this.name = option.name;
+            this.age = option.age;
+            this.dogFriends = option.dogFriends;
+        },
+
+        eat: function (someThing) {
+            console.log(this.name + '吃' + someThing);
+        },
+
+        run: function (someWhere) {
+            console.log(this.name + '跑' + someWhere);
+        }
+    };
+
+    // 产生对象
+    var smallDog = new Dog({name: '小花', age: 1, dogFriends: ['球球', '嘎嘎嘎']});
+    var bigDog = new Dog({name: '大花', age: 11, dogFriends: ['球球', '嘎嘎嘎', 'hh']});
+
+
+    console.log(Dog.prototype);
+    console.log(smallDog.__proto__);
+    console.log(smallDog.eat === bigDog.eat);
+
+</script>
+</body>
+</html>

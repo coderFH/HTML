@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        var person = {
+            //属性
+            name : "周杰伦",
+            age : 38,
+            sex : '男',
+
+            //行为
+            sing: function () {
+                console.log('我会唱七里香');
+            },
+            cool: function () {
+                console.log('我很有才华');
+            }
+        };
+        person.sing();
+        person.cool();
+
+        //遍历对象所以属性
+       for(var key in person){
+           console.log(key);
+           console.log(person[key]);
+       }
+
+    </script>
+</body>
+</html>

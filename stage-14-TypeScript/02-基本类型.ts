@@ -59,9 +59,9 @@ arr[3] = 2
 
 //8.void
 //如果声明了一个void类型变量,只能赋值给null或者undefined
-let str1 : void = null;
+// let str1 : void = null;
 let str2 : void = undefined;
-console.log(str1,str2);
+// console.log(str1,str2);
 
 function logMsg() : void { //用于函数的返回值
     console.log("hello world");
@@ -72,13 +72,13 @@ logMsg()
 //undefined和null 两者各自有自己的类型分别叫做undefined和null
 let ss : null = null
 let ss1 : undefined = undefined
-let ss2 : undefined = null
-let ss3 : null = undefined
+// let ss2 : undefined = null
+// let ss3 : null = undefined
 
 //默认情况下,null和undefined是所有类型的子类型
 //我们可以把null和undefined赋值给任意类型的变量
-let str4 : string = null
-let str5 : string = undefined
+// let str4 : string = null;
+// let str5 : string = undefined;
 
 //10.never
 //必须存在无法到达的终点
@@ -117,7 +117,4 @@ let str6 : string = obj.substr(0,3) //这么写,没有提示的
 let str7 : string = (<string>obj).substr(0,3) //或者
 let str8 : string = (obj as string).substr(0.3)
 
-
-
-
-
+export{}

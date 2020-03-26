@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>93-JavaScript-工厂函数</title>
+    <script>
+        /*
+        1.什么是工厂函数?
+        工厂函数就是专门用于创建对象的函数, 我们就称之为工厂函数
+        */
+        /*
+        let obj = {
+            name: "lnj",
+            age: 33,
+            say: function () {
+                console.log("hello world");
+            }
+        };
+        let obj = {
+            name: "zs",
+            age: 44,
+            say: function () {
+                console.log("hello world");
+            }
+        };
+        */
+        function createPerson(myName, myAge) {
+            let obj = new Object();
+            obj.name = myName;
+            obj.age = myAge;
+            obj.say = function () {
+                console.log("hello world");
+            }
+            return obj;
+        }
+        let obj1 = createPerson("lnj", 34);
+        let obj2 = createPerson("zs", 44);
+        console.log(obj1);
+        console.log(obj2);
+    </script>
+</head>
+<body>
+
+    <script>
+        console.log("=======================2.使用工厂模式,制作对象模板====================");
+        //工程模式
+        function Person() {
+            var obj = new Object();
+            //属性
+            obj.name = null;
+            obj.age = null;
+            obj.sex = null;
+            
+            //方法
+            obj.study = function () {
+                console.log('学习');
+            }
+
+            obj.sleep = function () {
+                console.log('睡觉');
+            }
+            return obj;
+        }
+
+        //2.生产
+        var p1 = new Person();
+        p1.name = "张三";
+        p1.age = 1;
+        p1.sex = '男';
+
+        var p2 = new Person();
+        p2.name = '李四';
+        p2.age = 2;
+        p2.sex = '女';
+
+        var p3 = new Person();
+        p3.name = '王五';
+        p3.age = 3;
+        p3.sex = '男';
+
+        console.log(p1);
+        console.log(p2);
+        console.log(p3);
+    </script>
+</body>
+</html>

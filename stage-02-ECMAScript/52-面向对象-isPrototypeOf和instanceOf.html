@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<!--
+isPrototypeOf: 判断一个对象, 是否是某个 实例 的 原型对象  我的理解就是  我的原型是不是你的原型对象
+      Person.prototype.isPrototypeOf(p)
+      isPrototypeOf用于判断 一个对象是否是另一个对象的原型
+      只要调用者在传入对象的原型链上都会返回true
+instanceOf : 判断一个对象, 是否是某个构造函数的原型链上  A对象是否在B的原型链上   我的理解 我构造函数的原型 在不在 你的原型链上
+    instanceof用于判断 "对象" 是否是指定构造函数的 "实例"
+    只要 构造函数的原型对象出现在实例对象的原型链中都会返回true
+-->
+<body>
+
+<script>
+    //================================= 1.isPrototypeOf =================================
+    function Person() {}
+
+    var p = new Person();
+    console.log(Person.prototype.isPrototypeOf(p)); //true   Person的原型(Person.prototype或者p.__proto__) 是不是p的原型对象
+    console.log(p.__proto__.isPrototypeOf(p)); //true
+
+    var obj = {
+        'name' : "fh"
+    };
+    Person.prototype = obj; // 把obj这个对象绑定到Person的原型对象上
+    console.log(Person.prototype.isPrototypeOf(p)); // false  这里之所以false 是因为p创造出来的时候还没有obj这个玩意,所以是false
+
+    //要想使true,一定要在原型对象赋值完之后创建对象
+    var p2 = new Person();
+    console.log(Person.prototype.isPrototypeOf(p2));  //true
+
+    //================================= 2.instanceOf =================================
+    var p3 = new Person();
+    console.log((p3 instanceof Person)); //true
+
+    var obj1 = {
+        name : 'wangfh'
+    };
+    Person.prototype = obj1;
+
+    var p4 = new Person();
+
+    console.log(p4 instanceof Person); //true   p4的构造函数的原型 在不在 Person原型链上  很明显在
+    console.log(p3 instanceof Person); //false  原型链更换成了obj1  p3的构造函数的原型 不在Person的原型链上 因为Person的原型换成了obj1 所以是false
+
+</script>
+</body>
+</html>
