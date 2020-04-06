@@ -22,22 +22,32 @@ class ListNode {
 
 var deleteDuplicates = function(head) {
 
-    if (head === null || head.next === null) return head
+    // if (head === null || head.next === null) return head
 
-    let curNode = head //用于一级一级找的
-    let posNode = head; //定位用的
-    let cmpVal = posNode.val 
+    // let curNode = head //用于一级一级找的
+    // let posNode = head; //定位用的
+    // let cmpVal = posNode.val 
 
-    while(curNode.next != null) {
-        curNode = curNode.next
-        if (cmpVal != curNode.val) {
-           posNode.next = curNode;
-           posNode = curNode;
-           cmpVal = curNode.val
+    // while(curNode.next != null) {
+    //     curNode = curNode.next
+    //     if (cmpVal != curNode.val) {
+    //         posNode.next = curNode;
+    //         posNode = curNode;
+    //         cmpVal = curNode.val
+    //     } else {
+    //         posNode.next = null;
+    //     }
+    // }
+    // return head;
+
+    let currentNode = head
+    while (currentNode != null && currentNode.next !== null) {
+        if (currentNode.next.val === currentNode.val) {
+            currentNode.next = currentNode.next.next;
         } else {
-            posNode.next = null;
-        }
-    }
+            currentNode = currentNode.next;
+        } 
+    } 
     return head;
 };
 

@@ -22,3 +22,27 @@
  链接：https://leetcode-cn.com/problems/middle-of-the-linked-list
  著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
+class ListNode {
+   constructor(val) {
+       this.val = val;
+       this.next = null;
+   }
+}
+
+var middleNode = function(head) {
+   if (head.next === null) return head; //一个节点的情况
+   if (head.next.next === null) return head.next; //两个节点的情况,返回第二个数
+
+   let slow = head;
+   let fast = head;
+  
+   while(fast.next !== null) {
+      slow = slow.next;
+      if (fast.next.next === null) {
+         break;
+      }
+      fast = fast.next.next;
+   }
+   return slow;
+};
+

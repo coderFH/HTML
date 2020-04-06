@@ -20,6 +20,24 @@ class ListNode {
     }
 }
 
+//迭代实现
 var reverseList = function(head) {
+    if (head === null || head.next === null) return head;
+    let newHead = null
+    while(head !== null) {
+        let tmp = head.next;
+        head.next = newHead;
+        newHead = head;
+        head = tmp;
+    }
+    return newHead;
+};
 
+//递归实现
+var reverseList1 = function(head) {
+    if (head === null || head.next === null) return head;
+    let newHead = reverseList1(head.next);
+    head.next.next = head;
+    head.next = null
+    return newHead
 };
