@@ -68,6 +68,7 @@ abstract class AbstractList<E> implements List<E> {
     abstract set(index: number, element: E): E;
     abstract remove(index: number) : E;
     abstract indexOf(element: E): number;
+    abstract toString(): string;
 }
 
 export {AbstractList}

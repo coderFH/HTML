@@ -28,6 +28,9 @@ interface List<E> {
 
     //查看元素的索引
     indexOf(element : E) : number;
+
+    //打印
+    toString(): string;
 }
 
 export {List}

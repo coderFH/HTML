@@ -66,7 +66,7 @@ class ArrayList<E> extends AbstractList<E> {
                 if (element === this.elements[i]) return i;
             }
         }
-        return ArrayList.ELEMENT_NOT_FOUND;
+        return AbstractList.ELEMENT_NOT_FOUND;
     }
 
     //打印方法
