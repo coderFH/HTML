@@ -15,27 +15,53 @@ class Node<E> {
 class JosephCricleLinkedList<E> extends AbstractList<E> {
     private first : Node<E> = null;
     private last : Node<E> = null;
+    private current : Node<E> = null;
 
+    reset() : void {
+        this.current = this.first;
+    }
+
+    next() : E {
+        if (this.current === null) return null;
+        this.current = this.current.next;
+        return this.current.element;
+    }
+
+    removeElement() : E {
+        if (this.current === null) return null;
+        let next = this.current.next;
+        let element : E = this.removeNode(this.current);
+        if (this.count === 0) {
+            this.current = null;
+        } else {
+            this.current = next;
+        }
+        return element;
+    }
+    
     //增
     add(index: number, element: E): void {
         this.rangeCheckForAdd(index);
         if (index === this.count) { // 如果是向最后位置添加
             let oldLast = this.last;
-            this.last = new Node(oldLast,element,null)
-            if (oldLast === null) { //此时链表如果是空,是链表添加的第一个元素
-                this.first = this.last;
+            this.last = new Node(oldLast,element,this.first);
+            if (oldLast === null) { //此时链表是空,添加的元素是第一个
+                this.first = this.last
+                this.first.prev = this.first;
+                this.first.next = this.first;
             } else {
                 oldLast.next = this.last;
+                this.first.prev = this.last
             }
         } else {
             let next = this.node(index);
             let prev = next.prev;
             let current = new Node(prev,element,next);
             next.prev = current;
-            if (prev === null) { //如果是往第一个节点插入
-                this.first = current
-            } else {
-                prev.next = current;  
+            prev.next = current;
+
+            if (next === this.first) { //是向第一个节点添加
+                this.first = current;
             }
         }
         this.count++;
@@ -57,20 +83,25 @@ class JosephCricleLinkedList<E> extends AbstractList<E> {
 
     remove(index: number): E {
         this.rangeCheck(index);
-        let node = this.node(index)
-        let prev = node.prev;
-        let next = node.next;
+        return this.removeNode(this.node(index));
+    }
 
-        if (prev === null) {
-            this.first = next;
+    removeNode(node :  Node<E>) {
+        if (this.count === 1) {
+            this.first = null;
+            this.last = null;
         } else {
+            let prev = node.prev;
+            let next = node.next;
             prev.next = next;
-        }
-       
-        if (next === null) {
-            this.last = prev;
-        } else {
             next.prev = prev;
+    
+            if (node === this.first) {
+                this.first = next;
+            }
+            if (node === this.last) {
+                this.last = prev;
+            } 
         }
         this.count--;
         return node.element;
@@ -95,7 +126,6 @@ class JosephCricleLinkedList<E> extends AbstractList<E> {
         }
     }
 
-    //================= 以下代码相对于之前不用更改  ====================
     //改
     set(index: number, element: E): E {
         let node = this.node(index);

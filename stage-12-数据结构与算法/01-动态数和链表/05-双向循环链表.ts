@@ -21,21 +21,24 @@ class DoubleCircleLinkedList<E> extends AbstractList<E> {
         this.rangeCheckForAdd(index);
         if (index === this.count) { // 如果是向最后位置添加
             let oldLast = this.last;
-            this.last = new Node(oldLast,element,null)
-            if (oldLast === null) { //此时链表如果是空,是链表添加的第一个元素
-                this.first = this.last;
+            this.last = new Node(oldLast,element,this.first);
+            if (oldLast === null) { //此时链表是空,添加的元素是第一个
+                this.first = this.last
+                this.first.prev = this.first;
+                this.first.next = this.first;
             } else {
                 oldLast.next = this.last;
+                this.first.prev = this.last
             }
         } else {
             let next = this.node(index);
             let prev = next.prev;
             let current = new Node(prev,element,next);
             next.prev = current;
-            if (prev === null) { //如果是往第一个节点插入
-                this.first = current
-            } else {
-                prev.next = current;  
+            prev.next = current;
+
+            if (next === this.first) { //是向第一个节点添加
+                this.first = current;
             }
         }
         this.count++;
@@ -58,19 +61,22 @@ class DoubleCircleLinkedList<E> extends AbstractList<E> {
     remove(index: number): E {
         this.rangeCheck(index);
         let node = this.node(index)
-        let prev = node.prev;
-        let next = node.next;
 
-        if (prev === null) {
-            this.first = next;
+        if (this.count === 1) {
+            this.first = null;
+            this.last = null;
         } else {
+            let prev = node.prev;
+            let next = node.next;
             prev.next = next;
-        }
-       
-        if (next === null) {
-            this.last = prev;
-        } else {
             next.prev = prev;
+    
+            if (node === this.first) {
+                this.first = next;
+            }
+            if (node === this.last) {
+                this.last = prev;
+            } 
         }
         this.count--;
         return node.element;
@@ -94,7 +100,7 @@ class DoubleCircleLinkedList<E> extends AbstractList<E> {
             return node;
         }
     }
-    
+
     //改
     set(index: number, element: E): E {
         let node = this.node(index);

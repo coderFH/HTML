@@ -40,7 +40,22 @@ function testList(list : List<number>) : void {
 // testList(new ArrayList<number>(10)); // 动态数组
 // testList(new SingleLinkedList());    // 单向链表
 // testList(new DoubleLinkedList());    // 双向链表
-testList(new SingleCircleLinkedList()); // 单向循环链表
-// testList(new DoubleCircleLinkedList()); // 双向循环链表
-// testList(new JosephCricleLinkedList()); // 约瑟夫环问题
+// testList(new SingleCircleLinkedList()); // 单向循环链表
+testList(new DoubleCircleLinkedList()); // 双向循环链表
 
+// ================== 测试约瑟夫环问题 =======
+function josephus() : void {
+    let list = new JosephCricleLinkedList<number>();
+    for (let i = 1; i <= 8; i++) {
+       list.addLast(i);
+    }
+
+    list.reset(); // 指向头结点（指向1)
+
+    while(!list.isEmpty()) {
+        list.next();
+        list.next();//每数1,2,3 然后数到3的移除 ,所以两部next就够了
+        console.log(list.removeElement());
+    } 
+}
+josephus();
