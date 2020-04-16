@@ -59,3 +59,4 @@ function josephus() : void {
     } 
 }
 josephus();
+
