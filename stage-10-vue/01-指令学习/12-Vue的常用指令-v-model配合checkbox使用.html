@@ -10,7 +10,7 @@
 <div id="app">
     <!-- 单选框-->
     <label for="agree">
-        <input type="checkbox" id="agree" value="男" v-model="isAgree">同意协议
+        <input type="checkbox" id="agree" v-model="isAgree">同意协议
     </label>
     <h2>您选择是:{{isAgree}}</h2>
     <button :disabled="!isAgree">下一步</button>

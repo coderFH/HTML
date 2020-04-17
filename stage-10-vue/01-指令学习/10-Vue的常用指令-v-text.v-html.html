@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--
+1.什么是v-text指令
+    v-text就相当于过去学习的innerText
+
+2.什么是v-html指令
+    v-html就相当于过去学习的innerHTML
+-->
+
+<div id="app">
+    <!-- 插值的方式: 可以将指定的数据插入到指定的位置 -->
+    <p>{{msg}}哈哈哈</p>
+    <!-- 插值的方式: 不会解析HTML -->
+    <p>{{html}}</p>
+
+    <!--
+        使用v-text的模式比使用{{}}的模式的方便之处就在于
+        假如后边人为的不小心写了其他字符,使用v-text的时候人为的字符串是不显示的
+    -->
+    <!-- v-text的方式: 会覆盖原有的内容 -->
+    <p v-text="msg">+++++++</p>
+    <!-- v-text的方式: 也不会解析HTML -->
+    <p v-text="html">++++++</p>
+
+    <!--v-html的方式: 会覆盖原有的内容-->
+    <div v-html = "html">
+         我看显示不
+         <input type="color">
+         这里边不管写啥,都不显示
+    </div>
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+    new Vue ({
+        el : "#app",
+        data : {
+            msg : 'wangfh',
+            html : '<input type="data"><input type="color">'
+        }
+    });
+</script>
+</body>
+</html>

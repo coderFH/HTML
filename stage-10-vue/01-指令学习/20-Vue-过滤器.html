@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<!--
+1.什么是过滤器?
+    过滤器和函数和计算属性一样都是用来处理数据的
+    但是过滤器一般用于格式化插入的文本数据
+
+2.如何自定义全局过滤器
+    Vue.filter("过滤器名称", 过滤器处理函数):
+
+3.如何使用全局过滤器
+    {{msg | 过滤器名称}}
+    :value="msg | 过滤器名称"
+
+4.过滤器注意点
+    4.1只能在插值语法和v-bind中使用
+    4.2过滤器可以连续使用
+-->
+
+<div id="app">
+    <p>{{money}}</p>
+    <p>{{money | moneyFormat}}</p>
+</div>
+
+<div id="app1">
+    <p>{{money}}</p>
+    <p>{{money | moneyFormat}}</p>
+</div>
+
+<script src="js/vue.js"></script>
+<script>
+    /*
+    如何自定义一个全局过滤器
+        通过Vue.filter();
+    filter方法接收两个参数
+        第一个参数: 过滤器名称
+        第二个参数: 处理数据的函数
+    注意点: 默认情况下处理数据的函数接收一个参数, 就是当前要被处理的数据
+    * */
+    // 0. 定义全局过滤器
+    Vue.filter('moneyFormat', (value)=>{
+        return '¥' + value.toFixed(2) ;
+    });
+
+    new Vue ({
+        el : "#app",
+        data : {
+            money: 189323323222.98923
+        },
+        filters: {
+            //  局部过滤器
+            moneyFormat(value){
+                return '$' + value.toFixed(2) ;//toFixed 保留两位小数
+            }
+        }
+    });
+
+    new Vue({
+        el: '#app1',
+        data: {
+            money: 4567821.98923
+        }
+    });
+
+</script>
+</body>
+</html>
