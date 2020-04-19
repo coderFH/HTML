@@ -13,7 +13,10 @@
             opacity: 0;
             transform: translateX(200px);
         }
-        .fade-enter-actiove,.fade-leave-active {
+        .fade-enter-to {
+            opacity: 1;
+        }
+        .fade-enter-active,.fade-leave-active {
             transition: all 1s ease-in-out;
         }
     </style>
@@ -22,14 +25,17 @@
 
 <div id="app">
     <button @click='show = !show'>切换</button>
-    <transition name = "fade">
+    <!-- 
+        当我们对transition 给了一个name时,我们的v-enter中的v就可以替换为fade-enter
+        其他属性也是这样的
+    -->
+    <transition name = "fade"> 
         <div class="box" v-if='show'>周杰伦</div>
     </transition>
 </div>
 
 <script src="js/vue.js"></script>
 <script>
-    // 1. 创建Vue的实例
     new Vue({
         el: '#app',
         beforeCreate(){

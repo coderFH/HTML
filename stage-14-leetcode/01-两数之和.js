@@ -48,6 +48,22 @@ var twoSum2 = function (nums,target) {
         }
     }
 };
-var nums = [0,1,2,3,4];
-var target = 5;
-console.log(twoSum2(nums, target));
+
+var twoSum3 = function(nums,target) {
+    let map = new Map();
+    let arr = [];
+    for (let i = 0; i < nums.length; i++) {
+        let key = target - nums[i];
+        if (map.has(key)) {
+            let idx = map.get(key);
+            arr.push(idx,i);
+        } else {
+            map.set(nums[i],i);
+        }
+    }
+    return arr;
+}
+
+var nums = [2,7,11,5];
+var target = 9;
+console.log(twoSum3(nums, target));

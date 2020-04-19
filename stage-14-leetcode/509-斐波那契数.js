@@ -50,7 +50,7 @@ function fib2(n) {
                    当n传5 的时候 需要加4次  0+1=1 1+1=2 1+2=3 2+3=5
                    由此可推出,传的n 就 加 n-1次
     */
-    for (let i = 0;i < n -1; i++) {
+    for (let i = 0;i < n-1; i++) {
         let sum = first + second;
         first = second;
         second = sum;

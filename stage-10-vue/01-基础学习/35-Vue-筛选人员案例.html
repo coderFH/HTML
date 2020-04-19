@@ -96,7 +96,7 @@
         methods : {
              // 返回数组
             searchList(keyWords){
-                return this.students.filter((student)=>{
+                return this.students.filter((student)=> {
                     if(student.name.includes(keyWords)){
                         return student;
                     }
