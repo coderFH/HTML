@@ -5,7 +5,16 @@
     <title>Title</title>
 </head>
 <body>
+<!--
+1.什么是父子组件?
+    在一个组件中又定义了其它组件就是父子组件
+    其实局部组件就是最简单的父子组件, 因为我们说过可以把Vue实例看做是一个大组件
+    我们在Vue实例中定义了局部组件, 就相当于在大组件里面定义了小组件, 所以实局部组件就是最简单的父子组件
 
+2.如何定义其它的父子组件
+    前面我们说过, 自定义组件中可以使用data, 可以使用methods. 当然自定义组件中也可以使用components
+    所以我们也可以在自定义组件中再定义其它组件
+-->
 <div id="app">
     <!--使用子组件-->
     <child1></child1>
@@ -17,7 +26,6 @@
 
 <script src="js/vue.js"></script>
 <script>
-
     //1.子组件
     let Child1 = Vue.extend({
         template : `<img src="img/img_01.jpg" width="200">`

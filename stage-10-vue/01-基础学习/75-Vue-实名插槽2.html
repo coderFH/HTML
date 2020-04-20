@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>53-Vue组件-具名插槽</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<!--
+1.什么是具名插槽
+    默认情况下有多少个匿名插槽, 我们填充的数据就会被拷贝多少份
+    这导致了所有插槽中填充的内容都是一样的
+    那么如果我们想给不同的插槽中填充不同的内容怎么办呢?
+    这个时候就可以使用具名插槽
+
+2.具名插槽使用
+    通过插槽的name属性给插槽指定名称
+    在使用时可以通过slot="name"方式, 指定当前内容用于替换哪一个插槽
+
+    注意点: 如果没有指定要替换哪个插槽中的内容, 则不会被替换
+-->
+
+<div id="app">
+    <father></father>
+</div>
+
+<template id="father">
+    <div>
+        <son>
+            <!--这里通过slot属性告诉Vue,当前的内容是要填充到哪一个插槽中的-->
+            <div slot="one">我是追加的内容1</div>
+            <div slot="one">我是追加的内容11</div>
+            <div slot="two">我是追加的内容2</div>
+            <div slot="two">我是追加的内容22</div>
+        </son>
+    </div>
+</template>
+
+<template id="son">
+    <div>
+        <div>我是头部</div>
+        <!--可以在定义插槽的时候给插槽添加一个name属性, 通过这个name属性来指定插槽的名称
+            如通插槽指定了名称, 那么我们就称之为具名插槽-->
+        <!--注意点: 默认情况下填充的内容是不会被填充到具名插槽中的,
+            只有给填充的内容指定了要填充到哪一个具名插槽之后,
+            才会将填充的内容填充到具名插槽中-->
+        <slot name="one">我是默认内容</slot>
+        <slot name="two">我是默认内容</slot>
+        <div>我是底部</div>
+    </div>
+</template>
+
+<script>
+    // 父组件
+    Vue.component("father", {
+        template: "#father",
+        // 子组件
+        components: {
+            "son": {
+                template: "#son",
+            }
+        }
+    });
+    let vue = new Vue({
+        el: '#app'
+    });
+</script>
+</body>
+</html>

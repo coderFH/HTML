@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>51-Vue组件-数据和方法的多级传递</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<!--
+1.数据和方法的多级传递
+在Vue中如果儿子想使用爷爷的数据, 必须一层一层往下传递
+在Vue中如果儿子想使用爷爷的方法, 必须一层一层往下传递
+-->
+
+<div id="app">
+    <grandfather></grandfather>
+</div>
+
+<template id="grandfather">
+    <div>
+        <p>{{name}}</p>
+        <button @click="say">我是grandfather按钮</button>
+        <father :gfname="name" @gfsay="say"></father>
+    </div>
+</template>
+
+<template id="father">
+    <div>
+        <p>{{gfname}}</p>
+        <button @click="fatherFn">我是father按钮</button>
+        <son :fname="gfname" @fsay="fatherFn"></son>
+    </div>
+</template>
+
+<template id="son">
+    <div>
+        <p>{{fname}}</p>
+        <button @click="sonFn">我是son按钮</button>
+    </div>
+</template>
+
+<script>
+    // 爷爷组件
+    Vue.component("grandfather", {
+        template: "#grandfather",
+        data: function(){
+            return {
+                name: "www"
+            }
+        },
+        methods: {
+            say(){
+                console.log("我是爷爷的方法");
+            }
+        },
+        // 爸爸组件
+        components: {
+            "father": {
+                template: "#father",
+                props: ["gfname"],
+                methods:{
+                    fatherFn(){
+                        this.$emit("gfsay");
+                    }
+                },
+                // 儿子组件
+                components: {
+                    "son": {
+                        template: "#son",
+                        props: ["fname"],
+                        methods: {
+                            sonFn(){
+                                this.$emit("fsay");
+                            }
+                        },
+                    }
+                }
+            }
+        }
+    });
+    let vue = new Vue({
+        el: '#app',
+    });
+</script>
+</body>
+</html>

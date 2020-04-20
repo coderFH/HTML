@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>47-Vue组件-父子组件数据传递</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <father></father>
+</div>
+
+<template id="father">
+    <div>
+        <!--注意点: 组件是可以使用自己的数据的-->
+        <p>{{name}}</p>
+        <p>{{age}}</p>
+        <!--这里将父组件的name通过parentname传递给了子组件-->
+        <son :parentname="name" :abc="age"></son>
+    </div>
+</template>
+
+<template id="son">
+    <div>
+        <!--这里通过parentname使用了父组件传递过来的数据-->
+        <p>{{parentname}}</p>
+        <p>{{abc}}</p>
+    </div>
+</template>
+
+<script>
+    // 父组件
+    Vue.component("father", {
+        template: "#father",
+        data: function(){
+          return {
+              name: "www",
+              age: 11
+          }
+        },
+        // 子组件
+        components: {
+            "son": {
+                template: "#son",
+                // 这里通过parentname接收了父组件传递过来的数据
+                props: ["parentname", "abc"]
+            }
+        }
+    });
+    let vue = new Vue({
+        el: '#app',
+    });
+</script>
+</body>
+</html>

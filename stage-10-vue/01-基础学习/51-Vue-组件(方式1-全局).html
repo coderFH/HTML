@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+    </style>
+
+</head>
+<body>
+
+<div id="app">
+    <my-date></my-date>
+    <my-date></my-date>
+</div>
+
+<!--
+Vue两大核心: 1.数据驱动界面改变 2.组件化
+    1.什么是组件? 什么是组件化?
+    1.1在前端开发中组件就是把一个很大的界面拆分为多个小的界面, 每一个小的界面就是一个组件
+    1.2将大界面拆分成小界面就是组件化
+
+2.组件化的好处
+    2.1可以简化Vue实例的代码
+    2.2可以提高复用性
+
+3.Vue中如何创建组件?
+    3.1创建组件构造器
+    3.2注册已经创建好的组件
+    3.3使用注册好的组件
+-->
+
+<script src="js/vue.js"></script>
+<script>
+
+    //1.组件构造器
+    let Profile = Vue.extend({
+        //模板选项
+        template :
+            // 注意点: 在创建组件指定组件的模板的时候, 模板只能有一个根元素
+            `
+               <div>
+                   <input type="date">
+                   <p>今天耳机到了</p>
+               </div>
+            `
+    });
+
+    //2.注册全局组件
+    // 第一个参数: 指定注册的组件的名称
+    // 第二个参数: 传入已经创建好的组件构造器
+    Vue.component('my-date',Profile);
+
+    new Vue ({
+        el : "#app",
+        data : {
+            msg : "周杰伦"
+        },
+    });
+</script>
+</body>
+</html>

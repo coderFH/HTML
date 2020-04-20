@@ -5,15 +5,30 @@
     <title></title>
 </head>
 <body>
+<!--
+1.什么是作用域插槽
+    作用域插槽就是带数据的插槽, 就是让父组件在填充子组件插槽内容时也能使用子组件的数据
 
+2.如何使用作用域插槽
+    2.1在slot中通过 v-bind:数据名称="数据名称" 方式暴露数据
+    2.2在父组件中通过 <template slot-scope="作用域名称"> 接收数据
+    2.3在父组件的<template></template>中通过 作用域名称.数据名称 方式使用数据
+-->
 <div id="app">
 <!--    默认情况下,我们使用插槽的样式就可以-->
     <cpn></cpn>
 
 <!--    但有时候插槽的样式不是我们的想要的,但是我们需要用子组件的数据,就可以用这种方式去拿数据,然后自己实现样式-->
     <cpn>
-        <template slot-scope="slot">
-            <span>{{slot.data.join('-')}}</span>
+
+        <!--
+            slot-scope="aaa"作用: 接收子组件插槽暴露的数据,aaa
+            -->
+            <!--
+            作用域插槽的应用场景: 子组件提供数据, 父组件决定如何渲染
+            -->
+        <template slot-scope="aaa">
+            <span>{{aaa.data.join('-')}}</span>
         </template>
 
     </cpn>
@@ -21,6 +36,7 @@
 
 <template id="cpn">
     <div>
+        <!-- v-bind:data="pLanguage"作用: 将当前子组件的pLanguage数据暴露给父组件 -->
         <slot :data="pLanguage">
             <ul>
                 <li v-for="item in pLanguage">{{item}}</li>
@@ -28,6 +44,7 @@
         </slot>
     </div>
 </template>
+
 <script src="js/vue.js"></script>
 <script>
     Vue.component('cpn',{

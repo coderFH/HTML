@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>43-Vue组件-动态组件</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<!--
+1.什么是动态组件?
+    通过v-if/v-else-if/v-else确实能够切换组件
+    但是在Vue中切换组件还有一种更专业的方式
+    <component v-bind:is="需要显示组件名称"></component>
+    component我们称之为动态组件, 也就是你让我显示谁我就显示谁
+
+2.为什么可以通过v-if切换还要有component
+    因为component可以配合keep-alive来保存被隐藏组件隐藏之前的状态
+    例如home组件的checkbox就能记录
+-->
+<!--这里就是MVVM中的View-->
+<div id="app">
+    <button @click="toggle">切换</button>
+    <keep-alive>
+        <component v-bind:is="name"></component>
+    </keep-alive>
+</div>
+
+<template id="home">
+    <div>
+        <p>我是首页</p>
+        <input type="checkbox">
+    </div>
+</template>
+
+<template id="photo">
+    <div>
+        <img src="img/python.jpg" alt="">
+    </div>
+</template>
+
+<script>
+    // 自定义全局组件
+    Vue.component("home", {
+        template: "#home",
+    });
+    Vue.component("photo", {
+        template: "#photo",
+    });
+    let vue = new Vue({
+        el: '#app',
+        data: {
+            name: "home"
+        },
+        methods: {
+            toggle(){
+                this.name = this.name === "home" ? "photo" : "home";
+            }
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>56-Vue组件-v-slot指令</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+<!--
+在 2.6.0 中，我们为具名插槽和作用域插槽引入了一个新的统一的语法 (即 v-slot 指令)。
+它取代了 slot 和 slot-scope
+
+也就是说我们除了可以通过v-slot指令告诉Vue内容要填充到哪一个具名插槽中
+还可以通过v-slot指令告诉Vue如何接收作用域插槽暴露的数据
+
+v-slot:插槽名称="作用域名称"
+-->
+
+<div id="app">
+    <father></father>
+</div>
+
+<template id="father">
+    <div>
+        <son>
+            <template #one="abc">
+                <li v-for="(name, index) in abc.names">{{name}}</li>
+            </template>
+        </son>
+    </div>
+</template>
+
+<template id="son">
+    <div>
+        <div>我是头部 {{names}}</div>
+        <slot name="one" v-bind:names="names">我是默认内容 {{names}}</slot>
+        <div>我是底部</div>
+    </div>
+</template>
+
+<script>
+    // 父组件
+    Vue.component("father", {
+        template: "#father",
+        // 子组件
+        components: {
+            "son": {
+                template: "#son",
+                data:function () {
+                    return {
+                        names: ["zs", "ls", "ww", "zl"]
+                    }
+                }
+            }
+        }
+    });
+
+    let vue = new Vue({
+        el: '#app'
+    });
+</script>
+</body>
+</html>
