@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/vue.js"></script>
+</head>
+
+<!-- 
+    需求: 在第二个子组件中展示第一个子组件的数据
+
+    注意点:
+        1.如果想要在子组件中使用父组件中的数据, 那么必须通过父组件传递
+        2.如果想要在子组件中使用祖先组件中的数据, 那么就必须一层一层的传递
+        3.兄弟组件之间不能直接传递数据, 如果兄弟组件之间想要传递数据, 那么就必须借助父组件
+
+    注意点:
+        虽然通过借助父组件能够实现兄弟组件之间的数据传递, 但是这种方式非常的复杂, 非常的不推荐
+        那么当前在企业开发中我们遇到了两个问题:
+        1.如果想要在子组件中使用祖先组件中的数据, 那么就必须一层一层的传递(非常麻烦)
+        2.兄弟组件之间不能直接传递数据, 如果兄弟组件之间想要传递数据, 那么就必须借助父组件(非常麻烦)
+        解决方案: 使用Vuex
+ -->
+
+<body>
+    <div id="app">
+        <father></father>
+    </div>
+
+    <template id="father">
+        <div>
+            <son1 @parentchange="change"></son1>
+            <son2 :parentnum="num"></son2>
+        </div>
+    </template>
+
+    <template id="son1">
+        <div>
+            <button @click="add">增加</button>
+            <button @click="sub">减少</button>
+            <input type="text" :value="count">
+        </div>
+    </template>
+
+    <template id="son2">
+        <div>
+            <p>我是son2子组件{{parentnum}}</p>
+        </div>
+    </template>
+
+    <script>
+        Vue.component("father",{
+            template : "#father",
+            data : function() {
+                return {
+                    num : 0
+                }
+            },
+            methods :  {
+                change(newCount) {
+                    this.num = newCount;
+                }
+            },
+            components : {
+                "son1" : {
+                    template : "#son1",
+                    data : function() {
+                        return {
+                            count : 0
+                        }
+                    },
+                    methods : {
+                        add() {
+                            this.count = this.count + 1;
+                            this.$emit("parentchange",this.count);
+                        },
+                        sub() {
+                            this.count = this.count - 1;
+                            this.$emit("parentchange",this.count);
+                        }
+                    },
+                },
+                "son2" : {
+                    template : "#son2",
+                    props : ["parentnum"]
+                }
+            }
+        })
+        const vue = new Vue({
+            el : '#app'
+        })
+    </script>
+</body>
+</html>

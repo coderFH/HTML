@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>70-Vue-生命周期方法</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <button @click="change">切换</button>
+    <!--通过v-if来切换, 会直接删除和重新创建-->
+    <one v-if="isShow"></one>
+</div>
+
+<!--
+    Vue实例对象可以看做是一个大的组件, 我们自定义的组件可以看做是一个小的组件
+    那么大的组件中可以使用的属性和方法, 在小的组件中也可以使用
+    例如: 在Vue实例中我们可以添加data, methods, 那么在自定义的组件中也可以添加data, methods
+    所以Vue实例中可以使用生命周期方法, 组件中也可以使用生命周期方法
+-->
+<template id="one">
+    <div>
+        <p>我是组件</p>
+    </div>
+</template>
+
+<script>
+    Vue.component("one", {
+        template: "#one",
+        data: function(){
+            return {
+                msg: "www"
+            }
+        },
+        methods: {
+            say(){
+                console.log("say");
+            }
+        },
+        beforeDestroy: function(){
+            /*
+            在调用beforeDestroy的时候, 表示当前组件即将被销毁了
+            注意点: 只要组件不被销毁, 那么beforeDestroy就不会调用
+                    beforeDestroy函数是我们最后能够访问到组件数据和方法的函数
+            * */
+            console.log("beforeDestroy");
+            console.log(this.msg);
+            console.log(this.say);
+        },
+        destroyed: function(){
+            /*
+            在调用destroyed的时候, 表示当前组件已经被销毁了
+            注意点: 只要组件不被销毁, 那么destroyed就不会调用
+                    不要在这个生命周期方法中再去操作组件中数据和方法
+            * */
+            console.log("destroyed");
+        }
+    });
+    let vue = new Vue({
+        el: '#app',
+        data: {
+            isShow: true,
+        },
+        methods: {
+            change(){
+                this.isShow = !this.isShow;
+            }
+        }
+    });
+</script>
+</body>
+</html>

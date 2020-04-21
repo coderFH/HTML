@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>69-Vue-生命周期方法</title>
+    <script src="js/vue.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <p>{{msg}}</p>
+</div>
+
+<script>
+    let vue = new Vue({
+        beforeUpdate:function(){
+            /*
+            在调用beforeUpdate的时候, 表示Vue实例中保存的数据被修改了
+            注意点: 只有保存的数据被修改了才会调用beforeUpdate, 否则不会调用
+            注意点: 在调用beforeUpdate的时候, 数据已经更新了, 但是界面还没有更新
+            * */
+            console.log("beforeUpdate");
+            console.log(this.msg);
+            console.log(document.querySelector("p").innerHTML);
+            console.log(document.querySelector("p").innerText);
+        },
+        updated:function(){
+            /*
+            在调用updated的时候, 表示Vue实例中保存的数据被修改了, 并且界面也同步了修改的数据了
+            也就是说: 数据和界面都同步更新之后就会调用updated
+            * */
+            console.log(this.msg);
+            console.log(document.querySelector("p").innerHTML);
+            console.log(document.querySelector("p").innerText);
+        },
+        el: '#app',
+        data: {
+            msg: "www"
+        },
+        methods: {
+            say(){
+                console.log("say");
+            }
+        },
+    });
+</script>
+</body>
+</html>

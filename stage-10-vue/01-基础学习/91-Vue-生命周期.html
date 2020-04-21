@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="app">
+    <p>{{msg}}</p>
+</div>
+<!--
+1.什么是生命周期方法?
+    和wbpack生命周期方法一样, 都是在从生到死的特定阶段调用的方法
+    PS: 生命周期钩子 = 生命周期函数 = 生命周期事件
+2.Vue生命周期方法分类
+    2.1创建期间的生命周期方法
+        beforeCreate:
+        created:
+        beforeMount:
+        mounted:
+    2.2运行期间的生命周期方法
+        beforeUpdate:
+        updated:
+    2.3销毁期间的生命周期方法
+        beforeDestroy:
+        destroyed：
+-->
+<script src="js/vue.js"></script>
+<script>
+    // 1. 创建Vue的实例
+    new Vue({
+        el: '#app',
+        beforeCreate(){
+            /*
+                在调用beforeCreate的时候, 仅仅表示Vue实例刚刚被创建出来
+                此时此刻还没有初始化好Vue实例中的数据和方法, 所以此时此刻还不能访问Vue实例中保存的数据和方法
+            */
+            console.log('beforeCreate()');
+            // 通过打印,可知此时此刻还不能访问Vue实例中保存的数据和方法
+            console.log(this.msg);
+            console.log(this.say);
+        },
+        data: {
+            msg: "www"
+        },
+        methods: {
+            say(){
+                console.log("say");
+            }
+        },
+        created(){
+            /*
+                在调用created的时候, 是我们最早能够访问Vue实例中保存的数据和方法的地方
+            */
+            console.log(this.msg);
+            console.log(this.say);
+            console.log('created()');
+        },
+        beforeMount(){
+            /*
+                在调用beforeMount的时候, 表示Vue已经编译好了最终模板, 但是还没有将最终的模板渲染到界面上
+            */
+            console.log(document.querySelector("p").innerHTML);
+            console.log(document.querySelector("p").innerText);
+            console.log('beforeMount()');
+        },
+        mounted(){
+            /*
+                在调用mounted的时候, 表示Vue已经完成了模板的渲染, 表示我们已经可以拿到界面上渲染之后的内容了
+                结束创建期间的生命周期函数
+             */
+            console.log(document.querySelector("p").innerHTML);
+            console.log(document.querySelector("p").innerText);
+            console.log('mounted()');
+        },
+
+        beforeUpdate(){
+            console.log('beforeUpdate()');
+        },
+
+        updated(){
+            console.log('updated()');
+        },
+
+        beforeDestroy(){
+            console.log('beforeDestroy()');
+        },
+
+        destroyed(){
+            console.log('destroyed()');
+        }
+    });
+</script>
+</body>
+</html>

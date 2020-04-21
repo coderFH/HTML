@@ -5,6 +5,21 @@
     <title>Title</title>
 </head>
 <body>
+<!--
+1.Vue特殊特性
+    Vue特点: 数据驱动界面更新, 无需操作DOM来更新界面
+    也就是说Vue不推荐我们直接操作DOM, 但是在企业开发中有时候我们确实需要拿到DOM操作DOM
+    那么如果不推荐使用原生的语法获取DOM, 我们应该如何获取DOM?
+    在Vue中如果想要拿到DOM元素我们可以通过ref来获取
+
+2.ref使用
+    2.1在需要获取的元素上添加ref属性. 例如: <p ref="mypp">我是段落</>
+    2.2在使用的地方通过 this.$refs.xxx获取, 例如 this.$ref.myppp
+
+3.ref特点
+    ref添加到元素DOM上, 拿到的就是元素DOM
+    ref添加到组件上, 拿到的就是组件
+-->
 
 <div id="app">
     <cpn ref="aaa"></cpn>

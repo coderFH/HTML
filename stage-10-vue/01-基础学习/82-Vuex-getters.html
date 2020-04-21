@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>60-Vuex-getters</title>
+    <script src="js/vue.js"></script>
+    <script src="js/vuex.js"></script>
+</head>
+<body>
+
+<!--
+1.什么是Vuex的getters?
+    Vuex的getters属性就和组件的计算属性一样, 会将数据缓存起来, 只有数据发生变化才会重新计算
+-->
+
+<div id="app">
+    <father></father>
+</div>
+
+<template id="father">
+    <div>
+        {{this.$store.getters.formart}}
+        {{this.$store.getters.formart}}
+        {{this.$store.getters.formart}}
+    </div>
+</template>
+
+<script>
+    const store = new Vuex.Store({
+        // state: 用于保存共享数据
+        state: {
+            msg: "淘宝"
+        },
+        // mutations: 用于保存修改共享数据的方法
+        mutations: {
+        },
+        getters: {
+            formart(state){
+                console.log("getters方法被执行了");
+                return state.msg + "www.taobao.com"
+            }
+        }
+    });
+    // 爸爸组件
+    Vue.component("father", {
+        template: "#father",
+        store: store
+    });
+
+    let vue = new Vue({
+        el: '#app'
+    });
+</script>
+</body>
+</html>
