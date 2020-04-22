@@ -1,0 +1,5 @@
+class CircleDeque {
+    constructor(parameters) {
+        
+    }
+}
