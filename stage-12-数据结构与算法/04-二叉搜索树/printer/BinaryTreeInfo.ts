@@ -7,3 +7,5 @@ interface BinaryTreeInfo {
 
     string(node : object) : Object;
 }
+
+export {BinaryTreeInfo}
