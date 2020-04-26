@@ -1,13 +1,13 @@
 import {Person} from './Person'
 import {Comparator} from './Comparator'
 
-// MARK: ----- 访问器 -----
+// TAG: ----- 访问器 -----
 //当遍历树的时候,每遍历到一个元素,该如何处理该元素由这个接口往外抛出
 interface Visitor<E> {
     visit(element : E) : void;
 }
 
-// MARK: ----- 节点 -----
+// TAG: ----- 节点 -----
 class Node<E> {
     element : E;
     right : Node<E> = null;
@@ -35,21 +35,22 @@ class BinarySearchTree<E> {
     private comparator : Comparator<E>
     private sb : string = "";
 
+    // TAG: ----- 构造函数 -----
     constructor(comparator : Comparator<E>) {
         this.comparator = comparator;
     }
 
-    // MARK: ----- 大小 -----
+    // TAG: ----- 节点的个数 -----
     size() : number {
         return this.count;
     }
 
-    // MARK: ----- 是否为空 -----
+    // TAG: ----- 树是否为空 -----
     isEmpty() : boolean {
         return this.count === 0
     }
 
-    // MARK: ----- 增 -----
+    // TAG: ----- 增 -----
     add(element : E) {
         this.elementNotNullCheck(element);
         
@@ -86,22 +87,38 @@ class BinarySearchTree<E> {
         this.count++;
     }
 
-    // MARK: ----- 删 -----
+    // TAG: ----- 清空 -----
+    clear() : void {
+        this.root = null;
+        this.count = 0;
+    }
+
+    // TAG: ----- 删 -----
     remove(element : E) {
 
     }
 
-    // MARK: ----- 清空 -----
-    clear() : void {
-
-    }
-
-    // MARK: ----- 包含 -----
+    // TAG: ----- 包含 -----
     contains(element : E) : boolean {
-        return true;
+        return this.node(element) !== null;
     }
 
-    // MARK: ----- 遍历 -----
+    // 查找某个节点
+    private node(element : E) : Node<E> {
+        let node = this.root;
+        while (node !== null) {
+            let cmp = this.compare(element,node.element);
+            if (cmp === 0) return node;
+            if (cmp > 0) {
+                node = node.right;
+            } else { // cmp < 0
+                node = node.left;
+            }
+        }
+        return null;
+    }
+
+    // TAG: ----- 遍历 -----
     //前序遍历
     preorderTraversal() : void {
         this.preorderTraversals(this.root);
@@ -155,7 +172,7 @@ class BinarySearchTree<E> {
         }
     }
 
-    // MARK: ----- 每遍历到一个节点,把该节点抛出去,由外部实现得到节点后要执行的操作 -----
+    // TAG: ----- 每遍历到一个节点,把该节点抛出去,由外部实现得到节点后要执行的操作 -----
     //层序遍历,
     levelOrder(visitor : Visitor<E>) : void {
         if (this.root === null) return
@@ -211,7 +228,7 @@ class BinarySearchTree<E> {
         visitor.visit(node.element);
     }
 
-    // MARK: ----- 打印树的结构 -----
+    // TAG: ----- 打印树的结构 -----
     toString() : string {
         this.toStrings(this.root,this.sb,"");
         return this.sb;
@@ -223,7 +240,7 @@ class BinarySearchTree<E> {
         this.toStrings(node.right,this.sb, prefix + "R---");
     }
 
-    // MARK: ----- 树的高度 -----
+    // TAG: ----- 树的高度 -----
     //对于整个树而言,树的高度就是根节点的高度
     //递归实现:
     height() : number {
@@ -266,7 +283,7 @@ class BinarySearchTree<E> {
         return height;
     }
 
-    // MARK: ----- 判断是否是完全二叉树 -----
+    // TAG: ----- 判断是否是完全二叉树 -----
     //完全二叉树的特点: 叶子节点只会出现在最后两层,并且最后一层叶子靠左对齐
     /*
         其实就是个排列组合问题 :
@@ -301,7 +318,7 @@ class BinarySearchTree<E> {
         return true;
     }
 
-    // MARK: ----- 前驱节点 -----
+    // TAG: ----- 前驱节点 -----
     /*
     1.如果一个节点的 左子树 != null,就在左子树中一直往右找
     2.如果一个节点的 左子树 == null, parent != null 就顺着 parent 一直往上找 直到 是 父节点的右子树 为止
@@ -328,7 +345,7 @@ class BinarySearchTree<E> {
         // 2.node = node.parent.right;
         return node.parent;
     }
-    // MARK: ----- 后继节点 -----
+    // TAG: ----- 后继节点 -----
     private successor(node : Node<E>) {
         if (node === null) return null;
 
@@ -351,13 +368,13 @@ class BinarySearchTree<E> {
         return node.parent;
     }
 
-    // MARK: ----- 节点比较的规则 -----
+    // TAG: ----- 节点比较的规则 -----
     private compare(e1 : E,e2 : E) : number {
         //返回值等于0，代表e1和e2相等；返回值大于0，代表e1大于e2；返回值小于于0，代表e1小于e2
         return this.comparator.compare(e1,e2);
     }
 
-    // MARK: ----- 检查元 素是否为空 -----
+    // TAG: ----- 检查元 素是否为空 -----
     private elementNotNullCheck(element : E) {
         if (element === null) {
             throw Error("element must not be null");
