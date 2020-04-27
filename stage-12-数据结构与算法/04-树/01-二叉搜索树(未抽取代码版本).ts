@@ -95,9 +95,51 @@ class BinarySearchTree<E> {
 
     // TAG: ----- 删 -----
     remove(element : E) {
-
+        this.removeNode(this.node(element));
     }
+    //删除某个节点
 
+    /*
+    如果一个节点的度为2,那么他的前驱或者后继节点的度只可能是1和0,如何理解这句话?
+        例如我们找一个度为2的前驱节点
+        那么一定是他左子树的最右边的那个节点,如果最右边的那个节点度为2,那只能说明他还不是最右,所以度为2的前驱,度只会是0或1
+    */
+    private removeNode(node : Node<E>) {
+        if (node === null) return;
+        this.count--;
+
+        if (node.hasTwoChildren()) { //度为2的节点
+            //找到后继节点
+            let s = this.successor(node);
+            // 用后继节点的值覆盖度为2的节点的值
+            node.element = s.element;
+            // 删除后继节点
+            node = s; //如果一个节点的度为2,那么他的前驱或者后继节点的度只可能是1和0  所以后续就成了处理删除度为1和0的情况
+        }
+
+        //删除node节点(node的度必然是1或者0)
+        let replacement = node.left != null ? node.left : node.right;
+
+        if (replacement != null) {  //node 的度是 1 
+            replacement.parent = node.parent; //更改parent
+            if (node.parent == null) { // node是度为1的节点并且是根节点
+                this.root = replacement;  
+            } else if(node == node.parent.left) {
+                node.parent.left = replacement;
+            } else { // node == node.parent.right
+                node.parent.right = replacement;
+            }
+        } else if(node.parent == null) { //node是叶子节点并且是根节点
+            this.root = null;
+        } else { //node是叶子节点  即上边的三目运算符 left为空 然后把 node.right赋值给了node ,但node.right也是null
+            if (node == node.parent.left) {
+                node.parent.left = null;
+            } else {
+                node.parent.right = null;
+            }
+        }
+    }
+ 
     // TAG: ----- 包含 -----
     contains(element : E) : boolean {
         return this.node(element) !== null;
@@ -484,6 +526,26 @@ function test5() : void {
     console.log(bst.isComplete());
 }
 
-test5();
+// 测试删除
+function test6() : void {
+    class NumberCompator implements Comparator<number> {
+        compare(e1: number, e2: number): number {
+            return e1 - e2;
+        }
+    }
+
+    let arr = [7,4,2,1,3,5,9,8,11,10,12]
+    let bst = new BinarySearchTree<number>(new NumberCompator());
+    for (let i = 0; i < arr.length; i++) {
+        bst.add(arr[i])
+    }
+    bst.remove(9);
+    bst.inorderTraversal();
+    console.log("-----");
+    console.log(bst.toString());
+   
+}
+
+test6();
 
 export {BinarySearchTree}
