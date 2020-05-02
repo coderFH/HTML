@@ -1,7 +1,8 @@
 // TAG: ----- 访问器 -----
 //当遍历树的时候,每遍历到一个元素,该如何处理该元素由这个接口往外抛出
 interface Visitor<E> {
-    visit(element : E) : void;
+    stop : boolean;
+    visit(element : E) : boolean;
 }
 
 // TAG: ----- 节点 -----
@@ -17,24 +18,36 @@ class Node<E> {
         this.parent = parent;
     }
 
-    // 判断是不是叶子
+    //Note: 判断是不是叶子
     isLeaf() : boolean {
         return this.left === null && this.right === null;
     }
 
-    //是否拥有两个子节点
+    //Note: 是否拥有两个子节点
     hasTwoChildren() : boolean {
         return this.left !== null && this.right !== null;
     }
 
-    // 判断我是父节点的左子树
+    //Note: 判断我是父节点的左子树
     isLeftChild() : boolean {
         return this.parent != null && this == this.parent.left;
     }
 
-    // 判断我是父节点的右子树
+    //Tag: --- 红黑树需要的特性
+    //Note: 判断我是父节点的右子树
     isRightChild() : boolean {
         return this.parent != null && this == this.parent.right;
+    }
+
+    //Note: 获取兄弟节点
+    sibling() : Node<E> {
+        if (this.isLeftChild()) {
+           return this.parent.right; 
+        }
+        if (this.isRightChild()) {
+            return this.parent.left;
+        }
+        return null;
     }
 }
 
@@ -115,15 +128,15 @@ class BinaryTree<E> {
     // TAG: ----- 每遍历到一个节点,把该节点抛出去,由外部实现得到节点后要执行的操作 -----
     //层序遍历,
     levelOrder(visitor : Visitor<E>) : void {
-        if (this.root === null) return
+        if (this.root === null) return;
 
         let queue = new Array<Node<E>>();
         queue.push(this.root); //头部入队
 
-        while (queue.length > 0) {
+        while (queue.length > 0) { 
             let node : Node<E> = queue.shift(); //出队
 
-            visitor.visit(node.element);
+            if(visitor.visit(node.element)) return; // 如果外界的访问者遍历到符合的条件,会返回true,然后这里就停止遍历就可以了
 
             if (node.left !== null) {
                 queue.push(node.left);
@@ -137,35 +150,40 @@ class BinaryTree<E> {
 
     //前序遍历
     preOrder(visitor : Visitor<E>) : void {
+        if (visitor === null) return;
         this.preOrders(this.root,visitor);
     }
     private preOrders(node : Node<E> ,visitor : Visitor<E>) : void {
-        if (node === null || visitor === null) return;
-        visitor.visit(node.element);
+        if (node === null || visitor.stop) return;
+        visitor.stop = visitor.visit(node.element);
         this.preOrders(node.left,visitor);
         this.preOrders(node.right,visitor);
     }
 
     //中序遍历
     inOrder(visitor : Visitor<E>) : void {
+        if (visitor === null || visitor.stop) return;
         this.inOrders(this.root,visitor);
     }
     private inOrders(node : Node<E> ,visitor : Visitor<E>) : void {
-        if (node === null || visitor === null) return;
+        if (node === null || visitor.stop) return;
         this.inOrders(node.left,visitor);
-        visitor.visit(node.element);
+        if (visitor.stop) return
+        visitor.stop = visitor.visit(node.element);
         this.inOrders(node.right,visitor);
     }
 
     //后序遍历
     postOrder(visitor : Visitor<E>) : void {
+        if (visitor === null) return;
         this.postOrders(this.root,visitor);
     }
     private postOrders(node : Node<E> ,visitor : Visitor<E>) : void {
-        if (node === null || visitor === null) return;
+        if (node === null) return;
         this.postOrders(node.left,visitor);
         this.postOrders(node.right,visitor);
-        visitor.visit(node.element);
+        if (visitor.stop) return
+        visitor.stop = visitor.visit(node.element);
     }
 
     // TAG: ----- 树的高度 -----
@@ -217,7 +235,7 @@ class BinaryTree<E> {
         let queue = new Array<Node<E>>();
         queue.push(this.root); //头部入队
 
-        let leaf = false
+        let leaf = false;
         while (queue.length > 0) {
             let node : Node<E> = queue.shift(); //出队
 
@@ -225,12 +243,27 @@ class BinaryTree<E> {
                 return false
             }
 
+            /*
             if (node.hasTwoChildren()) {
                 queue.push(node.left);
                 queue.push(node.right)
             } else if (node.left === null && node.right !== null) {
                 return false;
             } else { //后面遍历的节点都必须是叶子节点,才会是完全二叉树
+                leaf = true;
+                if (node.left !== null) { //不加这句,当左不为空,右为空的那种情况是不能入队的
+                    queue.push(node.left);
+                }
+            }*/
+            //上边的这种遍历很容易遗忘最后else里的那个if情况,所以使用下边这种方式
+            if (node.left !== null) {
+                queue.push(node.left)
+            } else if(node.right !== null) { //node.left == null && node.right != null
+                return false;
+            }
+            if (node.right !== null) {
+                queue.push(node.right);
+            } else { // node.right == null
                 leaf = true;
             }
         }

@@ -340,7 +340,7 @@ class BinarySearchTree<E> {
         let queue = new Array<Node<E>>();
         queue.push(this.root); //头部入队
 
-        let leaf = false
+        let leaf = false;
         while (queue.length > 0) {
             let node : Node<E> = queue.shift(); //出队
 
@@ -348,12 +348,14 @@ class BinarySearchTree<E> {
                 return false
             }
 
-            if (node.hasTwoChildren()) {
-                queue.push(node.left);
-                queue.push(node.right)
-            } else if (node.left === null && node.right !== null) {
+            if (node.left !== null) {
+                queue.push(node.left)
+            } else if(node.right !== null) { //node.left == null && node.right != null
                 return false;
-            } else { //后面遍历的节点都必须是叶子节点,才会是完全二叉树
+            }
+            if (node.right !== null) {
+                queue.push(node.right);
+            } else { // node.right == null
                 leaf = true;
             }
         }

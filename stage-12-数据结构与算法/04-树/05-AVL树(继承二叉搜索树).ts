@@ -1,5 +1,5 @@
 import {Node} from './02-二叉树(基类)'
-import {BinarySearchTree} from './03-二叉搜索树(继承二叉树)'
+import {BalanceBinarySearchTree} from './04-平衡二叉搜索树(继承二叉搜索树)'
 import {Comparator} from './Comparator'
 
 class AVLNode<E> extends Node<E> {
@@ -34,29 +34,50 @@ class AVLNode<E> extends Node<E> {
     }
 }
 
-class AVLTree<E> extends BinarySearchTree<E> {
+class AVLTree<E> extends BalanceBinarySearchTree<E> {
 
     constructor(comparator : Comparator<E>) {
         super(comparator);
     }
 
-    afterAdd(node : Node<E>) : void {
-        while ((node = node.parent) != null) {
-            if (this.isBalanced(node)) { //如果是平衡的
+    // Tag: 添加节点之后的操作
+    afterAdd(node : Node<E>) : void {        
+        while ((node = node.parent) !== null) {
+            if (this.isBalanced(node)) { //如果是平衡的                
                 //更新高度
                 this.updateHeight(node);
             } else {
                 //恢复平衡
                 this.rebalance(node); //能到这里,就说明找到了不平衡的那个grandpar,直接break
+
+                // 使用统一的方式去恢复平衡
+                // this.rebalanceUnify(node);
                 break;
             }
         }
     }
-   
+
+    // Tag: 移除节点之后的操作
+    afterRemove(node : Node<E>) : void {        
+        while ((node = node.parent) !== null) {
+            if (this.isBalanced(node)) { //如果是平衡的                
+                //更新高度
+                this.updateHeight(node);
+            } else {
+                //恢复平衡
+                // this.rebalance(node);
+                // 使用统一的方式去恢复平衡
+                this.rebalanceUnify(node);
+            }
+        }
+    }
+
+    // Tag:创建当前树的节点
     createNode(element : E, parent : Node<E>) : AVLNode<E>{
         return new AVLNode(element,parent);
     }
 
+    // Tag: 恢复平衡的第一种方式
     // 恢复平衡
     // 当前的node 其实就是 高度最低的那个不平衡的节点 ,找 g,p n 的过程
     rebalance(grand : Node<E>) : void {
@@ -79,25 +100,40 @@ class AVLTree<E> extends BinarySearchTree<E> {
         }
     }
 
-    private rotateLeft(g : Node<E>) : void {
-        let p = g.right;
-        g.right = p.left;
-        p.left = g;
-        p.parent = g.parent;
-        g.parent = p;
-        (<AVLNode<E>>g).updateHeight();
-        (<AVLNode<E>>p).updateHeight();
+    // Tag: 恢复平衡的第二种方式(统一处理) 
+    rebalanceUnify(grand : Node<E>) : void {
+        let parent = (<AVLNode<E>>grand).tallerChild();
+        let node = (<AVLNode<E>>parent).tallerChild();
+        if (parent.isLeftChild()) { // L
+            if (node.isLeftChild()) { //LL
+                this.rotate(grand,node,node.right,parent,parent.right,grand);
+            } else { //LR
+                this.rotate(grand,parent,node.left,node,node.right,grand);
+            }
+        } else {
+            if (node.isLeftChild()) { //RL
+                this.rotate(grand,grand,node.left,node,node.right,parent);
+            } else { //RR  
+                this.rotate(grand,grand,parent.left,parent,node.left,node);
+            }
+        }
     }
 
-    private rotateRight(g : Node<E>) : void {
-        let p = g.left;
-        g.left = p.right;
-        p.right = g;
-        p.parent = g.parent;
-        g.parent = p;
-        (<AVLNode<E>>g).updateHeight();
-        (<AVLNode<E>>p).updateHeight();
+    afterRotate(grand : Node<E>,parent : Node<E>, child : Node<E>) {
+        super.afterRotate(grand,parent,child);
+         //更新高度
+         this.updateHeight(grand);
+         this.updateHeight(parent);
+    }
 
+    rotate(r : Node<E>, //子树的根节点
+        b : Node<E>, c : Node<E>,
+        d : Node<E>,
+        e : Node<E>, f : Node<E> ) : void {
+        super.rotate(r,b,c,d,e,f);
+        this.updateHeight(b);
+        this.updateHeight(f);
+        this.updateHeight(d);
     }
 
     // 判断是否平衡

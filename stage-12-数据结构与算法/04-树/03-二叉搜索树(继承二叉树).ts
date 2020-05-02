@@ -1,10 +1,10 @@
 import {Comparator} from './Comparator'
-import {BinaryTree,Node} from './02-二叉树(基类)'
+import {BinaryTree,Node,Visitor} from './02-二叉树(基类)'
 
 class BinarySearchTree<E> extends BinaryTree<E> {
 
     private comparator : Comparator<E>
-    private sb : string = "";
+    protected sb : string = "";
 
     // TAG: ----- 构造函数 -----
     constructor(comparator : Comparator<E>) {
@@ -64,6 +64,10 @@ class BinarySearchTree<E> extends BinaryTree<E> {
     // Tag:添加新节点后的调整,由子类AVL树或红黑树实现
     protected afterAdd(node : Node<E>) {}
 
+    // Tag:删除node之后的调整
+    protected afterRemove(node : Node<E>) {}
+
+
     // TAG: ----- 删 -----
     remove(element : E) {
         this.removeNode(this.node(element));
@@ -94,14 +98,23 @@ class BinarySearchTree<E> extends BinaryTree<E> {
             } else { // node == node.parent.right
                 node.parent.right = replacement;
             }
+            /*
+            因为红黑树的特性,本来这里传递的是node,也就是要删除的节点,但这里之所以传replacement(替代提的节点),
+            是因为红黑树在调整平衡时,有一种情况是需要知道替代他的节点是红色还是黑色,所以这里直接把replacement传递出去
+            而传replacement对AVL树是没有影响的,因为AVL树不管是拿到node还是replacement,都是沿着父节点往上去找,而replacement的父节点已经和node
+            的父节点是一个的了,所以你传谁都一样
+            */
+            this.afterRemove(replacement); 
         } else if(node.parent == null) { //node是叶子节点并且是根节点
             this.root = null;
+            this.afterRemove(node);
         } else { //node是叶子节点  即上边的三目运算符 left为空 然后把 node.right赋值给了node ,但node.right也是null
             if (node == node.parent.left) {
                 node.parent.left = null;
             } else {
                 node.parent.right = null;
             }
+            this.afterRemove(node);
         }
     }
  
