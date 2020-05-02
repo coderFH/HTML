@@ -81,21 +81,16 @@ function test3() : void {
         }
     }
     let arr = [55, 87, 56, 74, 96, 22, 62, 20, 70, 68, 90, 50];
-    let bst = new AVLTree<number>(new NumberCompator());
+    let av = new AVLTree<number>(new NumberCompator());
     for (let i = 0; i < arr.length; i++) {
-        bst.add(arr[i])
+        av.add(arr[i])
     }
-    console.log(bst.toString());
+    console.log(av.printTree())
 
-    for (let i = 0; i < arr.length - 5; i++) {
-        console.log('[' + arr[i] + ']');
-        bst.remove(arr[i]);
+    for (let i = 0; i < arr.length; i++) {
+        av.remove(arr[i]);
     }
-
-    // bst.remove(99);
-    // bst.remove(85);
-    // bst.remove(69);
-    console.log(bst.toString());
+    console.log(av.printTree());
 }
 
 // Tag: 红黑树相关的测试
@@ -122,4 +117,4 @@ function test4() : void {
 }
 
 
-test4();
+test3();

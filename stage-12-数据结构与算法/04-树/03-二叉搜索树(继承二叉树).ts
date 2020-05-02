@@ -4,7 +4,6 @@ import {BinaryTree,Node,Visitor} from './02-二叉树(基类)'
 class BinarySearchTree<E> extends BinaryTree<E> {
 
     private comparator : Comparator<E>
-    protected sb : string = "";
 
     // TAG: ----- 构造函数 -----
     constructor(comparator : Comparator<E>) {
@@ -124,18 +123,42 @@ class BinarySearchTree<E> extends BinaryTree<E> {
     }
 
     // TAG: ----- 打印树的结构 -----
-    toString() : string {
-        this.toStrings(this.root,this.sb,"");
-        return this.sb;
-    }
-    private toStrings(node : Node<E>,sb : string,prefix : string) : void {
-        if (node === null) return;
-        this.sb = this.sb + prefix + node.element + '\n'; 
-        this.toStrings(node.left,this.sb, prefix + "L---");
-        this.toStrings(node.right,this.sb, prefix + "R---");
+    printTree() : string {
+        if (this.root === null) return "空了";
+        let queue = [this.root];
+        let treeStr = "";
+        let levelSize = 1;
+        while(queue.length > 0) {
+            let node = queue.shift();
+            let parent = node.parent === null ? "null" : node.parent.element.toString();
+            treeStr = treeStr + "   " + node.element + "{" + parent + "}";
+            levelSize--;
+            if (node.left !== null) {
+                queue.push(node.left);
+            }
+            if (node.right !== null) {
+                queue.push(node.right);
+            }
+            if (levelSize == 0) {
+                levelSize = queue.length;
+                treeStr = treeStr + "\n";
+            }
+        }
+        return treeStr;
     }
 
-
+    // 最开始打印树的方法,感觉用着不爽,注释了,留作参考吧
+    // toString() : string {
+    //     this.toStrings(this.root,this.sb,"");
+    //     return this.sb;
+    // }
+    // private toStrings(node : Node<E>,sb : string,prefix : string) : void {
+    //     if (node === null) return;
+    //     this.sb = this.sb + prefix + node.element + '\n'; 
+    //     this.toStrings(node.left,this.sb, prefix + "L---");
+    //     this.toStrings(node.right,this.sb, prefix + "R---");
+    // }
+    
     // 查找某个节点
     private node(element : E) : Node<E> {
         let node = this.root;
