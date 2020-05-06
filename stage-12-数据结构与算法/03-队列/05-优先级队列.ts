@@ -13,7 +13,7 @@ class PriorityQueue<E> {
         this.list = new Array< QueueElement<E> >()
     }
 
-        //添加元素的方法
+    //添加元素的方法
     enqueue(element : E,priority : number) : void {
         //1.根据传入的元素,创建新的QueueElement
         let queueElement = new QueueElement(element,priority);
@@ -48,7 +48,7 @@ class PriorityQueue<E> {
     };
 
     // 查看元素是否为空
-    isEmpty() : Boolean {
+    isEmpty() : boolean {
         return this.list.length === 0
     };
 
