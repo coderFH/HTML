@@ -186,6 +186,82 @@ class BinaryTree<E> {
         visitor.stop = visitor.visit(node.element);
     }
 
+    // TAG: ----- 非递归实现,由外部实现得到节点后要执行的操作 -----
+    //前序遍历
+    preOrderIteration1(visitor : Visitor<E>) : void {
+        if (visitor === null || this.root === null) return;
+        let stack = [this.root];
+        while (stack.length > 0) {
+            let node = stack.pop();
+            if(visitor.visit(node.element)) return;
+            if (node.right !== null) {
+                stack.push(node.right);
+            }
+            if (node.left !== null) {
+                stack.push(node.left);
+            }
+        }
+    }
+
+    preOrderIteration2(visitor : Visitor<E>) : void {
+        if (visitor === null || this.root === null) return;
+        let node = this.root;
+        let stack = [];
+        while (true) {
+            if (node !== null) {
+                if (visitor.visit(node.element)) return;
+                if (node.right !== null) {
+                    stack.push(node.right);
+                }
+                node = node.left;
+            } else if (stack.length === 0) {
+                return;
+            } else {
+                node = stack.pop()
+            }
+        }
+    }
+   
+    //中序遍历
+    inOrderIteration(visitor : Visitor<E>) : void {
+        if (visitor === null || this.root === null) return;
+        let node = this.root;
+        let stack = [];
+        while(true) {
+            if (node !== null) {
+                stack.push(node);
+                node = node.left
+            } else if (stack.length === 0) {
+                return;
+            } else {
+                node = stack.pop();
+                if (visitor.visit(node.element)) return;
+                node = node.right;
+            }
+        }
+    }
+    
+    //后序遍历
+    postOrderIteration(visitor : Visitor<E>) : void {
+        if (visitor === null || this.root === null) return;
+        let prev = null;
+        let stack = [this.root];
+        while(stack.length > 0) {
+            let top = stack[stack.length - 1];
+            if (top.isLeaf() || (prev != null && prev.parent === top)) {
+                prev = stack.pop();
+                if (visitor.visit(prev.element)) return;
+            } else {
+                if (top.right !== null) {
+                    stack.push(top.right);
+                }
+                if (top.left !== null) {
+                    stack.push(top.left);
+                }
+            }
+        }
+    }
+    
     // TAG: ----- 树的高度 -----
     //递归实现:
     height() : number {

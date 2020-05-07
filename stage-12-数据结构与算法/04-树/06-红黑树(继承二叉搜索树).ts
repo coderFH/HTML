@@ -155,7 +155,7 @@ class RBTree<E> extends BalanceBinarySearchTree<E> {
     }
 
     // Tag: ----- 打印树的结构 -----
-    printTree() : string {
+    toString() : string {
         if (this.root === null) return "空了";
         let queue = [this.root];
         let treeStr = "";

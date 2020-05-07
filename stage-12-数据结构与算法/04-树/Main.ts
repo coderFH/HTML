@@ -18,13 +18,13 @@ function test1() : void {
     for (let i = 0; i < arr.length; i++) {
         bst.add(arr[i])
     }
-    bst.preorderTraversal();
-    console.log('------');
-    bst.inorderTraversal();
-    console.log('------');
+    // bst.preorderTraversal();
+    // console.log('------');
+    // bst.inorderTraversal();
+    // console.log('------');
     bst.postorderTraversal();
     console.log('------');
-    bst.levelorderTraversal();
+    // bst.levelorderTraversal();
 
     
     //创建访问器,自定义访问的规则
@@ -36,16 +36,22 @@ function test1() : void {
             return false;
         } 
     }
-    console.log(bst.toString());
+    // console.log(bst.toString());
     
-   
-    bst.preOrder(new VistorClass());
+    // bst.preOrder(new VistorClass());
+    // console.log('------');
+    // bst.inOrder(new VistorClass());
+    // console.log('------');
+    // bst.postOrder(new VistorClass());
+    // console.log('------');
+    // bst.levelOrder(new VistorClass());
+
+    // bst.preOrderIteration1(new VistorClass());
+    // bst.preOrderIteration2(new VistorClass());
+    // console.log('------');
+    // bst.inOrderIteration(new VistorClass());
     console.log('------');
-    bst.inOrder(new VistorClass());
-    console.log('------');
-    bst.postOrder(new VistorClass());
-    console.log('------');
-    bst.levelOrder(new VistorClass());
+    bst.postOrderIteration(new VistorClass());
 }
 
 // 测试删除
@@ -85,12 +91,12 @@ function test3() : void {
     for (let i = 0; i < arr.length; i++) {
         av.add(arr[i])
     }
-    console.log(av.printTree())
+    console.log(av.toString())
 
     for (let i = 0; i < arr.length; i++) {
         av.remove(arr[i]);
     }
-    console.log(av.printTree());
+    console.log(av.toString());
 }
 
 // Tag: 红黑树相关的测试
@@ -105,16 +111,16 @@ function test4() : void {
     for (let i = 0; i < arr.length; i++) {
         bst.add(arr[i])
     }
-    console.log(bst.printTree());
+    console.log(bst.toString());
 
     console.log('-------------------');
     
     for (let i = 0; i < arr.length; i++) {
         bst.remove(arr[i]);
         console.log("【" + arr[i] + "】");
-        console.log(bst.printTree());
+        console.log(bst.toString());
     }
 }
 
 
-test3();
+test1();

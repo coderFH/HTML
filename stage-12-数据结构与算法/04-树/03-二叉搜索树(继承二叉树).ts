@@ -66,7 +66,6 @@ class BinarySearchTree<E> extends BinaryTree<E> {
     // Tag:删除node之后的调整
     protected afterRemove(node : Node<E>) {}
 
-
     // TAG: ----- 删 -----
     remove(element : E) {
         this.removeNode(this.node(element));
@@ -123,7 +122,7 @@ class BinarySearchTree<E> extends BinaryTree<E> {
     }
 
     // TAG: ----- 打印树的结构 -----
-    printTree() : string {
+    toString() : string {
         if (this.root === null) return "空了";
         let queue = [this.root];
         let treeStr = "";
