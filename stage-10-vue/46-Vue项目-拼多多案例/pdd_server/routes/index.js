@@ -10,7 +10,7 @@ var md5 = require('blueimp-md5');
 
 //用户信息
 var users = {};
-//itlike_001.18888888888 = 212112
+//itfh_001.18888888888 = 212112
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

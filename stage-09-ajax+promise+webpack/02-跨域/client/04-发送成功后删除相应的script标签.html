@@ -56,7 +56,7 @@
 
     function jsonp(option) {
          // 0. 将用户通过对象的命名空间传递进来的函数挂载到全局
-        var callbackName = 'itlike_' + Math.random().toString().substr(2)+ Math.random().toString().substr(2);
+        var callbackName = 'itfh_' + Math.random().toString().substr(2)+ Math.random().toString().substr(2);
         window[callbackName] = function (data) {
             option.success(data);
             // 删除script标签

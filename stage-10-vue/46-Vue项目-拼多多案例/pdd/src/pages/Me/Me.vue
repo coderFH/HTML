@@ -4,7 +4,7 @@
       <img src="./images/me_icon.png" alt="">
       <p v-if="userInfo.phone">{{userInfo.phone | phoneFormat}}</p>
       <p>{{userInfo.name}}</p>
-      <i class="itlike-3"></i>
+      <i class="itfh-3"></i>
     </router-link>
     <div class="my-older">
       <div class="older-top">
@@ -13,62 +13,62 @@
       </div>
       <div class="older-bottom">
         <div class="bottom-item">
-          <i class="itlike-1"></i>
+          <i class="itfh-1"></i>
           <span>待付款</span>
         </div>
         <div class="bottom-item">
-          <i class="itlike-2"></i>
+          <i class="itfh-2"></i>
           <span>待分享</span>
         </div>
         <div class="bottom-item">
-          <i class="itlike-3"></i>
+          <i class="itfh-3"></i>
           <span>待发货</span>
         </div>
         <div class="bottom-item">
-          <i class="itlike-4"></i>
+          <i class="itfh-4"></i>
           <span>待收货</span>
         </div>
         <div class="bottom-item">
-          <i class="itlike-5"></i>
+          <i class="itfh-5"></i>
           <span>待评价</span>
         </div>
       </div>
     </div>
     <div class="setting">
       <div class="setting-item">
-        <i class="itlike-1"></i>
+        <i class="itfh-1"></i>
         <span>新人红包</span>
       </div>
       <div class="setting-item">
-        <i class="itlike-2"></i>
+        <i class="itfh-2"></i>
         <span>多多果园</span>
       </div>
       <div class="setting-item">
-        <i class="itlike-3"></i>
+        <i class="itfh-3"></i>
         <span>砍价免费拿</span>
       </div>
       <div class="setting-item">
-        <i class="itlike-4"></i>
+        <i class="itfh-4"></i>
         <span>边逛边赚</span>
       </div>
       <div class="setting-item">
-        <i class="itlike-5"></i>
+        <i class="itfh-5"></i>
         <span>天天领红包</span>
       </div>
       <div class="setting-item">
-        <i class="itlike-uniE902"></i>
+        <i class="itfh-uniE902"></i>
         <span>收货地址</span>
       </div>
       <div class="setting-item">
-        <i class="itlike-1"></i>
+        <i class="itfh-1"></i>
         <span>我的评价</span>
       </div>
       <div class="setting-item">
-        <i class="itlike-3"></i>
+        <i class="itfh-3"></i>
         <span>官方客服</span>
       </div>
       <div class="setting-item" @click.prevent="dealLogout()">
-        <i class="itlike-4"></i>
+        <i class="itfh-4"></i>
         <span>退出</span>
       </div>
     </div>

@@ -10,8 +10,8 @@ app.get('/',(req,res)=>{
    res.end();
 });
 
-app.get('/itlike',(req,res)=>{
-   res.write('<h1>itlike</h1>');
+app.get('/itfh',(req,res)=>{
+   res.write('<h1>itfh</h1>');
    res.end();
 });
 

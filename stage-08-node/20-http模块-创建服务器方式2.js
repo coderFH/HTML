@@ -7,7 +7,7 @@ server.on('request', (req, res)=>{
     console.log(req);
     // 设置响应头的信息
     res.writeHead(200, {'content-type': 'text/html; charset=utf-8'});
-    res.write('<h1>hello, itLike</h1>');
+    res.write('<h1>hello, itfh</h1>');
     res.write('<h2>hello, aaaa</h2>');
     res.write('<h2>hello, aaaa</h2>');
     res.write('<h2>hello, aaaa</h2>');
@@ -35,6 +35,6 @@ http.createServer(function(req,res){
     console.log(req.headers);
     console.log(req.method);
     res.writeHead(200,{'Content-Type':'text/plain'});
-    res.write("itLike");
+    res.write("itfh");
     res.end();
 }).listen(3000);

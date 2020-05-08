@@ -9,7 +9,7 @@ module.exports = {xxx: yyy};
 */
 
 //正常情况下,他们的指向是一致的
-let str = '撩课学院';
+let str = '淘宝学院';
 exports.str = str;
 module.exports.str = str;
 console.log(exports === module.exports);

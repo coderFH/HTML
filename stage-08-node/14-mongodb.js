@@ -159,7 +159,7 @@ db.demos.find({}).skip(10).limit(10)
 db.demos.find({}).skip(20).limit(10)
 
 
-========= 23. 创建company数据库, 将it666和section集合导入到数据库中
+========= 23. 创建company数据库, 将section集合导入到数据库中
 use company
 db.con.insert(
 [

@@ -15,7 +15,7 @@ module.exports = {
     // 就可以在这个对象中编写原生的webpack配置
     plugins: [
       new webpack.BannerPlugin({
-        banner: '知播渔教育-www.it666.com'
+        banner: 'wangfh-www.wangfh.com'
       })
     ]
   }

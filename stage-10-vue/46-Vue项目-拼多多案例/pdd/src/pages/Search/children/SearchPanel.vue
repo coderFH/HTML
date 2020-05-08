@@ -3,7 +3,7 @@
     <div class="search-nav">
       <div class="search-input">
         <img src="../images/search.png" alt="" width="25"/>
-        <input ref="mySearch" type="search" placeholder="撩课学院"/>
+        <input ref="mySearch" type="search" placeholder="淘宝学院"/>
       </div>
       <button @click="showSearchPanel(false)">取消</button>
     </div>

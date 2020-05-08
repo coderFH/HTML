@@ -56,7 +56,7 @@
 <script>
     //4.拼接字符串 concat / +
     let str1 = "www";
-    let str2 = "it666";
+    let str2 = "taobao";
     let str = str1 + str2; // 推荐
     let str = str1.concat(str2);
     console.log(str);
@@ -93,7 +93,7 @@
 <!--======================= es6 startsWith endsWith ============-->
 <script>
     //2.判断是否以指定字符串开头 ES6
-    let str = "http://www.it666.com";
+    let str = "http://www.baidu.com";
     let result = str.startsWith("www");
     console.log(result);
 
@@ -109,7 +109,7 @@
     let str = 'liaoke';
     console.log(str.includes('ak')); // true
 
-    let title = '撩课在线';
+    let title = '淘宝在线';
     console.log(title.repeat(11));
 
     //  "2030111111"
@@ -156,7 +156,7 @@
     //encodeURI 和 decodeURI 这两个函数操作的是完整的 URI；这俩函数假定 URI 中的任何保留字符都有特殊意义，所有不会编码它们。
     //encodeURIComponent 可把字符串作为 URI 组件进行编码  该方法不会对 ASCII 字母和数字进行编码，也不会对这些 ASCII 标点符号进行编码： - _ . ! ~ * ' ( )
     //decodeURIComponent 可把字符串作为 URI 组件进行解码
-    var str = 'http://www.itlike.com?name=张三&age=18&sex=未知';
+    var str = 'http://www.itfh.com?name=张三&age=18&sex=未知';
     var str1 = 'https://image.baidu.com/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs3&word=%E6%8D%A7%E8%85%B9%E5%A4%A7%E7%AC%91%E5%93%88%E5%93%88%E5%93%88%E8%A1%A8%E6%83%85%E5%8C%85&oriquery=%E5%93%88%E5%93%88%E5%93%88&ofr=%E5%93%88%E5%93%88%E5%93%88&sensitive=0';
 
     // 1.编码

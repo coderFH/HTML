@@ -40,7 +40,7 @@
               <input type="tel" maxlength="8" placeholder="验证码" v-model="code">
             </section>
             <section class="login-hint">
-              温馨提示：未注册撩课帐号的手机号，登录时将自动注册，且代表已同意
+              温馨提示：未注册淘宝帐号的手机号，登录时将自动注册，且代表已同意
               <a href="javascript:;">服务协议与隐私政策</a>
             </section>
           </div>

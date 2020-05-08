@@ -1,17 +1,17 @@
 @font-face {
-  font-family: 'itlike';
-  src:  url('fonts/itlike.eot?pw4c5a');
-  src:  url('fonts/itlike.eot?pw4c5a#iefix') format('embedded-opentype'),
-    url('fonts/itlike.ttf?pw4c5a') format('truetype'),
-    url('fonts/itlike.woff?pw4c5a') format('woff'),
-    url('fonts/itlike.svg?pw4c5a#itlike') format('svg');
+  font-family: 'itfh';
+  src:  url('fonts/itfh.eot?pw4c5a');
+  src:  url('fonts/itfh.eot?pw4c5a#iefix') format('embedded-opentype'),
+    url('fonts/itfh.ttf?pw4c5a') format('truetype'),
+    url('fonts/itfh.woff?pw4c5a') format('woff'),
+    url('fonts/itfh.svg?pw4c5a#itfh') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
-[class^="itlike-"], [class*=" itlike-"] {
+[class^="itfh-"], [class*=" itfh-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'itlike' !important;
+  font-family: 'itfh' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -24,36 +24,36 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.itlike-uniE909:before {
+.itfh-uniE909:before {
   content: "\e909";
 }
-.itlike-6:before {
+.itfh-6:before {
   content: "\e90a";
 }
-.itlike-uniE902:before {
+.itfh-uniE902:before {
   content: "\e902";
 }
-.itlike-5:before {
+.itfh-5:before {
   content: "\e903";
 }
-.itlike-4:before {
+.itfh-4:before {
   content: "\e904";
 }
-.itlike-3:before {
+.itfh-3:before {
   content: "\e905";
 }
-.itlike-_:before {
+.itfh-_:before {
   content: "\e906";
 }
-.itlike-2:before {
+.itfh-2:before {
   content: "\e907";
 }
-.itlike-1:before {
+.itfh-1:before {
   content: "\e908";
 }
-.itlike-round_check:before {
+.itfh-round_check:before {
   content: "\e900";
 }
-.itlike-search:before {
+.itfh-search:before {
   content: "\e901";
 }

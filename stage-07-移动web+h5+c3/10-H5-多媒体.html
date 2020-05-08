@@ -117,7 +117,7 @@
         <!--控制层-->
         <div class="controls">
             <!--播放/暂停-->
-            <a href="javascript:;" class="switch itlike-play3"></a>
+            <a href="javascript:;" class="switch itfh-play3"></a>
             <!--进度条-->
             <div class="progress">
                 <div class="line"></div>
@@ -129,7 +129,7 @@
                    <span class="total">00:00:00</span>
                </div>
                <!--全屏/取消全屏-->
-               <a href="javascript:;" class="expand itlike-enlarge"></a>
+               <a href="javascript:;" class="expand itfh-enlarge"></a>
         </div>
     </section>
 </figure>
@@ -154,12 +154,12 @@
        // 3. 播放和暂停
        $('.switch').on('click', function (){
             // 3.1 判断
-            if($(this).hasClass('itlike-play3')){ // 播放
+            if($(this).hasClass('itfh-play3')){ // 播放
                 video.play();
-                $(this).addClass('itlike-pause2').removeClass('itlike-play3'); // 切换图标
+                $(this).addClass('itfh-pause2').removeClass('itfh-play3'); // 切换图标
             }else { // 暂停
                 video.pause();
-                $(this).addClass('itlike-play3').removeClass('itlike-pause2'); // 切换图标
+                $(this).addClass('itfh-play3').removeClass('itfh-pause2'); // 切换图标
             }
        });
 
@@ -177,7 +177,7 @@
 
        // 5. 全屏
        $('.expand').on('click', function () {
-           if($(this).hasClass('itlike-enlarge')){ // 全屏
+           if($(this).hasClass('itfh-enlarge')){ // 全屏
                video.webkitRequestFullScreen();
            }else { // 取消全屏
                document.webkitCancelFullScreen();
@@ -189,7 +189,7 @@
             // 6.1 当前的视频时间清零
             video.currentTime = 0;
            // 6.2 切换图标
-            $('.switch').addClass('itlike-play3').removeClass('itlike-pause2');
+            $('.switch').addClass('itfh-play3').removeClass('itfh-pause2');
        });
 
        // 7. 点击bar跃进
