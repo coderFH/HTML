@@ -13,7 +13,6 @@ class ConcreteWebSite extends WebSite {
     use(user : User): void {
         console.log("网站发布形式为: " + this.type + "在使用中....使用者是:" + user.getName);
     }
-    
 }
 
 export {ConcreteWebSite}
