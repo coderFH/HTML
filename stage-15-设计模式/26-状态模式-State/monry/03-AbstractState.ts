@@ -1,49 +1,46 @@
-package com.atguigu.state.money;
+import { State } from "./02-State";
+import { Context } from "./10-Context";
 
-public abstract class AbstractState implements State {
+abstract class AbstractState implements State {
+	protected static EXCEPTION = new Error("操作流程不允许");
 
-	protected static final RuntimeException EXCEPTION = new RuntimeException("�������̲�����");
-
-	//�����࣬Ĭ��ʵ���� State �ӿڵ����з���
-	//��������з�����������(�����״̬��)��������ѡ��Ľ�����д
-	
-    @Override
-    public void checkEvent(Context context) {
-        throw EXCEPTION;
+	//抽象类,默认实现了State接口的所有方法
+	//该类的所有方法,其子类(具体的状态类),可以有选择的进行重写
+    checkEvent(context : Context) : void {
+        throw AbstractState.EXCEPTION;
     }
 
-    @Override
-    public void checkFailEvent(Context context) {
-        throw EXCEPTION;
+    checkFailEvent(context : Context) : void {
+        throw AbstractState.EXCEPTION;
     }
 
-    @Override
-    public void makePriceEvent(Context context) {
-        throw EXCEPTION;
+    makePriceEvent(context : Context) : void {
+        throw AbstractState.EXCEPTION;
     }
 
-    @Override
-    public void acceptOrderEvent(Context context) {
-        throw EXCEPTION;
+    acceptOrderEvent(context : Context) : void {
+        throw AbstractState.EXCEPTION;
     }
 
-    @Override
-    public void notPeopleAcceptEvent(Context context) {
-        throw EXCEPTION;
+    notPeopleAcceptEvent(context : Context) : void {
+        throw AbstractState.EXCEPTION;
     }
 
-    @Override
-    public void payOrderEvent(Context context) {
-        throw EXCEPTION;
+    payOrderEvent(context : Context) : void {
+        throw AbstractState.EXCEPTION;
     }
 
-    @Override
-    public void orderFailureEvent(Context context) {
-        throw EXCEPTION;
+    orderFailureEvent(context : Context) : void {
+        throw AbstractState.EXCEPTION;
     }
 
-    @Override
-    public void feedBackEvent(Context context) {
-        throw EXCEPTION;
+    feedBackEvent(context : Context) : void {
+        throw AbstractState.EXCEPTION;
+    }
+
+    getCurrentState() : number {
+        return 0;
     }
 }
+
+export {AbstractState}

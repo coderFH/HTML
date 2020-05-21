@@ -1,24 +1,11 @@
+// 枚举状态类
 enum StateEnum {
-    GENERATE(1, "GENERATE"),
-    REVIEWED(2, "REVIEWED"),
-
-
-    PUBLISHED(3, "PUBLISHED"),
-
-
-    NOT_PAY(4, "NOT_PAY"),
-
-    PAID(5, "PAID"),
-
-    FEED_BACKED(6, "FEED_BACKED");
-
-    private int key;
-    private String value;
-
-    StateEnum(int key, String value) {
-        this.key = key;
-        this.value = value;
-    }
-    public int getKey() {return key;}
-    public String getValue() {return value;}
+    GENERATE = 1,   //订单生成
+    REVIEWED,       // 已审核
+    PUBLISHED,      // 已发布
+    NOT_PAY,        // 待付款
+    PAID,           // 已付款
+    FEED_BACKED,    // 已完结
 }
+
+export {StateEnum}

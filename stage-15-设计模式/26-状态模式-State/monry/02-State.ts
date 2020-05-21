@@ -1,44 +1,33 @@
+import { Context } from "./10-Context";
+
+// 状态接口
 interface State {
-    	/**
-     * ����
-     */
-    void checkEvent(Context context);
 
-    /**
-     * ����ʧ��
-     */
-    void checkFailEvent(Context context);
+    // 电审
+    checkEvent(context : Context) : void;
 
-    /**
-     * ���۷���
-     */
-    void makePriceEvent(Context context);
+    // 电审失败
+    checkFailEvent(context : Context) : void; 
 
-    /**
-     * �ӵ�
-     */
-    void acceptOrderEvent(Context context);
+    // 定价发布
+    makePriceEvent(context : Context) : void;
 
-    /**
-     * ���˽ӵ�ʧЧ
-     */
-    void notPeopleAcceptEvent(Context context);
+    // 接单
+    acceptOrderEvent(context : Context) : void;
 
-    /**
-     * ����
-     */
-    void payOrderEvent(Context context);
+    // 无人接单失效
+    notPeopleAcceptEvent(context : Context) : void;
+     
+    // 付款
+    payOrderEvent(context : Context) : void;
 
-    /**
-     * �ӵ�����֧��ʧЧ
-     */
-    void orderFailureEvent(Context context);
+    // 接单有人支付失效
+    orderFailureEvent(context : Context) : void;
 
-    /**
-     * ����
-     */
-    void feedBackEvent(Context context);
+    // 反馈
+    feedBackEvent(context : Context) : void; 
 
-
-    String getCurrentState();
+    getCurrentState() : number;
 }
+
+export {State}

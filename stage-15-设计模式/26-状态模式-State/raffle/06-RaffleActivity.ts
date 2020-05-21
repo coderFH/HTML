@@ -63,33 +63,33 @@ class RaffleActivity {
         return this.noRafflleState;
     }
 
-    setNoRafflleState(noRafflleState : State) : void {
-        this.noRafflleState = noRafflleState;
-    }
+    // setNoRafflleState(noRafflleState : State) : void {
+    //     this.noRafflleState = noRafflleState;
+    // }
 
     getCanRaffleState() : State  {
         return this.canRaffleState;
     }
 
-    setCanRaffleState(canRaffleState : State) : void {
-        this.canRaffleState = canRaffleState;
-    }
+    // setCanRaffleState(canRaffleState : State) : void {
+    //     this.canRaffleState = canRaffleState;
+    // }
 
     getDispenseState() : State {
         return this.dispenseState;
     }
 
-    setDispenseState(dispenseState : State) : void {
-        this.dispenseState = dispenseState;
-    }
+    // setDispenseState(dispenseState : State) : void {
+    //     this.dispenseState = dispenseState;
+    // }
 
     getDispensOutState() : State {
         return this.dispensOutState;
     }
 
-    setDispensOutState(dispensOutState : State) : void {
-        this.dispensOutState = dispensOutState;
-    }
+    // setDispensOutState(dispensOutState : State) : void {
+    //     this.dispensOutState = dispensOutState;
+    // }
 }
 
 export {RaffleActivity}
