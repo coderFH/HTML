@@ -45,6 +45,8 @@ class MergeSort extends Sort {
     }
 }
 
+export {MergeSort}
+
 function test1() {
     let arr1 = [3,4,1,2,3,4,5,78,9,2,3,33,11,56,332,678,22];
     let s1 = new MergeSort();
