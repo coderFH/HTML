@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="content"></div>
+    <button class="change">更改数据</button>
+    <script>
+        let message = "hello world";
+        let divEl = document.getElementsByClassName("content")[0];
+        divEl.innerHTML = message;
+
+        let btnEl = document.getElementsByClassName("change")[0];
+        btnEl.addEventListener("click",e=> {
+            message = "hello React";
+            divEl.innerHTML = message;
+        });
+    </script>
+</body>
+</html>

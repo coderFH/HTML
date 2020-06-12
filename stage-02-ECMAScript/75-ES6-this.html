@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+    <script>
+        function foo() {
+            console.log(this);
+        }
+
+        foo();
+
+        var obj = {
+            name : "FH",
+            foo : foo
+        }
+        obj.foo();
+
+        foo.call("abc")
+
+    </script>
+
+<!-- <script id="this指向">
+    console.log('======= this指向 =======');
+    //箭头函数中的this是如何查找的
+    //答:向外层作用域中,一层层查找this,直到有this定义
+    //在es5中的写法
+    let obj = {
+        str : '张三',
+        logThis : function () {
+            let self = this;
+            setTimeout(function () {
+                console.log(this);
+                console.log(this.str); //在es5中,函数内部的函数 this其实指向window,所以一般需要备份指针
+                console.log(self.str);
+            });
+        }
+    };
+    obj.logThis();
+
+    //但是在es6中,就可以使用箭头函数去处理备份指针的问题
+    //箭头函数根本没有自己的this,所以内部的this就是外层代码块的this,正因为没有,从而避免了this指向的问题
+    let obj1 = {
+        str : '周杰伦',
+        logThis1 : function () {
+            setTimeout(()=> {
+                console.log(this);
+                console.log(this.str);
+            });
+        }
+    };
+    obj1.logThis1();
+</script>
+
+<script id="箭头函数的注意点">
+    console.log('======= 箭头函数的注意点 =======');
+    let site = 'like.com'; //let声明的变量不会放在window上
+    let obj2 = {
+        site : '淘宝',
+        test : () => {
+            console.log(this); //this指向window
+            console.log(this.site); //underfined  //对象不是作用域  所以this就是window,而不是obj2
+        }
+    };
+    let func = obj2.test;
+    func();
+</script> -->
+</body>
+</html>
