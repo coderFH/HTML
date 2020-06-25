@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>31-表单练习</title>
+</head>
+<body>
+    
+    <!--action 提交到哪个站点-->
+    <form action="http://www.baidu.com" method="GET">
+        <fieldset>
+            <legend>用户注册</legend>
+            <div>
+                <!--for属性的作用:点击文字的时候,也能激活输入框-->
+                <label for="username">用户名:</label>
+                <!--value给一个默认的输入值-->
+                <input type="text" name="username" id="username" value="tom">
+                 <!--
+                可以自动校验输入的内容是否符合邮箱的格式
+                -->
+                邮箱:<input type="email"><br>
+                <!--
+                可以自动校验输入的内容是否是URL地址
+                -->
+                域名:<input type="url"><br>
+                <!--
+                输入框中只能输入数字
+                -->
+                电话:<input type="number"><br>
+                <!--
+                可以通过日历来选择时间
+                -->
+                时间:<input type="date"><br>
+    
+                <!--
+                可以通过取色板来选择颜色
+                -->
+                颜色: <input type="color"><br>
+            </div>
+            <br>
+    
+            <div>
+                <label>密码:</label>
+                <input type="password" name="pwd">
+            </div>
+            <br>
+    
+            <div>
+                <label>日期:</label>
+                <input type="date" name="dat">
+            </div>
+            <br>
+    
+            <!--
+            在单选框和多选框中,所有的项目的name必须一致
+            在表单标签中,除了按钮标签以外的标签,都可以通过value来指定需要提交到服务器的数据
+            -->
+            <div>
+                <label>性别:</label>
+                <!--单选框  name要一致-->
+                <input type="radio" name="gender" id="male" value="0"><label for="male">男</label>
+                <input type="radio" name="gender" id="femal" value="1"><label for="femal">女</label>
+            </div>
+            <br>
+    
+            <div>
+                <label>爱好:</label>
+                <!--单选框  name要一致-->
+                <input type="checkbox" name="like" value="paino">弹琴
+                <input type="checkbox" name="like" value="sing">唱歌
+                <input type="checkbox" name="like" value="dance">跳舞
+            </div>
+            <br>
+    
+            <div>
+                <label>籍贯:</label>
+                <select name="site">
+                    <option value="0">北京</option>
+                    <option value="1">上海</option>
+                    <option value="2">广州</option>
+                    <option value="3">深圳</option>
+                </select>
+            </div>
+            <br>
+    
+            <div>
+                <label>照片:</label>
+                <input type="file" name="">
+            </div>
+            <br>
+    
+            <div>
+                <label>个人描述:</label>
+                <textarea name="info"></textarea>
+            </div>
+            <br>
+
+            <div>
+                <p>
+                    <input type="submit" value="注册">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="reset" value="清空">
+                </p>
+            </div>
+        </fieldset>
+    </form>
+</body>
+</html>
