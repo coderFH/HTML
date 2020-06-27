@@ -35,10 +35,15 @@
     <!-- 
         CSS3中新增的选择器最具代表性的就是序号选择器
 
+
+
         1.同级别的第几个
         :first-child 选中同级别中第一个标签
         :last-child  选中同级别中最后一个标签
         :nth-child(n) 选中同级别中第n个标签
+            :nth-child(odd) 选中同级别中的所有奇数
+            :nth-child(even) 选中同级别中的所有偶数
+            :nth-child(xn+y) x和y是用户自定义的, 而n是一个计数器, 从0开始递增
         :nth-last-child 选中同级别中倒数第几个
         :only-child 选中父元素中,只有一个标签的
             eg:body里只有这个代码 就会选中我是段落2,因为div里子元素只有一个

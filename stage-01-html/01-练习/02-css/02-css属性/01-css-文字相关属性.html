@@ -2,14 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>文字相关属性</title>
     <style type="text/css">
         p {
             font-style:italic; 
             font-weight: bolder;
             font-size: 30px;
-            font-family: "宋体";
+            font-family: "Times New Roman","微软雅黑";
 
             /* 以上属性的简写方式 */
             font:italic bolder 30px "宋体";
@@ -39,6 +38,22 @@
             如果设置的文字不存在,会使用默认的,如果也不想用默认的怎么办?
                 可以使用备选方案,字体用逗号隔开.font-family: "方案1","备选方案1","备选方案2",...;
 
+            3.如果想给中文和英文分别单独设置字体, 怎么办?
+                但凡是中文字体, 里面都包含了英文
+                但凡是英文字体, 里面都没有包含中文
+                也就是说中文字体可以处理英文, 而英文字体不能处理中文
+                **注意点: 如果想给界面中的英文单独设置字体, 那么英文的字体必须写在中文的前面
+
+            4.补充在企业开发中最常见的字体有以下几个
+                中文: 宋体/黑体/微软雅黑
+                英文: "Times New Roman"/Arial
+
+            还需要知道一点, 就是并不是名称是英文就一定是英文字体
+            因为中文字体其实都有自己的英文名称, 所以是不是中文字体主要看能不能处理中文
+            宋体 SimSun
+            黑体 SimHei
+            微软雅黑 Microsoft YaHei
+
         简写的方式:
             font: 样式 粗细 大小 字体
             注意点: 1.在缩写格式中, style  weight 是可以省略的
@@ -46,6 +61,6 @@
                    3.在缩写格式中,size和family是不可以删除的,位置也不可以交换
      -->
     <i>我是文字</i>
-    <p>我是一个段落</p>
+    <p>abc我是一个段落</p>
 </body>
 </html>
