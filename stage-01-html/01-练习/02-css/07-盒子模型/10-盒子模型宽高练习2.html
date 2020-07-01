@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        /*现有如下盒子模型, 要求增加padding属性为25之后仍然保持元素宽高为200
+
+        元素宽高 = 边框 + 内边距 + 内容宽高
+                 = 0 + 0 + 200 = 200
+                 = 0 + 25 + 25 + 200 = 250
+                 = 0 + 25 + 25 + 150 = 200
+         规律:
+         1.增加了padding之后元素的宽高也会发生变化
+         2.如果增加了padding之后还想保持元素的宽高, 那么就必须减去内容的宽高
+        */
+        .box9{
+            width: 150px;
+            height: 150px;
+            padding: 25px;
+            background-color: red;
+        }
+        /*现有如下盒子模型, 要求增加border属性为20之后仍然保持元素宽高为200
+        元素宽高 = 边框 + 内边距 + 内容宽高
+                 = 0 + 0 + 200 = 200
+                 = 0 + 20 + 20 + 200 = 240
+                 = 0 + 20 + 20 + 160 = 200
+          规律:
+         1.增加了border之后元素的宽高也会发生变化
+         2.如果增加了border之后还想保持元素的宽高, 那么就必须减去内容的宽高
+        */
+        .box10{
+            width: 160px;
+            height: 160px;
+            border: 20px solid #000;
+            background-color: deepskyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box9">box9</div>
+    <div class="box10">box10</div>
+</body>
+</html>
