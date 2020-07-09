@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定位练习1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            margin-top: 100px;
+            position: relative;
+        }
+        div img{
+            width: 300px;
+            height: 200px;
+        }
+        div .hot {
+            width: 45px;
+            height: 44px;
+            background: url("../../resource/tuangou.png") no-repeat 0px -280px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        div .price{
+            width: 134px;
+            height: 42px;
+            background: url("../../resource/tuangou.png") no-repeat 0px -362px;
+            position: absolute;
+            left: -7px;
+            top: 163px;
+        }
+    </style>
+</head>
+<body>
+
+    <div>
+        <img src="../../resource/meat.jpg">
+        <span class="hot"></span>
+        <span class="price"></span>
+        <p>【2店通用】Love Taste爱味道牛排生活馆 双人套餐，提供免费WiFi</p>
+    </div>
+    
+</body>
+</html>
