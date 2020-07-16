@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>太极八卦图</title>
+    <style>
+        .all {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+            background-color: red;
+            margin: 100px auto;
+            position: relative;
+        }
+        .top {
+            width: 400px;
+            height: 200px;
+            background-color: white;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-top-left-radius: 200px;
+            border-top-right-radius: 200px;
+        }
+        .bottom {
+            width: 400px;
+            height: 200px;
+            background-color: black;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            border-bottom-left-radius: 200px;
+            border-bottom-right-radius: 200px;
+        }
+        .left {
+            width: 200px;
+            height: 200px;
+            background-color: white;
+            border: 80px solid #000;
+            border-radius: 50%;
+            box-sizing: border-box;
+            position: absolute;
+            left: 0;
+            top: 100px;
+        }
+        .right {
+            width: 200px;
+            height: 200px;
+            background-color: black;
+            border: 80px solid #fff;
+            box-sizing: border-box;
+            border-radius: 50%;
+            position: absolute;
+            right: 0;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="top"></div>
+        <div class="bottom"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</body>
+</html>

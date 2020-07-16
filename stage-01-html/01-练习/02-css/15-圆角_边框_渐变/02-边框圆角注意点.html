@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>边框圆角注意点</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .one{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            box-sizing: border-box;
+            margin: 0 auto;
+            /*              左上  右上  右下  左下*/
+            /*border-radius: 100px 100px 100px 100px;*/
+            /*border-radius: 100px 50px 100px 100px;*/
+            /*当省略了某一个角的值之后, 系统会自动参考对角的值*/
+            /*border-radius: 100px 50px 100px;*/
+            border-radius: 100px 50px;
+        }
+        .two{
+            width: 200px;
+            height: 200px;
+            /*修改了边框的宽度*/
+            border: 50px solid #000;
+            box-sizing: border-box;
+            margin: 400px auto;
+            /*当只设置了一个值的时候, 其它三个角都会参考这个值*/
+            /*border-radius: 100px;*/
+            /*
+                当边框圆角的值 > 边框宽度的时候, 外边框和内边框都会变成圆角
+                当边框圆角的值 <= 边框宽度的时候, 外边框是圆角, 内边框是直角
+                可以把值改成40看看效果
+            */
+            border-radius: 60px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="one"></div>
+    <div class="two"></div>
+</body>
+</html>

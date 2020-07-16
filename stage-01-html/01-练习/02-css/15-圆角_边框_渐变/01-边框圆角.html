@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>118-边框圆角</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .father{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+            box-sizing: border-box;
+            margin: 100px auto;
+            /*border-radius: 100px 100px 100px 100px;*/
+            /*border-radius: 100px 100px 0px 0px;*/
+            border-radius: 50%;
+        }
+        .son{
+            width: 100px;
+            height: 100px;
+            background: rgba(255,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+<!--
+1.什么是边框圆角?
+    将直角的边框变为圆角的边框
+
+2.边框圆角的格式?
+    border-radius: 左上 右上 右下 左下;
+
+3.将正方形变为圆形的技巧
+    border-radius: 50%;
+
+4.系统如何绘制圆角?
+    首先根据指定的值找到圆心
+    按照指定的值作为半径绘制圆弧
+-->
+<div class="father">
+    <div class="son"></div>
+</div>
+</body>
+</html>

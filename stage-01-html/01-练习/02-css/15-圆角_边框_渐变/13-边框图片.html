@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>123-边框图片</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 300px;
+            height: 300px;
+            border: 70px solid #000;
+            box-sizing: border-box;
+            margin: 200px auto;
+            background: skyblue;
+
+            /*告诉浏览器让哪一张图片成为边框*/
+            /*注意点:
+            如果只通过source指定了哪一张图片作为边框的图片, 默认情况下会将图片放到边框的四个顶点
+            如果设置了边框图片, 那么就不会显示边框颜色, 边框图片的优先级高于边框颜色*/
+            border-image-source: url("../../resource/border.jpg");
+            /*告诉浏览器如何对指定的边框图片进行切割
+            注意点: 不带单位
+            */
+            border-image-slice: 70 70 70 70;
+            /*告诉浏览器边框图片显示的宽度, 并不是指定边框的宽度
+            注意点: 如果通过border-image-width指定了边框图片的宽度, 那么默认的边框宽度就会失效*/
+            /* border-image-width: 10px; */
+
+            /*告诉浏览器除了边框图片四个角以外的图片如何填充, 默认是拉伸*/
+            /* border-image-repeat: stretch; 拉伸 */
+            /* border-image-repeat: repeat; 重复 */
+            border-image-repeat: round;  /* 环绕 */
+        }
+    </style>
+</head>
+<body>
+<div></div>
+</body>
+</html>

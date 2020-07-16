@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>127-线性渐变</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 300px;
+            height: 200px;
+            border: 1px solid #000;
+            box-sizing: border-box;
+            margin: 200px auto;
+            /*默认情况下会从上至下的渐变*/
+            /*background: linear-gradient(red, green);*/
+            /*background: linear-gradient(to top ,red, green);*/
+            /*background: linear-gradient(to right ,red, green);*/
+            /*background: linear-gradient(to left ,red, green);*/
+            /*background: linear-gradient(to top right ,red, green);*/
+            background: linear-gradient(45deg ,red, green);
+        }
+    </style>
+</head>
+<body>
+<div></div>
+</body>
+</html>

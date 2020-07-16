@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>126-vertical-align</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 400px;
+            background: skyblue;
+            font-size: 40px;
+            margin: 200px auto;
+            line-height: 100px;
+        }
+        img{
+            /*默认情况下图片和一行文字的基线对齐
+            基线就是一行文字中最短那个文字的底部*/
+            /*vertical-align: baseline;*/
+            /*vertical-align: top;*/
+            /*vertical-align: bottom;*/
+            /*vertical-align: text-top;*/
+            /*vertical-align: text-bottom;*/
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+<!--
+1.什么是vertical-align?
+设置元素的垂直对齐方式。
+
+2.vertical-align注意点:
+text-align是设置给需要对齐元素的父元素
+vertical-align是设置给需要对齐的那个元素本身
+
+vertical-align只对行内元素有效
+-->
+<div>你好呀ypx<img src="images/dog.jpg" alt=""></div>
+</body>
+</html>

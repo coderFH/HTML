@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跳动的心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .all {
+            width: 450px;
+            height: 400px;
+            margin: 200px auto;
+            position: relative;
+            box-sizing: border-box;
+        }
+        .left, .right{
+            width: 250px;
+            height: 250px;
+            background-color: red;
+            border-radius: 50%;
+            position: absolute;
+            top: 0;
+            box-shadow: 0 0 40px red;
+        }
+        .right {
+           right: 0;
+        }
+        .bottom {
+            width: 250px;
+            height: 250px;
+            position: absolute;
+            bottom: 50PX;
+            left: 50%;
+            /*margin-left: -125px;*/
+            /*技巧: 在企业开发中推荐使用如下的方式让元素居中
+            水平居中: left:50%; transform: translateX(-50%);
+            垂直居中: top:50%; transform: translateY(-50%);
+            */
+            transform: translateX(-50%) rotateZ(45deg);
+            background-color: red;
+            box-shadow: 0 0 40px red;
+        }
+        .all {
+            animation: sport 1s linear 0s infinite normal;
+        }
+        @keyframes sport {
+            0%{
+                transform: scale(1);
+            }
+            50%{
+                transform: scale(1.1);
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="all">
+        <div class="left"></div>
+        <div class="right"></div>
+        <div class="bottom"></div>
+    </div>
+</body>
+</html>

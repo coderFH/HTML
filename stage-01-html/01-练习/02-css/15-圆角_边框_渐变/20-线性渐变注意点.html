@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>127-线性渐变</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .main{
+            width: 400px;
+            height: 200px;
+            border: 1px solid #000;
+            box-sizing: border-box;
+            margin: 200px auto;
+            /*
+            注意点:
+            至少需要传递2个颜色, 至多没有上限
+            */
+            /*background: linear-gradient(to right, red, green, blue, yellow);*/
+            /*
+            注意点:
+            默认情况下自动回自动计算纯色和渐变色的范围, 但是我们也可以手动指定
+            手动指定的格式: 颜色 范围
+            只有第一个颜色后面的范围是指定纯色的范围, 后面的都是指定渐变的范围
+            */
+            background: linear-gradient(to right, red 100px, green 200px, blue 300px);
+        }
+        .one, .two, .three{
+            width: 100px;
+            height: 100%;
+            border: 1px solid #000;
+            box-sizing: border-box;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="one"></div>
+    <div class="two"></div>
+    <div class="three"></div>
+</div>
+</body>
+</html>

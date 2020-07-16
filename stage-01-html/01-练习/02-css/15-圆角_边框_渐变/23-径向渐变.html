@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>130-径向渐变</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+            margin: 200px auto;
+            /*
+            线性渐变: 默认从上至下
+            径向渐变: 默认从中心点向四周扩散
+            */
+            /*background: radial-gradient(red, green);*/
+
+            /*
+            线性渐变: 可以通过to 关键字的方式修改渐变的方向
+            径向渐变: 可以通过at 关键字的方式修改开始渐变的位置
+            */
+            /*background: radial-gradient(at top left ,red, green);*/
+
+            /*
+            线性渐变: 可以通过to deg的方式修改渐变的方向
+            径向渐变: 可以通过at 位置 位置的方式修改开始渐变的位置
+            */
+            /*background: radial-gradient(at 200px 100px ,red, green);*/
+
+            /*
+            线性渐变可以指定纯色和渐变的范围
+            径向渐变也可以指定扩散的范围
+            */
+            /*background: radial-gradient(100px, red, green);*/
+
+            /*
+            注意点:
+            如果需要同时指定扩散的位置和扩散的范围, 那么范围必须写到at前面
+            */
+            background: radial-gradient(100px at 200px 100px ,red, green);
+        }
+    </style>
+</head>
+<body>
+<div></div>
+</body>
+</html>

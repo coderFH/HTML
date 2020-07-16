@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无线滚动</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 670px;
+            height: 300px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+        ul{
+            width: 5360px;
+            height: 300px;
+            background-color: black;
+            animation: move 10s linear 0s infinite normal;
+        }
+        ul li{
+            float: left;
+            list-style: none;
+            width: 670px;
+            height: 300px;
+            background-color: red;
+            border: 1px solid #000;
+            box-sizing: border-box;
+        }
+        ul:hover {
+            animation-play-state: paused;
+        }
+        ul:hover li {
+            opacity: 0.5;
+        }
+        ul li:hover {
+            opacity: 1;
+        }
+        @keyframes move {
+            from {
+                margin-left: 0;
+            }
+            to {
+                margin-left: -4038px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li><img src="../../resource/ad1.jpg" alt=""></li>
+            <li><img src="../../resource/ad2.jpg" alt=""></li>
+            <li><img src="../../resource/ad3.jpg" alt=""></li>
+            <li><img src="../../resource/ad4.jpg" alt=""></li>
+            <li><img src="../../resource/ad5.jpg" alt=""></li>
+            <li><img src="../../resource/ad6.jpg" alt=""></li>
+            <li><img src="../../resource/ad1.jpg" alt=""></li>
+            <li><img src="../../resource/ad2.jpg" alt=""></li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>123-边框图片</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        div{
+            width: 300px;
+            height: 300px;
+            border: 70px solid #000;
+            box-sizing: border-box;
+            margin: 200px auto;
+            background: skyblue;
+
+            /*border-image: 资源地址 切割方式 填充模式;*/
+            border-image: url("../../resource/border.jpg") 70 fill repeat;
+        }
+    </style>
+</head>
+<body>
+<div></div>
+</body>
+</html>

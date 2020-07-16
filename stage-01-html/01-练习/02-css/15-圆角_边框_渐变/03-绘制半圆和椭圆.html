@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>120-绘制半圆和椭圆</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .one{
+            /*
+            width: 200px;
+            height: 100px;
+            border: 1px solid #000;
+            box-sizing: border-box;
+            margin: 100px auto;
+            border-radius: 100px 100px 0 0;
+            */
+            width: 200px;
+            height: 100px;
+            border: 1px solid #000;
+            box-sizing: border-box;
+            margin: 100px auto;
+            /*可以通过border-xxx-xx-radius的方式单独设置某一个角的值
+              border-xxx-xx-radius接收两个参数, 第一个表示水平方向, 第二个表示垂直方向
+              border-xxx-xx-radius如果只传递了一个参数, 那么出自方向和水平方向的值一样*/
+            /*                        水平  垂直*/
+            /*border-top-left-radius: 100px 100px;*/
+            border-top-left-radius: 100px;
+            border-top-right-radius: 100px;
+        }
+        .two{
+            width: 400px;
+            height: 200px;
+            border: 1px solid #000;
+            box-sizing: border-box;
+            margin: 300px auto;
+            /*绘制椭圆设置水平方向为宽度的一半, 设置垂直方向为高度的一半*/
+            border-top-left-radius: 200px 100px;
+            border-top-right-radius: 200px 100px;
+            border-bottom-left-radius: 200px 100px;
+            border-bottom-right-radius: 200px 100px;
+        }
+    </style>
+</head>
+<body>
+<div class="one"></div>
+<div class="two"></div>
+</body>
+</html>
